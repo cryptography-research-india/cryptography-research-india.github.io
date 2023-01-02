@@ -58,9 +58,9 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "First Lastname"
+  name   : "Cryptography Researchers of India"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  bio    : "Cryptography Researchers of India is a platform for individuals passionate about research in cryptography to connect with fellow researchers and expand their knowledge in the field. Our goal is to facilitate interdisciplinary collaboration and inspire new ideas in cryptography research."
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
