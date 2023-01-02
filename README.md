@@ -1,26 +1,14 @@
-# Minimal Mistakes remote theme starter
+# Cryptography Researchers of India
 
-Click [**Use this template**](https://github.com/mmistakes/mm-github-pages-starter/generate) button above for the quickest method of getting started with the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes).
+Cryptography Researchers of India is a platform for individuals passionate about research in cryptography to connect with fellow researchers and expand their knowledge in the field. Our goal is to facilitate interdisciplinary collaboration and inspire new ideas in cryptography research.
 
-Contains basic configuration to get you a site with:
-
-- Sample posts.
-- Sample top navigation.
-- Sample author sidebar with social links.
-- Sample footer links.
-- Paginated home page.
-- Archive pages for posts grouped by year, category, and tag.
-- Sample about page.
-- Sample 404 page.
-- Site wide search.
-
-Replace sample content with your own and [configure as necessary](https://mmistakes.github.io/minimal-mistakes/docs/configuration/).
+You may contribute to this webpage by creating a pull request [here](https://github.com/cryptography-research-india/cryptography-research-india.github.io/pulls).
 
 ---
 
 ## Troubleshooting
 
-If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
+This website is created using the [Minimal Mistakes Jekyll theme](https://github.com/mmistakes/minimal-mistakes). If you have a question about using Jekyll, start a discussion on the [Jekyll Forum](https://talk.jekyllrb.com/) or [StackOverflow](https://stackoverflow.com/questions/tagged/jekyll). Other resources:
 
 - [Ruby 101](https://jekyllrb.com/docs/ruby-101/)
 - [Setting up a Jekyll site with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
