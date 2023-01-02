@@ -60,7 +60,7 @@ plugins:
 author:
   name   : "Cryptography Researchers of India"
   avatar : "/assets/images/bio-photo.png"
-  bio    : "Cryptography Researchers of India is a platform for individuals passionate about research in cryptography to connect with fellow researchers and expand their knowledge in the field. Our goal is to facilitate interdisciplinary collaboration and inspire new ideas in cryptography research."
+  bio    : "Connect, Collaborate, and Innovate."
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
