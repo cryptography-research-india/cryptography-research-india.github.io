@@ -2,15 +2,13 @@
 title: "Welcome to Cryptography Researchers of India!"
 date: 2023-01-01T00:00:00-04:00
 categories:
-  - blog
+  - general
 tags:
   - webpage
   - update
   - anouncement
   - general
 ---
-
-Welcome to Cryptography Researchers of India!
 
 We are a platform for people passionate about research on cryptography - both academic and industrial - to connect with like-minded researchers in the field. Our goal is to facilitate collaboration and inspire interdisciplinary ideas within the community.
 
