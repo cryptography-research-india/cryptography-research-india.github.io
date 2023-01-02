@@ -1,0 +1,9 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.author__avatar img {
+    padding: none !important;
+    border-radius: none !important;
+}
