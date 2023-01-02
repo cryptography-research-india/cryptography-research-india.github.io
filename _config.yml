@@ -59,21 +59,24 @@ plugins:
 
 author:
   name   : "Cryptography Researchers of India"
-  avatar : "/assets/images/bio-photo.jpg"
+  avatar : "/assets/images/bio-photo.png"
   bio    : "Cryptography Researchers of India is a platform for individuals passionate about research in cryptography to connect with fellow researchers and expand their knowledge in the field. Our goal is to facilitate interdisciplinary collaboration and inspire new ideas in cryptography research."
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/cryptography-research-india"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://cryptography-research-india.github.io/"
+    - label: "LinkedIn"
+      icon: "fab fa-brands fa-linkedin"
+      url: "https://www.linkedin.com/groups/12716619/"
+    #- label: "Twitter"
+    #  icon: "fab fa-fw fa-twitter-square"
+    #  url: "https://twitter.com/"
+    #- label: "Instagram"
+    #  icon: "fab fa-fw fa-instagram"
+    #  url: "https://instagram.com/"
 
 footer:
   links:
