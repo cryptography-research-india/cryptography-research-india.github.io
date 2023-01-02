@@ -3,6 +3,8 @@ main:
     url: /posts/
   - title: "People"
     url: /people/
+  - title: "Resources"
+    url: /resources/
   - title: "Categories"
     url: /categories/
   - title: "Tags"
