@@ -11,4 +11,4 @@ If you are a researcher in cryptography, we encourage you to join our community 
 
 Thank you for visiting our webpage and we hope to see you become a part of our community soon!
 
-For further queries/suggestions, please drop a mail to [cryptography.research.india@gmail.com](malto:cryptography.research.india@gmail.com).
+For further queries/suggestions, please drop a mail to [cryptography.research.india@gmail.com](mailto:cryptography.research.india@gmail.com).
