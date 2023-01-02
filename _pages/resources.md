@@ -17,6 +17,14 @@ This page is under construction!
 
 - TBA
 
+###### Homomorphic Encryption
+
+- TBA
+
 ###### Blockchain
+
+- TBA
+
+###### Post-quantum Cryptography
 
 - TBA

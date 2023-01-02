@@ -16,4 +16,4 @@ This is particularly important for early stage researchers or graduate students,
 
 Overall, the goal of this list is to contribute to the advancement of cryptography research in India, and ultimately to the benefit of society as a whole. We hope that this platform will serve as a valuable resource for researchers in the field, and encourage collaboration and innovation within the community.
 
-You can find the list [here]({{ site.baseurl }}{% link _pages/people.md %}).
+You can find the list [here]({{ site.baseurl }}{% link _pages/people %}).
