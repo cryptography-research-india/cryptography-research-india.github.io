@@ -12,3 +12,31 @@
     text-align: justify !important;
     font-size: 18px !important;
 }
+
+.person_name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.person_designation {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.person_affiliation {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.person_webpage {
+    font-size: 14px;
+    text-decoration-line: none;
+}
+
+.person_research {
+    font-size: 15px;
+}
+
+.person_areas {
+    font-weight: 300;
+}
