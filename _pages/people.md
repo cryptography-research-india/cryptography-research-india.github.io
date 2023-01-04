@@ -9,7 +9,7 @@ Let's meet some of the leading minds in the field of cryptography in India:
 
 ###### Academia
 
-- TBA
+- [TBA]({{ site.baseurl }}{% link _resources/people/people-academia.md %})
 
 ###### Industry
 

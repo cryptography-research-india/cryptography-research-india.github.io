@@ -1,0 +1,7 @@
+---
+- name: Academia
+  tag: ACADEMIA
+- name: Industry
+  tag: INDUSTRY
+- name: All
+  tag: ALL
