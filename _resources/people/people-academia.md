@@ -25,3 +25,22 @@ Let's meet some of the leading minds in the field of cryptography in India:
         <!-- </div> -->
       </div>
 </div>
+
+<div class="people-container">
+    {% for people in site.data.names-people %}
+    {% assign person_id = names-people.name %}
+    <div id="{{ person_id }}" class="people {% for tag in names-people.tags %} {{tag}} {% endfor %}">
+      <div class="row">
+          {{ people.name }}<br>
+          {{ people.designation }}<br>
+          {{ people.affiliation }}<br>
+          <a class="people-webpage" href="{{people.webpage}}" target="_blank">Webpage</a><br>
+          {% if conf.rank %}
+          <a class="people-webpagelab" href="{{people.webpagelab}}" target="_blank">Research Lab</a><br>
+          {% endif %}
+          {{ people.research }}<br>
+      </div>
+      <hr>
+    </div>
+    {% endfor %}
+</div>

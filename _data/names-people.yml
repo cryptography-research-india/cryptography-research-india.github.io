@@ -1,0 +1,47 @@
+---
+- name: Arpita Patra
+  designation: Associate Professor
+  affiliation: Indian Institute of Science Bangalore (IISc)
+  webpage: https://www.csa.iisc.ac.in/~arpita/
+  webpagelab: https://www.csa.iisc.ac.in/~cris/
+  research: Secure Multiparty Computation
+  tags: [ACADEMIA, ALL]
+  
+- name: Ashish Choudhury
+  designation: Associate Professor
+  affiliation: Indian Institute of Information Technology Bangalore (IIITB)
+  webpage: https://www.csa.iisc.ac.in/~arpita/
+  webpagelab: https://www.csa.iisc.ac.in/~cris/
+  research: Secure Multiparty Computation
+  tags: [ACADEMIA, ALL]
+  
+- name: Bhavana Kanukurthi
+  designation: Associate Professor
+  affiliation: Indian Institute of Science Bangalore (IISc)
+  webpage: https://www.csa.iisc.ac.in/~bhavana/
+  webpagelab: https://www.csa.iisc.ac.in/~crysp/
+  research: Non-malleable Codes, Information Theory
+  tags: [ACADEMIA, ALL]
+  
+- name: Chaya Ganesh
+  designation: Assistant Professor
+  affiliation: Indian Institute of Science Bangalore (IISc)
+  webpage: https://www.csa.iisc.ac.in/~chaya/
+  webpagelab: https://www.csa.iisc.ac.in/~chaya/
+  research: Cryptography, Zero-knowledge Proofs
+  tags: [ACADEMIA, ALL]
+  
+- name: Manoj M. Prabhakaran
+  designation: Professor
+  affiliation: Indian Institute of Technology Bombay (IITB)
+  webpage: https://www.cse.iitb.ac.in/~mp/
+  webpagelab: https://trustlab.iitb.ac.in
+  research: Theoretical and Applied Cryptography
+  tags: [ACADEMIA, ALL]
+  
+- name: Sikhar Patranabis
+  designation: Research Scientist
+  affiliation: IBM Research India
+  webpage: https://sites.google.com/site/sikharpatranabis/home
+  research: Theoretical and Applied Cryptography
+  tags: [INDUSTRY, ALL]
