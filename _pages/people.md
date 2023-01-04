@@ -14,9 +14,7 @@ In this space, you can find a list of some of the leading minds in the field of 
       <div class="row">
           <div class="person_name">
               {{ people.name }}
-              <button class="dropbtn" onclick="showDetails()" for="#updown_up">
-                  <i class="arrow updown" id="updown_up"></i>
-              </button>
+              <span class="reveal_detail"><i class="fa fa-angle-double-down"></i></span>
           </div>
           <div id="person_details">
               <div class="person_designation">{{ people.designation }}</div>
@@ -47,4 +45,8 @@ function showDetails() {
     x.style.display = "none";
   }
 }
+    
+$('div.reveal_detail').click(function(){
+    showDetails();
+});    
 </script>
