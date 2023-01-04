@@ -1,5 +1,5 @@
 ---
-permalink: /_resources/people/people-academia/
+permalink: /people-academia/
 title: "People Academia"
 ---
 
