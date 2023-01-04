@@ -39,12 +39,13 @@ In this space, you can find a list of some of the leading minds in the field of 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-$( "#reveal_detail" ).click(function() {
-    var parentDiv = $(this).parent('.row');
-    if(parentDiv.children('#person_details:visible').length)
-        parentDiv.children('#person_details').hide("slide", { direction: "up" }, 1000);
+$('#reveal_detail').click(function() {
+    var parentDiv = $(this).closest('.row');
+    var thisDetailDiv = parentDiv.find('#person_details');
+    if(thisDetailDiv.is(":visible"))
+        thisDetailDiv.hide("slide", { direction: "up" }, 1000);
     else
-        parentDiv.children('#person_details').show("slide", { direction: "up" }, 1000);        
+        thisDetailDiv.show("slide", { direction: "up" }, 1000);        
   });
 });
 </script>
