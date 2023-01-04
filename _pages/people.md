@@ -43,9 +43,9 @@ $('#reveal_detail').click(function() {
     var parentDiv = $(this).closest('.row');
     var thisDetailDiv = parentDiv.find('#person_details');
     if(thisDetailDiv.is(":visible"))
-        thisDetailDiv.hide("slide", { direction: "up" }, 1000);
+        thisDetailDiv.hide();
     else
-        thisDetailDiv.show("slide", { direction: "up" }, 1000);        
+        thisDetailDiv.show();        
   });
 });
 </script>
