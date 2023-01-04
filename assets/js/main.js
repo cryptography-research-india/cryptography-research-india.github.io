@@ -2,8 +2,6 @@
 ---
 $(function() {
  
-  {% for people in site.data.names-people %}
-  
   var peoples = $('.people').detach();
   $('.people-container').append(peoples);
   
