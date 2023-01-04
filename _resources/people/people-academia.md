@@ -44,3 +44,5 @@ Let's meet some of the leading minds in the field of cryptography in India:
     </div>
     {% endfor %}
 </div>
+
+<script src="{{ site.baseurl}}/assets/js/main.js" async></script>

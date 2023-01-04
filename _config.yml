@@ -37,6 +37,7 @@ include:
   - _pages
   - _resources
   - _resources/people
+  - assets/js
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
