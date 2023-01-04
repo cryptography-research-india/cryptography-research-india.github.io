@@ -7,4 +7,23 @@ In this space, you can find a list of some of the top cryptography researchers i
 
 Let's meet some of the leading minds in the field of cryptography in India:
 
-(This page is under construction!)
+<div class="people-container">
+    {% for people in site.data.names-people %}
+    {% assign person_id = names-people.name %}
+    <div id="{{ person_id }}" class="people {% for tag in names-people.tags %} {{tag}} {% endfor %}">
+      <div class="row">
+          <div class="person_name">{{ people.name }}</div>
+          <div class="person_designation">{{ people.designation }}</div>
+          <div class="person_affiliation">{{ people.affiliation }}</div>
+          <div class="person_webpage">
+              <a class="people-webpage" href="{{people.webpage}}" target="_blank">[Webpage]</a>
+              {% if conf.rank %}
+              <a class="people-webpagelab" href="{{people.webpagelab}}" target="_blank">[Lab]</a>
+              {% endif %}
+          </div>
+          <div class="person_research">Research Interests:{{ people.research }}</div>
+      </div>
+      <hr>
+    </div>
+    {% endfor %}
+</div>
