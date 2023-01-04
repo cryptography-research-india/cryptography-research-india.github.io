@@ -120,7 +120,7 @@ defaults:
   # _resources
   - scope:
       path: "_resources"
-      type: pages
+      #type: pages
     values:
       layout: single
       author_profile: true
