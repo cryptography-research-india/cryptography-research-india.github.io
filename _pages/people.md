@@ -14,7 +14,7 @@ In this space, you can find a list of some of the leading minds in the field of 
       <div class="row">
           <div class="person_name">
               {{ people.name }}
-              <span id="reveal_detail"><i class="fa fa-angle-double-down"></i></span>
+              <span class="reveal_detail"><i class="fa fa-angle-double-down"></i></span>
           </div>
           <div id="person_details">
               <div class="person_designation">{{ people.designation }}</div>
@@ -39,7 +39,7 @@ In this space, you can find a list of some of the leading minds in the field of 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-$('#reveal_detail').click(function() {
+$('.reveal_detail').click(function() {
     var parentDiv = $(this).closest('.row');
     var thisDetailDiv = parentDiv.find('#person_details');
     if(thisDetailDiv.is(":visible"))
