@@ -13,7 +13,7 @@ $(function() {
     all_tags[i] = people_type_data[i]['tag'];
     toggle_status[all_tags[i]] = false;
   }
-  var tags = store.get('{{ site.baseurl }}');
+  var tags = store.get('{{ site.domain }}');
   if (tags === undefined) {
     tags = all_tags;
   }
@@ -21,7 +21,7 @@ $(function() {
     $('#' + tags[i] + '-checkbox').prop('checked', true);
     toggle_status[tags[i]] = true;
   }
-  store.set('{{ site.baseurl }}', tags);
+  store.set('{{ site.domain }}', tags);
 
   function update_people_list() {
     peoples.each(function(i, people) {
