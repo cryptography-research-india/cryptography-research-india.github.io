@@ -14,7 +14,7 @@ In this space, you can find a list of some of the leading minds in the field of 
       <div class="row">
           <div class="person_name">
               {{ people.name }}
-              <span class="reveal_detail"><i class="fa fa-angle-double-down"></i></span>
+              <span id="reveal_detail"><i class="fa fa-angle-double-down"></i></span>
           </div>
           <div id="person_details">
               <div class="person_designation">{{ people.designation }}</div>
@@ -36,17 +36,14 @@ In this space, you can find a list of some of the leading minds in the field of 
 </div>
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
-function showDetails() {
-  var x = document.getElementById("person_details");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-    
-$('div.reveal_detail').click(function(){
-    showDetails();
-});    
+$(document).ready(function(){
+$( "#reveal_detail" ).click(function() {     
+    if($('#person_details:visible').length)
+        $('#person_details').hide("slide", { direction: "up" }, 1000);
+    else
+        $('#person_details').show("slide", { direction: "up" }, 1000);        
+  });
+});
 </script>
