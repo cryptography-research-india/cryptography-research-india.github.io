@@ -5,26 +5,16 @@ title: "Resources"
 
 This page is under construction!
 
-###### Classical Cryptography
+- Classical Cryptography
 
-- TBA
+- Secure Multiparty Computation
 
-###### Secure Multiparty Computation
+- Zero Knowledge Proofs
 
-- TBA
+- Homomorphic Encryption
 
-###### Zero Knowledge Proofs
+- Blockchain
 
-- TBA
+- Post-quantum Cryptography
 
-###### Homomorphic Encryption
-
-- TBA
-
-###### Blockchain
-
-- TBA
-
-###### Post-quantum Cryptography
-
-- TBA
+- Miscellaneous

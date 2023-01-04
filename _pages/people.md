@@ -7,10 +7,4 @@ In this space, you can find a list of some of the top cryptography researchers i
 
 Let's meet some of the leading minds in the field of cryptography in India:
 
-###### Academia
-
-- [TBA]({{ site.baseurl }}{% link _resources/people/people-academia.md %})
-
-###### Industry
-
-- [TBA]({{ site.baseurl }}{% link _resources/people/people-industry.md %})
+(This page is under construction!)
