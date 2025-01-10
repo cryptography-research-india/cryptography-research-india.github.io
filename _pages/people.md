@@ -3,14 +3,19 @@ permalink: /people/
 title: "People"
 ---
 
-In this space, you can find a list of some of the leading minds in the field of cryptography in India. 
+In this space, you can find a list of some of the leading minds in the field of cryptography in India.
 
 (We are constantly updating this list, so please let us know if we have missed any notable cryptographers.)
 
+<div class="filter-container">
+  <label><input type="checkbox" id="academia-filter" checked> Academia</label>
+  <label><input type="checkbox" id="industry-filter" checked> Industry</label>
+</div>
+
 <div class="people-container">
     {% for people in site.data.names-people %}
-    {% assign person_id = names-people.name %}
-    <div id="{{ person_id }}" class="people {% for tag in names-people.tags %} {{tag}} {% endfor %}">
+    {% assign person_id = people.name %}
+    <div id="{{ person_id }}" class="people {% for tag in people.tags %} {{tag}} {% endfor %}">
       <div class="row">
           <div class="person_name">
               {{ people.name }}
@@ -35,17 +40,43 @@ In this space, you can find a list of some of the leading minds in the field of 
     {% endfor %}
 </div>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-$('.reveal_detail').click(function() {
-    var parentDiv = $(this).closest('.row');
-    var thisDetailDiv = parentDiv.find('#person_details');
-    if(thisDetailDiv.is(":visible"))
-        thisDetailDiv.hide();
-    else
-        thisDetailDiv.show();        
-  });
+    // Initially filter based on checked checkboxes
+    filterPeople();
+
+    // Handle change events for filter checkboxes
+    $('#academia-filter, #industry-filter').change(function() {
+        filterPeople();
+    });
+
+    // Function to filter people based on the selected tags
+    function filterPeople() {
+        var showAcademia = $('#academia-filter').prop('checked');
+        var showIndustry = $('#industry-filter').prop('checked');
+        
+        $('.people').each(function() {
+            var hasAcademia = $(this).hasClass('ACADEMIA');
+            var hasIndustry = $(this).hasClass('INDUSTRY');
+
+            // Show or hide based on the filter conditions
+            if ((showAcademia && hasAcademia) || (showIndustry && hasIndustry)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    }
+
+    // Handle the toggle of the details section
+    $('.reveal_detail').click(function() {
+        var parentDiv = $(this).closest('.row');
+        var thisDetailDiv = parentDiv.find('#person_details');
+        if(thisDetailDiv.is(":visible"))
+            thisDetailDiv.hide();
+        else
+            thisDetailDiv.show();        
+    });
 });
 </script>
