@@ -1,4 +1,6 @@
 main:
+  - title: "Home"
+    url: /home/
   - title: "Posts"
     url: /posts/
   - title: "People"

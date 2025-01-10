@@ -1,6 +1,6 @@
 ---
 title: "Meet the Cryptographers of India!"
-date: 2023-01-02T00:00:00-04:00
+date: 2025-01-02T00:00:00-04:00
 categories:
   - blog
 tags:
