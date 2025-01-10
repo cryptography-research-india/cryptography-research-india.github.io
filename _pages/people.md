@@ -3,9 +3,10 @@ permalink: /people/
 title: "People"
 ---
 
-In this space, you can find a list of some of the leading minds in the field of cryptography in India.
+In this section, you'll find a list of cryptographers from India.
 
-(We are constantly updating this list, so please let us know if we have missed any notable cryptographers.)
+We are continuously updating this list, so if you believe we've missed any notable cryptographers, please feel free to contribute. 
+You can either <a href="https://github.com/cryptography-research-india/cryptography-research-india.github.io/pulls" target=blank>submit a pull request</a> or email us at <a href="mailto:cryptography.research.india@gmail.com">cryptography.research.india@gmail.com</a>.
 
 <div class="filter-container">
   <div class="filter-group">

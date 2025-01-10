@@ -5,7 +5,7 @@
   webpage: https://ajithsuresh.github.io
   webpagelab: https://www.tii.ae/team/dr-ajith-suresh
   research: Secure Multiparty Computation, Privacy-preserving Machine Learning
-  tags: [INDUSTRY, WORKING_ABROAD, ALL]
+  tags: [INDUSTRY, WORKING_ABROAD]
   
 - name: Arpita Patra
   designation: Associate Professor
@@ -13,7 +13,7 @@
   webpage: https://www.csa.iisc.ac.in/~arpita/
   webpagelab: https://www.csa.iisc.ac.in/~cris/
   research: Secure Multiparty Computation
-  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
   
 - name: Ashish Choudhury
   designation: Associate Professor
@@ -21,7 +21,7 @@
   webpage: https://sites.google.com/view/ashish-choudhury
   webpagelab: https://www.iiitb.ac.in/faculty/ashish-choudhury
   research: Secure Multiparty Computation
-  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
   
 - name: Bhavana Kanukurthi
   designation: Associate Professor
@@ -29,7 +29,7 @@
   webpage: https://www.csa.iisc.ac.in/~bhavana/
   webpagelab: https://www.csa.iisc.ac.in/~crysp/
   research: Non-malleable Codes, Information Theory
-  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
   
 - name: Chaya Ganesh
   designation: Assistant Professor
@@ -37,7 +37,23 @@
   webpage: https://www.csa.iisc.ac.in/~chaya/
   webpagelab: https://www.csa.iisc.ac.in/~chaya/
   research: Cryptography, Zero-knowledge Proofs
-  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  
+- name: Debdeep Mukhopadhyay
+  designation: Institute Chair Professor
+  affiliation: Indian Institute of Technology Kharagpur
+  webpage: https://sites.google.com/view/debdeepmukhopadhyay/home
+  webpagelab: http://cse.iitkgp.ac.in/resgrp/seal/
+  research: Cryptography, Hardware Security
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  
+- name: Divya Ravi
+  designation: Assistant Professor
+  affiliation: University of Amsterdam, Netherlands
+  webpage: https://sites.google.com/site/divyaraviiisc/
+  webpagelab: https://ivi.fnwi.uva.nl/tcs/
+  research: Secure Multi-party Computation, Distributed Computing
+  tags: [ACADEMIA, WORKING_ABROAD]
   
 - name: Manoj M. Prabhakaran
   designation: Professor
@@ -45,14 +61,76 @@
   webpage: https://www.cse.iitb.ac.in/~mp/
   webpagelab: https://trustlab.iitb.ac.in
   research: Theoretical and Applied Cryptography
-  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  
+- name: Nishat Koti
+  designation: Cryptography Researcher
+  affiliation: Aztec Labs, UK
+  webpage: https://sites.google.com/view/nishatskoti
+  webpagelab: https://www.aztec-labs.com/team
+  research: Secure Multi-party Computation, Privacy-preserving Machine Learning
+  tags: [INDUSTRY, WORKING_ABROAD]
+
+- name: Nitin Singh
+  designation: Researcher
+  affiliation: IBM Research India
+  webpage: https://www.linkedin.com/in/nitin-singh-36b92796
+  research: Applied Cryptography, Blockchain
+  tags: [INDUSTRY, WORKING_IN_INDIA]
+  
+- name: Pankaj Dayama
+  designation: Senior Technical Staff Member
+  affiliation: IBM Research India
+  webpage: https://research.ibm.com/people/pankaj-dayama
+  research: Applied Cryptography, Blockchain
+  tags: [INDUSTRY, WORKING_IN_INDIA]
+  
+- name: Pradeep Mishra
+  designation: Senior FHE Researcher
+  affiliation: Technology Innovation Institute (TII), UAE
+  webpage: https://www.linkedin.com/in/dr-pradeep-mishra-635019157/
+  webpagelab: https://www.tii.ae/team/dr-pradeep-mishra
+  research: Homomorphic Encryption
+  tags: [INDUSTRY, WORKING_ABROAD]
+  
+- name: Pratik Sarkar
+  designation: Research Scientist
+  affiliation: Supra Research
+  webpage: https://sites.google.com/view/pratiksarkar/welcome
+  webpagelab: https://supra.com
+  research: Secure Multi-party Computation, Zero-Knowledge Proofs, Blockchain
+  tags: [INDUSTRY, WORKING_IN_INDIA]
+  
+- name: Pratyay Mukherjee
+  designation: Senior Director of Research
+  affiliation: Supra Research
+  webpage: https://pratyay.net
+  webpagelab: https://supra.com
+  research: Cryptography in Payment and Blockchain
+  tags: [INDUSTRY, WORKING_IN_INDIA]
+  
+- name: Rahul Rachuri
+  designation: Staff Research Scientist
+  affiliation: Visa Research
+  webpage: https://rahulrachuri.github.io
+  webpagelab: https://usa.visa.com/about-visa/visa-research/people.html
+  research: Secure Multiparty Computation, Privacy-preserving Machine Learning
+  tags: [INDUSTRY, WORKING_ABROAD]
+
+- name: Shweta Agrawal
+  designation: Professor
+  affiliation: Indian Institute of Technology Madras (IITM)
+  webpage: https://www.cse.iitm.ac.in/~shwetaag/
+  webpagelab: https://cystar.iitm.ac.in
+  research: Theoretical Cryptography, Post-quantum cryptography
+  tags: [ACADEMIA, WORKING_IN_INDIA]
   
 - name: Sikhar Patranabis
   designation: Research Scientist
   affiliation: IBM Research India
   webpage: https://sites.google.com/site/sikharpatranabis/home
   research: Theoretical and Applied Cryptography
-  tags: [INDUSTRY, WORKING_IN_INDIA, ALL]
+  tags: [INDUSTRY, WORKING_IN_INDIA]
   
 - name: Sruthi Sekhar
   designation: Assistant Professor
@@ -60,4 +138,20 @@
   webpage: https://sruthisekar.wordpress.com
   webpagelab: https://trustlab.iitb.ac.in/
   research: Cryptography
-  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+
+- name: Suvradip Chakraborty
+  designation: Research Scientist
+  affiliation: Visa Research
+  webpage: https://sites.google.com/view/suvradip/
+  webpagelab: https://usa.visa.com/about-visa/visa-research/people.html
+  research: Public-Key Cryptography
+  tags: [INDUSTRY, WORKING_ABROAD]
+  
+- name: Yashvanth Kondi
+  designation: Principal Scientist
+  affiliation: Silence Laboratories
+  webpage: https://www.ykondi.net
+  webpagelab: https://www.silencelaboratories.com
+  research: Secure Multiparty Computation, Zero-knowledge proofs
+  tags: [INDUSTRY, WORKING_ABROAD]
