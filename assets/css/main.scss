@@ -48,3 +48,16 @@
 .reveal_detail {
     font-size: 14px;
 }
+
+.filter-container {
+  margin-bottom: 20px;
+}
+
+.filter-container label {
+  margin-right: 20px; /* Add space between the filters */
+  font-size: 16px; /* Optional: make the font size uniform */
+}
+
+.filter-container input[type="checkbox"] {
+  margin-right: 5px; /* Space between the checkbox and label text */
+}

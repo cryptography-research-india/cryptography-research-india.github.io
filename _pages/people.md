@@ -10,6 +10,8 @@ In this space, you can find a list of some of the leading minds in the field of 
 <div class="filter-container">
   <label><input type="checkbox" id="academia-filter" checked> Academia</label>
   <label><input type="checkbox" id="industry-filter" checked> Industry</label>
+  <label><input type="checkbox" id="working-abroad-filter" checked> Working Abroad</label>
+  <label><input type="checkbox" id="working-in-india-filter" checked> Working In India</label>
 </div>
 
 <div class="people-container">
@@ -43,25 +45,44 @@ In this space, you can find a list of some of the leading minds in the field of 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+    // Shuffle the people list on page load
+    shufflePeople();
+    
     // Initially filter based on checked checkboxes
     filterPeople();
 
     // Handle change events for filter checkboxes
-    $('#academia-filter, #industry-filter').change(function() {
+    $('#academia-filter, #industry-filter, #working-abroad-filter, #working-in-india-filter').change(function() {
         filterPeople();
     });
+
+    // Function to shuffle the people list
+    function shufflePeople() {
+        var container = $('.people-container');
+        var peopleItems = container.children('.people').get();
+        // Randomize the order of the people elements
+        peopleItems.sort(function() { return 0.5 - Math.random(); });
+        // Append the shuffled items back to the container
+        $.each(peopleItems, function(index, item) {
+            container.append(item);
+        });
+    }
 
     // Function to filter people based on the selected tags
     function filterPeople() {
         var showAcademia = $('#academia-filter').prop('checked');
         var showIndustry = $('#industry-filter').prop('checked');
+        var showWorkingAbroad = $('#working-abroad-filter').prop('checked');
+        var showWorkingInIndia = $('#working-in-india-filter').prop('checked');
         
         $('.people').each(function() {
             var hasAcademia = $(this).hasClass('ACADEMIA');
             var hasIndustry = $(this).hasClass('INDUSTRY');
+            var hasWorkingAbroad = $(this).hasClass('WORKING_ABROAD');
+            var hasWorkingInIndia = $(this).hasClass('WORKING_IN_INDIA');
 
             // Show or hide based on the filter conditions
-            if ((showAcademia && hasAcademia) || (showIndustry && hasIndustry)) {
+            if ((showAcademia && hasAcademia) || (showIndustry && hasIndustry) || (showWorkingAbroad && hasWorkingAbroad) || (showWorkingInIndia && hasWorkingInIndia)) {
                 $(this).show();
             } else {
                 $(this).hide();

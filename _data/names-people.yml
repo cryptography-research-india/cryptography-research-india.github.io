@@ -1,11 +1,19 @@
 ---
+- name: Ajith Suresh
+  designation: Senior MPC Researcher
+  affiliation: Technology Innovation Institute (TII), UAE
+  webpage: https://ajithsuresh.github.io
+  webpagelab: https://www.tii.ae/team/dr-ajith-suresh
+  research: Secure Multiparty Computation, Privacy-preserving Machine Learning
+  tags: [INDUSTRY, WORKING_ABROAD, ALL]
+  
 - name: Arpita Patra
   designation: Associate Professor
   affiliation: Indian Institute of Science Bangalore (IISc)
   webpage: https://www.csa.iisc.ac.in/~arpita/
   webpagelab: https://www.csa.iisc.ac.in/~cris/
   research: Secure Multiparty Computation
-  tags: [ACADEMIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
   
 - name: Ashish Choudhury
   designation: Associate Professor
@@ -13,7 +21,7 @@
   webpage: https://sites.google.com/view/ashish-choudhury
   webpagelab: https://www.iiitb.ac.in/faculty/ashish-choudhury
   research: Secure Multiparty Computation
-  tags: [ACADEMIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
   
 - name: Bhavana Kanukurthi
   designation: Associate Professor
@@ -21,7 +29,7 @@
   webpage: https://www.csa.iisc.ac.in/~bhavana/
   webpagelab: https://www.csa.iisc.ac.in/~crysp/
   research: Non-malleable Codes, Information Theory
-  tags: [ACADEMIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
   
 - name: Chaya Ganesh
   designation: Assistant Professor
@@ -29,7 +37,7 @@
   webpage: https://www.csa.iisc.ac.in/~chaya/
   webpagelab: https://www.csa.iisc.ac.in/~chaya/
   research: Cryptography, Zero-knowledge Proofs
-  tags: [ACADEMIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
   
 - name: Manoj M. Prabhakaran
   designation: Professor
@@ -37,11 +45,19 @@
   webpage: https://www.cse.iitb.ac.in/~mp/
   webpagelab: https://trustlab.iitb.ac.in
   research: Theoretical and Applied Cryptography
-  tags: [ACADEMIA, ALL]
+  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
   
 - name: Sikhar Patranabis
   designation: Research Scientist
   affiliation: IBM Research India
   webpage: https://sites.google.com/site/sikharpatranabis/home
   research: Theoretical and Applied Cryptography
-  tags: [INDUSTRY, ALL]
+  tags: [INDUSTRY, WORKING_IN_INDIA, ALL]
+  
+- name: Sruthi Sekhar
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Bombay (IITB)
+  webpage: https://sruthisekar.wordpress.com
+  webpagelab: https://trustlab.iitb.ac.in/
+  research: Cryptography
+  tags: [ACADEMIA, WORKING_IN_INDIA, ALL]
