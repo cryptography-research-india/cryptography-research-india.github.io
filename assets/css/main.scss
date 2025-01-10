@@ -1,10 +1,7 @@
----
----
-
 @import "{{ site.theme }}";
 .author__avatar img {
-    padding: 0px !important;
-    border: 0px !important;
+    padding: 0 !important;
+    border: 0 !important;
     max-width: 280px !important;
 }
 
@@ -53,9 +50,20 @@
   margin-bottom: 20px;
 }
 
+.filter-group {
+  display: inline-block;
+  margin-right: 30px; /* Space between filter groups */
+}
+
+.filter-group strong {
+  display: block;  /* Make sure the "Affiliation" and "Location" labels are on their own line */
+  margin-bottom: 10px;
+}
+
 .filter-container label {
-  margin-right: 20px; /* Add space between the filters */
-  font-size: 16px; /* Optional: make the font size uniform */
+  display: inline-block; /* Display labels in a row */
+  margin-right: 20px; /* Space between the checkboxes */
+  font-size: 16px;
 }
 
 .filter-container input[type="checkbox"] {
