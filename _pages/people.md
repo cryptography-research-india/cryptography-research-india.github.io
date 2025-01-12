@@ -53,10 +53,10 @@ You can either <a href="https://github.com/cryptography-research-india/cryptogra
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
+$(document).ready(function() {
     // Shuffle the people list on page load
     shufflePeople();
-    
+
     // Initially filter based on checked checkboxes
     filterPeople();
 
@@ -105,19 +105,20 @@ $(document).ready(function(){
         });
     }
 
-    // Handle the toggle of the details section when clicking on the person's name
+    // Handle the toggle of the details section and the icon change when clicking on the person's name
     $('.person_name').click(function() {
         var personDetails = $(this).next('.person_details');
-        personDetails.slideToggle(); // Smooth toggle
-    });
+        var revealIcon = $(this).find('.reveal_detail i');
 
+        // Smooth toggle of details
+        personDetails.slideToggle();
 
-    // Handle the toggle of the details section when clicking on the reveal button
-    $('.reveal_detail').click(function(e) {
-        e.stopPropagation(); // Prevent triggering the name click event
-        var parentDiv = $(this).closest('.row');
-        var thisDetailDiv = parentDiv.next('.person_details');
-        thisDetailDiv.slideToggle(); // Smooth toggle
+        // Toggle the icon
+        if (revealIcon.hasClass('fa-angle-double-down')) {
+            revealIcon.removeClass('fa-angle-double-down').addClass('fa-angle-double-up');
+        } else {
+            revealIcon.removeClass('fa-angle-double-up').addClass('fa-angle-double-down');
+        }
     });
 });
 </script>
