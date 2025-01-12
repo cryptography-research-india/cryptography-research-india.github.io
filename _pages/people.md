@@ -67,13 +67,13 @@ $(document).ready(function(){
 
     // Function to shuffle the people list
     function shufflePeople() {
-        var container = $('.people-container');
-        var peopleItems = container.children('.people').get();
+        var grid = $('.people-grid');
+        var peopleItems = grid.children('.people').get();
         // Randomize the order of the people elements
         peopleItems.sort(function() { return 0.5 - Math.random(); });
-        // Append the shuffled items back to the container
+        // Append the shuffled items back to the grid
         $.each(peopleItems, function(index, item) {
-            container.append(item);
+            grid.append(item);
         });
     }
 
@@ -107,11 +107,10 @@ $(document).ready(function(){
 
     // Handle the toggle of the details section when clicking on the person's name
     $('.person_name').click(function() {
-        var personId = $(this).data('person-id'); // Get the person's ID
-        var personDetails = $('#person_details_' + personId); // Find the corresponding details section
-        // Toggle visibility
-        personDetails.toggle();        
+        var personDetails = $(this).next('.person_details');
+        personDetails.slideToggle(); // Smooth toggle
     });
+
 
     // Handle the toggle of the details section when clicking on the reveal button
     $('.reveal_detail').click(function() {
