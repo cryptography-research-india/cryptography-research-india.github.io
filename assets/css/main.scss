@@ -16,25 +16,30 @@
 .person_name {
     font-size: 18px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .person_designation {
     font-size: 14px;
     font-style: italic;
+    margin-bottom: 5px;
 }
 
 .person_affiliation {
     font-size: 16px;
     font-weight: 500;
+    margin-bottom: 5px;
 }
 
 .person_webpage {
     font-size: 14px;
     text-decoration-line: none;
+    margin-top: 5px;
 }
 
 .person_research {
     font-size: 15px;
+    margin-bottom: 5px;
 }
 
 .person_areas {
@@ -47,28 +52,84 @@
 
 .reveal_detail {
     font-size: 14px;
+    cursor: pointer;
+    color: #007BFF;
+    margin-top: 10px;
 }
 
+/* Grid-based two-column layout */
+.people-container {
+    padding: 20px;
+}
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px; /* Space between grid items */
+}
+
+.people {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.people:hover {
+    transform: translateY(-10px);
+}
+
+.person_name {
+    color: #333;
+}
+
+.person_designation {
+    color: #555;
+}
+
+.person_affiliation {
+    color: #777;
+}
+
+.person_research {
+    color: #444;
+}
+
+/* Hover effect on the details toggle */
+.reveal_detail:hover {
+    color: #0056b3;
+}
+
+/* Make sure filter controls are laid out nicely */
 .filter-container {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .filter-group {
-  display: inline-block;
-  margin-right: 30px; /* Space between filter groups */
+    display: inline-block;
+    margin-right: 30px;
 }
 
 .filter-group strong {
-  display: block;  /* Make sure the "Affiliation" and "Location" labels are on their own line */
-  margin-bottom: 10px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .filter-container label {
-  display: inline-block; /* Display labels in a row */
-  margin-right: 20px; /* Space between the checkboxes */
-  font-size: 16px;
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 16px;
 }
 
 .filter-container input[type="checkbox"] {
-  margin-right: 5px; /* Space between the checkbox and label text */
+    margin-right: 5px;
 }
+
+/* Styling for the filter checkboxes */
+.filter-container input[type="checkbox"]:checked + label {
+    font-weight: bold;
+}
+
