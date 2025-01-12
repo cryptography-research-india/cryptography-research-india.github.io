@@ -113,11 +113,11 @@ $(document).ready(function(){
 
 
     // Handle the toggle of the details section when clicking on the reveal button
-    $('.reveal_detail').click(function() {
+    $('.reveal_detail').click(function(e) {
+        e.stopPropagation(); // Prevent triggering the name click event
         var parentDiv = $(this).closest('.row');
-        var thisDetailDiv = parentDiv.find('.person_details');
-        // Toggle visibility
-        thisDetailDiv.toggle();
+        var thisDetailDiv = parentDiv.next('.person_details');
+        thisDetailDiv.slideToggle(); // Smooth toggle
     });
 });
 </script>
