@@ -27,11 +27,11 @@ You can either <a href="https://github.com/cryptography-research-india/cryptogra
         {% assign person_id = people.name %}
         <div id="{{ person_id }}" class="people {% for tag in people.tags %} {{tag}} {% endfor %}">
             <div class="row">
-                <div class="person_name">
+                <div class="person_name" data-person-id="{{ person_id }}">
                     {{ people.name }}
                     <span class="reveal_detail"><i class="fa fa-angle-double-down"></i></span>
                 </div>
-                <div id="person_details">
+                <div id="person_details_{{ person_id }}" class="person_details">
                     <div class="person_designation">{{ people.designation }}</div>
                     <div class="person_affiliation">{{ people.affiliation }}</div>
                     <div class="person_research">
@@ -50,7 +50,6 @@ You can either <a href="https://github.com/cryptography-research-india/cryptogra
         {% endfor %}
     </div>
 </div>
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
@@ -106,14 +105,20 @@ $(document).ready(function(){
         });
     }
 
-    // Handle the toggle of the details section
+    // Handle the toggle of the details section when clicking on the person's name
+    $('.person_name').click(function() {
+        var personId = $(this).data('person-id'); // Get the person's ID
+        var personDetails = $('#person_details_' + personId); // Find the corresponding details section
+        // Toggle visibility
+        personDetails.toggle();        
+    });
+
+    // Handle the toggle of the details section when clicking on the reveal button
     $('.reveal_detail').click(function() {
         var parentDiv = $(this).closest('.row');
-        var thisDetailDiv = parentDiv.find('#person_details');
-        if(thisDetailDiv.is(":visible"))
-            thisDetailDiv.hide();
-        else
-            thisDetailDiv.show();        
+        var thisDetailDiv = parentDiv.find('.person_details');
+        // Toggle visibility
+        thisDetailDiv.toggle();
     });
 });
 </script>
