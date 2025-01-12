@@ -47,6 +47,13 @@
   research: Cryptography, Hardware Security
   tags: [ACADEMIA, WORKING_IN_INDIA]
   
+- name: Divya Gupta
+  designation: Principal Researcher
+  affiliation: Micrososft Research India
+  webpage: https://www.microsoft.com/en-us/research/people/digup/
+  research: Applied Cryptography, Secure Multi-party Computation, Blockchain
+  tags: [INDUSTRY, WORKING_IN_INDIA]
+  
 - name: Divya Ravi
   designation: Assistant Professor
   affiliation: University of Amsterdam, Netherlands
@@ -62,6 +69,21 @@
   webpagelab: https://trustlab.iitb.ac.in
   research: Theoretical and Applied Cryptography
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  
+- name: Mridul Nandi
+  designation: Professor
+  affiliation: Indian Statistical Institute Kolkata
+  webpage: https://www.isical.ac.in/~mridul/
+  webpagelab: https://www.isical.ac.in/~asu/
+  research: Symmetric Cryptography
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  
+- name: Nishanth Chandran
+  designation: Principal Researcher
+  affiliation: Micrososft Research India
+  webpage: https://www.microsoft.com/en-us/research/people/nichandr/
+  research: Applied Cryptography, Confidential Computing, Secure Computation
+  tags: [INDUSTRY, WORKING_IN_INDIA]
   
 - name: Nishat Koti
   designation: Cryptography Researcher
@@ -116,6 +138,14 @@
   webpagelab: https://usa.visa.com/about-visa/visa-research/people.html
   research: Secure Multiparty Computation, Privacy-preserving Machine Learning
   tags: [INDUSTRY, WORKING_ABROAD]
+  
+- name: Sameer Wagh
+  designation: Senior Research Engineer
+  affiliation: OpenMined
+  webpage: https://snwagh.github.io/
+  webpagelab: https://openmined.org/
+  research: Secure Multiparty Computation, Homomorphic Encryption, Federated Learning
+  tags: [INDUSTRY, WORKING_ABROAD]
 
 - name: Shweta Agrawal
   designation: Professor
@@ -131,6 +161,14 @@
   webpage: https://sites.google.com/site/sikharpatranabis/home
   research: Theoretical and Applied Cryptography
   tags: [INDUSTRY, WORKING_IN_INDIA]
+  
+- name: Somitra Sanadhya
+  designation: Professor
+  affiliation: Indian Institute of Technology Jodhpur
+  webpage: https://sites.google.com/view/somitra/
+  webpagelab: https://sites.google.com/view/somitra/
+  research: Cryptology and Security, Blockchain
+  tags: [ACADEMIA, WORKING_IN_INDIA]
   
 - name: Sruthi Sekhar
   designation: Assistant Professor
