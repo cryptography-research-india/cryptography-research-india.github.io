@@ -165,9 +165,13 @@
     // Fisher-Yates shuffle
     for (var i = cards.length - 1; i > 0; i--) {
       var j = Math.floor(Math.random() * (i + 1));
-      featuredGrid.appendChild(cards[j]);
       var tmp = cards[i]; cards[i] = cards[j]; cards[j] = tmp;
     }
+    // Re-append in shuffled order, show only first 6
+    cards.forEach(function (card, i) {
+      card.style.display = i < 6 ? '' : 'none';
+      featuredGrid.appendChild(card);
+    });
   }
 
   /* ============================================================
