@@ -1,0 +1,263 @@
+name: Process Submissions
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  # ── Add Researcher ──────────────────────────────────────────────────────────
+  add-researcher:
+    if: contains(github.event.issue.labels.*.name, 'add-researcher')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse issue and create researcher PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body  = issue.body || '';
+
+            // Parse GitHub issue form fields
+            function field(label) {
+              const re = new RegExp(`### ${label}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const m  = body.match(re);
+              return m ? m[1].trim() : '';
+            }
+
+            const name        = field('Full Name');
+            const designation = field('Designation');
+            const affiliation = field('Affiliation');
+            const rawAreas    = field('Research Areas');
+            const webpage     = field('Personal Webpage URL');
+            const lab         = field('Lab / Group URL \\(optional\\)');
+            const sector      = field('Sector');
+            const location    = field('Currently based in');
+
+            if (!name || !designation || !affiliation) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issue.number,
+                body: '❌ Could not parse required fields. Please ensure Name, Designation, and Affiliation are filled in.',
+              });
+              return;
+            }
+
+            // Build tags
+            const tags = [];
+            if (sector === 'Academia')  tags.push('ACADEMIA');
+            if (sector === 'Industry')  tags.push('INDUSTRY');
+            if (location === 'India')   tags.push('WORKING_IN_INDIA');
+            if (location === 'Abroad')  tags.push('WORKING_ABROAD');
+
+            const researchAreas = rawAreas.split('\n')
+              .map(l => l.replace(/^[-*]\s*/, '').trim())
+              .filter(Boolean);
+
+            // Build YAML entry
+            let yaml = `- name: ${name}\n  designation: ${designation}\n  affiliation: ${affiliation}\n`;
+            if (webpage && webpage !== '_No response_') yaml += `  webpage: ${webpage}\n`;
+            if (lab && lab !== '_No response_')         yaml += `  lab: ${lab}\n`;
+            if (researchAreas.length) {
+              yaml += `  research_areas:\n`;
+              researchAreas.forEach(a => { yaml += `    - ${a}\n`; });
+            }
+            yaml += `  tags: [${tags.join(', ')}]\n`;
+
+            // Read existing file and append
+            const { data: fileData } = await github.rest.repos.getContent({
+              ...context.repo,
+              path: '_data/names-people.yml',
+              ref: 'master',
+            });
+            const existing = Buffer.from(fileData.content, 'base64').toString('utf8');
+            const newContent = existing.trimEnd() + '\n\n' + yaml;
+
+            // Create branch and commit
+            const branch = `submission/researcher-${issue.number}`;
+            const { data: ref } = await github.rest.git.getRef({ ...context.repo, ref: 'heads/master' });
+            await github.rest.git.createRef({ ...context.repo, ref: `refs/heads/${branch}`, sha: ref.object.sha });
+            await github.rest.repos.createOrUpdateFileContents({
+              ...context.repo,
+              path: '_data/names-people.yml',
+              message: `Add researcher: ${name}`,
+              content: Buffer.from(newContent).toString('base64'),
+              sha: fileData.sha,
+              branch,
+            });
+
+            // Open PR
+            const pr = await github.rest.pulls.create({
+              ...context.repo,
+              title: `Add researcher: ${name}`,
+              body: `Submitted via [Issue #${issue.number}](${issue.html_url}) by @${issue.user.login}.\n\n**Entry preview:**\n\`\`\`yaml\n${yaml}\`\`\`\n\n### Checklist\n- [ ] Name and affiliation are correct\n- [ ] Research areas are accurate\n- [ ] Tags are appropriate`,
+              head: branch,
+              base: 'master',
+            });
+
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: issue.number,
+              body: `✅ Thanks! A PR has been created for review: ${pr.data.html_url}\n\nA maintainer will review and merge it shortly.`,
+            });
+
+  # ── Add Position ───────────────────────────────────────────────────────────
+  add-position:
+    if: contains(github.event.issue.labels.*.name, 'add-position')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse issue and create position PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body  = issue.body || '';
+
+            function field(label) {
+              const re = new RegExp(`### ${label}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const m  = body.match(re);
+              return m ? m[1].trim() : '';
+            }
+
+            const title       = field('Position Title');
+            const org         = field('Organization / Institution');
+            const type        = field('Position Type');
+            const location    = field('Location');
+            const deadline    = field('Application Deadline');
+            const link        = field('Application / Details URL');
+            const description = field('Brief Description');
+            const contact     = field('Contact Email \\(optional\\)');
+
+            if (!title || !org || !link) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issue.number,
+                body: '❌ Could not parse required fields. Please ensure Title, Organization, and URL are filled in.',
+              });
+              return;
+            }
+
+            const date = new Date().toISOString().split('T')[0];
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            const filename = `_positions/${date}-${slug}.md`;
+
+            const content = `---\ntitle: "${title}"\norganization: "${org}"\ntype: "${type}"\nlocation: "${location}"\ndeadline: "${deadline}"\nlink: "${link}"\n${contact && contact !== '_No response_' ? `contact: "${contact}"\n` : ''}date: ${date}\n---\n\n${description}\n`;
+
+            // Create branch and commit
+            const branch = `submission/position-${issue.number}`;
+            const { data: ref } = await github.rest.git.getRef({ ...context.repo, ref: 'heads/master' });
+            await github.rest.git.createRef({ ...context.repo, ref: `refs/heads/${branch}`, sha: ref.object.sha });
+
+            // Create _positions dir with the new file
+            await github.rest.repos.createOrUpdateFileContents({
+              ...context.repo,
+              path: filename,
+              message: `Add position: ${title}`,
+              content: Buffer.from(content).toString('base64'),
+              branch,
+            });
+
+            const pr = await github.rest.pulls.create({
+              ...context.repo,
+              title: `Add position: ${title} at ${org}`,
+              body: `Submitted via [Issue #${issue.number}](${issue.html_url}) by @${issue.user.login}.\n\n**Deadline:** ${deadline}\n**Link:** ${link}\n\n### Checklist\n- [ ] Title and org are correct\n- [ ] Deadline is accurate\n- [ ] Link is working`,
+              head: branch,
+              base: 'master',
+            });
+
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: issue.number,
+              body: `✅ Position submitted! PR for review: ${pr.data.html_url}`,
+            });
+
+  # ── Submit Blog Post ────────────────────────────────────────────────────────
+  submit-blogpost:
+    if: contains(github.event.issue.labels.*.name, 'submit-blogpost')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse issue and create blog post PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body  = issue.body || '';
+
+            function field(label) {
+              const re = new RegExp(`### ${label}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const m  = body.match(re);
+              return m ? m[1].trim() : '';
+            }
+
+            const title    = field('Post Title');
+            const author   = field('Your Name');
+            const category = field('Category');
+            const rawTags  = field('Tags');
+            const excerpt  = field('Short Excerpt \\(1–2 sentences\\)');
+            const content  = field('Post Content \\(Markdown\\)');
+
+            if (!title || !author || !content) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issue.number,
+                body: '❌ Missing required fields. Please provide Title, Author, and Content.',
+              });
+              return;
+            }
+
+            const date = new Date().toISOString().split('T')[0];
+            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+            const filename = `_posts/${date}-${slug}.md`;
+
+            const tags = rawTags && rawTags !== '_No response_'
+              ? rawTags.split(',').map(t => t.trim()).filter(Boolean)
+              : [];
+
+            const frontmatter = [
+              '---',
+              `title: "${title}"`,
+              `author: "${author}"`,
+              `date: ${date}`,
+              `categories: ["${category}"]`,
+              tags.length ? `tags: [${tags.map(t => `"${t}"`).join(', ')}]` : '',
+              excerpt ? `excerpt: "${excerpt.replace(/"/g, '\\"')}"` : '',
+              '---',
+            ].filter(Boolean).join('\n');
+
+            const postContent = `${frontmatter}\n\n${content}\n`;
+
+            const branch = `submission/blogpost-${issue.number}`;
+            const { data: ref } = await github.rest.git.getRef({ ...context.repo, ref: 'heads/master' });
+            await github.rest.git.createRef({ ...context.repo, ref: `refs/heads/${branch}`, sha: ref.object.sha });
+
+            await github.rest.repos.createOrUpdateFileContents({
+              ...context.repo,
+              path: filename,
+              message: `Add post: ${title}`,
+              content: Buffer.from(postContent).toString('base64'),
+              branch,
+            });
+
+            const pr = await github.rest.pulls.create({
+              ...context.repo,
+              title: `Post: ${title}`,
+              body: `Submitted via [Issue #${issue.number}](${issue.html_url}) by @${issue.user.login}.\n\n**Author:** ${author}\n**Category:** ${category}\n\n### Checklist\n- [ ] Content is appropriate and well-formatted\n- [ ] Markdown renders correctly\n- [ ] Author name is correct`,
+              head: branch,
+              base: 'master',
+            });
+
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: issue.number,
+              body: `✅ Blog post submitted! PR for review: ${pr.data.html_url}\n\nA maintainer will review your post and merge it. Thank you for contributing to CRIYPT! 🔐`,
+            });

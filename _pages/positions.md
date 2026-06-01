@@ -9,6 +9,10 @@ permalink: /positions/
   <div class="container">
     <h1 class="page-hero-title">Open Positions</h1>
     <p class="page-hero-subtitle">Cryptography research positions in India and at Indian-origin institutions worldwide.</p>
+    <a href="https://github.com/cryptography-research-india/cryptography-research-india.github.io/issues/new?template=add-position.yml"
+       class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:1.25rem;">
+      📢 Post a Position
+    </a>
   </div>
 </div>
 

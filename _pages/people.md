@@ -9,6 +9,10 @@ permalink: /people/
   <div class="container">
     <h1 class="page-hero-title">Researchers</h1>
     <p class="page-hero-subtitle">India's cryptography community — spanning academia, industry, and across the globe.</p>
+    <a href="https://github.com/cryptography-research-india/cryptography-research-india.github.io/issues/new?template=add-researcher.yml"
+       class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:1.25rem;">
+      ➕ Add Yourself
+    </a>
   </div>
 </div>
 

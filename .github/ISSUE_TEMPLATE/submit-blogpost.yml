@@ -1,0 +1,62 @@
+name: Submit Blog Post
+description: Write a post for the CRIYPT community blog
+labels: ["submit-blogpost"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share knowledge, announce events, or write about your research. Your post will be reviewed and merged as a PR.
+
+  - type: input
+    id: title
+    attributes:
+      label: Post Title
+      placeholder: e.g. Introduction to Zero-Knowledge Proofs
+    validations:
+      required: true
+
+  - type: input
+    id: author
+    attributes:
+      label: Your Name
+      placeholder: e.g. Arpita Patra
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Research
+        - Tutorial
+        - Event Announcement
+        - Job / Opportunity
+        - Opinion
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma-separated
+      placeholder: MPC, zero-knowledge, tutorial
+
+  - type: textarea
+    id: excerpt
+    attributes:
+      label: Short Excerpt (1–2 sentences)
+      description: Shown on the posts listing page
+    validations:
+      required: true
+
+  - type: textarea
+    id: content
+    attributes:
+      label: Post Content (Markdown)
+      description: Full post content. Supports standard Markdown including headings, code blocks, links, and images.
+      render: markdown
+    validations:
+      required: true

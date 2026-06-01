@@ -1,0 +1,76 @@
+name: Add Researcher
+description: Add yourself or a colleague to the CRIYPT researchers directory
+labels: ["add-researcher"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing to CRIYPT! Fill in the details below and a PR will be created automatically for review.
+
+  - type: input
+    id: name
+    attributes:
+      label: Full Name
+      placeholder: e.g. Arpita Patra
+    validations:
+      required: true
+
+  - type: input
+    id: designation
+    attributes:
+      label: Designation
+      placeholder: e.g. Associate Professor
+    validations:
+      required: true
+
+  - type: input
+    id: affiliation
+    attributes:
+      label: Affiliation
+      placeholder: e.g. Indian Institute of Science, Bangalore
+    validations:
+      required: true
+
+  - type: textarea
+    id: research_areas
+    attributes:
+      label: Research Areas
+      description: One per line
+      placeholder: |
+        Secure Multi-Party Computation
+        Cryptographic Protocols
+        Applied Cryptography
+    validations:
+      required: true
+
+  - type: input
+    id: webpage
+    attributes:
+      label: Personal Webpage URL
+      placeholder: https://
+
+  - type: input
+    id: lab
+    attributes:
+      label: Lab / Group URL (optional)
+      placeholder: https://
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Sector
+      options:
+        - Academia
+        - Industry
+    validations:
+      required: true
+
+  - type: dropdown
+    id: location
+    attributes:
+      label: Currently based in
+      options:
+        - India
+        - Abroad
+    validations:
+      required: true

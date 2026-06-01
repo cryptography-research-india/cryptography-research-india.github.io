@@ -1771,3 +1771,41 @@ p { color: var(--text-muted); }
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* ── Comments Section ─────────────────────────────────────────────────────── */
+.comments-section {
+  padding: 3rem 0 4rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.comments-heading {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.comments-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--green);
+  border-radius: 2px;
+}
+
+.comments-setup-notice {
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.comments-setup-notice a { color: var(--green); }

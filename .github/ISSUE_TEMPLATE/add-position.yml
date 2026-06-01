@@ -1,0 +1,72 @@
+name: Post a Position
+description: Advertise an open cryptography research position
+labels: ["add-position"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Post an open position — PhD, postdoc, faculty, or industry role. A PR will be created for review.
+
+  - type: input
+    id: title
+    attributes:
+      label: Position Title
+      placeholder: e.g. PhD Position in Secure Multi-Party Computation
+    validations:
+      required: true
+
+  - type: input
+    id: organization
+    attributes:
+      label: Organization / Institution
+      placeholder: e.g. IIT Bombay
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Position Type
+      options:
+        - PhD
+        - Postdoc
+        - Faculty
+        - Research Scientist
+        - Internship
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Location
+      placeholder: e.g. Mumbai, India
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Application Deadline
+      placeholder: e.g. 2026-08-31
+
+  - type: input
+    id: link
+    attributes:
+      label: Application / Details URL
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Brief Description
+      description: 2–4 sentences about the position and requirements
+    validations:
+      required: true
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Email (optional)
+      placeholder: faculty@institution.ac.in
