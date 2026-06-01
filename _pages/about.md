@@ -4,13 +4,13 @@ title: About
 permalink: /about/
 ---
 
-Welcome to **Cryptography Researchers of India (CRI)** — a community-driven platform connecting cryptography researchers from academia and industry, both within India and around the world.
+Welcome to **Cryptography Researchers of India (CRIYPT)** — a community-driven platform connecting cryptography researchers from academia and industry, both within India and around the world.
 
 ## Our Mission
 
 Cryptography is a field that underpins modern security, privacy, and trust in digital systems. India has a vibrant and growing community of cryptographers working on some of the most challenging open problems in the field — from theoretical foundations to real-world deployments.
 
-CRI was founded to:
+CRIYPT was founded to:
 
 - **Connect** researchers across geography and institution
 - **Showcase** the breadth and depth of Indian cryptographic expertise
