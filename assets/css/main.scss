@@ -606,7 +606,7 @@ p { color: var(--text-muted); }
 }
 
 .section-alt {
-  background: linear-gradient(to bottom, transparent, rgba(15,23,42,0.4), transparent);
+  background: linear-gradient(to bottom, transparent, var(--surface-2), transparent);
 }
 
 .section-header {
