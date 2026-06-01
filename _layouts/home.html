@@ -84,8 +84,7 @@ layout: default
     </div>
 
     <div class="people-grid" id="featured-grid">
-      {% assign shuffled = site.data.names-people | sample: 6 %}
-      {% for person in shuffled %}
+      {% for person in site.data.names-people %}
         {% include person-card.html person=person %}
       {% endfor %}
     </div>
