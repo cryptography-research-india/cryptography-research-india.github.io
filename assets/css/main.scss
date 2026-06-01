@@ -41,6 +41,63 @@
   /* Transitions */
   --transition: 200ms cubic-bezier(0.4,0,0.2,1);
   --transition-slow: 400ms cubic-bezier(0.4,0,0.2,1);
+
+  /* Navbar glass (overridden per theme) */
+  --navbar-bg: rgba(3, 7, 18, 0.85);
+}
+
+/* ── Light theme ─────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg:           #f1f5f9;
+  --surface:      #ffffff;
+  --surface-2:    #e2e8f0;
+  --glass:        rgba(0,0,0,0.03);
+  --glass-strong: rgba(0,0,0,0.07);
+  --border:       rgba(0,0,0,0.09);
+  --border-hover: rgba(0,0,0,0.18);
+  --green:        #059669;
+  --green-dim:    rgba(5,150,105,0.12);
+  --purple:       #7c3aed;
+  --purple-dim:   rgba(124,58,237,0.12);
+  --cyan:         #0891b2;
+  --cyan-dim:     rgba(8,145,178,0.12);
+  --amber:        #d97706;
+  --amber-dim:    rgba(217,119,6,0.12);
+  --text:         #0f172a;
+  --text-muted:   #475569;
+  --text-dim:     #94a3b8;
+  --navbar-bg:    rgba(241,245,249,0.88);
+}
+
+/* ── Auto theme (follows OS preference) ─────────────────── */
+@media (prefers-color-scheme: light) {
+  [data-theme="auto"] {
+    --bg:           #f1f5f9;
+    --surface:      #ffffff;
+    --surface-2:    #e2e8f0;
+    --glass:        rgba(0,0,0,0.03);
+    --glass-strong: rgba(0,0,0,0.07);
+    --border:       rgba(0,0,0,0.09);
+    --border-hover: rgba(0,0,0,0.18);
+    --green:        #059669;
+    --green-dim:    rgba(5,150,105,0.12);
+    --purple:       #7c3aed;
+    --purple-dim:   rgba(124,58,237,0.12);
+    --cyan:         #0891b2;
+    --cyan-dim:     rgba(8,145,178,0.12);
+    --amber:        #d97706;
+    --amber-dim:    rgba(217,119,6,0.12);
+    --text:         #0f172a;
+    --text-muted:   #475569;
+    --text-dim:     #94a3b8;
+    --navbar-bg:    rgba(241,245,249,0.88);
+  }
+}
+
+/* Smooth colour transitions when switching theme */
+*, *::before, *::after {
+  transition: background-color 0.25s ease, color 0.25s ease,
+              border-color 0.25s ease !important;
 }
 
 /* ============================================================
@@ -282,7 +339,7 @@ p { color: var(--text-muted); }
 }
 
 .navbar {
-  background: rgba(3,7,18,0.8);
+  background: var(--navbar-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
@@ -549,7 +606,7 @@ p { color: var(--text-muted); }
 }
 
 .section-alt {
-  background: linear-gradient(to bottom, transparent, rgba(15,23,42,0.4), transparent);
+  background: linear-gradient(to bottom, transparent, var(--surface-2), transparent);
 }
 
 .section-header {
@@ -1809,3 +1866,40 @@ p { color: var(--text-muted); }
 }
 
 .comments-setup-notice a { color: var(--green); }
+
+/* ── Theme Toggle Button ─────────────────────────────────── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--glass-strong);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  font-size: 0.8rem;
+}
+
+.theme-btn.active {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.theme-btn:hover:not(.active) {
+  color: var(--text);
+}
