@@ -1,6 +1,7 @@
 ---
+layout: page
 title: "Posts by Category"
-layout: categories
 permalink: /categories/
-author_profile: true
 ---
+
+Browse posts by category on the [Posts](/posts/) page.

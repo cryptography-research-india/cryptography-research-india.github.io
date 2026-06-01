@@ -1,0 +1,79 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy-preview:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Build Jekyll preview
+        run: |
+          bundle exec jekyll build \
+            --baseurl "/preview/pr-${{ github.event.pull_request.number }}" \
+            --destination _site_preview
+        env:
+          JEKYLL_ENV: production
+
+      - name: Deploy preview to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: _site_preview
+          target-folder: preview/pr-${{ github.event.pull_request.number }}
+          clean: true
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNum = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo  = context.repo.repo;
+            const url   = `https://${owner}.github.io/${repo}/preview/pr-${prNum}/`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner, repo, issue_number: prNum,
+            });
+            const existing = comments.find(
+              c => c.user.type === 'Bot' && c.body.includes('<!-- cri-preview -->')
+            );
+            const body = `<!-- cri-preview -->\n## 🔐 PR Preview\n\nPreview is ready at:\n\n**→ ${url}**\n\n*Updated from commit \`${{ github.sha }}\`*`;
+
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number: prNum, body });
+            }
+
+  cleanup-preview:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          fetch-depth: 0
+
+      - name: Remove preview folder
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          rm -rf preview/pr-${{ github.event.pull_request.number }}
+          git add -A
+          git diff --cached --quiet || git commit -m "Remove preview for PR #${{ github.event.pull_request.number }}"
+          git push

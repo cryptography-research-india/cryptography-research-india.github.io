@@ -1,6 +1,7 @@
 ---
+layout: page
 title: "Posts by Year"
-permalink: /posts/
-layout: posts
-author_profile: true
+permalink: /year-archive/
 ---
+
+Browse all posts on the [Posts](/posts/) page.

@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<div class="page-hero">
+  <div class="page-hero-overlay"></div>
+  <div class="container">
+    <h1 class="page-hero-title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+    <p class="page-hero-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<section class="page-content-section">
+  <div class="container">
+    <div class="page-content prose">
+      {{ content }}
+    </div>
+  </div>
+</section>

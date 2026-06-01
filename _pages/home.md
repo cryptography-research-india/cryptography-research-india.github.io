@@ -1,6 +1,6 @@
 ---
-permalink: /home/
-title: "Home"
+layout: home
+title: Home
+permalink: /home-page/
+sitemap: false
 ---
-
-Welcome to Cryptography Researchers of India!

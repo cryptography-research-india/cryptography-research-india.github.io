@@ -1,0 +1,38 @@
+<header class="site-header" id="site-header">
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="{{ '/' | relative_url }}" class="navbar-brand">
+        <img src="{{ '/assets/images/bio-photo-new-transparent.png' | relative_url }}"
+             alt="Cryptography Researchers of India"
+             class="brand-logo">
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li>
+          <a href="{{ '/' | relative_url }}" class="nav-link{% if page.url == '/' %} active{% endif %}">Home</a>
+        </li>
+        <li>
+          <a href="{{ '/people/' | relative_url }}" class="nav-link{% if page.url contains '/people' %} active{% endif %}">People</a>
+        </li>
+        <li>
+          <a href="{{ '/posts/' | relative_url }}" class="nav-link{% if page.url contains '/posts' or page.layout == 'post' %} active{% endif %}">Posts</a>
+        </li>
+        <li>
+          <a href="{{ '/resources/' | relative_url }}" class="nav-link{% if page.url contains '/resources' %} active{% endif %}">Resources</a>
+        </li>
+        <li>
+          <a href="{{ '/positions/' | relative_url }}" class="nav-link{% if page.url contains '/positions' %} active{% endif %}">Positions</a>
+        </li>
+        <li>
+          <a href="{{ '/about/' | relative_url }}" class="nav-link{% if page.url contains '/about' %} active{% endif %}">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

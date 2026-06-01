@@ -1,0 +1,54 @@
+{% assign person = include.person %}
+<article class="person-card glass"
+  data-tags="{{ person.tags | join: ' ' }}"
+  data-name="{{ person.name | downcase }}"
+  data-research="{{ person.research | downcase }}">
+  <div class="person-card-inner">
+    <div class="person-card-header">
+      <div class="person-avatar">
+        <span class="avatar-initials">{{ person.name | split: ' ' | map: 'first' | join: '' | slice: 0, 2 | upcase }}</span>
+      </div>
+      <div class="person-meta">
+        <h3 class="person-name">
+          <a href="{{ person.webpage }}" target="_blank" rel="noopener">{{ person.name }}</a>
+        </h3>
+        <p class="person-designation">{{ person.designation }}</p>
+        <p class="person-affiliation">{{ person.affiliation }}</p>
+      </div>
+    </div>
+
+    <div class="person-tags-row">
+      {% for tag in person.tags %}
+        {% if tag == 'ACADEMIA' %}
+          <span class="badge badge-purple">Academia</span>
+        {% elsif tag == 'INDUSTRY' %}
+          <span class="badge badge-amber">Industry</span>
+        {% elsif tag == 'WORKING_IN_INDIA' %}
+          <span class="badge badge-green">In India</span>
+        {% elsif tag == 'WORKING_ABROAD' %}
+          <span class="badge badge-cyan">Abroad</span>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="person-research">
+      {% assign areas = person.research | split: ', ' %}
+      {% for area in areas %}
+        <span class="tag tag-research">{{ area }}</span>
+      {% endfor %}
+    </div>
+
+    <div class="person-card-footer">
+      <a href="{{ person.webpage }}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Website
+      </a>
+      {% if person.webpagelab %}
+      <a href="{{ person.webpagelab }}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Lab
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</article>
