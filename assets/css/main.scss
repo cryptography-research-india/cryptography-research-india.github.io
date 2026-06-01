@@ -309,6 +309,18 @@ p { color: var(--text-muted); }
   justify-content: center;
 }
 
+.brand-logo {
+  height: 42px;
+  width: 42px;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform var(--transition);
+}
+
+.navbar-brand:hover .brand-logo {
+  transform: rotate(10deg) scale(1.05);
+}
+
 .brand-text {
   font-family: var(--font-heading);
   font-size: 1.2rem;
