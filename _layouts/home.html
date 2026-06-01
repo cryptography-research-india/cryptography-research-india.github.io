@@ -1,0 +1,149 @@
+---
+layout: default
+---
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span>Cryptography Research Community</span>
+    </div>
+    <h1 class="hero-title">
+      Cryptography<br>
+      <span class="hero-title-accent">Researchers</span><br>
+      of India
+    </h1>
+    <p class="hero-subtitle">
+      A hub connecting cryptographers — academic and industrial — building the cryptographic future of India and beyond.
+    </p>
+    <div class="hero-actions">
+      <a href="{{ '/people/' | relative_url }}" class="btn btn-primary">
+        Explore Researchers
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="{{ '/about/' | relative_url }}" class="btn btn-ghost">Learn More</a>
+    </div>
+    <div class="hero-cipher">
+      <span class="cipher-text">SHA-256 · AES · RSA · ZK · MPC · FHE · PQC</span>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<section class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      {% assign total = site.data.names-people | size %}
+      {% assign academia_count = 0 %}
+      {% assign industry_count = 0 %}
+      {% assign in_india_count = 0 %}
+      {% assign abroad_count = 0 %}
+      {% for person in site.data.names-people %}
+        {% if person.tags contains 'ACADEMIA' %}{% assign academia_count = academia_count | plus: 1 %}{% endif %}
+        {% if person.tags contains 'INDUSTRY' %}{% assign industry_count = industry_count | plus: 1 %}{% endif %}
+        {% if person.tags contains 'WORKING_IN_INDIA' %}{% assign in_india_count = in_india_count | plus: 1 %}{% endif %}
+        {% if person.tags contains 'WORKING_ABROAD' %}{% assign abroad_count = abroad_count | plus: 1 %}{% endif %}
+      {% endfor %}
+      <div class="stat-item">
+        <span class="stat-number" data-target="{{ total }}">{{ total }}</span>
+        <span class="stat-label">Researchers</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="{{ academia_count }}">{{ academia_count }}</span>
+        <span class="stat-label">Academia</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="{{ industry_count }}">{{ industry_count }}</span>
+        <span class="stat-label">Industry</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="{{ in_india_count }}">{{ in_india_count }}</span>
+        <span class="stat-label">Based in India</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number" data-target="{{ abroad_count }}">{{ abroad_count }}</span>
+        <span class="stat-label">Global</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Researchers -->
+<section class="section section-researchers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Community</div>
+      <h2 class="section-title">Featured Researchers</h2>
+      <p class="section-subtitle">A snapshot of India's cryptography talent — in academia and industry, at home and abroad.</p>
+    </div>
+
+    <div class="people-grid" id="featured-grid">
+      {% assign shuffled = site.data.names-people | sort: "name" %}
+      {% for person in shuffled limit:6 %}
+        {% include person-card.html person=person %}
+      {% endfor %}
+    </div>
+
+    <div class="section-cta">
+      <a href="{{ '/people/' | relative_url }}" class="btn btn-primary">
+        View All {{ total }} Researchers
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Posts -->
+{% if site.posts.size > 0 %}
+<section class="section section-posts section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Updates</div>
+      <h2 class="section-title">Latest Posts</h2>
+      <p class="section-subtitle">News, announcements, and insights from the CRI community.</p>
+    </div>
+
+    <div class="posts-grid">
+      {% for post in site.posts limit:3 %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+
+    {% if site.posts.size > 3 %}
+    <div class="section-cta">
+      <a href="{{ '/posts/' | relative_url }}" class="btn btn-ghost">All Posts</a>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<!-- About Teaser -->
+<section class="section section-about">
+  <div class="container">
+    <div class="about-teaser glass">
+      <div class="about-teaser-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect x="14" y="22" width="20" height="18" rx="3" fill="none" stroke="#00ff88" stroke-width="2"/>
+          <path d="M18 22V16a6 6 0 0 1 12 0v6" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="24" cy="31" r="2.5" fill="#00ff88"/>
+          <line x1="24" y1="33.5" x2="24" y2="37" stroke="#00ff88" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="about-teaser-content">
+        <h2>Our Mission</h2>
+        <p>CRI is a community-driven initiative to connect cryptography researchers across India — in academia, industry, and research labs — fostering collaboration and advancing the field together.</p>
+        <div class="about-teaser-actions">
+          <a href="{{ '/about/' | relative_url }}" class="btn btn-primary">About CRI</a>
+          <a href="{{ '/positions/' | relative_url }}" class="btn btn-ghost">Open Positions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

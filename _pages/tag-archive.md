@@ -1,6 +1,7 @@
 ---
+layout: page
 title: "Posts by Tag"
 permalink: /tags/
-layout: tags
-author_profile: true
 ---
+
+Browse all posts on the [Posts](/posts/) page.

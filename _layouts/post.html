@@ -1,0 +1,69 @@
+---
+layout: default
+---
+
+<article class="post-article">
+  <div class="post-hero">
+    <div class="post-hero-overlay"></div>
+    <div class="container post-hero-content">
+      <a href="{{ '/posts/' | relative_url }}" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to Posts
+      </a>
+      <div class="post-meta-row">
+        <time class="post-date-hero" datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%B %d, %Y" }}
+        </time>
+        {% if page.categories %}
+          {% for cat in page.categories limit:2 %}
+            <span class="tag tag-category">{{ cat }}</span>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <h1 class="post-title-hero">{{ page.title }}</h1>
+      {% if page.author %}
+      <div class="post-author-row">
+        <span class="post-author">By {{ page.author }}</span>
+      </div>
+      {% endif %}
+      {% if page.tags and page.tags.size > 0 %}
+      <div class="post-tags-hero">
+        {% for tag in page.tags %}
+          <span class="tag tag-sm">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="post-body-section">
+    <div class="container">
+      <div class="post-body-inner">
+        <div class="post-content prose">
+          {{ content }}
+        </div>
+
+        <div class="post-footer-nav">
+          {% if page.previous.url %}
+          <a href="{{ page.previous.url | relative_url }}" class="post-nav-link post-nav-prev">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            <div>
+              <span class="post-nav-label">Previous</span>
+              <span class="post-nav-title">{{ page.previous.title }}</span>
+            </div>
+          </a>
+          {% endif %}
+          {% if page.next.url %}
+          <a href="{{ page.next.url | relative_url }}" class="post-nav-link post-nav-next">
+            <div>
+              <span class="post-nav-label">Next</span>
+              <span class="post-nav-title">{{ page.next.title }}</span>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
