@@ -44,7 +44,13 @@ jobs:
             const prNum = context.payload.pull_request.number;
             const owner = context.repo.owner;
             const repo  = context.repo.repo;
-            const url   = `https://${owner}.github.io/${repo}/preview/pr-${prNum}/`;
+            // For user/org pages (repo = owner.github.io) the site lives at the root,
+            // not under a subdirectory — so don't include the repo name in the URL.
+            const isRootPages = repo === `${owner}.github.io`;
+            const base = isRootPages
+              ? `https://${owner}.github.io`
+              : `https://${owner}.github.io/${repo}`;
+            const url = `${base}/preview/pr-${prNum}/`;
 
             const { data: comments } = await github.rest.issues.listComments({
               owner, repo, issue_number: prNum,
