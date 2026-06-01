@@ -44,10 +44,9 @@ defaults:
     values:
       layout: page
 
-# Giscus comments (https://giscus.app)
-# Enable GitHub Discussions on this repo, then fill in the values below.
-# giscus:
-#   repo: cryptography-research-india/cryptography-research-india.github.io
-#   repo_id: YOUR_REPO_ID
-#   category: Blog Post Comments
-#   category_id: YOUR_CATEGORY_ID
+# Giscus comments
+giscus:
+  repo: cryptography-research-india/cryptography-research-india.github.io
+  repo_id: R_kgDOIDtnYg
+  category: Blog Post Comments
+  category_id: DIC_kwDOIDtnYs4C-SKN
