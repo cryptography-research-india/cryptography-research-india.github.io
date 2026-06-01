@@ -2,6 +2,31 @@
   'use strict';
 
   /* ============================================================
+     THEME SWITCHER
+     ============================================================ */
+  var THEME_KEY = 'criypt-theme';
+  var THEMES = ['dark', 'light', 'auto'];
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
+    document.querySelectorAll('[data-theme-btn]').forEach(function (btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
+    });
+  }
+
+  // Restore saved theme on load (before paint to avoid flash)
+  var saved = localStorage.getItem(THEME_KEY) || 'dark';
+  applyTheme(saved);
+
+  // Wire up toggle buttons
+  document.querySelectorAll('[data-theme-btn]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyTheme(btn.getAttribute('data-theme-btn'));
+    });
+  });
+
+  /* ============================================================
      MOBILE NAV TOGGLE
      ============================================================ */
   var toggle = document.getElementById('nav-toggle');

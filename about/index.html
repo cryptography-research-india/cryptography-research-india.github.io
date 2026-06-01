@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <!-- Prevent theme flash: apply saved theme before first paint -->
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('criypt-theme')||'dark')}catch(e){}</script>
+
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -62,6 +65,13 @@
           <a href="/about/" class="nav-link active">About</a>
         </li>
       </ul>
+
+      <!-- Theme toggle -->
+      <div class="theme-toggle" id="theme-toggle" aria-label="Switch theme">
+        <button class="theme-btn" data-theme-btn="dark"  title="Dark">🌙</button>
+        <button class="theme-btn" data-theme-btn="light" title="Light">☀️</button>
+        <button class="theme-btn" data-theme-btn="auto"  title="Auto (system)">💻</button>
+      </div>
     </div>
   </nav>
 </header>
