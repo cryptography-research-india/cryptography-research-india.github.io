@@ -16,9 +16,9 @@ import io
 import re
 import sys
 import httpx
-import yaml
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
+from ruamel.yaml import YAML as RuamelYAML
 
 try:
     from bs4 import BeautifulSoup
@@ -58,11 +58,33 @@ PROFILE_SELECTORS = [
     ".author-photo img", ".team-member img", ".person img",
     "img[class*='profile']", "img[class*='avatar']",
     "img[alt*='profile']", "img[alt*='photo']", "img[alt*='portrait']",
+    # ResearchGate-specific selectors
+    "img.nova-legacy-e-avatar__image",
+    ".research-interest-card--profile img",
+    "img[itemprop='image']",
 ]
+
+RESEARCHGATE_DOMAINS = {"www.researchgate.net", "researchgate.net"}
+
+
+def load_yaml(path):
+    ryaml = RuamelYAML()
+    ryaml.preserve_quotes = True
+    with open(path) as f:
+        return ryaml.load(f), ryaml
+
+
+def save_yaml(path, data, ryaml):
+    with open(path, 'w') as f:
+        ryaml.dump(data, f)
 
 
 def slugify(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+
+
+def _is_researchgate(url: str) -> bool:
+    return urlparse(url).netloc in RESEARCHGATE_DOMAINS
 
 
 def find_image_url(page_url: str, client: httpx.Client) -> str | None:
@@ -90,7 +112,13 @@ def find_image_url(page_url: str, client: httpx.Client) -> str | None:
     if tag and tag.get("content"):
         return urljoin(page_url, tag["content"])
 
-    # 3. Common selectors
+    # 3. ResearchGate: also try citation_author_institution meta (may include avatar)
+    if _is_researchgate(page_url):
+        tag = soup.find("meta", attrs={"name": "citation_author_institution"})
+        if tag and tag.get("content"):
+            print(f"    ResearchGate institution meta: {tag['content']}")
+
+    # 4. Common selectors (includes ResearchGate-specific ones)
     for sel in PROFILE_SELECTORS:
         img = soup.select_one(sel)
         if img and img.get("src"):
@@ -136,8 +164,7 @@ def download_and_save(img_url: str, dest: Path, client: httpx.Client) -> bool:
 def main() -> int:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    raw = DATA_FILE.read_text(encoding="utf-8")
-    people: list[dict] = yaml.safe_load(raw)
+    people, ryaml = load_yaml(DATA_FILE)
 
     changed = []
 
@@ -154,7 +181,7 @@ def main() -> int:
                 print(f"  SKIP  {name}  (no webpage)")
                 continue
 
-            print(f"  {name}  →  {webpage}")
+            print(f"  {name}  ->  {webpage}")
 
             img_url = find_image_url(webpage, client)
             if not img_url:
@@ -167,16 +194,12 @@ def main() -> int:
             if download_and_save(img_url, dest, client):
                 person["photo"] = f"{PHOTO_BASE}{slug}.jpg"
                 changed.append(name)
-                print(f"    ✅  saved → {dest}")
+                print(f"    saved -> {dest}")
             else:
-                print(f"    ❌  could not save image")
+                print(f"    could not save image")
 
     if changed:
-        DATA_FILE.write_text(
-            yaml.dump(people, default_flow_style=False, allow_unicode=True,
-                      sort_keys=False),
-            encoding="utf-8",
-        )
+        save_yaml(DATA_FILE, people, ryaml)
         print(f"\nUpdated {DATA_FILE} for: {', '.join(changed)}")
         return 0
     else:
