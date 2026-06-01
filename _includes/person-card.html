@@ -6,7 +6,11 @@
   <div class="person-card-inner">
     <div class="person-card-header">
       <div class="person-avatar">
-        <span class="avatar-initials">{{ person.name | split: ' ' | map: 'first' | join: '' | slice: 0, 2 | upcase }}</span>
+        {% if person.photo %}
+          <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" class="avatar-photo" loading="lazy">
+        {% else %}
+          <span class="avatar-initials">{{ person.name | split: ' ' | map: 'first' | join: '' | slice: 0, 2 | upcase }}</span>
+        {% endif %}
       </div>
       <div class="person-meta">
         <h3 class="person-name">

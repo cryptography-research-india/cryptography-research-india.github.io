@@ -702,6 +702,14 @@ p { color: var(--text-muted); }
   color: white;
 }
 
+.avatar-photo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+}
+
 .person-meta {
   flex: 1;
   min-width: 0;
