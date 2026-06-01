@@ -1490,6 +1490,18 @@ p { color: var(--text-muted); }
   text-decoration: none;
 }
 
+.footer-brand-logo {
+  height: 64px;
+  width: 64px;
+  object-fit: contain;
+  border-radius: 50%;
+  transition: transform var(--transition);
+}
+
+.footer-brand:hover .footer-brand-logo {
+  transform: rotate(10deg) scale(1.05);
+}
+
 .footer-tagline {
   font-size: 0.85rem;
   color: var(--text-dim);
