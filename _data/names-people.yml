@@ -1,4 +1,3 @@
----
 - name: Ajith Suresh
   designation: Senior MPC Researcher
   affiliation: Technology Innovation Institute (TII), UAE
@@ -6,7 +5,7 @@
   webpagelab: https://www.tii.ae/team/dr-ajith-suresh
   research: Secure Multiparty Computation, Privacy-preserving Machine Learning
   tags: [INDUSTRY, WORKING_ABROAD]
-  
+  photo: /assets/images/people/ajith-suresh.jpg
 - name: Arpita Patra
   designation: Associate Professor
   affiliation: Indian Institute of Science Bangalore (IISc)
@@ -14,7 +13,6 @@
   webpagelab: https://www.csa.iisc.ac.in/~cris/
   research: Secure Multiparty Computation
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  
 - name: Ashish Choudhury
   designation: Associate Professor
   affiliation: Indian Institute of Information Technology Bangalore (IIITB)
@@ -22,7 +20,7 @@
   webpagelab: https://www.iiitb.ac.in/faculty/ashish-choudhury
   research: Secure Multiparty Computation
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  
+  photo: /assets/images/people/ashish-choudhury.jpg
 - name: Bhavana Kanukurthi
   designation: Associate Professor
   affiliation: Indian Institute of Science Bangalore (IISc)
@@ -30,7 +28,6 @@
   webpagelab: https://www.csa.iisc.ac.in/~crysp/
   research: Non-malleable Codes, Information Theory
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  
 - name: Chaya Ganesh
   designation: Assistant Professor
   affiliation: Indian Institute of Science Bangalore (IISc)
@@ -38,7 +35,6 @@
   webpagelab: https://www.csa.iisc.ac.in/~chaya/
   research: Cryptography, Zero-knowledge Proofs
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  
 - name: Debdeep Mukhopadhyay
   designation: Institute Chair Professor
   affiliation: Indian Institute of Technology Kharagpur
@@ -46,14 +42,14 @@
   webpagelab: http://cse.iitkgp.ac.in/resgrp/seal/
   research: Cryptography, Hardware Security
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  
+  photo: /assets/images/people/debdeep-mukhopadhyay.jpg
 - name: Divya Gupta
   designation: Principal Researcher
   affiliation: Micrososft Research India
   webpage: https://www.microsoft.com/en-us/research/people/digup/
   research: Applied Cryptography, Secure Multi-party Computation, Blockchain
   tags: [INDUSTRY, WORKING_IN_INDIA]
-  
+  photo: /assets/images/people/divya-gupta.jpg
 - name: Divya Ravi
   designation: Assistant Professor
   affiliation: University of Amsterdam, Netherlands
@@ -61,7 +57,7 @@
   webpagelab: https://ivi.fnwi.uva.nl/tcs/
   research: Secure Multi-party Computation, Distributed Computing
   tags: [ACADEMIA, WORKING_ABROAD]
-  
+  photo: /assets/images/people/divya-ravi.jpg
 - name: Manoj M. Prabhakaran
   designation: Professor
   affiliation: Indian Institute of Technology Bombay (IITB)
@@ -69,7 +65,7 @@
   webpagelab: https://trustlab.iitb.ac.in
   research: Theoretical and Applied Cryptography
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  
+  photo: /assets/images/people/manoj-m-prabhakaran.jpg
 - name: Mridul Nandi
   designation: Professor
   affiliation: Indian Statistical Institute Kolkata
@@ -77,14 +73,13 @@
   webpagelab: https://www.isical.ac.in/~asu/
   research: Symmetric Cryptography
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  
 - name: Nishanth Chandran
   designation: Principal Researcher
   affiliation: Micrososft Research India
   webpage: https://www.microsoft.com/en-us/research/people/nichandr/
   research: Applied Cryptography, Confidential Computing, Secure Computation
   tags: [INDUSTRY, WORKING_IN_INDIA]
-  
+  photo: /assets/images/people/nishanth-chandran.jpg
 - name: Nishat Koti
   designation: Cryptography Researcher
   affiliation: Aztec Labs, UK
@@ -92,6 +87,7 @@
   webpagelab: https://www.aztec-labs.com/team
   research: Secure Multi-party Computation, Privacy-preserving Machine Learning
   tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/nishat-koti.jpg
 
 - name: Nitin Singh
   designation: Researcher
@@ -99,14 +95,13 @@
   webpage: https://www.linkedin.com/in/nitin-singh-36b92796
   research: Applied Cryptography, Blockchain
   tags: [INDUSTRY, WORKING_IN_INDIA]
-  
 - name: Pankaj Dayama
   designation: Senior Technical Staff Member
   affiliation: IBM Research India
   webpage: https://research.ibm.com/people/pankaj-dayama
   research: Applied Cryptography, Blockchain
   tags: [INDUSTRY, WORKING_IN_INDIA]
-  
+  photo: /assets/images/people/pankaj-dayama.jpg
 - name: Pradeep Mishra
   designation: Senior FHE Researcher
   affiliation: Technology Innovation Institute (TII), UAE
@@ -114,7 +109,6 @@
   webpagelab: https://www.tii.ae/team/dr-pradeep-mishra
   research: Homomorphic Encryption
   tags: [INDUSTRY, WORKING_ABROAD]
-  
 - name: Pratik Sarkar
   designation: Research Scientist
   affiliation: Supra Research
@@ -122,7 +116,7 @@
   webpagelab: https://supra.com
   research: Secure Multi-party Computation, Zero-Knowledge Proofs, Blockchain
   tags: [INDUSTRY, WORKING_IN_INDIA]
-  
+  photo: /assets/images/people/pratik-sarkar.jpg
 - name: Pratyay Mukherjee
   designation: Senior Director of Research
   affiliation: Supra Research
@@ -130,7 +124,6 @@
   webpagelab: https://supra.com
   research: Cryptography in Payment and Blockchain
   tags: [INDUSTRY, WORKING_IN_INDIA]
-  
 - name: Rahul Rachuri
   designation: Staff Research Scientist
   affiliation: Visa Research
@@ -138,13 +131,13 @@
   webpagelab: https://usa.visa.com/about-visa/visa-research/people.html
   research: Secure Multiparty Computation, Privacy-preserving Machine Learning
   tags: [INDUSTRY, WORKING_ABROAD]
-  
 - name: Sameer Wagh
   designation: Senior Research Engineer
   affiliation: OpenMined
   webpage: https://snwagh.github.io/
   webpagelab: https://openmined.org/
-  research: Secure Multiparty Computation, Homomorphic Encryption, Federated Learning
+  research: Secure Multiparty Computation, Homomorphic Encryption, Federated 
+    Learning
   tags: [INDUSTRY, WORKING_ABROAD]
 
 - name: Shweta Agrawal
@@ -154,14 +147,13 @@
   webpagelab: https://cystar.iitm.ac.in
   research: Theoretical Cryptography, Post-quantum cryptography
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  
 - name: Sikhar Patranabis
   designation: Research Scientist
   affiliation: IBM Research India
   webpage: https://sites.google.com/site/sikharpatranabis/home
   research: Theoretical and Applied Cryptography
   tags: [INDUSTRY, WORKING_IN_INDIA]
-  
+  photo: /assets/images/people/sikhar-patranabis.jpg
 - name: Somitra Sanadhya
   designation: Professor
   affiliation: Indian Institute of Technology Jodhpur
@@ -169,7 +161,6 @@
   webpagelab: https://sites.google.com/view/somitra/
   research: Cryptology and Security, Blockchain
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  
 - name: Sruthi Sekhar
   designation: Assistant Professor
   affiliation: Indian Institute of Technology Bombay (IITB)
@@ -177,6 +168,7 @@
   webpagelab: https://trustlab.iitb.ac.in/
   research: Cryptography
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/sruthi-sekhar.jpg
 
 - name: Suvradip Chakraborty
   designation: Research Scientist
@@ -185,7 +177,7 @@
   webpagelab: https://usa.visa.com/about-visa/visa-research/people.html
   research: Public-Key Cryptography
   tags: [INDUSTRY, WORKING_ABROAD]
-  
+  photo: /assets/images/people/suvradip-chakraborty.jpg
 - name: Yashvanth Kondi
   designation: Principal Scientist
   affiliation: Silence Laboratories
