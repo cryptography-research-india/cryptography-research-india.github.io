@@ -18,7 +18,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install httpx beautifulsoup4 pillow pyyaml ruamel.yaml
+        run: pip install httpx beautifulsoup4 pillow pyyaml ruamel.yaml opencv-python-headless numpy
 
       - name: Fetch photos
         id: fetch
