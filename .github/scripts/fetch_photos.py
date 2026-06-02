@@ -2,20 +2,28 @@
 """
 Fetch profile photos for CRIYPT researchers from their webpages.
 
-Strategy (in order of preference):
-  1. og:image meta tag
-  2. twitter:image meta tag
-  3. Common profile photo CSS selectors
-  4. First <img> near the person's name in the page
+Strategy:
+  1. Collect ALL candidate images from the page (og:image, twitter:image, selectors)
+  2. Score each candidate:
+       + face detected via OpenCV Haar cascade  (+30)
+       + URL/alt contains photo/portrait/profile (+10)
+       + square or portrait aspect ratio         (+5)
+       + reasonable size (100-500 px)            (+5)
+       - URL/alt contains logo/seal/banner/icon  (-20)
+       - very wide (banner)                      (-15)
+       - very small (icon < 80px)               (-10)
+  3. Pick the highest-scoring candidate above threshold
+  4. Resize to max 300×300 and save as JPEG
 
-Saves to:  assets/images/people/{slug}.jpg   (always JPEG, max 300x300)
-Updates:   _data/names-people.yml            (adds 'photo' field)
+Saves to:  assets/images/people/{slug}.jpg
+Updates:   _data/names-people.yml  (adds 'photo' field, preserves formatting)
 """
 
 import io
 import re
 import sys
 import httpx
+from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 from ruamel.yaml import YAML as RuamelYAML
@@ -32,11 +40,22 @@ try:
 except ImportError:
     HAS_PIL = False
 
-OUTPUT_DIR  = Path("assets/images/people")
-DATA_FILE   = Path("_data/names-people.yml")
-PHOTO_BASE  = "/assets/images/people/"
-MAX_PX      = 300   # resize to at most 300×300
-JPEG_Q      = 85
+try:
+    import cv2
+    import numpy as np
+    _cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+    _face_cascade = cv2.CascadeClassifier(_cascade_path)
+    HAS_CV2 = True
+except Exception:
+    HAS_CV2 = False
+
+OUTPUT_DIR = Path("assets/images/people")
+DATA_FILE  = Path("_data/names-people.yml")
+PHOTO_BASE = "/assets/images/people/"
+MAX_PX     = 300
+JPEG_Q     = 85
+MIN_SCORE  = 0          # minimum score to accept an image
+MAX_CANDIDATES = 12     # max images to evaluate per person
 
 HEADERS = {
     "User-Agent": (
@@ -48,52 +67,205 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.5",
 }
 
-# CSS selectors tried in order
+# Positive URL/alt keywords → likely a person photo
+_PHOTO_WORDS   = {"photo", "portrait", "headshot", "profile", "avatar", "pic", "face", "person"}
+# Negative URL/alt keywords → likely NOT a person photo
+_NONPHOTO_WORDS = {
+    "logo", "seal", "banner", "icon", "header", "footer", "background",
+    "campus", "building", "map", "flag", "coat", "emblem", "symbol",
+    "lab", "group", "team", "department", "school", "college",
+    "university", "institute", "centre", "center",
+}
+
+# CSS selectors to try — more specific first
 PROFILE_SELECTORS = [
+    # Direct profile/bio photo classes
     "img.profile-photo", "img.bio-photo", "img.profile-image",
     "img.profile-pic", "img.profile_photo", "img.faculty-photo",
-    "img.staff-photo", "img.researcher-photo", "img.avatar",
+    "img.staff-photo", "img.researcher-photo", "img.author-photo",
+    # Container + img
     ".profile-photo img", ".bio-photo img", ".profile img",
     ".faculty-photo img", ".staff-photo img", ".bio img",
-    ".author-photo img", ".team-member img", ".person img",
-    "img[class*='profile']", "img[class*='avatar']",
+    ".author-photo img", ".team-member img", ".person-photo img",
+    # Generic avatar
+    "img.avatar", "img[class*='avatar']", "img[class*='profile']",
+    # Alt text hints
     "img[alt*='profile']", "img[alt*='photo']", "img[alt*='portrait']",
-    # ResearchGate-specific selectors
+    # ResearchGate
     "img.nova-legacy-e-avatar__image",
-    ".research-interest-card--profile img",
     "img[itemprop='image']",
+    ".research-interest-card--profile img",
+    # ORCID, academia.edu
+    "img.profile-picture", "img#profile-picture",
+    # Institutional pages
+    "img.wp-post-image", ".entry-content img:first-of-type",
 ]
 
-RESEARCHGATE_DOMAINS = {"www.researchgate.net", "researchgate.net"}
 
+# ── YAML helpers ──────────────────────────────────────────────────────────────
 
 def load_yaml(path):
-    ryaml = RuamelYAML()
-    ryaml.preserve_quotes = True
+    ry = RuamelYAML()
+    ry.preserve_quotes = True
     with open(path) as f:
-        return ryaml.load(f), ryaml
+        return ry.load(f), ry
+
+def save_yaml(path, data, ry):
+    with open(path, "w") as f:
+        ry.dump(data, f)
 
 
-def save_yaml(path, data, ryaml):
-    with open(path, 'w') as f:
-        ryaml.dump(data, f)
-
+# ── Utilities ─────────────────────────────────────────────────────────────────
 
 def slugify(name: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
+def _keywords(text: str) -> set[str]:
+    return {w.lower() for w in re.split(r"[/_\-. ]", text) if w}
 
-def _is_researchgate(url: str) -> bool:
-    return urlparse(url).netloc in RESEARCHGATE_DOMAINS
+
+# ── Candidate collection ──────────────────────────────────────────────────────
+
+@dataclass
+class Candidate:
+    url: str
+    alt: str = ""
+    width: int = 0
+    height: int = 0
+    raw: bytes = field(default_factory=bytes, repr=False)
+    score: int = 0
 
 
-def find_image_url(page_url: str, client: httpx.Client) -> str | None:
-    """Return the best candidate profile image URL from *page_url*, or None."""
+def _collect_candidates(page_url: str, soup) -> list[Candidate]:
+    """Return all plausible image candidates from the page."""
+    seen: set[str] = set()
+    candidates: list[Candidate] = []
+
+    def _add(img_url: str, alt: str = ""):
+        abs_url = urljoin(page_url, img_url)
+        if abs_url in seen:
+            return
+        # Skip tiny icons / data URIs / SVGs
+        if img_url.startswith("data:") or img_url.endswith(".svg"):
+            return
+        seen.add(abs_url)
+        candidates.append(Candidate(url=abs_url, alt=alt or ""))
+
+    # og:image / twitter:image first
+    for meta_prop in (("property", "og:image"), ("name", "twitter:image"),
+                      ("property", "og:image:secure_url")):
+        tag = soup.find("meta", {meta_prop[0]: meta_prop[1]})
+        if tag and tag.get("content"):
+            _add(tag["content"])
+
+    # CSS selector matches
+    for sel in PROFILE_SELECTORS:
+        for img in soup.select(sel):
+            src = img.get("src") or img.get("data-src") or img.get("data-lazy-src")
+            if src:
+                _add(src, img.get("alt", ""))
+
+    return candidates[:MAX_CANDIDATES]
+
+
+# ── Scoring ───────────────────────────────────────────────────────────────────
+
+def _has_face(raw: bytes) -> bool:
+    if not HAS_CV2 or not raw:
+        return False
+    try:
+        arr = np.frombuffer(raw, np.uint8)
+        img = cv2.imdecode(arr, cv2.IMREAD_COLOR)
+        if img is None:
+            return False
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        faces = _face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=4, minSize=(30, 30))
+        return len(faces) > 0
+    except Exception:
+        return False
+
+
+def _score(c: Candidate) -> int:
+    score = 0
+    url_words = _keywords(urlparse(c.url).path)
+    alt_words  = _keywords(c.alt)
+    all_words  = url_words | alt_words
+
+    # Keyword signals
+    if all_words & _PHOTO_WORDS:
+        score += 10
+    if all_words & _NONPHOTO_WORDS:
+        score -= 20
+
+    # Dimension / aspect ratio signals
+    w, h = c.width, c.height
+    if w > 0 and h > 0:
+        ratio = w / h
+        if 0.65 <= ratio <= 1.55:   # square / portrait
+            score += 5
+        if ratio > 3.0:              # banner
+            score -= 15
+        if max(w, h) < 80:          # tiny icon
+            score -= 10
+        if 80 <= min(w, h) <= 600:  # reasonable profile size
+            score += 5
+
+    # Face detection (most reliable signal)
+    if _has_face(c.raw):
+        score += 30
+
+    return score
+
+
+# ── Download + resolve ────────────────────────────────────────────────────────
+
+def _download(url: str, client: httpx.Client) -> bytes | None:
+    try:
+        r = client.get(url, timeout=20, follow_redirects=True)
+        r.raise_for_status()
+        ct = r.headers.get("content-type", "")
+        if not ct.startswith("image/"):
+            return None
+        return r.content or None
+    except Exception:
+        return None
+
+
+def _image_size(raw: bytes) -> tuple[int, int]:
+    if not HAS_PIL or not raw:
+        return 0, 0
+    try:
+        img = Image.open(io.BytesIO(raw))
+        return img.size  # (width, height)
+    except Exception:
+        return 0, 0
+
+
+def _save(raw: bytes, dest: Path) -> bool:
+    if not raw:
+        return False
+    try:
+        if HAS_PIL:
+            img = Image.open(io.BytesIO(raw)).convert("RGB")
+            img.thumbnail((MAX_PX, MAX_PX), Image.LANCZOS)
+            img.save(dest, "JPEG", quality=JPEG_Q, optimize=True)
+        else:
+            dest.write_bytes(raw)
+        return True
+    except Exception as e:
+        print(f"    save error: {e}")
+        return False
+
+
+# ── Main fetch logic ──────────────────────────────────────────────────────────
+
+def best_photo(page_url: str, client: httpx.Client) -> bytes | None:
+    """Return raw bytes of the best profile photo found on *page_url*, or None."""
     try:
         r = client.get(page_url, timeout=20, follow_redirects=True)
         r.raise_for_status()
-    except Exception as exc:
-        print(f"    fetch failed: {exc}")
+    except Exception as e:
+        print(f"    page fetch failed: {e}")
         return None
 
     if not HAS_BS4:
@@ -101,110 +273,88 @@ def find_image_url(page_url: str, client: httpx.Client) -> str | None:
         return None
 
     soup = BeautifulSoup(r.text, "html.parser")
+    candidates = _collect_candidates(page_url, soup)
 
-    # 1. og:image
-    tag = soup.find("meta", property="og:image")
-    if tag and tag.get("content"):
-        return urljoin(page_url, tag["content"])
+    if not candidates:
+        print("    no candidate images found")
+        return None
 
-    # 2. twitter:image
-    tag = soup.find("meta", attrs={"name": "twitter:image"})
-    if tag and tag.get("content"):
-        return urljoin(page_url, tag["content"])
+    print(f"    evaluating {len(candidates)} candidate(s)...")
 
-    # 3. ResearchGate: also try citation_author_institution meta (may include avatar)
-    if _is_researchgate(page_url):
-        tag = soup.find("meta", attrs={"name": "citation_author_institution"})
-        if tag and tag.get("content"):
-            print(f"    ResearchGate institution meta: {tag['content']}")
+    scored: list[tuple[int, Candidate]] = []
+    for c in candidates:
+        raw = _download(c.url, client)
+        if not raw:
+            continue
+        c.raw = raw
+        c.width, c.height = _image_size(raw)
+        c.score = _score(c)
+        scored.append((c.score, c))
+        face_marker = "👤" if _has_face(raw) else "  "
+        print(f"    {face_marker} score={c.score:+3d}  {c.url[:80]}")
 
-    # 4. Common selectors (includes ResearchGate-specific ones)
-    for sel in PROFILE_SELECTORS:
-        img = soup.select_one(sel)
-        if img and img.get("src"):
-            return urljoin(page_url, img["src"])
+    if not scored:
+        print("    no downloadable images found")
+        return None
 
-    return None
+    scored.sort(key=lambda x: x[0], reverse=True)
+    best_score, best = scored[0]
+
+    if best_score < MIN_SCORE:
+        print(f"    best score {best_score} below threshold {MIN_SCORE} — skipping")
+        return None
+
+    print(f"    ✅ selected (score={best_score}): {best.url[:80]}")
+    return best.raw
 
 
-def download_and_save(img_url: str, dest: Path, client: httpx.Client) -> bool:
-    """Download *img_url*, resize, save as JPEG to *dest*. Returns True on success."""
-    try:
-        r = client.get(img_url, timeout=25, follow_redirects=True)
-        r.raise_for_status()
-    except Exception as exc:
-        print(f"    download failed: {exc}")
-        return False
-
-    ct = r.headers.get("content-type", "")
-    if not ct.startswith("image/"):
-        print(f"    not an image (content-type: {ct})")
-        return False
-
-    raw = r.content
-    if not raw:
-        print("    empty response")
-        return False
-
-    if HAS_PIL:
-        try:
-            img = Image.open(io.BytesIO(raw)).convert("RGB")
-            img.thumbnail((MAX_PX, MAX_PX), Image.LANCZOS)
-            img.save(dest, "JPEG", quality=JPEG_Q, optimize=True)
-            return True
-        except Exception as exc:
-            print(f"    PIL error: {exc}")
-            # fall through to raw save
-
-    # Raw save (no resize)
-    dest.write_bytes(raw)
-    return True
-
+# ── Entry point ───────────────────────────────────────────────────────────────
 
 def main() -> int:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     people, ryaml = load_yaml(DATA_FILE)
-
     changed = []
 
-    with httpx.Client(headers=HEADERS, timeout=20) as client:
+    cv2_status = "✓ face detection on" if HAS_CV2 else "✗ face detection off (install opencv-python-headless)"
+    print(f"OpenCV: {cv2_status}\n")
+
+    with httpx.Client(headers=HEADERS, timeout=25) as client:
         for person in people:
             name    = person.get("name", "").strip()
             webpage = (person.get("webpage") or "").strip()
 
             if person.get("photo"):
-                print(f"  SKIP  {name}  (photo already set)")
+                print(f"SKIP  {name}  (photo already set)")
                 continue
 
             if not webpage or webpage in ("_No response_", "null", ""):
-                print(f"  SKIP  {name}  (no webpage)")
+                print(f"SKIP  {name}  (no webpage)")
                 continue
 
-            print(f"  {name}  ->  {webpage}")
+            print(f"\n→ {name}")
+            print(f"  {webpage}")
 
-            img_url = find_image_url(webpage, client)
-            if not img_url:
-                print(f"    no image found")
+            raw = best_photo(webpage, client)
+            if not raw:
                 continue
 
             slug = slugify(name)
             dest = OUTPUT_DIR / f"{slug}.jpg"
 
-            if download_and_save(img_url, dest, client):
+            if _save(raw, dest):
                 person["photo"] = f"{PHOTO_BASE}{slug}.jpg"
                 changed.append(name)
-                print(f"    saved -> {dest}")
             else:
-                print(f"    could not save image")
+                print(f"    ❌ could not save image")
 
     if changed:
         save_yaml(DATA_FILE, people, ryaml)
-        print(f"\nUpdated {DATA_FILE} for: {', '.join(changed)}")
+        print(f"\nSaved photos for: {', '.join(changed)}")
         return 0
-    else:
-        print("\nNo photos fetched.")
-        return 1
+
+    print("\nNo photos saved.")
+    return 1
 
 
 if __name__ == "__main__":
