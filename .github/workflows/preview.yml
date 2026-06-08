@@ -13,9 +13,9 @@ jobs:
     if: github.event.action != 'closed'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1.230.0
         with:
           ruby-version: '3.2'
           bundler-cache: true
@@ -70,7 +70,7 @@ jobs:
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: gh-pages
           fetch-depth: 0
