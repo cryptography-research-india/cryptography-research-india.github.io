@@ -436,6 +436,30 @@ p {
   transform: rotate(10deg) scale(1.05);
 }
 
+.logo-light {
+  display: none;
+}
+
+.logo-dark {
+  display: inline-block;
+}
+
+[data-theme=light] .logo-light {
+  display: inline-block;
+}
+
+[data-theme=light] .logo-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme=auto] .logo-light {
+    display: inline-block;
+  }
+  [data-theme=auto] .logo-dark {
+    display: none;
+  }
+}
 .brand-text {
   font-family: var(--font-heading);
   font-size: 1.2rem;
