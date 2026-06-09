@@ -378,6 +378,21 @@ p { color: var(--text-muted); }
   transform: rotate(10deg) scale(1.05);
 }
 
+// Logo theme variants
+// Dark theme (default): show dark logo, hide light logo
+.logo-light { display: none; }
+.logo-dark  { display: inline-block; }
+
+// Light theme: swap to light logo
+[data-theme="light"] .logo-light { display: inline-block; }
+[data-theme="light"] .logo-dark  { display: none; }
+
+// Auto theme following system preference
+@media (prefers-color-scheme: light) {
+  [data-theme="auto"] .logo-light { display: inline-block; }
+  [data-theme="auto"] .logo-dark  { display: none; }
+}
+
 .brand-text {
   font-family: var(--font-heading);
   font-size: 1.2rem;
