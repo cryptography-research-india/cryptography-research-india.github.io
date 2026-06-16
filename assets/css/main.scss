@@ -1926,3 +1926,349 @@ p { color: var(--text-muted); }
 .theme-btn:hover:not(.active) {
   color: var(--text);
 }
+
+/* ============================================================
+   COLLABORATIONS PAGE
+   ============================================================ */
+
+// Hero variant with a purple/cyan gradient accent
+.collab-hero .page-hero-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(124,58,237,0.25) 0%,
+    rgba(6,182,212,0.15) 50%,
+    rgba(0,255,136,0.1) 100%
+  );
+}
+
+.collab-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--purple-dim);
+  border: 1px solid rgba(124,58,237,0.3);
+  color: #a78bfa;
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+.collab-hero-sub {
+  max-width: 640px;
+}
+
+.collab-hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+}
+
+// Welcome panel
+.collab-welcome {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2.25rem 2.5rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 3rem;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem;
+  }
+}
+
+.collab-welcome-icon {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius);
+  background: var(--purple-dim);
+  border: 1px solid rgba(124,58,237,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a78bfa;
+}
+
+.collab-welcome-body h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.collab-welcome-body p {
+  font-size: 0.975rem;
+  line-height: 1.7;
+  max-width: 680px;
+}
+
+.collab-welcome-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.collab-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.collab-stat-num {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--purple);
+  line-height: 1;
+}
+
+.collab-stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.collab-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+}
+
+// Cards grid
+.collab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.collab-card {
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color var(--transition), transform var(--transition);
+
+  &:hover {
+    border-color: rgba(124,58,237,0.4);
+    transform: translateY(-2px);
+  }
+}
+
+.collab-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.collab-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.collab-card-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.collab-card-affil {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.collab-card-date {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.collab-card-topic {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.collab-card-desc {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.collab-card-areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.collab-area-tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border-radius: 100px;
+  background: var(--purple-dim);
+  border: 1px solid rgba(124,58,237,0.2);
+  color: #a78bfa;
+}
+
+.collab-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.collab-seeking {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+
+  strong { color: var(--text); }
+  svg { flex-shrink: 0; color: var(--cyan); }
+}
+
+.collab-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+// Empty state
+.collab-empty {
+  border-radius: var(--radius-lg);
+  padding: 4rem 2rem;
+  text-align: center;
+  margin-bottom: 4rem;
+
+  h3 {
+    font-size: 1.2rem;
+    margin: 1rem 0 0.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+.collab-empty-icon {
+  display: flex;
+  justify-content: center;
+  color: var(--text-muted);
+}
+
+// How it works steps
+.collab-howto {
+  margin-bottom: 4rem;
+  padding: 3rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.collab-steps {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.collab-step {
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  @media (max-width: 768px) {
+    max-width: none;
+  }
+}
+
+.collab-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--purple);
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.25rem;
+}
+
+.collab-step-body h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.collab-step-body p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.collab-step-arrow {
+  color: var(--text-dim);
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// Prose section
+.collab-prose {
+  margin-top: 0;
+}
+
+[data-theme="light"] .collab-area-tag {
+  background: rgba(124,58,237,0.08);
+  border-color: rgba(124,58,237,0.2);
+  color: #6d28d9;
+}
+
+[data-theme="light"] .collab-welcome-icon {
+  background: rgba(124,58,237,0.08);
+  border-color: rgba(124,58,237,0.2);
+  color: #7c3aed;
+}
+
+[data-theme="light"] .collab-stat-num {
+  color: #7c3aed;
+}
+
+[data-theme="light"] .collab-hero-badge {
+  background: rgba(124,58,237,0.08);
+  border-color: rgba(124,58,237,0.25);
+  color: #7c3aed;
+}

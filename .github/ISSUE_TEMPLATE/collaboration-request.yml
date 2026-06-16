@@ -1,0 +1,93 @@
+name: Post a Collaboration Request
+description: Share what you're working on and invite the community to collaborate
+labels: ["collaboration-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share your research direction, what kind of collaborator you're looking for, and how people can reach you.
+        Your post will be reviewed and added to the [Collaborations page](https://cryptography-research-india.github.io/collaborations/).
+
+  - type: input
+    id: name
+    attributes:
+      label: Your Name
+      placeholder: e.g. Priya Sharma
+    validations:
+      required: true
+
+  - type: input
+    id: affiliation
+    attributes:
+      label: Affiliation
+      placeholder: e.g. IIT Madras / TII / Independent
+    validations:
+      required: true
+
+  - type: input
+    id: topic
+    attributes:
+      label: Collaboration Topic (short title)
+      placeholder: e.g. Threshold ECDSA with offline key generation
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: Research Areas
+      description: Select all that apply
+      options:
+        - label: Multi-Party Computation (MPC)
+        - label: Zero-Knowledge Proofs (ZKP)
+        - label: Fully Homomorphic Encryption (FHE)
+        - label: Public Key Cryptography
+        - label: Symmetric Cryptography
+        - label: Post-Quantum Cryptography (PQC)
+        - label: Privacy-Preserving ML (PPML)
+        - label: Blockchain / Distributed Ledger
+        - label: Hardware Security / TEEs
+        - label: Applied Cryptography
+        - label: Theoretical Cryptography
+        - label: Security Protocols
+
+  - type: dropdown
+    id: seeking
+    attributes:
+      label: What are you looking for?
+      options:
+        - Co-author(s)
+        - Implementation partner
+        - PhD student / intern
+        - Industry partner
+        - Reading group members
+        - Feedback / discussion
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe what you're working on, what collaboration you're seeking, and what an ideal collaborator looks like. Be as specific as you can — it helps the right people find you.
+      placeholder: |
+        I'm working on...
+        I'm looking for someone who...
+        The expected outcome is...
+    validations:
+      required: true
+
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Email
+      placeholder: you@institution.ac.in
+    validations:
+      required: true
+
+  - type: input
+    id: webpage
+    attributes:
+      label: Personal / Lab Webpage (optional)
+      placeholder: https://
