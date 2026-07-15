@@ -79,12 +79,16 @@
   var countDisplay = document.getElementById('people-count');
   var searchInput = document.getElementById('search-people');
 
-  if (filterBtns.length && personCards.length) {
-    var activeFilters = new Set();
+  function getInitials(name) {
+    return name.split(' ').map(function(w){ return w[0]; }).join('').slice(0,2).toUpperCase();
+  }
 
-    function getInitials(name) {
-      return name.split(' ').map(function(w){ return w[0]; }).join('').slice(0,2).toUpperCase();
-    }
+  if (filterBtns.length && personCards.length) {
+    var FILTER_GROUPS = [
+      ['ACADEMIA', 'INDUSTRY'],
+      ['WORKING_IN_INDIA', 'WORKING_ABROAD']
+    ];
+    var activeFilters = new Set();
 
     // Assign gradient colors to avatars based on index
     personCards.forEach(function (card, idx) {
@@ -111,14 +115,15 @@
         var name = card.dataset.name || '';
         var research = card.dataset.research || '';
 
-        // Filter check
+        // Filter check: OR within a group (e.g. Academia + Industry),
+        // AND across groups (e.g. Academia AND In India)
         var passesFilter = true;
-        if (activeFilters.size > 0) {
-          passesFilter = false;
-          activeFilters.forEach(function (f) {
-            if (tags.indexOf(f) !== -1) passesFilter = true;
-          });
-        }
+        FILTER_GROUPS.forEach(function (group) {
+          var groupFilters = group.filter(function (f) { return activeFilters.has(f); });
+          if (groupFilters.length === 0) return;
+          var matchesGroup = groupFilters.some(function (f) { return tags.indexOf(f) !== -1; });
+          if (!matchesGroup) passesFilter = false;
+        });
 
         // Search check
         var passesSearch = true;
@@ -179,6 +184,134 @@
 
     // Initial state
     updateCards();
+  }
+
+  /* ============================================================
+     RESEARCHER DETAIL MODAL
+     ============================================================ */
+  var modalOverlay = document.getElementById('person-modal-overlay');
+
+  if (modalOverlay && personCards.length) {
+    var modalAvatar = document.getElementById('person-modal-avatar');
+    var modalName = document.getElementById('person-modal-name');
+    var modalDesignation = document.getElementById('person-modal-designation');
+    var modalAffiliation = document.getElementById('person-modal-affiliation');
+    var modalTags = document.getElementById('person-modal-tags');
+    var modalResearch = document.getElementById('person-modal-research');
+    var modalFooter = document.getElementById('person-modal-footer');
+    var modalCloseBtn = document.getElementById('person-modal-close');
+    var lastFocused = null;
+
+    var TAG_LABELS = {
+      ACADEMIA: ['Academia', 'badge-purple'],
+      INDUSTRY: ['Industry', 'badge-amber'],
+      WORKING_IN_INDIA: ['In India', 'badge-green'],
+      WORKING_ABROAD: ['Abroad', 'badge-cyan']
+    };
+
+    function websiteIcon() {
+      return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+    }
+
+    function labIcon() {
+      return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>';
+    }
+
+    function openModal(person, avatarBackground) {
+      modalName.textContent = person.name || '';
+      modalDesignation.textContent = person.designation || '';
+      modalAffiliation.textContent = person.affiliation || '';
+
+      modalAvatar.innerHTML = '';
+      modalAvatar.style.background = avatarBackground || '';
+      if (person.photo) {
+        var img = document.createElement('img');
+        img.src = person.photo;
+        img.alt = person.name || '';
+        img.className = 'avatar-photo';
+        modalAvatar.appendChild(img);
+      } else {
+        var span = document.createElement('span');
+        span.className = 'avatar-initials';
+        span.textContent = getInitials(person.name || '');
+        modalAvatar.appendChild(span);
+      }
+
+      modalTags.innerHTML = '';
+      (person.tags || []).forEach(function (tag) {
+        var info = TAG_LABELS[tag];
+        if (!info) return;
+        var el = document.createElement('span');
+        el.className = 'badge ' + info[1];
+        el.textContent = info[0];
+        modalTags.appendChild(el);
+      });
+
+      modalResearch.innerHTML = '';
+      (person.research ? person.research.split(', ') : []).forEach(function (area) {
+        var el = document.createElement('span');
+        el.className = 'tag tag-research';
+        el.textContent = area;
+        modalResearch.appendChild(el);
+      });
+
+      var footerHtml = '';
+      if (person.webpage) {
+        footerHtml += '<a href="' + person.webpage + '" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">' + websiteIcon() + ' Website</a>';
+      }
+      if (person.webpagelab) {
+        footerHtml += '<a href="' + person.webpagelab + '" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">' + labIcon() + ' Lab</a>';
+      }
+      modalFooter.innerHTML = footerHtml;
+
+      lastFocused = document.activeElement;
+      modalOverlay.classList.add('open');
+      document.body.classList.add('modal-open');
+      modalCloseBtn.focus();
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    personCards.forEach(function (card) {
+      function trigger() {
+        var raw = card.dataset.person;
+        if (!raw) return;
+        var person;
+        try {
+          person = JSON.parse(raw);
+        } catch (e) {
+          return;
+        }
+        var avatar = card.querySelector('.person-avatar');
+        openModal(person, avatar ? avatar.style.background : '');
+      }
+
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        trigger();
+      });
+
+      card.addEventListener('keydown', function (e) {
+        if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a')) {
+          e.preventDefault();
+          trigger();
+        }
+      });
+    });
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    modalOverlay.addEventListener('click', function (e) {
+      if (e.target === modalOverlay) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+    });
   }
 
   /* ============================================================

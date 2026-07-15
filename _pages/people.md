@@ -51,3 +51,23 @@ permalink: /people/
 
   </div>
 </section>
+
+<!-- Researcher Detail Modal -->
+<div class="person-modal-overlay" id="person-modal-overlay">
+  <div class="person-modal glass-strong" role="dialog" aria-modal="true" aria-labelledby="person-modal-name">
+    <button type="button" class="person-modal-close" id="person-modal-close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="person-modal-header">
+      <div class="person-avatar person-modal-avatar" id="person-modal-avatar"></div>
+      <div class="person-meta">
+        <h3 class="person-name" id="person-modal-name"></h3>
+        <p class="person-designation" id="person-modal-designation"></p>
+        <p class="person-affiliation" id="person-modal-affiliation"></p>
+      </div>
+    </div>
+    <div class="person-tags-row" id="person-modal-tags"></div>
+    <div class="person-research" id="person-modal-research"></div>
+    <div class="person-card-footer" id="person-modal-footer"></div>
+  </div>
+</div>
