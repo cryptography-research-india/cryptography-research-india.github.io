@@ -950,6 +950,97 @@ p {
   border-color: rgba(0, 255, 136, 0.35);
 }
 
+.person-card {
+  cursor: pointer;
+}
+
+/* ============================================================
+   RESEARCHER DETAIL MODAL
+   ============================================================ */
+body.modal-open {
+  overflow: hidden;
+}
+
+.person-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.person-modal-overlay.open {
+  display: flex;
+}
+
+.person-modal {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-hover);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeInUp 0.25s ease both;
+}
+
+.person-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.person-modal-close:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+  background: var(--glass-strong);
+}
+
+.person-modal-header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding-right: 2rem;
+}
+
+.person-modal-avatar {
+  width: 64px;
+  height: 64px;
+}
+
+.person-modal-avatar .avatar-photo {
+  width: 64px;
+  height: 64px;
+}
+
+.person-modal-avatar .avatar-initials {
+  font-size: 1.1rem;
+}
+
+.person-modal #person-modal-name {
+  font-size: 1.2rem;
+}
+
 /* ============================================================
    POSTS GRID
    ============================================================ */
