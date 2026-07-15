@@ -2,7 +2,11 @@
 <article class="person-card glass"
   data-tags="{{ person.tags | join: ' ' }}"
   data-name="{{ person.name | downcase }}"
-  data-research="{{ person.research | downcase }}">
+  data-research="{{ person.research | downcase }}"
+  data-person="{{ person | jsonify | escape }}"
+  tabindex="0"
+  role="button"
+  aria-haspopup="dialog">
   <div class="person-card-inner">
     <div class="person-card-header">
       <div class="person-avatar">
