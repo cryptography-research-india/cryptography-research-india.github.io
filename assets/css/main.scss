@@ -1506,6 +1506,19 @@ body.modal-open {
 /* ============================================================
    RESOURCES PAGE
    ============================================================ */
+.topic-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.topic-pill {
+  display: inline-block;
+  text-decoration: none;
+}
+
 .resources-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1516,7 +1529,6 @@ body.modal-open {
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   transition: all var(--transition-slow);
-  cursor: pointer;
 }
 
 .resource-card:hover {
@@ -1525,8 +1537,14 @@ body.modal-open {
   box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 
-/* Cap the on-page list at 5 links; the rest are reachable via the modal */
-.resource-card .resource-list li:nth-child(n+6) {
+/* .capped cards (the general Resources page) cap the on-page list at 5
+   links and are click-to-expand; dedicated topic pages omit this
+   modifier so their (deliberately longer) lists show in full. */
+.resource-card.capped {
+  cursor: pointer;
+}
+
+.resource-card.capped .resource-list li:nth-child(n+6) {
   display: none;
 }
 

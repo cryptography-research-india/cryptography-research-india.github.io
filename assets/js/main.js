@@ -318,7 +318,7 @@
      RESOURCE CATEGORY MODAL
      ============================================================ */
   var RESOURCE_VISIBLE_LIMIT = 5;
-  var resourceCards = document.querySelectorAll('.resource-card');
+  var resourceCards = document.querySelectorAll('.resource-card.capped');
   var resourceModalOverlay = document.getElementById('resource-modal-overlay');
 
   if (resourceModalOverlay && resourceCards.length) {

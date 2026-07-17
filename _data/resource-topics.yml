@@ -1,0 +1,6 @@
+---
+- id: secure-computation
+  title: Secure Computation
+  icon: 🔐
+  blurb: MPC, secret sharing, and privacy-preserving protocols.
+  url: /resources/topics/secure-computation/

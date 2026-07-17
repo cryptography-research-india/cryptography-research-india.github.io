@@ -15,10 +15,18 @@ permalink: /resources/
 <section class="page-content-section">
   <div class="container">
 
+    <!-- Explore by Topic -->
+    <div class="topic-pills">
+      <span class="filter-label">Explore by topic:</span>
+      {% for topic in site.data.resource-topics %}
+        <a href="{{ topic.url | relative_url }}" class="filter-btn topic-pill">{{ topic.icon }} {{ topic.title }}</a>
+      {% endfor %}
+    </div>
+
     <div class="resources-grid">
 
       <!-- Textbooks -->
-      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
+      <div class="resource-card capped glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(0,255,136,0.1);">
           📚
         </div>
@@ -36,7 +44,7 @@ permalink: /resources/
       </div>
 
       <!-- Online Courses -->
-      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
+      <div class="resource-card capped glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(124,58,237,0.15);">
           🎓
         </div>
@@ -52,7 +60,7 @@ permalink: /resources/
       </div>
 
       <!-- Research Groups -->
-      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
+      <div class="resource-card capped glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(6,182,212,0.12);">
           🔬
         </div>
@@ -68,7 +76,7 @@ permalink: /resources/
       </div>
 
       <!-- Conferences -->
-      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
+      <div class="resource-card capped glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(245,158,11,0.12);">
           🗓️
         </div>
@@ -85,7 +93,7 @@ permalink: /resources/
       </div>
 
       <!-- Software Libraries -->
-      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
+      <div class="resource-card capped glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(0,255,136,0.1);">
           ⚙️
         </div>
@@ -102,7 +110,7 @@ permalink: /resources/
       </div>
 
       <!-- Competitions & Challenges -->
-      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
+      <div class="resource-card capped glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(124,58,237,0.15);">
           🏆
         </div>
@@ -118,7 +126,7 @@ permalink: /resources/
       </div>
 
       <!-- Reading Lists -->
-      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
+      <div class="resource-card capped glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(6,182,212,0.12);">
           📖
         </div>
@@ -134,7 +142,7 @@ permalink: /resources/
       </div>
 
       <!-- Blogs & News -->
-      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
+      <div class="resource-card capped glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(245,158,11,0.12);">
           ✍️
         </div>
