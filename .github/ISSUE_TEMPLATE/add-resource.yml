@@ -1,0 +1,56 @@
+name: Add Resource
+description: Suggest a resource for the CRIYPT Resources page
+labels: ["add-resource"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! Fill in the details below and a PR will be created automatically for review.
+
+  - type: input
+    id: title
+    attributes:
+      label: Resource Title
+      placeholder: e.g. A Graduate Course in Applied Cryptography — Boneh & Shoup
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Resource URL
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Where should this go?
+      description: Pick the card/section this resource best fits under
+      options:
+        - "Resources page — Textbooks"
+        - "Resources page — Online Courses"
+        - "Resources page — Research Groups"
+        - "Resources page — Conference Deadlines"
+        - "Resources page — Software & Libraries"
+        - "Resources page — Standards"
+        - "Resources page — Reading Lists"
+        - "Resources page — Blogs & Newsletters"
+        - "Secure Computation topic page — Courses"
+        - "Secure Computation topic page — Winter Schools & Lecture Series"
+        - "Secure Computation topic page — Foundational Papers"
+        - "Secure Computation topic page — Textbooks"
+        - "Secure Computation topic page — Frameworks & Libraries"
+        - "Secure Computation topic page — Useful Resources"
+        - "Fully Homomorphic Encryption topic page (still under construction)"
+        - "Zero-Knowledge Proofs topic page (still under construction)"
+        - "Not sure / other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Why is this useful? (optional)
+      description: A short note helps reviewers — e.g. what makes it worth including
