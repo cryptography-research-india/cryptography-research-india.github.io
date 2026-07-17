@@ -1,0 +1,18 @@
+---
+- id: secure-computation
+  title: Secure Computation
+  icon: 🔐
+  blurb: MPC, secret sharing, and privacy-preserving protocols.
+  url: /resources/topics/secure-computation/
+
+- id: fully-homomorphic-encryption
+  title: Fully Homomorphic Encryption
+  icon: 🧮
+  blurb: Computing on encrypted data. Page coming soon.
+  url: /resources/topics/fully-homomorphic-encryption/
+
+- id: zero-knowledge-proofs
+  title: Zero-Knowledge Proofs
+  icon: 🎭
+  blurb: Proving statements without revealing why they're true. Page coming soon.
+  url: /resources/topics/zero-knowledge-proofs/
