@@ -18,7 +18,7 @@ permalink: /resources/
     <div class="resources-grid">
 
       <!-- Textbooks -->
-      <div class="resource-card glass">
+      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(0,255,136,0.1);">
           📚
         </div>
@@ -34,7 +34,7 @@ permalink: /resources/
       </div>
 
       <!-- Online Courses -->
-      <div class="resource-card glass">
+      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(124,58,237,0.15);">
           🎓
         </div>
@@ -50,7 +50,7 @@ permalink: /resources/
       </div>
 
       <!-- Research Groups -->
-      <div class="resource-card glass">
+      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(6,182,212,0.12);">
           🔬
         </div>
@@ -66,7 +66,7 @@ permalink: /resources/
       </div>
 
       <!-- Conferences -->
-      <div class="resource-card glass">
+      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(245,158,11,0.12);">
           🗓️
         </div>
@@ -83,7 +83,7 @@ permalink: /resources/
       </div>
 
       <!-- Software Libraries -->
-      <div class="resource-card glass">
+      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(0,255,136,0.1);">
           ⚙️
         </div>
@@ -100,7 +100,7 @@ permalink: /resources/
       </div>
 
       <!-- Competitions & Challenges -->
-      <div class="resource-card glass">
+      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(124,58,237,0.15);">
           🏆
         </div>
@@ -116,7 +116,7 @@ permalink: /resources/
       </div>
 
       <!-- Reading Lists -->
-      <div class="resource-card glass">
+      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(6,182,212,0.12);">
           📖
         </div>
@@ -132,7 +132,7 @@ permalink: /resources/
       </div>
 
       <!-- Blogs & News -->
-      <div class="resource-card glass">
+      <div class="resource-card glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(245,158,11,0.12);">
           ✍️
         </div>
@@ -159,3 +159,18 @@ permalink: /resources/
 
   </div>
 </section>
+
+<!-- Resource Category Modal -->
+<div class="modal-overlay" id="resource-modal-overlay">
+  <div class="resource-modal glass-strong" role="dialog" aria-modal="true" aria-labelledby="resource-modal-title">
+    <button type="button" class="modal-close" id="resource-modal-close" aria-label="Close">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="resource-modal-header">
+      <div class="resource-card-icon" id="resource-modal-icon"></div>
+      <h3 id="resource-modal-title"></h3>
+    </div>
+    <p id="resource-modal-desc"></p>
+    <ul class="resource-list" id="resource-modal-list"></ul>
+  </div>
+</div>
