@@ -101,12 +101,12 @@ permalink: /resources/
         <h3>Software & Libraries</h3>
         <p>Open-source cryptography tools and frameworks.</p>
         <ul class="resource-list">
+          <li><a href="https://www.cryptopp.com/" target="_blank" rel="noopener">Crypto++ — C++ Crypto Library</a></li>
           <li><a href="https://github.com/emp-toolkit/emp-tool" target="_blank" rel="noopener">EMP Toolkit — MPC Framework</a></li>
-          <li><a href="https://github.com/data61/MP-SPDZ" target="_blank" rel="noopener">MP-SPDZ — MPC Protocols</a></li>
-          <li><a href="https://github.com/zkcrypto/bellman" target="_blank" rel="noopener">Bellman — zk-SNARK Library (Rust)</a></li>
           <li><a href="https://github.com/microsoft/SEAL" target="_blank" rel="noopener">Microsoft SEAL — FHE Library</a></li>
+          <li><a href="https://github.com/data61/MP-SPDZ" target="_blank" rel="noopener">MP-SPDZ — MPC Protocols</a></li>
           <li><a href="https://github.com/OpenFHE/OpenFHE-development" target="_blank" rel="noopener">OpenFHE — Fully Homomorphic Encryption</a></li>
-          <li><a href="https://libsodium.org/" target="_blank" rel="noopener">libsodium — Modern Crypto Library</a></li>
+          <li><a href="https://github.com/pyca/cryptography" target="_blank" rel="noopener">pyca/cryptography — Python Crypto Library</a></li>
         </ul>
       </div>
 
