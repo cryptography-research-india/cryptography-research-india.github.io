@@ -67,11 +67,11 @@ permalink: /resources/
         <h3>Research Groups</h3>
         <p>Active cryptography research groups at Indian institutions.</p>
         <ul class="resource-list">
-          <li><a href="https://www.csa.iisc.ac.in/~cris/" target="_blank" rel="noopener">CRIS Lab — IISc Bangalore (Arpita Patra)</a></li>
-          <li><a href="https://www.csa.iisc.ac.in/~crysp/" target="_blank" rel="noopener">CrySP Lab — IISc Bangalore (Bhavana Kanukurthi)</a></li>
-          <li><a href="https://trustlab.iitb.ac.in" target="_blank" rel="noopener">Trust Lab — IIT Bombay</a></li>
-          <li><a href="http://cse.iitkgp.ac.in/resgrp/seal/" target="_blank" rel="noopener">SEAL Lab — IIT Kharagpur</a></li>
+          <li><a href="https://cris.csa.iisc.ac.in" target="_blank" rel="noopener">CRIS Lab — IISc Bangalore</a></li>
+          <li><a href="https://www.csa.iisc.ac.in/~crysp/" target="_blank" rel="noopener">CrySP Lab — IISc Bangalore</a></li>
           <li><a href="https://cystar.iitm.ac.in" target="_blank" rel="noopener">CyStar — IIT Madras</a></li>
+          <li><a href="http://cse.iitkgp.ac.in/resgrp/seal/" target="_blank" rel="noopener">SEAL Lab — IIT Kharagpur</a></li>
+          <li><a href="https://trustlab.iitb.ac.in" target="_blank" rel="noopener">Trust Lab — IIT Bombay</a></li>
         </ul>
       </div>
 

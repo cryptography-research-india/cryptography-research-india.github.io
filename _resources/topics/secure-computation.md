@@ -31,7 +31,7 @@ permalink: /resources/topics/secure-computation/
         <ul class="resource-list">
           <li><a href="https://nptel.ac.in/courses/106108229" target="_blank" rel="noopener">Secure Computation Part I — NPTEL (Ashish Choudhury)</a></li>
           <li><a href="https://www.youtube.com/watch?v=crMKbPrUK8A&list=PLgMDNELGJ1CYx9UCtaC_JVgIovG84AFQi" target="_blank" rel="noopener">Secure Computation Part II — NPTEL (Ashish Choudhury)</a></li>
-          <li><a href="https://www.csa.iisc.ac.in/~cris/e0_312_2019.html" target="_blank" rel="noopener">Foundations of Secure Computation — IISc (Arpita Patra)</a></li>
+          <li><a href="https://www.csa.iisc.ac.in/~arpita/SecureComputation15.html" target="_blank" rel="noopener">Foundations of Secure Computation — IISc (Arpita Patra)</a></li>
         </ul>
       </div>
 
