@@ -134,10 +134,10 @@ permalink: /resources/
         <p>Curated paper lists and survey resources by topic.</p>
         <ul class="resource-list">
           <li><a href="https://eprint.iacr.org/" target="_blank" rel="noopener">IACR ePrint — Latest Preprints</a></li>
-          <li><a href="https://github.com/matter-labs/awesome-zero-knowledge-proofs" target="_blank" rel="noopener">Awesome ZKP — Curated ZK Resources</a></li>
           <li><a href="https://github.com/rdragos/awesome-mpc" target="_blank" rel="noopener">Awesome MPC — Reading List</a></li>
-          <li><a href="https://github.com/jonaschn/awesome-he" target="_blank" rel="noopener">Awesome Homomorphic Encryption</a></li>
-          <li><a href="https://pqcrypto.eu.org/docs/initial-recommendations.pdf" target="_blank" rel="noopener">PQCrypto Initial Recommendations</a></li>
+          <li><a href="https://github.com/openfheorg/awesome-openfhe" target="_blank" rel="noopener">Awesome Homomorphic Encryption</a></li>
+          <li><a href="https://github.com/matter-labs/awesome-zero-knowledge-proofs" target="_blank" rel="noopener">Awesome ZKP — Curated ZK Resources</a></li>
+          <li><a href="https://github.com/veorq/awesome-post-quantum" target="_blank" rel="noopener">Awesome Post Quantum</a></li>
         </ul>
       </div>
 
