@@ -82,17 +82,14 @@ permalink: /resources/
       <!-- Conferences -->
       <div class="resource-card capped glass" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="resource-card-icon" style="background:rgba(245,158,11,0.12);">
-          🗓️
+          ⏰
         </div>
-        <h3>Top Conferences</h3>
-        <p>Premier venues for publishing cryptography research.</p>
+        <h3>Conference Deadlines</h3>
+        <p>Track upcoming submission deadlines across the field.</p>
         <ul class="resource-list">
-          <li><a href="https://www.iacr.org/meetings/crypto/" target="_blank" rel="noopener">CRYPTO — IACR Annual</a></li>
-          <li><a href="https://www.iacr.org/meetings/eurocrypt/" target="_blank" rel="noopener">Eurocrypt — IACR Annual</a></li>
-          <li><a href="https://www.iacr.org/meetings/asiacrypt/" target="_blank" rel="noopener">Asiacrypt — IACR Annual</a></li>
-          <li><a href="https://www.iacr.org/meetings/tcc/" target="_blank" rel="noopener">TCC — Theory of Cryptography Conference</a></li>
-          <li><a href="https://www.iacr.org/meetings/pkc/" target="_blank" rel="noopener">PKC — Public-Key Cryptography</a></li>
-          <li><a href="https://eprint.iacr.org/" target="_blank" rel="noopener">IACR ePrint Archive</a></li>
+          <li><a href="https://sec-deadlines.github.io" target="_blank" rel="noopener">Security and Privacy Conference Deadlines</a></li>
+          <li><a href="https://mpc-deadlines.github.io" target="_blank" rel="noopener">MPC Deadlines Hub</a></li>
+          <li><a href="https://paperswithcode.co/ai-deadlines" target="_blank" rel="noopener">AI Conference Deadlines</a></li>
         </ul>
       </div>
 
