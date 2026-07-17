@@ -115,14 +115,13 @@ permalink: /resources/
         <div class="resource-card-icon" style="background:rgba(124,58,237,0.15);">
           🏆
         </div>
-        <h3>Competitions & Standards</h3>
-        <p>Cryptography standardization efforts and competitions.</p>
+        <h3>Standards</h3>
+        <p>Cryptography standardization efforts.</p>
         <ul class="resource-list">
-          <li><a href="https://csrc.nist.gov/projects/post-quantum-cryptography" target="_blank" rel="noopener">NIST PQC Standardization</a></li>
-          <li><a href="https://competition.cr.yp.to/" target="_blank" rel="noopener">CAESAR Competition (AEAD)</a></li>
-          <li><a href="https://csrc.nist.gov/projects/lightweight-cryptography" target="_blank" rel="noopener">NIST Lightweight Cryptography</a></li>
-          <li><a href="https://cryptohack.org/" target="_blank" rel="noopener">CryptoHack — Challenges & Learning</a></li>
-          <li><a href="https://mysterytwister.org/" target="_blank" rel="noopener">MysteryTwister — Cipher Challenges</a></li>
+          <li><a href="https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines" target="_blank" rel="noopener">Cryptographic Standards and Guidelines</a></li>
+          <li><a href="https://csrc.nist.gov/projects/threshold-cryptography" target="_blank" rel="noopener">Multi-Party Threshold Cryptography</a></li>
+          <li><a href="https://homomorphicencryption.org/standards-meetings/" target="_blank" rel="noopener">Homomorphic Encryption Standardization</a></li>
+          <li><a href="https://datatracker.ietf.org/wg/ppm/about/" target="_blank" rel="noopener">Privacy Preserving Measurement</a></li>
         </ul>
       </div>
 
