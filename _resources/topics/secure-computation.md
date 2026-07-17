@@ -74,7 +74,7 @@ permalink: /resources/topics/secure-computation/
           <li><a href="https://link.springer.com/book/10.1007/978-3-031-12164-7" target="_blank" rel="noopener">Secure Multi-Party Computation Against Passive Adversaries — Choudhury &amp; Patra</a></li>
           <li><a href="https://www.iospress.com/catalog/books/applications-of-secure-multiparty-computation" target="_blank" rel="noopener">Applications of Secure Multiparty Computation</a></li>
           <li><a href="https://www.cs.virginia.edu/~evans/pragmaticmpc/pragmaticmpc.pdf" target="_blank" rel="noopener">A Pragmatic Introduction to Secure Multi-Party Computation — Evans, Kolesnikov, Rosulek</a></li>
-          <li>Secure Multiparty Computation and Secret Sharing — Cramer, Damgård, Nielsen (Cambridge University Press)</li>
+          <li><a href="https://www.cambridge.org/core/books/secure-multiparty-computation-and-secret-sharing/4C2480B202905CE5370B2609F0C2A67A" target="_blank" rel="noopener">Secure Multiparty Computation and Secret Sharing — Cramer, Damgård, Nielsen (Cambridge University Press)</a></li>
         </ul>
       </div>
 
