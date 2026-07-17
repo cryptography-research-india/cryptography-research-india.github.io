@@ -150,10 +150,10 @@ permalink: /resources/
         <p>Stay up to date with the cryptography research community.</p>
         <ul class="resource-list">
           <li><a href="https://blog.cryptographyengineering.com/" target="_blank" rel="noopener">A Few Thoughts on Cryptographic Engineering</a></li>
-          <li><a href="https://www.schneier.com/" target="_blank" rel="noopener">Schneier on Security</a></li>
-          <li><a href="https://thecryptopaper.com/" target="_blank" rel="noopener">The Crypto Paper</a></li>
           <li><a href="https://iacr.org/news/" target="_blank" rel="noopener">IACR News</a></li>
-          <li><a href="https://zknewsletter.com/" target="_blank" rel="noopener">ZK Newsletter</a></li>
+          <li><a href="https://lists.petsymposium.org/mailman3/postorius/lists/pet.lists.petsymposium.org/" target="_blank" rel="noopener">PETS Mailing List</a></li>
+          <li><a href="https://www.esat.kuleuven.be/cosic/cosic-seminars/" target="_blank" rel="noopener">COSIC Seminars</a></li>
+          <li><a href="https://zknewsletter.substack.com" target="_blank" rel="noopener">ZK Newsletter</a></li>
         </ul>
       </div>
 
