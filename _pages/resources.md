@@ -30,6 +30,8 @@ permalink: /resources/
           <li><a href="https://www.ic.unicamp.br/~rdahab/cursos/mo421-mc889/Welcome_files/Stinson-Paterson_CryptographyTheoryAndPractice-CRC%20Press%20%282019%29.pdf" target="_blank" rel="noopener">Cryptography: Theory and Practice — Stinson</a></li>
           <li><a href="https://cacr.uwaterloo.ca/hac/" target="_blank" rel="noopener">Handbook of Applied Cryptography — Menezes et al.</a></li>
           <li><a href="https://www.wisdom.weizmann.ac.il/~oded/foc-book.html" target="_blank" rel="noopener">Foundations of Cryptography — Goldreich (Vol. I & II)</a></li>
+          <li><a href="https://link.springer.com/book/10.1007/978-3-031-12164-7" target="_blank" rel="noopener">Secure Multi-Party Computation Against Passive Adversaries</a></li>
+          <li><a href="https://www.iospress.com/catalog/books/applications-of-secure-multiparty-computation" target="_blank" rel="noopener">Applications of Secure Multiparty Computation</a></li>
         </ul>
       </div>
 
