@@ -315,6 +315,80 @@
   }
 
   /* ============================================================
+     RESOURCE CATEGORY MODAL
+     ============================================================ */
+  var RESOURCE_VISIBLE_LIMIT = 5;
+  var resourceCards = document.querySelectorAll('.resource-card.capped');
+  var resourceModalOverlay = document.getElementById('resource-modal-overlay');
+
+  if (resourceModalOverlay && resourceCards.length) {
+    var resourceModalIcon = document.getElementById('resource-modal-icon');
+    var resourceModalTitle = document.getElementById('resource-modal-title');
+    var resourceModalDesc = document.getElementById('resource-modal-desc');
+    var resourceModalList = document.getElementById('resource-modal-list');
+    var resourceModalCloseBtn = document.getElementById('resource-modal-close');
+    var resourceLastFocused = null;
+
+    resourceCards.forEach(function (card) {
+      var links = card.querySelectorAll('.resource-list li');
+      if (links.length > RESOURCE_VISIBLE_LIMIT) {
+        var hint = document.createElement('span');
+        hint.className = 'resource-more-hint';
+        hint.textContent = '+' + (links.length - RESOURCE_VISIBLE_LIMIT) + ' more — click to view all';
+        card.appendChild(hint);
+      }
+    });
+
+    function openResourceModal(card) {
+      var icon = card.querySelector('.resource-card-icon');
+      var title = card.querySelector('h3');
+      var desc = card.querySelector('p');
+      var list = card.querySelector('.resource-list');
+
+      resourceModalIcon.innerHTML = icon ? icon.innerHTML : '';
+      resourceModalIcon.style.background = icon ? icon.style.background : '';
+      resourceModalTitle.textContent = title ? title.textContent : '';
+      resourceModalDesc.textContent = desc ? desc.textContent : '';
+      resourceModalList.innerHTML = list ? list.innerHTML : '';
+
+      resourceLastFocused = document.activeElement;
+      resourceModalOverlay.classList.add('open');
+      document.body.classList.add('modal-open');
+      resourceModalCloseBtn.focus();
+    }
+
+    function closeResourceModal() {
+      resourceModalOverlay.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      if (resourceLastFocused && typeof resourceLastFocused.focus === 'function') resourceLastFocused.focus();
+    }
+
+    resourceCards.forEach(function (card) {
+      card.addEventListener('click', function (e) {
+        if (e.target.closest('a')) return;
+        openResourceModal(card);
+      });
+
+      card.addEventListener('keydown', function (e) {
+        if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a')) {
+          e.preventDefault();
+          openResourceModal(card);
+        }
+      });
+    });
+
+    resourceModalCloseBtn.addEventListener('click', closeResourceModal);
+
+    resourceModalOverlay.addEventListener('click', function (e) {
+      if (e.target === resourceModalOverlay) closeResourceModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && resourceModalOverlay.classList.contains('open')) closeResourceModal();
+    });
+  }
+
+  /* ============================================================
      SHUFFLE FEATURED PEOPLE (home page only)
      ============================================================ */
   var featuredGrid = document.getElementById('featured-grid');

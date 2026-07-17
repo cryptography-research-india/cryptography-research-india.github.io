@@ -955,13 +955,13 @@ p {
 }
 
 /* ============================================================
-   RESEARCHER DETAIL MODAL
+   DETAIL MODAL (shared by researcher cards & resource cards)
    ============================================================ */
 body.modal-open {
   overflow: hidden;
 }
 
-.person-modal-overlay {
+.modal-overlay {
   display: none;
   position: fixed;
   inset: 0;
@@ -974,26 +974,11 @@ body.modal-open {
   padding: 1.5rem;
 }
 
-.person-modal-overlay.open {
+.modal-overlay.open {
   display: flex;
 }
 
-.person-modal {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-hover);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  animation: fadeInUp 0.25s ease both;
-}
-
-.person-modal-close {
+.modal-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -1010,10 +995,25 @@ body.modal-open {
   transition: all var(--transition);
 }
 
-.person-modal-close:hover {
+.modal-close:hover {
   color: var(--text);
   border-color: var(--border-hover);
   background: var(--glass-strong);
+}
+
+.person-modal {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-hover);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeInUp 0.25s ease both;
 }
 
 .person-modal-header {
@@ -1580,6 +1580,19 @@ body.modal-open {
 /* ============================================================
    RESOURCES PAGE
    ============================================================ */
+.topic-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.topic-pill {
+  display: inline-block;
+  text-decoration: none;
+}
+
 .resources-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1596,6 +1609,25 @@ body.modal-open {
   border-color: rgba(6, 182, 212, 0.25);
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* .capped cards (the general Resources page) cap the on-page list at 5
+   links and are click-to-expand; dedicated topic pages omit this
+   modifier so their (deliberately longer) lists show in full. */
+.resource-card.capped {
+  cursor: pointer;
+}
+
+.resource-card.capped .resource-list li:nth-child(n+6) {
+  display: none;
+}
+
+.resource-more-hint {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
 }
 
 .resource-card-icon {
@@ -1642,6 +1674,47 @@ body.modal-open {
 
 .resource-list li a:hover {
   color: var(--green);
+}
+
+.resource-modal {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-hover);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: fadeInUp 0.25s ease both;
+}
+
+.resource-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding-right: 2rem;
+}
+
+.resource-modal-header .resource-card-icon {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.resource-modal h3 {
+  font-size: 1.1rem;
+}
+
+.resource-modal p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.resource-modal .resource-list li:nth-child(n+6) {
+  display: list-item;
 }
 
 /* ============================================================
