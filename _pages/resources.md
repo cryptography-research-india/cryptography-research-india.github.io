@@ -44,10 +44,10 @@ permalink: /resources/
         <p>Free and paid courses to learn cryptography from the ground up.</p>
         <ul class="resource-list">
           <li><a href="https://www.coursera.org/learn/crypto" target="_blank" rel="noopener">Cryptography I — Stanford / Coursera (Dan Boneh)</a></li>
-          <li><a href="https://www.coursera.org/learn/crypto2" target="_blank" rel="noopener">Cryptography II — Stanford / Coursera (Dan Boneh)</a></li>
-          <li><a href="https://www.youtube.com/@BIUcrypto" target="_blank" rel="noopener">Bar-Ilan Cryptography Winter Schools (YouTube)</a></li>
-          <li><a href="https://zkp.science/" target="_blank" rel="noopener">ZKProof Community Reference</a></li>
-          <li><a href="https://zk-learning.org/" target="_blank" rel="noopener">ZK-Learning.org — ZK MOOC</a></li>
+          <li><a href="https://www.youtube.com/@thebiuresearchcenteronappl8783/playlists" target="_blank" rel="noopener">Bar-Ilan Cryptography Winter Schools (YouTube)</a></li>
+          <li><a href="https://www.youtube.com/playlist?list=PLgMDNELGJ1CbdGLyn7OrVAP-IKg-0q2U2" target="_blank" rel="noopener">Foundations of Cryptography — Ashish Choudhury</a></li>
+          <li><a href="https://nptel.ac.in/courses/106108227" target="_blank" rel="noopener">Discrete Mathematics</a></li>
+          <li><a href="https://www.youtube.com/watch?v=ENBhmjHXleM" target="_blank" rel="noopener">Secure Computation Part I</a></li>
         </ul>
       </div>
 
