@@ -27,9 +27,9 @@ permalink: /resources/
         <ul class="resource-list">
           <li><a href="https://toc.cryptobook.us/" target="_blank" rel="noopener">A Graduate Course in Applied Cryptography — Boneh & Shoup</a></li>
           <li><a href="https://www.cs.umd.edu/~jkatz/imc.html" target="_blank" rel="noopener">Introduction to Modern Cryptography — Katz & Lindell</a></li>
-          <li><a href="https://crypto.stanford.edu/~dabo/cryptobook/" target="_blank" rel="noopener">Cryptography: Theory and Practice — Stinson</a></li>
-          <li><a href="https://www.cryptohandbook.com/" target="_blank" rel="noopener">Handbook of Applied Cryptography — Menezes et al.</a></li>
-          <li><a href="https://eprint.iacr.org/2022/1227" target="_blank" rel="noopener">Foundations of Cryptography — Goldreich (Vol. I & II)</a></li>
+          <li><a href="https://www.ic.unicamp.br/~rdahab/cursos/mo421-mc889/Welcome_files/Stinson-Paterson_CryptographyTheoryAndPractice-CRC%20Press%20%282019%29.pdf" target="_blank" rel="noopener">Cryptography: Theory and Practice — Stinson</a></li>
+          <li><a href="https://cacr.uwaterloo.ca/hac/" target="_blank" rel="noopener">Handbook of Applied Cryptography — Menezes et al.</a></li>
+          <li><a href="https://www.wisdom.weizmann.ac.il/~oded/foc-book.html" target="_blank" rel="noopener">Foundations of Cryptography — Goldreich (Vol. I & II)</a></li>
         </ul>
       </div>
 
