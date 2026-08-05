@@ -15,7 +15,7 @@
         {% if person.photo %}
           <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" class="avatar-photo" loading="lazy">
         {% else %}
-          <span class="avatar-initials">{{ person.name | split: ' ' | map: 'first' | join: '' | slice: 0, 2 | upcase }}</span>
+          <span class="avatar-initials">{{ person.name | initials }}</span>
         {% endif %}
       </div>
       <div class="person-meta">
