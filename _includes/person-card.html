@@ -2,7 +2,7 @@
 {% assign slug = person.name | slugify %}
 <a href="{{ '/people/' | relative_url }}#{{ slug }}"
   class="person-card glass"
-  data-tags="{{ person.tags | join: ' ' }}"
+  data-tags="{{ person.tags | join: ' ' }}{% if person.topics %} {{ person.topics | join: ' ' }}{% endif %}"
   data-name="{{ person.name | downcase }}"
   data-research="{{ person.research | downcase }}"
   data-slug="{{ slug }}"

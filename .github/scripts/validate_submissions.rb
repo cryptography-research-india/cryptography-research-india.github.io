@@ -7,7 +7,7 @@
 # data (e.g. a missing required field, a bad URL, or a duplicate entry).
 #
 # Checks, per source:
-#   _data/names-people.yml   - required keys, tag vocabulary, URL shape, dup names
+#   _data/names-people.yml   - required keys, tag/topic vocabulary, URL shape, dup names
 #   _data/collaborations.yml - required keys, email shape, URL shape, dup (name+topic)
 #   _positions/*.md          - required front matter keys, URL shape, dup (title+org)
 #
@@ -24,6 +24,13 @@ EMAIL_RE = /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/
 ORCID_RE = /\A\d{4}-\d{4}-\d{4}-\d{3}[\dX]\z/
 VALID_SECTOR_TAGS = %w[ACADEMIA INDUSTRY].freeze
 VALID_LOCATION_TAGS = %w[WORKING_IN_INDIA WORKING_ABROAD].freeze
+
+topics_path = File.join(ROOT, "_data/topics.yml")
+VALID_TOPIC_CODES = if File.exist?(topics_path)
+                      (YAML.safe_load_file(topics_path) || []).map { |t| t["code"] }
+                    else
+                      []
+                    end.freeze
 
 def error(errors, source, message)
   errors << "#{source}: #{message}"
@@ -74,6 +81,18 @@ if File.exist?(people_path)
     orcid = person["orcid"]
     if orcid && !orcid.to_s.strip.empty? && orcid.to_s.strip !~ ORCID_RE
       error(errors, src, "`orcid` is not a valid ORCID iD (expected 0000-0000-0000-000X): #{orcid}")
+    end
+
+    topics = person["topics"]
+    if topics
+      unless topics.is_a?(Array)
+        error(errors, src, "`topics` must be a list")
+      else
+        unknown = topics - VALID_TOPIC_CODES
+        if unknown.any?
+          error(errors, src, "`topics` has unknown code(s) #{unknown.join(', ')} — must be one of #{VALID_TOPIC_CODES.join(', ')}")
+        end
+      end
     end
 
     next if person["name"].to_s.strip.empty?

@@ -1,0 +1,32 @@
+# Controlled vocabulary for researcher topic filtering on the People page.
+# Reused (and, for CODING, extended) from the Research Areas checkboxes in
+# .github/ISSUE_TEMPLATE/collaboration-request.yml — keep both lists in sync
+# when adding or renaming a topic. `code` must be a single token (no spaces)
+# since it's used as a space-delimited filter token in data-topics.
+---
+- code: MPC
+  label: "Multi-Party Computation (MPC)"
+- code: ZKP
+  label: "Zero-Knowledge Proofs (ZKP)"
+- code: FHE
+  label: "Fully Homomorphic Encryption (FHE)"
+- code: PKC
+  label: "Public Key Cryptography"
+- code: SYMMETRIC
+  label: "Symmetric Cryptography"
+- code: PQC
+  label: "Post-Quantum Cryptography (PQC)"
+- code: PPML
+  label: "Privacy-Preserving ML (PPML)"
+- code: BLOCKCHAIN
+  label: "Blockchain / Distributed Ledger"
+- code: HARDWARE
+  label: "Hardware Security / TEEs"
+- code: APPLIED
+  label: "Applied Cryptography"
+- code: THEORETICAL
+  label: "Theoretical Cryptography"
+- code: PROTOCOLS
+  label: "Security Protocols"
+- code: CODING
+  label: "Coding Theory / Information Theory"

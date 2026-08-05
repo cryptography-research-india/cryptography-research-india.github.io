@@ -48,6 +48,17 @@ permalink: /people/
       <span class="people-count" id="people-count"></span>
     </div>
 
+    {% if site.data.topics.size > 0 %}
+    <details class="topic-filter-details">
+      <summary>Filter by topic</summary>
+      <div class="topic-filter-pills">
+        {% for topic in site.data.topics %}
+          <button class="filter-btn" data-filter="{{ topic.code }}">{{ topic.label }}</button>
+        {% endfor %}
+      </div>
+    </details>
+    {% endif %}
+
     <!-- People Grid -->
     <div class="people-grid" id="people-grid">
       {% for person in site.data.names-people %}

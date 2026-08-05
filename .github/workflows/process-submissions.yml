@@ -31,10 +31,42 @@ jobs:
               return m ? m[1].trim() : '';
             }
 
+            // Parse checked options from a `type: checkboxes` section.
+            function checkedOptions(sectionLabel) {
+              const re = new RegExp(`### ${sectionLabel}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const m = body.match(re);
+              if (!m) return [];
+              const checked = [];
+              for (const line of m[1].split('\n')) {
+                const cm = line.match(/^- \[x\] (.+)/i);
+                if (cm) checked.push(cm[1].trim());
+              }
+              return checked;
+            }
+
+            // Must stay in sync with _data/topics.yml and the checkbox labels
+            // in add-researcher.yml / edit-researcher.yml.
+            const TOPIC_CODE_BY_LABEL = {
+              'Multi-Party Computation (MPC)': 'MPC',
+              'Zero-Knowledge Proofs (ZKP)': 'ZKP',
+              'Fully Homomorphic Encryption (FHE)': 'FHE',
+              'Public Key Cryptography': 'PKC',
+              'Symmetric Cryptography': 'SYMMETRIC',
+              'Post-Quantum Cryptography (PQC)': 'PQC',
+              'Privacy-Preserving ML (PPML)': 'PPML',
+              'Blockchain / Distributed Ledger': 'BLOCKCHAIN',
+              'Hardware Security / TEEs': 'HARDWARE',
+              'Applied Cryptography': 'APPLIED',
+              'Theoretical Cryptography': 'THEORETICAL',
+              'Security Protocols': 'PROTOCOLS',
+              'Coding Theory / Information Theory': 'CODING',
+            };
+
             const name        = field('Full Name');
             const designation = field('Designation');
             const affiliation = field('Affiliation');
             const rawAreas    = field('Research Areas');
+            const topicCodes  = checkedOptions('Topics \\(optional\\)').map(label => TOPIC_CODE_BY_LABEL[label]).filter(Boolean);
             const webpage     = field('Personal Webpage URL');
             const lab         = field('Lab / Group URL \\(optional\\)');
             const email       = field('Email ID \\(optional\\)');
@@ -83,6 +115,9 @@ jobs:
             if (scholar  && scholar  !== '_No response_') yaml += `  scholar: ${scholar}\n`;
             if (dblp     && dblp     !== '_No response_') yaml += `  dblp: ${dblp}\n`;
             if (linkedin && linkedin !== '_No response_') yaml += `  linkedin: ${linkedin}\n`;
+            if (topicCodes.length) {
+              yaml += `  topics: [${topicCodes.join(', ')}]\n`;
+            }
             yaml += `  tags: [${tags.join(', ')}]\n`;
 
             // Read existing file and append
@@ -142,6 +177,37 @@ jobs:
               return m ? m[1].trim() : '';
             }
 
+            // Parse checked options from a `type: checkboxes` section.
+            function checkedOptions(sectionLabel) {
+              const re = new RegExp(`### ${sectionLabel}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const m = body.match(re);
+              if (!m) return [];
+              const checked = [];
+              for (const line of m[1].split('\n')) {
+                const cm = line.match(/^- \[x\] (.+)/i);
+                if (cm) checked.push(cm[1].trim());
+              }
+              return checked;
+            }
+
+            // Must stay in sync with _data/topics.yml and the checkbox labels
+            // in add-researcher.yml / edit-researcher.yml.
+            const TOPIC_CODE_BY_LABEL = {
+              'Multi-Party Computation (MPC)': 'MPC',
+              'Zero-Knowledge Proofs (ZKP)': 'ZKP',
+              'Fully Homomorphic Encryption (FHE)': 'FHE',
+              'Public Key Cryptography': 'PKC',
+              'Symmetric Cryptography': 'SYMMETRIC',
+              'Post-Quantum Cryptography (PQC)': 'PQC',
+              'Privacy-Preserving ML (PPML)': 'PPML',
+              'Blockchain / Distributed Ledger': 'BLOCKCHAIN',
+              'Hardware Security / TEEs': 'HARDWARE',
+              'Applied Cryptography': 'APPLIED',
+              'Theoretical Cryptography': 'THEORETICAL',
+              'Security Protocols': 'PROTOCOLS',
+              'Coding Theory / Information Theory': 'CODING',
+            };
+
             const name = field('Full Name \\(exactly as listed on the People page\\)');
 
             if (!name) {
@@ -153,6 +219,8 @@ jobs:
               return;
             }
 
+            const topicCodes = checkedOptions('Topics \\(optional\\)').map(label => TOPIC_CODE_BY_LABEL[label]).filter(Boolean);
+
             const updates = {
               email:    field('Email ID \\(optional\\)'),
               orcid:    field('ORCID iD \\(optional\\)'),
@@ -162,6 +230,13 @@ jobs:
             };
             for (const key of Object.keys(updates)) {
               if (!updates[key] || updates[key] === '_No response_') delete updates[key];
+            }
+            // Only set/replace topics if at least one box was checked — an
+            // entirely unchecked section means "leave topics unchanged",
+            // matching the blank-means-unchanged convention every other
+            // field here already uses.
+            if (topicCodes.length) {
+              updates.topics = `[${topicCodes.join(', ')}]`;
             }
 
             if (Object.keys(updates).length === 0) {
