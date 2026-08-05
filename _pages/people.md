@@ -9,10 +9,16 @@ permalink: /people/
   <div class="container">
     <h1 class="page-hero-title">Researchers</h1>
     <p class="page-hero-subtitle">India's cryptography community — spanning academia, industry, and across the globe.</p>
-    <a href="https://github.com/cryptography-research-india/cryptography-research-india.github.io/issues/new?template=add-researcher.yml"
-       class="btn btn-primary" target="_blank" rel="noopener" style="margin-top:1.25rem;">
-      ➕ Add Yourself
-    </a>
+    <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;">
+      <a href="https://github.com/cryptography-research-india/cryptography-research-india.github.io/issues/new?template=add-researcher.yml"
+         class="btn btn-primary" target="_blank" rel="noopener">
+        ➕ Add Yourself
+      </a>
+      <a href="https://github.com/cryptography-research-india/cryptography-research-india.github.io/issues/new?template=edit-researcher.yml"
+         class="btn btn-ghost" target="_blank" rel="noopener">
+        ✏️ Edit My Profile
+      </a>
+    </div>
   </div>
 </div>
 
@@ -68,6 +74,6 @@ permalink: /people/
     </div>
     <div class="person-tags-row" id="person-modal-tags"></div>
     <div class="person-research" id="person-modal-research"></div>
-    <div class="person-card-footer" id="person-modal-footer"></div>
+    <div class="person-card-footer person-modal-links" id="person-modal-footer"></div>
   </div>
 </div>

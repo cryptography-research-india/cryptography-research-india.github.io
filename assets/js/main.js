@@ -217,7 +217,19 @@
       return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>';
     }
 
-    function openModal(person, avatarBackground) {
+    function linkedinIcon() {
+      return '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
+    }
+
+    function copyIcon() {
+      return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    }
+
+    function checkIcon() {
+      return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
+    }
+
+    function openModal(person, avatarBackground, card) {
       modalName.textContent = person.name || '';
       modalDesignation.textContent = person.designation || '';
       modalAffiliation.textContent = person.affiliation || '';
@@ -255,14 +267,93 @@
         modalResearch.appendChild(el);
       });
 
-      var footerHtml = '';
-      if (person.webpage) {
-        footerHtml += '<a href="' + person.webpage + '" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">' + websiteIcon() + ' Website</a>';
+      modalFooter.innerHTML = '';
+
+      function addLink(href, label, iconSvg) {
+        if (!href) return;
+        var a = document.createElement('a');
+        a.href = href;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'btn btn-ghost btn-sm';
+        a.innerHTML = iconSvg + ' ' + label;
+        modalFooter.appendChild(a);
       }
-      if (person.webpagelab) {
-        footerHtml += '<a href="' + person.webpagelab + '" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">' + labIcon() + ' Lab</a>';
+
+      addLink(person.webpage, 'Website', websiteIcon());
+      addLink(person.webpagelab, 'Lab', labIcon());
+      addLink(person.scholar, 'Google Scholar', websiteIcon());
+      addLink(person.dblp, 'DBLP', websiteIcon());
+      if (person.orcid) {
+        var orcidHref = /^https?:\/\//.test(person.orcid) ? person.orcid : 'https://orcid.org/' + person.orcid;
+        addLink(orcidHref, 'ORCID', websiteIcon());
       }
-      modalFooter.innerHTML = footerHtml;
+      addLink('https://eprint.iacr.org/search?q=' + encodeURIComponent(person.name || ''), 'ePrint', websiteIcon());
+      addLink(person.linkedin, 'LinkedIn', linkedinIcon());
+
+      // Email is deliberately never present in `person` — it's excluded from
+      // the data-person JSON blob (see person-card.html and
+      // _plugins/person_filters.rb) so it never sits in plain HTML. It's
+      // decoded here, only at the moment this specific modal opens, from the
+      // card's own base64 attribute, and rendered as copy-to-clipboard rather
+      // than a mailto: link or visible text.
+      var emailEnc = card ? card.dataset.emailEnc : '';
+      if (emailEnc) {
+        var email = '';
+        try { email = atob(emailEnc); } catch (e) { email = ''; }
+        if (email) {
+          var copyBtn = document.createElement('button');
+          copyBtn.type = 'button';
+          copyBtn.className = 'btn btn-ghost btn-sm';
+          copyBtn.innerHTML = copyIcon() + ' Copy Email';
+
+          function showCopied() {
+            copyBtn.innerHTML = checkIcon() + ' Copied!';
+            setTimeout(function () {
+              copyBtn.innerHTML = copyIcon() + ' Copy Email';
+            }, 1800);
+          }
+
+          // Fallback for browsers/contexts that reject the async Clipboard
+          // API (no permission granted, insecure context, older browser).
+          // execCommand is deprecated but still works synchronously inside a
+          // real user gesture, which this click handler always is.
+          function fallbackCopy() {
+            var ta = document.createElement('textarea');
+            ta.value = email;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.focus();
+            ta.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+            document.body.removeChild(ta);
+            return ok;
+          }
+
+          copyBtn.addEventListener('click', function () {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(email).then(showCopied, function () {
+                if (fallbackCopy()) {
+                  showCopied();
+                } else {
+                  copyBtn.innerHTML = 'Copy failed — ' + email;
+                }
+              });
+            } else if (fallbackCopy()) {
+              showCopied();
+            } else {
+              copyBtn.innerHTML = 'Copy failed — ' + email;
+            }
+          });
+          modalFooter.appendChild(copyBtn);
+        }
+      }
+
+      if (card && card.dataset.slug) {
+        history.replaceState(null, '', '#' + card.dataset.slug);
+      }
 
       lastFocused = document.activeElement;
       modalOverlay.classList.add('open');
@@ -273,33 +364,37 @@
     function closeModal() {
       modalOverlay.classList.remove('open');
       document.body.classList.remove('modal-open');
+      if (location.hash) {
+        history.replaceState(null, '', location.pathname + location.search);
+      }
       if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
     }
 
-    personCards.forEach(function (card) {
-      function trigger() {
-        var raw = card.dataset.person;
-        if (!raw) return;
-        var person;
-        try {
-          person = JSON.parse(raw);
-        } catch (e) {
-          return;
-        }
-        var avatar = card.querySelector('.person-avatar');
-        openModal(person, avatar ? avatar.style.background : '');
+    function openCardModal(card) {
+      var raw = card.dataset.person;
+      if (!raw) return;
+      var person;
+      try {
+        person = JSON.parse(raw);
+      } catch (e) {
+        return;
       }
+      var avatar = card.querySelector('.person-avatar');
+      openModal(person, avatar ? avatar.style.background : '', card);
+    }
 
+    // Each card is a real <a href="/people/#slug"> (see person-card.html) so
+    // it works with no JS at all — right-click/middle-click/ctrl-click all
+    // behave exactly as a link should, and on pages without a modal (the
+    // homepage's featured grid) it's just a normal navigation to that
+    // person's deep-linked profile. Here, where a modal exists, the click is
+    // intercepted to open it in place instead of navigating away. Native
+    // anchor behavior already fires this same 'click' handler for Enter, so
+    // no separate keydown handling is needed.
+    personCards.forEach(function (card) {
       card.addEventListener('click', function (e) {
-        if (e.target.closest('a')) return;
-        trigger();
-      });
-
-      card.addEventListener('keydown', function (e) {
-        if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a')) {
-          e.preventDefault();
-          trigger();
-        }
+        e.preventDefault();
+        openCardModal(card);
       });
     });
 
@@ -312,6 +407,19 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
     });
+
+    // Deep-linkable profiles: /people/#slug (or the homepage's featured
+    // grid, which uses the same cards) opens that researcher's modal
+    // directly on load.
+    if (location.hash) {
+      var initialSlug = decodeURIComponent(location.hash.slice(1));
+      for (var ci = 0; ci < personCards.length; ci++) {
+        if (personCards[ci].dataset.slug === initialSlug) {
+          openCardModal(personCards[ci]);
+          break;
+        }
+      }
+    }
   }
 
   /* ============================================================

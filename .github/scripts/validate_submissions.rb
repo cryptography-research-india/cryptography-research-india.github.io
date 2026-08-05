@@ -21,6 +21,7 @@ errors = []
 
 URL_RE = %r{\Ahttps?://[^\s]+\z}
 EMAIL_RE = /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/
+ORCID_RE = /\A\d{4}-\d{4}-\d{4}-\d{3}[\dX]\z/
 VALID_SECTOR_TAGS = %w[ACADEMIA INDUSTRY].freeze
 VALID_LOCATION_TAGS = %w[WORKING_IN_INDIA WORKING_ABROAD].freeze
 
@@ -58,11 +59,21 @@ if File.exist?(people_path)
       error(errors, src, "`tags` must include one of #{VALID_LOCATION_TAGS.join(' / ')}")
     end
 
-    %w[webpage webpagelab].each do |key|
+    %w[webpage webpagelab scholar dblp linkedin].each do |key|
       value = person[key]
       if value && !value.to_s.strip.empty? && value.to_s.strip !~ URL_RE
         error(errors, src, "`#{key}` is not a valid http(s) URL: #{value}")
       end
+    end
+
+    email = person["email"]
+    if email && !email.to_s.strip.empty? && email.to_s.strip !~ EMAIL_RE
+      error(errors, src, "`email` is not a valid email address: #{email}")
+    end
+
+    orcid = person["orcid"]
+    if orcid && !orcid.to_s.strip.empty? && orcid.to_s.strip !~ ORCID_RE
+      error(errors, src, "`orcid` is not a valid ORCID iD (expected 0000-0000-0000-000X): #{orcid}")
     end
 
     next if person["name"].to_s.strip.empty?

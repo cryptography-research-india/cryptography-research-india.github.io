@@ -37,6 +37,11 @@ jobs:
             const rawAreas    = field('Research Areas');
             const webpage     = field('Personal Webpage URL');
             const lab         = field('Lab / Group URL \\(optional\\)');
+            const email       = field('Email ID \\(optional\\)');
+            const orcid       = field('ORCID iD \\(optional\\)');
+            const scholar     = field('Google Scholar Profile URL \\(optional\\)');
+            const dblp        = field('DBLP Profile URL \\(optional\\)');
+            const linkedin    = field('LinkedIn Profile URL \\(optional\\)');
             const sector      = field('Sector');
             const location    = field('Currently based in');
 
@@ -69,6 +74,15 @@ jobs:
             if (researchAreas.length) {
               yaml += `  research: ${researchAreas.join(', ')}\n`;
             }
+            // Optional profile links. `email` is deliberately never rendered as
+            // plaintext in the site's HTML (see _plugins/person_filters.rb) —
+            // that's a rendering-time concern, not a data-storage one, so it's
+            // stored plainly here like everything else.
+            if (email    && email    !== '_No response_') yaml += `  email: ${email}\n`;
+            if (orcid    && orcid    !== '_No response_') yaml += `  orcid: ${orcid}\n`;
+            if (scholar  && scholar  !== '_No response_') yaml += `  scholar: ${scholar}\n`;
+            if (dblp     && dblp     !== '_No response_') yaml += `  dblp: ${dblp}\n`;
+            if (linkedin && linkedin !== '_No response_') yaml += `  linkedin: ${linkedin}\n`;
             yaml += `  tags: [${tags.join(', ')}]\n`;
 
             // Read existing file and append
@@ -98,6 +112,133 @@ jobs:
               ...context.repo,
               title: `Add researcher: ${name}`,
               body: `Submitted via [Issue #${issue.number}](${issue.html_url}) by @${issue.user.login}.\n\n**Entry preview:**\n\`\`\`yaml\n${yaml}\`\`\`\n\n### Checklist\n- [ ] Name and affiliation are correct\n- [ ] Research areas are accurate\n- [ ] Tags are appropriate`,
+              head: branch,
+              base: 'master',
+            });
+
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: issue.number,
+              body: `✅ Thanks! A PR has been created for review: ${pr.data.html_url}\n\nA maintainer will review and merge it shortly.`,
+            });
+
+  # ── Edit My Profile ─────────────────────────────────────────────────────────
+  edit-researcher:
+    if: contains(github.event.issue.labels.*.name, 'edit-researcher')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Parse issue and update researcher entry
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body  = issue.body || '';
+
+            function field(label) {
+              const re = new RegExp(`### ${label}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const m  = body.match(re);
+              return m ? m[1].trim() : '';
+            }
+
+            const name = field('Full Name \\(exactly as listed on the People page\\)');
+
+            if (!name) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issue.number,
+                body: '❌ Could not parse the researcher name. Please make sure the Full Name field is filled in.',
+              });
+              return;
+            }
+
+            const updates = {
+              email:    field('Email ID \\(optional\\)'),
+              orcid:    field('ORCID iD \\(optional\\)'),
+              scholar:  field('Google Scholar Profile URL \\(optional\\)'),
+              dblp:     field('DBLP Profile URL \\(optional\\)'),
+              linkedin: field('LinkedIn Profile URL \\(optional\\)'),
+            };
+            for (const key of Object.keys(updates)) {
+              if (!updates[key] || updates[key] === '_No response_') delete updates[key];
+            }
+
+            if (Object.keys(updates).length === 0) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issue.number,
+                body: '❌ No fields to update — please fill in at least one of Email, ORCID, Google Scholar, DBLP, or LinkedIn.',
+              });
+              return;
+            }
+
+            const { data: fileData } = await github.rest.repos.getContent({
+              ...context.repo,
+              path: '_data/names-people.yml',
+              ref: 'master',
+            });
+            const existing = Buffer.from(fileData.content, 'base64').toString('utf8');
+
+            // Locate this researcher's entry block (from its `- name:` line up
+            // to, but not including, the next `- name:` line or end of file).
+            const escaped = name.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const blockRe = new RegExp(`(- name: ${escaped}\\s*\\n)([\\s\\S]*?)(?=\\n- name: |$)`, 'i');
+            const match = existing.match(blockRe);
+
+            if (!match) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issue.number,
+                body: `❌ Could not find a researcher named **${name}** in the directory. Please check that this matches the name exactly as shown on the [People page](https://cryptography-research-india.github.io/people/) — if you're not listed yet, use "Add Yourself" instead.`,
+              });
+              return;
+            }
+
+            const [, header, entryBody] = match;
+            const lines = entryBody.split('\n');
+            const changed = [];
+
+            for (const [key, value] of Object.entries(updates)) {
+              const lineIdx = lines.findIndex(l => l.trim().startsWith(`${key}:`));
+              const newLine = `  ${key}: ${value}`;
+              if (lineIdx !== -1) {
+                lines[lineIdx] = newLine;
+              } else {
+                // New fields are inserted right before `tags:` to match the
+                // field order the Add Researcher automation already writes.
+                const tagsIdx = lines.findIndex(l => l.trim().startsWith('tags:'));
+                if (tagsIdx !== -1) {
+                  lines.splice(tagsIdx, 0, newLine);
+                } else {
+                  let insertAt = lines.length;
+                  while (insertAt > 0 && lines[insertAt - 1].trim() === '') insertAt--;
+                  lines.splice(insertAt, 0, newLine);
+                }
+              }
+              changed.push(key);
+            }
+
+            const updatedBody = lines.join('\n');
+            const newContent = existing.slice(0, match.index) + header + updatedBody
+              + existing.slice(match.index + match[0].length);
+
+            const branch = `submission/edit-researcher-${issue.number}`;
+            const { data: ref } = await github.rest.git.getRef({ ...context.repo, ref: 'heads/master' });
+            await github.rest.git.createRef({ ...context.repo, ref: `refs/heads/${branch}`, sha: ref.object.sha });
+            await github.rest.repos.createOrUpdateFileContents({
+              ...context.repo,
+              path: '_data/names-people.yml',
+              message: `Update researcher profile: ${name}`,
+              content: Buffer.from(newContent).toString('base64'),
+              sha: fileData.sha,
+              branch,
+            });
+
+            const pr = await github.rest.pulls.create({
+              ...context.repo,
+              title: `Update researcher profile: ${name}`,
+              body: `Submitted via [Issue #${issue.number}](${issue.html_url}) by @${issue.user.login}.\n\n**Fields updated:** ${changed.join(', ')}\n\n### Checklist\n- [ ] The submitter is actually this person (or authorized to edit on their behalf)\n- [ ] Updated values are correct`,
               head: branch,
               base: 'master',
             });

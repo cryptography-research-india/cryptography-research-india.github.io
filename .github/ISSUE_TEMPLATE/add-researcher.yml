@@ -55,6 +55,36 @@ body:
       label: Lab / Group URL (optional)
       placeholder: https://
 
+  - type: input
+    id: email
+    attributes:
+      label: Email ID (optional)
+      placeholder: you@institution.ac.in
+
+  - type: input
+    id: orcid
+    attributes:
+      label: ORCID iD (optional)
+      placeholder: e.g. 0000-0002-1825-0097
+
+  - type: input
+    id: scholar
+    attributes:
+      label: Google Scholar Profile URL (optional)
+      placeholder: https://scholar.google.com/citations?user=...
+
+  - type: input
+    id: dblp
+    attributes:
+      label: DBLP Profile URL (optional)
+      placeholder: https://dblp.org/pid/...
+
+  - type: input
+    id: linkedin
+    attributes:
+      label: LinkedIn Profile URL (optional)
+      placeholder: https://www.linkedin.com/in/...
+
   - type: dropdown
     id: type
     attributes:
