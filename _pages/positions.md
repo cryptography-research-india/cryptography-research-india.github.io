@@ -32,6 +32,35 @@ permalink: /positions/
       </div>
     </div>
 
+    {% assign today_ts = 'now' | date: '%s' %}
+    {% assign open_dated = "" | split: "," %}
+    {% assign open_undated = "" | split: "," %}
+    {% assign closed_positions = "" | split: "," %}
+
+    {% for pos in site.positions %}
+      {% if pos.deadline %}
+        {% assign deadline_ts = pos.deadline | date: '%s' %}
+        {% if deadline_ts >= today_ts %}
+          {% assign open_dated = open_dated | push: pos %}
+        {% else %}
+          {% assign closed_positions = closed_positions | push: pos %}
+        {% endif %}
+      {% else %}
+        {% assign open_undated = open_undated | push: pos %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign open_dated = open_dated | sort: "deadline" %}
+    {% assign closed_positions = closed_positions | sort: "deadline" | reverse %}
+    {% assign open_positions = open_dated | concat: open_undated %}
+
+    {% if open_positions.size > 0 %}
+    <div class="position-grid">
+      {% for pos in open_positions %}
+        {% include position-card.html position=pos closed=false %}
+      {% endfor %}
+    </div>
+    {% else %}
     <div class="glass" style="border-radius:var(--radius-lg);padding:2.5rem;text-align:center;">
       <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="opacity:0.35;margin:0 auto 1rem;display:block;color:var(--text-muted)">
         <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
@@ -43,6 +72,18 @@ permalink: /positions/
         You can also submit a position using the button above.
       </p>
     </div>
+    {% endif %}
+
+    {% if closed_positions.size > 0 %}
+    <details class="positions-closed-details">
+      <summary>{{ closed_positions.size }} closed position{% if closed_positions.size != 1 %}s{% endif %} &mdash; past deadline</summary>
+      <div class="position-grid position-grid-closed">
+        {% for pos in closed_positions %}
+          {% include position-card.html position=pos closed=true %}
+        {% endfor %}
+      </div>
+    </details>
+    {% endif %}
 
     <div class="prose" style="margin-top:3rem;">
       <h2>What kind of positions are listed here?</h2>

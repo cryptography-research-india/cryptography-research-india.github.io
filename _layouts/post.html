@@ -16,7 +16,7 @@ layout: default
         </time>
         {% if page.categories %}
           {% for cat in page.categories limit:2 %}
-            <span class="tag tag-category">{{ cat }}</span>
+            <a href="{{ '/categories/' | relative_url }}#{{ cat | slugify }}" class="tag tag-category">{{ cat }}</a>
           {% endfor %}
         {% endif %}
       </div>
@@ -29,7 +29,7 @@ layout: default
       {% if page.tags and page.tags.size > 0 %}
       <div class="post-tags-hero">
         {% for tag in page.tags %}
-          <span class="tag tag-sm">{{ tag }}</span>
+          <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag tag-sm">{{ tag }}</a>
         {% endfor %}
       </div>
       {% endif %}

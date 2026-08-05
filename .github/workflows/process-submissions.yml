@@ -60,13 +60,14 @@ jobs:
               .map(l => l.replace(/^[-*]\s*/, '').trim())
               .filter(Boolean);
 
-            // Build YAML entry
+            // Build YAML entry. Note: the site schema (person-card.html, main.js,
+            // home.html) expects `research` as a single comma-joined string and
+            // `webpagelab` (not `lab`) for the lab/group URL — must match exactly.
             let yaml = `- name: ${name}\n  designation: ${designation}\n  affiliation: ${affiliation}\n`;
             if (webpage && webpage !== '_No response_') yaml += `  webpage: ${webpage}\n`;
-            if (lab && lab !== '_No response_')         yaml += `  lab: ${lab}\n`;
+            if (lab && lab !== '_No response_')         yaml += `  webpagelab: ${lab}\n`;
             if (researchAreas.length) {
-              yaml += `  research_areas:\n`;
-              researchAreas.forEach(a => { yaml += `    - ${a}\n`; });
+              yaml += `  research: ${researchAreas.join(', ')}\n`;
             }
             yaml += `  tags: [${tags.join(', ')}]\n`;
 
@@ -149,7 +150,21 @@ jobs:
             const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
             const filename = `_positions/${date}-${slug}.md`;
 
-            const content = `---\ntitle: "${title}"\norganization: "${org}"\ntype: "${type}"\nlocation: "${location}"\ndeadline: "${deadline}"\nlink: "${link}"\n${contact && contact !== '_No response_' ? `contact: "${contact}"\n` : ''}date: ${date}\n---\n\n${description}\n`;
+            // The positions page sorts/expires listings by `deadline`, which needs
+            // to be a real ISO date to compare. Free-text deadlines (e.g. "Rolling",
+            // "Open until filled") are kept as `deadline_display` and treated as
+            // always-open instead of being silently misparsed.
+            const rawDeadline = deadline && deadline !== '_No response_' ? deadline.trim() : '';
+            const isIsoDeadline = /^\d{4}-\d{2}-\d{2}$/.test(rawDeadline);
+
+            let frontmatter = `---\ntitle: "${title}"\norganization: "${org}"\ntype: "${type}"\nlocation: "${location}"\n`;
+            if (isIsoDeadline) {
+              frontmatter += `deadline: ${rawDeadline}\n`;
+            } else if (rawDeadline) {
+              frontmatter += `deadline_display: "${rawDeadline.replace(/"/g, '\\"')}"\n`;
+            }
+            frontmatter += `link: "${link}"\n${contact && contact !== '_No response_' ? `contact: "${contact}"\n` : ''}date: ${date}\n---\n\n${description}\n`;
+            const content = frontmatter;
 
             // Create branch and commit
             const branch = `submission/position-${issue.number}`;
