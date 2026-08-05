@@ -1,0 +1,17 @@
+name: Validate Submissions
+
+on:
+  pull_request:
+    paths:
+      - "_data/names-people.yml"
+      - "_data/collaborations.yml"
+      - "_positions/**"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Validate submission data
+        run: ruby .github/scripts/validate_submissions.rb
