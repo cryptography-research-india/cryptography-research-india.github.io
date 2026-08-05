@@ -1,0 +1,46 @@
+name: Edit My Profile
+description: Add or update optional profile links on your existing researcher listing
+labels: ["edit-researcher"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Already listed on the [People page](https://cryptography-research-india.github.io/people/)? Use this to add or update your optional profile links. Leave any field blank to leave it unchanged — only fields you fill in will be updated.
+
+  - type: input
+    id: name
+    attributes:
+      label: Full Name (exactly as listed on the People page)
+      placeholder: e.g. Arpita Patra
+    validations:
+      required: true
+
+  - type: input
+    id: email
+    attributes:
+      label: Email ID (optional)
+      placeholder: you@institution.ac.in
+
+  - type: input
+    id: orcid
+    attributes:
+      label: ORCID iD (optional)
+      placeholder: e.g. 0000-0002-1825-0097
+
+  - type: input
+    id: scholar
+    attributes:
+      label: Google Scholar Profile URL (optional)
+      placeholder: https://scholar.google.com/citations?user=...
+
+  - type: input
+    id: dblp
+    attributes:
+      label: DBLP Profile URL (optional)
+      placeholder: https://dblp.org/pid/...
+
+  - type: input
+    id: linkedin
+    attributes:
+      label: LinkedIn Profile URL (optional)
+      placeholder: https://www.linkedin.com/in/...
