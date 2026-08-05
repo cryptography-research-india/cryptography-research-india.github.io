@@ -1718,6 +1718,23 @@ body.modal-open {
 }
 
 /* ============================================================
+   CATEGORY / TAG ARCHIVE
+   ============================================================ */
+.archive-group {
+  margin-bottom: 3rem;
+  scroll-margin-top: 90px;
+}
+
+.archive-group-header {
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+
+.archive-group-title {
+  font-size: 1.4rem;
+}
+
+/* ============================================================
    POSITIONS PAGE
    ============================================================ */
 .positions-cta {
@@ -1736,6 +1753,115 @@ body.modal-open {
 .positions-cta p {
   max-width: 520px;
   margin: 0 auto 1.5rem;
+}
+
+.position-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.position-card {
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: all var(--transition-slow);
+}
+
+.position-card:hover {
+  border-color: rgba(0, 255, 136, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.position-card-closed {
+  opacity: 0.6;
+}
+
+.position-card-closed:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.position-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.position-card-title {
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.position-card-org {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.position-badge-closed {
+  background: rgba(148, 163, 184, 0.15);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: var(--text-dim);
+}
+
+.position-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.position-card-desc {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.position-card-desc p {
+  margin-bottom: 0;
+}
+
+.position-card-footer {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.positions-closed-details {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.positions-closed-details summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  list-style: none;
+}
+
+.positions-closed-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.positions-closed-details summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform var(--transition);
+}
+
+.positions-closed-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.positions-closed-details .position-grid-closed {
+  margin-top: 1.25rem;
+  margin-bottom: 0;
 }
 
 /* ============================================================
