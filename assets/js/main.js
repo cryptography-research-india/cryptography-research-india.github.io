@@ -88,6 +88,17 @@
       ['ACADEMIA', 'INDUSTRY'],
       ['WORKING_IN_INDIA', 'WORKING_ABROAD']
     ];
+
+    // Topic codes (MPC, ZKP, ...) form their own OR-group, read directly off
+    // whatever buttons are actually on the page — the canonical list lives
+    // in _data/topics.yml, not duplicated here.
+    var topicFilterBtns = document.querySelectorAll('.topic-filter-pills [data-filter]');
+    if (topicFilterBtns.length) {
+      FILTER_GROUPS.push(Array.prototype.map.call(topicFilterBtns, function (b) {
+        return b.dataset.filter;
+      }));
+    }
+
     var activeFilters = new Set();
 
     // Assign gradient colors to avatars based on index

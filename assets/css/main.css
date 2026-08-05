@@ -933,6 +933,40 @@ p {
   color: var(--cyan);
 }
 
+.topic-filter-details {
+  margin-bottom: 2rem;
+}
+
+.topic-filter-details summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  list-style: none;
+}
+
+.topic-filter-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.topic-filter-details summary::before {
+  content: "▸";
+  display: inline-block;
+  margin-right: 0.5rem;
+  transition: transform var(--transition);
+}
+
+.topic-filter-details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.topic-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
 .people-count {
   margin-left: auto;
   font-family: var(--font-mono);
