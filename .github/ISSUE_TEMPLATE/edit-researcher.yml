@@ -15,6 +15,26 @@ body:
     validations:
       required: true
 
+  - type: checkboxes
+    id: topics
+    attributes:
+      label: Topics (optional)
+      description: Select any topics to set/replace your topics list. Leave all unchecked to leave your topics unchanged.
+      options:
+        - label: Multi-Party Computation (MPC)
+        - label: Zero-Knowledge Proofs (ZKP)
+        - label: Fully Homomorphic Encryption (FHE)
+        - label: Public Key Cryptography
+        - label: Symmetric Cryptography
+        - label: Post-Quantum Cryptography (PQC)
+        - label: Privacy-Preserving ML (PPML)
+        - label: Blockchain / Distributed Ledger
+        - label: Hardware Security / TEEs
+        - label: Applied Cryptography
+        - label: Theoretical Cryptography
+        - label: Security Protocols
+        - label: Coding Theory / Information Theory
+
   - type: input
     id: email
     attributes:

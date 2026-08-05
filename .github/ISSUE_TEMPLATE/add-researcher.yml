@@ -43,6 +43,26 @@ body:
     validations:
       required: true
 
+  - type: checkboxes
+    id: topics
+    attributes:
+      label: Topics (optional)
+      description: Select all that apply — used to power topic filtering on the People page
+      options:
+        - label: Multi-Party Computation (MPC)
+        - label: Zero-Knowledge Proofs (ZKP)
+        - label: Fully Homomorphic Encryption (FHE)
+        - label: Public Key Cryptography
+        - label: Symmetric Cryptography
+        - label: Post-Quantum Cryptography (PQC)
+        - label: Privacy-Preserving ML (PPML)
+        - label: Blockchain / Distributed Ledger
+        - label: Hardware Security / TEEs
+        - label: Applied Cryptography
+        - label: Theoretical Cryptography
+        - label: Security Protocols
+        - label: Coding Theory / Information Theory
+
   - type: input
     id: webpage
     attributes:

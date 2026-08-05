@@ -50,6 +50,7 @@ body:
         - label: Applied Cryptography
         - label: Theoretical Cryptography
         - label: Security Protocols
+        - label: Coding Theory / Information Theory
 
   - type: dropdown
     id: seeking

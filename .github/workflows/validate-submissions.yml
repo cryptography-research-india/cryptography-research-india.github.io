@@ -5,6 +5,7 @@ on:
     paths:
       - "_data/names-people.yml"
       - "_data/collaborations.yml"
+      - "_data/topics.yml"
       - "_positions/**"
 
 jobs:
