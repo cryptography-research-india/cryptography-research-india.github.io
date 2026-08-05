@@ -25,6 +25,19 @@ module Jekyll
 
       Base64.strict_encode64(input.to_s.strip)
     end
+
+    # Returns up to the first 2 initials from a name, e.g. "Arpita Patra" ->
+    # "AP". `split(' ') | map: 'first' | join` doesn't work in Liquid — `map`
+    # pulls a hash/object property named "first" off each item, it doesn't
+    # take the first character of a string — so that chain silently produces
+    # an empty string for every person without a `photo`. This mirrors the
+    # (correct) equivalent already used client-side in the researcher modal's
+    # getInitials() in assets/js/main.js.
+    def initials(name)
+      return "" if name.nil? || name.to_s.strip.empty?
+
+      name.to_s.split(/\s+/).reject(&:empty?).map { |word| word[0] }.join.slice(0, 2).to_s.upcase
+    end
   end
 end
 
