@@ -737,10 +737,12 @@ p {
    PERSON CARD
    ============================================================ */
 .person-card {
+  display: block;
   border-radius: var(--radius-lg);
   transition: all var(--transition-slow);
   overflow: hidden;
   animation: fadeInUp 0.5s ease both;
+  cursor: pointer;
 }
 
 .person-card:hover {
@@ -803,16 +805,6 @@ p {
   margin-bottom: 0.2rem;
 }
 
-.person-name a {
-  color: var(--text);
-  text-decoration: none;
-  transition: color var(--transition);
-}
-
-.person-name a:hover {
-  color: var(--green);
-}
-
 .person-designation {
   font-size: 0.82rem;
   color: var(--text-muted);
@@ -846,6 +838,25 @@ p {
   padding-top: 0.5rem;
   border-top: 1px solid var(--border);
   margin-top: auto;
+}
+
+.person-modal-links {
+  gap: 0.6rem;
+}
+
+.person-card-hint {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.person-card:hover .person-card-hint,
+.person-card:focus-visible .person-card-hint {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ============================================================
@@ -948,10 +959,6 @@ p {
 
 #search-people:focus {
   border-color: rgba(0, 255, 136, 0.35);
-}
-
-.person-card {
-  cursor: pointer;
 }
 
 /* ============================================================
