@@ -19,6 +19,11 @@ permalink: /people/
         ✏️ Edit My Profile
       </a>
     </div>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-top:1rem;max-width:560px;margin-left:auto;margin-right:auto;">
+      This directory focuses on faculty and industry researchers actively leading work in the field. We don't yet track graduate students and postdocs individually given how many are doing excellent work across India — but if you're a student or postdoc, check out
+      <a href="{{ '/collaborations/' | relative_url }}" style="color:var(--cyan)">Collaborations</a> to connect with people working in your area, or
+      <a href="{{ '/positions/' | relative_url }}" style="color:var(--cyan)">Positions</a> if you're looking for one.
+    </p>
   </div>
 </div>
 
