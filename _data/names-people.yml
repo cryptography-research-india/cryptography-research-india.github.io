@@ -7,6 +7,7 @@
   research: Secure Multiparty Computation, Privacy-preserving Machine Learning
   topics: [MPC, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/ajith-suresh.jpg
 
 - name: Arpita Patra
   designation: Associate Professor
@@ -16,6 +17,7 @@
   research: Secure Multiparty Computation
   topics: [MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/arpita-patra.jpg
 
 - name: Ashish Choudhury
   designation: Associate Professor
@@ -25,6 +27,7 @@
   research: Secure Multiparty Computation
   topics: [MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/ashish-choudhury.jpg
 
 - name: Bhavana Kanukurthi
   designation: Associate Professor
@@ -34,6 +37,7 @@
   research: Non-malleable Codes, Information Theory
   topics: [THEORETICAL, CODING, MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/bhavana-kanukurthi.jpg
 
 - name: Chaya Ganesh
   designation: Assistant Professor
@@ -43,6 +47,7 @@
   research: Cryptography, Zero-knowledge Proofs
   topics: [ZKP, THEORETICAL]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/chaya-ganesh.jpg
 
 - name: Debdeep Mukhopadhyay
   designation: Institute Chair Professor
@@ -52,6 +57,7 @@
   research: Cryptography, Hardware Security
   topics: [HARDWARE]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/debdeep-mukhopadhyay.jpg
 
 - name: Divya Gupta
   designation: Principal Researcher
@@ -60,6 +66,7 @@
   research: Applied Cryptography, Secure Multi-party Computation, Blockchain
   topics: [APPLIED, MPC, BLOCKCHAIN]
   tags: [INDUSTRY, WORKING_IN_INDIA]
+  photo: /assets/images/people/divya-gupta.jpg
 
 - name: Divya Ravi
   designation: Assistant Professor
@@ -69,6 +76,7 @@
   research: Secure Multi-party Computation, Distributed Computing
   topics: [MPC, THEORETICAL]
   tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/divya-ravi.jpg
 
 - name: Manoj M. Prabhakaran
   designation: Professor
@@ -78,6 +86,7 @@
   research: Theoretical and Applied Cryptography
   topics: [THEORETICAL, APPLIED]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/manoj-m-prabhakaran.jpg
 
 - name: Mridul Nandi
   designation: Professor
@@ -87,6 +96,7 @@
   research: Symmetric Cryptography
   topics: [SYMMETRIC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/mridul-nandi.jpg
 
 - name: Nishanth Chandran
   designation: Principal Researcher
@@ -95,6 +105,7 @@
   research: Applied Cryptography, Confidential Computing, Secure Computation
   topics: [APPLIED, MPC]
   tags: [INDUSTRY, WORKING_IN_INDIA]
+  photo: /assets/images/people/nishanth-chandran.jpg
 
 - name: Nishat Koti
   designation: Cryptography Researcher
@@ -104,6 +115,7 @@
   research: Secure Multi-party Computation, Privacy-preserving Machine Learning
   topics: [MPC, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/nishat-koti.jpg
 
 - name: Nitin Singh
   designation: Researcher
@@ -112,6 +124,7 @@
   research: Applied Cryptography, Blockchain
   topics: [APPLIED, BLOCKCHAIN]
   tags: [INDUSTRY, WORKING_IN_INDIA]
+  photo: /assets/images/people/nitin-singh.jpg
 
 - name: Pankaj Dayama
   designation: Senior Technical Staff Member
@@ -120,6 +133,7 @@
   research: Applied Cryptography, Blockchain
   topics: [APPLIED, BLOCKCHAIN]
   tags: [INDUSTRY, WORKING_IN_INDIA]
+  photo: /assets/images/people/pankaj-dayama.jpg
 
 - name: Pradeep Mishra
   designation: Senior FHE Researcher
@@ -129,6 +143,7 @@
   research: Homomorphic Encryption
   topics: [FHE]
   tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/pradeep-mishra.jpg
 
 - name: Pratik Sarkar
   designation: Research Scientist
@@ -138,6 +153,7 @@
   research: Secure Multi-party Computation, Zero-Knowledge Proofs, Blockchain
   topics: [MPC, ZKP, BLOCKCHAIN]
   tags: [INDUSTRY, WORKING_IN_INDIA]
+  photo: /assets/images/people/pratik-sarkar.jpg
 
 - name: Pratyay Mukherjee
   designation: Senior Director of Research
@@ -147,6 +163,7 @@
   research: Cryptography in Payment and Blockchain
   topics: [BLOCKCHAIN, APPLIED]
   tags: [INDUSTRY, WORKING_IN_INDIA]
+  photo: /assets/images/people/pratyay-mukherjee.jpg
 
 - name: Rahul Rachuri
   designation: Staff Research Scientist
@@ -156,6 +173,7 @@
   research: Secure Multiparty Computation, Privacy-preserving Machine Learning
   topics: [MPC, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/rahul-rachuri.jpg
 
 - name: Sameer Wagh
   designation: Senior Research Engineer
@@ -165,6 +183,7 @@
   research: Secure Multiparty Computation, Homomorphic Encryption, Federated Learning
   topics: [MPC, FHE, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/sameer-wagh.jpg
 
 - name: Shweta Agrawal
   designation: Professor
@@ -174,6 +193,7 @@
   research: Theoretical Cryptography, Post-quantum cryptography
   topics: [THEORETICAL, PQC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/shweta-agrawal.jpg
 
 - name: Sikhar Patranabis
   designation: Research Scientist
@@ -182,6 +202,7 @@
   research: Theoretical and Applied Cryptography
   topics: [THEORETICAL, APPLIED]
   tags: [INDUSTRY, WORKING_IN_INDIA]
+  photo: /assets/images/people/sikhar-patranabis.jpg
 
 - name: Somitra Sanadhya
   designation: Professor
@@ -191,6 +212,7 @@
   research: Cryptology and Security, Blockchain
   topics: [SYMMETRIC, BLOCKCHAIN]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/somitra-sanadhya.jpg
 
 - name: Sruthi Sekhar
   designation: Assistant Professor
@@ -200,6 +222,7 @@
   research: Cryptography
   topics: [THEORETICAL, MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/sruthi-sekhar.jpg
 
 - name: Suvradip Chakraborty
   designation: Research Scientist
@@ -209,6 +232,7 @@
   research: Public-Key Cryptography
   topics: [PKC]
   tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/suvradip-chakraborty.jpg
 
 - name: Yashvanth Kondi
   designation: Principal Scientist
@@ -218,3 +242,4 @@
   research: Secure Multiparty Computation, Zero-knowledge proofs
   topics: [MPC, ZKP]
   tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/yashvanth-kondi.jpg
