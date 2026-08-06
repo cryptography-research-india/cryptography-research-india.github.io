@@ -19,6 +19,11 @@ permalink: /people/
         ✏️ Edit My Profile
       </a>
     </div>
+    <p style="color:var(--text-muted);font-size:0.85rem;margin-top:1rem;max-width:560px;margin-left:auto;margin-right:auto;">
+      This directory focuses on faculty and industry researchers actively leading work in the field. We don't yet track graduate students and postdocs individually given how many are doing excellent work across India — but if you're a student or postdoc, check out
+      <a href="{{ '/collaborations/' | relative_url }}" style="color:var(--cyan)">Collaborations</a> to connect with people working in your area, or
+      <a href="{{ '/positions/' | relative_url }}" style="color:var(--cyan)">Positions</a> if you're looking for one.
+    </p>
   </div>
 </div>
 
@@ -26,7 +31,7 @@ permalink: /people/
   <div class="container">
 
     <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem;">
-      This list is continuously updated. If we have missed someone, please
+      This list is continuously updated. Missing yourself? Use the ➕ Add Yourself button above — it only takes a minute. Spotted an error, or missing a colleague? Please
       <a href="https://github.com/cryptography-research-india/cryptography-research-india.github.io/pulls" target="_blank" style="color:var(--cyan)">submit a pull request</a>
       or email us at
       <a href="mailto:cryptography.research.india@gmail.com" style="color:var(--cyan)">cryptography.research.india@gmail.com</a>.

@@ -5,6 +5,11 @@
   webpage: https://ajithsuresh.github.io
   webpagelab: https://www.tii.ae/team/dr-ajith-suresh
   research: Secure Multiparty Computation, Privacy-preserving Machine Learning
+  email: ajith.suresh@tii.ae
+  orcid: 0000-0002-5164-7758
+  scholar: https://scholar.google.com/citations?user=uXP9hiMAAAAJ&hl=en
+  dblp: https://dblp.org/pid/187/5691.html
+  linkedin: https://www.linkedin.com/in/ajithsuresh/
   topics: [MPC, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/ajith-suresh.jpg
@@ -15,6 +20,11 @@
   webpage: https://www.csa.iisc.ac.in/~arpita/
   webpagelab: https://cris.csa.iisc.ac.in
   research: Secure Multiparty Computation
+  email: arpita@iisc.ac.in
+  orcid: 0000-0002-8036-4407
+  scholar: https://scholar.google.com/citations?user=RG6kKh8AAAAJ&hl=en
+  dblp: https://dblp.org/pid/64/3169.html
+  linkedin: https://in.linkedin.com/in/arpita-patra-83aa49223
   topics: [MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/arpita-patra.jpg
@@ -25,6 +35,11 @@
   webpage: https://sites.google.com/view/ashish-choudhury
   webpagelab: https://www.iiitb.ac.in/faculty/ashish-choudhury
   research: Secure Multiparty Computation
+  email: ashish.choudhury@iiitb.ac.in
+  orcid: 0000-0002-2428-9537
+  scholar: https://scholar.google.com/citations?user=ZYQXnKsAAAAJ&hl=en
+  dblp: https://dblp.org/pid/40/8319.html
+  linkedin: https://in.linkedin.com/in/ashish-choudhury-a0275943
   topics: [MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/ashish-choudhury.jpg
@@ -35,6 +50,10 @@
   webpage: https://www.csa.iisc.ac.in/~bhavana/
   webpagelab: https://www.csa.iisc.ac.in/~crysp/
   research: Non-malleable Codes, Information Theory
+  email: bhavana@iisc.ac.in
+  orcid: 0000-0001-7519-4477
+  scholar: https://scholar.google.com/citations?user=QYNU5jMAAAAJ&hl=en
+  dblp: https://dblp.org/pid/64/6728.html
   topics: [THEORETICAL, CODING, MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/bhavana-kanukurthi.jpg
@@ -45,6 +64,11 @@
   webpage: https://www.csa.iisc.ac.in/~chaya/
   webpagelab: https://www.csa.iisc.ac.in/~chaya/
   research: Cryptography, Zero-knowledge Proofs
+  email: chaya@iisc.ac.in
+  orcid: 0000-0002-2909-9177
+  scholar: https://scholar.google.com/citations?user=b_NnjeQAAAAJ&hl=en
+  dblp: https://dblp.org/pid/115/4391.html
+  linkedin: https://in.linkedin.com/in/chayaganesh
   topics: [ZKP, THEORETICAL]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/chaya-ganesh.jpg
@@ -55,15 +79,25 @@
   webpage: https://sites.google.com/view/debdeepmukhopadhyay/home
   webpagelab: http://cse.iitkgp.ac.in/resgrp/seal/
   research: Cryptography, Hardware Security
+  email: debdeep@cse.iitkgp.ac.in
+  orcid: 0000-0002-6499-8346
+  scholar: https://scholar.google.com/citations?user=lfhvrhYAAAAJ&hl=en
+  dblp: https://dblp.org/pid/85/3079.html
+  linkedin: https://www.linkedin.com/in/debdeep-mukhopadhyay-2671657/
   topics: [HARDWARE]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/debdeep-mukhopadhyay.jpg
 
 - name: Divya Gupta
   designation: Principal Researcher
-  affiliation: Micrososft Research India
+  affiliation: Microsoft Research India
   webpage: https://www.microsoft.com/en-us/research/people/digup/
   research: Applied Cryptography, Secure Multi-party Computation, Blockchain
+  email: divya.gupta@microsoft.com
+  orcid: 0000-0002-5255-350X
+  scholar: https://scholar.google.com/citations?user=OENnM3MAAAAJ&hl=en
+  dblp: https://dblp.org/pid/66/11477-1.html
+  linkedin: https://in.linkedin.com/in/divya-gupta-b1524822
   topics: [APPLIED, MPC, BLOCKCHAIN]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/divya-gupta.jpg
@@ -74,6 +108,10 @@
   webpage: https://sites.google.com/site/divyaraviiisc/
   webpagelab: https://ivi.fnwi.uva.nl/tcs/
   research: Secure Multi-party Computation, Distributed Computing
+  email: d.ravi@uva.nl
+  orcid: 0000-0001-6423-8331
+  scholar: https://scholar.google.com/citations?user=lSanMWUAAAAJ&hl=en
+  dblp: https://dblp.org/pid/208/2534.html
   topics: [MPC, THEORETICAL]
   tags: [ACADEMIA, WORKING_ABROAD]
   photo: /assets/images/people/divya-ravi.jpg
@@ -84,6 +122,10 @@
   webpage: https://www.cse.iitb.ac.in/~mp/
   webpagelab: https://trustlab.iitb.ac.in
   research: Theoretical and Applied Cryptography
+  email: mp@cse.iitb.ac.in
+  scholar: https://scholar.google.com/citations?user=FANRIhwAAAAJ&hl=en
+  dblp: https://dblp.org/pid/32/5105.html
+  linkedin: https://www.linkedin.com/in/manojmp/
   topics: [THEORETICAL, APPLIED]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/manoj-m-prabhakaran.jpg
@@ -94,15 +136,24 @@
   webpage: https://www.isical.ac.in/~mridul/
   webpagelab: https://www.isical.ac.in/~asu/
   research: Symmetric Cryptography
+  email: mridul.nandi@gmail.com
+  orcid: 0000-0002-1029-6576
+  scholar: https://scholar.google.com/citations?user=WUzh8tgAAAAJ&hl=en
+  dblp: https://dblp.org/pid/06/2136.html
   topics: [SYMMETRIC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/mridul-nandi.jpg
 
 - name: Nishanth Chandran
   designation: Principal Researcher
-  affiliation: Micrososft Research India
+  affiliation: Microsoft Research India
   webpage: https://www.microsoft.com/en-us/research/people/nichandr/
   research: Applied Cryptography, Confidential Computing, Secure Computation
+  email: nichandr@microsoft.com
+  orcid: 0000-0002-8528-9768
+  scholar: https://scholar.google.com/citations?user=nHiNfcgAAAAJ&hl=en
+  dblp: https://dblp.org/pid/77/5616.html
+  linkedin: https://www.linkedin.com/in/nishanth-chandran-21025a59
   topics: [APPLIED, MPC]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/nishanth-chandran.jpg
@@ -113,6 +164,11 @@
   webpage: https://sites.google.com/view/nishatskoti
   webpagelab: https://www.aztec-labs.com/team
   research: Secure Multi-party Computation, Privacy-preserving Machine Learning
+  email: kotinishat@gmail.com
+  orcid: 0000-0003-4923-8215
+  scholar: https://scholar.google.com/citations?user=BDEiaT8AAAAJ&hl=en
+  dblp: https://dblp.org/pid/160/3825.html
+  linkedin: https://www.linkedin.com/in/nishat-koti-825263128/
   topics: [MPC, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/nishat-koti.jpg
@@ -120,8 +176,12 @@
 - name: Nitin Singh
   designation: Researcher
   affiliation: IBM Research India
-  webpage: https://www.linkedin.com/in/nitin-singh-36b92796
+  webpage: https://research.ibm.com/people/nitin-singh
   research: Applied Cryptography, Blockchain
+  email: nitisin1@in.ibm.com
+  orcid: 0009-0009-7824-042X
+  scholar: https://scholar.google.com/citations?user=IBa70r4AAAAJ&hl=en
+  linkedin: https://www.linkedin.com/in/nitin-singh-36b92796/
   topics: [APPLIED, BLOCKCHAIN]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/nitin-singh.jpg
@@ -131,6 +191,11 @@
   affiliation: IBM Research India
   webpage: https://research.ibm.com/people/pankaj-dayama
   research: Applied Cryptography, Blockchain
+  email: pankajdayama@in.ibm.com
+  orcid: 0009-0005-7174-7528
+  scholar: https://scholar.google.com/citations?user=dDpul0QAAAAJ&hl=en
+  dblp: https://dblp.org/pid/63/10955.html
+  linkedin: https://www.linkedin.com/in/pankaj-dayama-62882a1/
   topics: [APPLIED, BLOCKCHAIN]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/pankaj-dayama.jpg
@@ -138,29 +203,43 @@
 - name: Pradeep Mishra
   designation: Senior FHE Researcher
   affiliation: Technology Innovation Institute (TII), UAE
-  webpage: https://www.linkedin.com/in/dr-pradeep-mishra-635019157/
+  webpage: https://www.tii.ae/team/dr-pradeep-kumar-mishra
   webpagelab: https://www.tii.ae/team/dr-pradeep-mishra
   research: Homomorphic Encryption
+  email: Pradeep.Mishra@tii.ae
+  orcid: 0009-0002-1773-592X
+  scholar: https://scholar.google.com/citations?user=iqEBGPsAAAAJ&hl=en
+  linkedin: https://www.linkedin.com/in/dr-pradeep-mishra-635019157/
   topics: [FHE]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/pradeep-mishra.jpg
 
 - name: Pratik Sarkar
   designation: Research Scientist
-  affiliation: Supra Research
+  affiliation: Obsidus Labs
   webpage: https://sites.google.com/view/pratiksarkar/welcome
   webpagelab: https://supra.com
   research: Secure Multi-party Computation, Zero-Knowledge Proofs, Blockchain
+  email: iampratiksarkar@gmail.com
+  orcid: 0000-0001-6370-0977
+  scholar: https://scholar.google.com/citations?user=wIgjxfkAAAAJ&hl=en
+  dblp: https://dblp.org/pid/140/5465.html
+  linkedin: https://www.linkedin.com/in/iampratiksarkar/
   topics: [MPC, ZKP, BLOCKCHAIN]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/pratik-sarkar.jpg
 
 - name: Pratyay Mukherjee
   designation: Senior Director of Research
-  affiliation: Supra Research
+  affiliation: Hashgraph
   webpage: https://pratyay.net
   webpagelab: https://supra.com
   research: Cryptography in Payment and Blockchain
+  email: pratyay85@gmail.com
+  orcid: 0000-0002-0995-9555
+  scholar: https://scholar.google.com/citations?user=hnxchQ8AAAAJ&hl=en
+  dblp: https://dblp.org/pid/128/5167.html
+  linkedin: https://www.linkedin.com/in/pratyay-mukherjee-77075930/
   topics: [BLOCKCHAIN, APPLIED]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/pratyay-mukherjee.jpg
@@ -171,6 +250,11 @@
   webpage: https://rahulrachuri.github.io
   webpagelab: https://usa.visa.com/about-visa/visa-research/people.html
   research: Secure Multiparty Computation, Privacy-preserving Machine Learning
+  email: pruners-treble.0g@icloud.com
+  orcid: 0000-0003-4541-3928
+  scholar: https://scholar.google.com/citations?user=0mNNRIcAAAAJ&hl=en
+  dblp: https://dblp.org/pid/234/1089.html
+  linkedin: https://www.linkedin.com/in/rahul-rachuri-b4a0a122/
   topics: [MPC, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/rahul-rachuri.jpg
@@ -181,6 +265,11 @@
   webpage: https://snwagh.github.io/
   webpagelab: https://openmined.org/
   research: Secure Multiparty Computation, Homomorphic Encryption, Federated Learning
+  email: swagh@alumni.princeton.edu
+  orcid: 0000-0002-6233-7149
+  scholar: https://scholar.google.com/citations?user=HA3kHUEAAAAJ
+  dblp: https://dblp.org/pid/175/1766.html
+  linkedin: https://www.linkedin.com/in/sameer-wagh-8a6116a7
   topics: [MPC, FHE, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/sameer-wagh.jpg
@@ -191,6 +280,9 @@
   webpage: https://www.cse.iitm.ac.in/~shwetaag/
   webpagelab: https://cystar.iitm.ac.in
   research: Theoretical Cryptography, Post-quantum cryptography
+  email: shweta@cse.iitm.ac.in
+  scholar: https://scholar.google.com/citations?user=uLkJ5_4AAAAJ&hl=en
+  dblp: https://dblp.org/pid/74/6138-1.html
   topics: [THEORETICAL, PQC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/shweta-agrawal.jpg
@@ -200,29 +292,44 @@
   affiliation: IBM Research India
   webpage: https://sites.google.com/site/sikharpatranabis/home
   research: Theoretical and Applied Cryptography
+  email: sikhar.patranabis@ibm.com
+  orcid: 0000-0002-2309-7939
+  scholar: https://scholar.google.com/citations?user=uZ6dDO4AAAAJ&hl=en
+  dblp: https://dblp.org/pid/163/2345.html
+  linkedin: https://www.linkedin.com/in/sikhar-patranabis-55024750/
   topics: [THEORETICAL, APPLIED]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/sikhar-patranabis.jpg
 
 - name: Somitra Sanadhya
   designation: Professor
-  affiliation: Indian Institute of Technology Jodhpur
+  affiliation: Indian Institute of Technology Kanpur (IITK)
   webpage: https://sites.google.com/view/somitra/
   webpagelab: https://sites.google.com/view/somitra/
   research: Cryptology and Security, Blockchain
+  email: somitra@iitk.ac.in
+  orcid: 0000-0003-1046-184X
+  scholar: https://scholar.google.com/citations?user=SZD5gEoAAAAJ&hl=en
+  dblp: https://dblp.org/pid/85/5213.html
+  linkedin: https://www.linkedin.com/in/somitra-sanadhya-4556a41
   topics: [SYMMETRIC, BLOCKCHAIN]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/somitra-sanadhya.jpg
 
-- name: Sruthi Sekhar
+- name: Sruthi Sekar
   designation: Assistant Professor
   affiliation: Indian Institute of Technology Bombay (IITB)
   webpage: https://sruthisekar.wordpress.com
   webpagelab: https://trustlab.iitb.ac.in/
   research: Cryptography
+  email: sruthi@cse.iitb.ac.in
+  orcid: 0000-0002-6681-1813
+  scholar: https://scholar.google.com/citations?user=Oo8c288AAAAJ&hl=en
+  dblp: https://dblp.org/pid/208/0806.html
+  linkedin: https://www.linkedin.com/in/sruthi-sekar-459b5438
   topics: [THEORETICAL, MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
-  photo: /assets/images/people/sruthi-sekhar.jpg
+  photo: /assets/images/people/sruthi-sekar.jpg
 
 - name: Suvradip Chakraborty
   designation: Research Scientist
@@ -230,6 +337,11 @@
   webpage: https://sites.google.com/view/suvradip/
   webpagelab: https://usa.visa.com/about-visa/visa-research/people.html
   research: Public-Key Cryptography
+  email: suvchakr@visa.com
+  orcid: 0000-0002-5352-4946
+  scholar: https://scholar.google.com/citations?user=Rcdb32YAAAAJ&hl=en
+  dblp: https://dblp.org/pid/161/6294.html
+  linkedin: https://www.linkedin.com/in/suvradip-chakraborty-86534958/
   topics: [PKC]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/suvradip-chakraborty.jpg
@@ -240,6 +352,10 @@
   webpage: https://www.ykondi.net
   webpagelab: https://www.silencelaboratories.com
   research: Secure Multiparty Computation, Zero-knowledge proofs
+  email: mail@ykondi.net
+  orcid: 0009-0008-1848-9234
+  scholar: https://scholar.google.com/citations?user=Af61R38AAAAJ&hl=en
+  dblp: https://dblp.org/pid/201/6467.html
   topics: [MPC, ZKP]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/yashvanth-kondi.jpg
