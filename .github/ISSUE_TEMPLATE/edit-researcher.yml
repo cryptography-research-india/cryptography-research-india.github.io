@@ -15,6 +15,21 @@ body:
     validations:
       required: true
 
+  - type: input
+    id: photo
+    attributes:
+      label: Photo URL (optional)
+      description: A direct link to an image (jpg/png/webp). Leave blank to leave your current photo unchanged. If filled in, this replaces any existing photo.
+      placeholder: https://example.com/your-photo.jpg
+
+  - type: checkboxes
+    id: remove_photo
+    attributes:
+      label: Remove photo
+      description: Only takes effect if the Photo URL field above is left blank.
+      options:
+        - label: Remove my current photo (falls back to initials)
+
   - type: checkboxes
     id: topics
     attributes:
