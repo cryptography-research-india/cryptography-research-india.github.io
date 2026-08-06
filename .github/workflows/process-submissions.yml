@@ -220,6 +220,8 @@ jobs:
             }
 
             const topicCodes = checkedOptions('Topics \\(optional\\)').map(label => TOPIC_CODE_BY_LABEL[label]).filter(Boolean);
+            const photoUrl = field('Photo URL \\(optional\\)');
+            const removePhotoChecked = checkedOptions('Remove photo').length > 0;
 
             const updates = {
               email:    field('Email ID \\(optional\\)'),
@@ -238,12 +240,19 @@ jobs:
             if (topicCodes.length) {
               updates.topics = `[${topicCodes.join(', ')}]`;
             }
+            if (photoUrl && photoUrl !== '_No response_') {
+              updates.photo = photoUrl;
+            }
 
-            if (Object.keys(updates).length === 0) {
+            // "Remove photo" only takes effect if no new photo URL was given
+            // (a URL always wins — it's the more explicit signal).
+            const removePhoto = removePhotoChecked && !updates.photo;
+
+            if (Object.keys(updates).length === 0 && !removePhoto) {
               await github.rest.issues.createComment({
                 ...context.repo,
                 issue_number: issue.number,
-                body: '❌ No fields to update — please fill in at least one of Email, ORCID, Google Scholar, DBLP, or LinkedIn.',
+                body: '❌ No fields to update — please fill in at least one of Photo, Topics, Email, ORCID, Google Scholar, DBLP, or LinkedIn, or check "Remove my current photo".',
               });
               return;
             }
@@ -292,6 +301,14 @@ jobs:
                 }
               }
               changed.push(key);
+            }
+
+            if (removePhoto) {
+              const photoIdx = lines.findIndex(l => l.trim().startsWith('photo:'));
+              if (photoIdx !== -1) {
+                lines.splice(photoIdx, 1);
+                changed.push('photo (removed)');
+              }
             }
 
             const updatedBody = lines.join('\n');

@@ -73,6 +73,14 @@ if File.exist?(people_path)
       end
     end
 
+    # `photo` is either a full http(s) URL (submitted via Edit My Profile) or
+    # a site-relative path like /assets/images/people/x.jpg (written by the
+    # fetch-researcher-photos.yml bot) — accept either shape.
+    photo = person["photo"]
+    if photo && !photo.to_s.strip.empty? && photo.to_s.strip !~ URL_RE && !photo.to_s.strip.start_with?("/")
+      error(errors, src, "`photo` must be an http(s) URL or a site-relative path starting with /: #{photo}")
+    end
+
     email = person["email"]
     if email && !email.to_s.strip.empty? && email.to_s.strip !~ EMAIL_RE
       error(errors, src, "`email` is not a valid email address: #{email}")
