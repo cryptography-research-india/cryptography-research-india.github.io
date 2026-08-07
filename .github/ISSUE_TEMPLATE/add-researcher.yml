@@ -65,6 +65,13 @@ body:
         - label: Coding Theory / Information Theory
 
   - type: input
+    id: photo
+    attributes:
+      label: Photo URL (optional)
+      description: A direct link to an image (jpg/png/webp). It'll be downloaded and resized to fit the site.
+      placeholder: https://example.com/your-photo.jpg
+
+  - type: input
     id: webpage
     attributes:
       label: Personal Webpage URL
