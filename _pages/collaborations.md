@@ -68,7 +68,10 @@ permalink: /collaborations/
     {% if site.data.collaborations.size > 0 %}
     <div class="collab-grid" id="collab-grid">
       {% for collab in site.data.collaborations %}
-      <div class="collab-card glass">
+      {% assign collab_anchor = collab.name | append: "-" | append: collab.topic | slugify %}
+      {% assign collab_anchor = "collab-" | append: collab_anchor %}
+      {% assign collab_share_url = "/collaborations/#" | append: collab_anchor %}
+      <div class="collab-card glass" id="{{ collab_anchor }}">
         <div class="collab-card-header">
           <div class="collab-card-meta">
             <span class="collab-card-name">{{ collab.name }}</span>
@@ -99,6 +102,10 @@ permalink: /collaborations/
             {% endif %}
             <a href="mailto:{{ collab.contact }}" class="btn btn-sm btn-primary">Get in touch</a>
           </div>
+        </div>
+
+        <div class="share-row">
+          {% include share-buttons.html url=collab_share_url title=collab.topic %}
         </div>
       </div>
       {% endfor %}

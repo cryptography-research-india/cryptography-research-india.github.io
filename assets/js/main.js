@@ -72,6 +72,40 @@
   });
 
   /* ============================================================
+     CLIPBOARD COPY (shared helper — used by the researcher modal's
+     Copy Email button and the share buttons' Copy Link button)
+     ============================================================ */
+  function copyTextToClipboard(text, onSuccess, onFail) {
+    // Fallback for browsers/contexts that reject the async Clipboard API
+    // (no permission granted, insecure context, older browser). execCommand
+    // is deprecated but still works synchronously inside a real user
+    // gesture, which every caller of this function is.
+    function fallbackCopy() {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onSuccess, function () {
+        if (fallbackCopy()) onSuccess(); else onFail();
+      });
+    } else if (fallbackCopy()) {
+      onSuccess();
+    } else {
+      onFail();
+    }
+  }
+
+  /* ============================================================
      PEOPLE FILTERING
      ============================================================ */
   var filterBtns = document.querySelectorAll('.filter-btn');
@@ -318,45 +352,15 @@
           copyBtn.className = 'btn btn-ghost btn-sm';
           copyBtn.innerHTML = copyIcon() + ' Copy Email';
 
-          function showCopied() {
-            copyBtn.innerHTML = checkIcon() + ' Copied!';
-            setTimeout(function () {
-              copyBtn.innerHTML = copyIcon() + ' Copy Email';
-            }, 1800);
-          }
-
-          // Fallback for browsers/contexts that reject the async Clipboard
-          // API (no permission granted, insecure context, older browser).
-          // execCommand is deprecated but still works synchronously inside a
-          // real user gesture, which this click handler always is.
-          function fallbackCopy() {
-            var ta = document.createElement('textarea');
-            ta.value = email;
-            ta.style.position = 'fixed';
-            ta.style.opacity = '0';
-            document.body.appendChild(ta);
-            ta.focus();
-            ta.select();
-            var ok = false;
-            try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
-            document.body.removeChild(ta);
-            return ok;
-          }
-
           copyBtn.addEventListener('click', function () {
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard.writeText(email).then(showCopied, function () {
-                if (fallbackCopy()) {
-                  showCopied();
-                } else {
-                  copyBtn.innerHTML = 'Copy failed — ' + email;
-                }
-              });
-            } else if (fallbackCopy()) {
-              showCopied();
-            } else {
+            copyTextToClipboard(email, function () {
+              copyBtn.innerHTML = checkIcon() + ' Copied!';
+              setTimeout(function () {
+                copyBtn.innerHTML = copyIcon() + ' Copy Email';
+              }, 1800);
+            }, function () {
               copyBtn.innerHTML = 'Copy failed — ' + email;
-            }
+            });
           });
           modalFooter.appendChild(copyBtn);
         }
@@ -546,5 +550,28 @@
       }
     }, { passive: true });
   }
+
+  /* ============================================================
+     SHARE BUTTONS — Copy Link
+     (the X/LinkedIn/WhatsApp buttons are plain share-intent links
+     and need no JS; only Copy Link needs one)
+     ============================================================ */
+  document.querySelectorAll('.share-btn-copy').forEach(function (btn) {
+    var url = btn.getAttribute('data-share-url');
+    if (!url) return;
+
+    btn.addEventListener('click', function () {
+      copyTextToClipboard(url, function () {
+        btn.classList.add('copied');
+        btn.setAttribute('aria-label', 'Link copied');
+        setTimeout(function () {
+          btn.classList.remove('copied');
+          btn.setAttribute('aria-label', 'Copy link');
+        }, 1800);
+      }, function () {
+        btn.setAttribute('aria-label', 'Copy failed — select and copy the URL manually');
+      });
+    });
+  });
 
 })();

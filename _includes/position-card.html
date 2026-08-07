@@ -1,6 +1,8 @@
 {% assign pos = include.position %}
 {% assign closed = include.closed %}
-<article class="position-card glass{% if closed %} position-card-closed{% endif %}">
+{% assign pos_anchor = "position-" | append: pos.slug %}
+{% assign pos_share_url = "/positions/#" | append: pos_anchor %}
+<article class="position-card glass{% if closed %} position-card-closed{% endif %}" id="{{ pos_anchor }}">
   <div class="position-card-header">
     <div class="position-card-heading">
       <h3 class="position-card-title">{{ pos.title }}</h3>
@@ -36,5 +38,9 @@
     {% if pos.contact %}
     <a href="mailto:{{ pos.contact }}" class="btn btn-ghost btn-sm">Contact</a>
     {% endif %}
+  </div>
+
+  <div class="share-row">
+    {% include share-buttons.html url=pos_share_url title=pos.title %}
   </div>
 </article>
