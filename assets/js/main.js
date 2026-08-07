@@ -5,7 +5,12 @@
      THEME SWITCHER
      ============================================================ */
   var THEME_KEY = 'criypt-theme';
-  var THEMES = ['dark', 'light', 'auto'];
+  var THEME_ICONS = { dark: '🌙', light: '☀️', auto: '💻' };
+
+  var themeToggle = document.getElementById('theme-toggle');
+  var themeToggleBtn = document.getElementById('theme-toggle-btn');
+  var themeToggleIcon = document.getElementById('theme-toggle-icon');
+  var themeMenu = document.getElementById('theme-menu');
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
@@ -13,16 +18,41 @@
     document.querySelectorAll('[data-theme-btn]').forEach(function (btn) {
       btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === theme);
     });
+    if (themeToggleIcon) themeToggleIcon.textContent = THEME_ICONS[theme] || THEME_ICONS.dark;
+  }
+
+  function closeThemeMenu() {
+    if (!themeMenu) return;
+    themeMenu.classList.remove('open');
+    if (themeToggleBtn) themeToggleBtn.setAttribute('aria-expanded', 'false');
   }
 
   // Restore saved theme on load (before paint to avoid flash)
   var saved = localStorage.getItem(THEME_KEY) || 'dark';
   applyTheme(saved);
 
-  // Wire up toggle buttons
+  // Wire up the toggle button to open/close the theme menu
+  if (themeToggleBtn && themeMenu) {
+    themeToggleBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var isOpen = themeMenu.classList.toggle('open');
+      themeToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (themeToggle && !themeToggle.contains(e.target)) closeThemeMenu();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeThemeMenu();
+    });
+  }
+
+  // Wire up theme option buttons
   document.querySelectorAll('[data-theme-btn]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       applyTheme(btn.getAttribute('data-theme-btn'));
+      closeThemeMenu();
     });
   });
 
