@@ -1,6 +1,6 @@
 # Cryptography Researchers of India (CRIYPT)
 
-[criypt.org](https://cryptography-research-india.github.io) — a community-driven platform connecting cryptography researchers across India and the Indian diaspora.
+[cryptography-research-india.github.io](https://cryptography-research-india.github.io) — a community-driven platform connecting cryptography researchers across India and the Indian diaspora.
 
 The site includes:
 
