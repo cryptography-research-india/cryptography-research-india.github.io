@@ -65,8 +65,9 @@ permalink: /people/
     {% endif %}
 
     <!-- People Grid -->
+    {% assign sorted_people = site.data.names-people | sort: "name" %}
     <div class="people-grid" id="people-grid">
-      {% for person in site.data.names-people %}
+      {% for person in sorted_people %}
         {% include person-card.html person=person %}
       {% endfor %}
     </div>
