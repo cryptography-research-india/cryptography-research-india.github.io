@@ -1,5 +1,6 @@
 name: Add Resource
 description: Suggest a resource for the CRIYPT Resources page
+title: "[Resource]: "
 labels: ["add-resource"]
 body:
   - type: markdown

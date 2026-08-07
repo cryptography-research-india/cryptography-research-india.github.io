@@ -1,5 +1,6 @@
 name: Edit My Profile
 description: Add or update optional profile links on your existing researcher listing
+title: "[Edit Profile]: "
 labels: ["edit-researcher"]
 body:
   - type: markdown

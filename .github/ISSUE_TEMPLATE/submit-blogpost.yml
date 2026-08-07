@@ -1,5 +1,6 @@
 name: Submit Blog Post
 description: Write a post for the CRIYPT community blog
+title: "[Blog Post]: "
 labels: ["submit-blogpost"]
 body:
   - type: markdown
