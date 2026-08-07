@@ -1733,6 +1733,7 @@ body.modal-open {
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   transition: all var(--transition-slow);
+  scroll-margin-top: 90px;
 }
 
 .position-card:hover {
@@ -2040,6 +2041,14 @@ body.modal-open {
     display: flex;
   }
 
+  .star-btn-label {
+    display: none;
+  }
+
+  .github-star-btn {
+    padding: 0.5rem;
+  }
+
   .nav-links {
     position: fixed;
     top: 64px;
@@ -2222,6 +2231,98 @@ body.modal-open {
 .comments-setup-notice a { color: var(--green); }
 
 /* ── Theme Toggle Button ─────────────────────────────────── */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+.github-star-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--glass);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.github-star-btn:hover {
+  color: var(--green);
+  border-color: rgba(0,255,136,0.4);
+  background: var(--green-dim);
+}
+
+.github-star-btn svg {
+  flex-shrink: 0;
+}
+
+/* ── Share Buttons ────────────────────────────────────────── */
+.share-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.share-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-right: 0.15rem;
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text-muted);
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.share-btn:hover {
+  color: var(--text);
+  border-color: var(--border-hover);
+  background: var(--glass-strong);
+}
+
+.share-btn-copy .icon-copied {
+  display: none;
+}
+
+.share-btn-copy.copied .icon-default {
+  display: none;
+}
+
+.share-btn-copy.copied .icon-copied {
+  display: flex;
+}
+
+.share-btn-copy.copied {
+  color: var(--green);
+  border-color: rgba(0,255,136,0.4);
+  background: var(--green-dim);
+}
+
+.share-row {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
 .theme-toggle {
   display: flex;
   align-items: center;
@@ -2385,6 +2486,7 @@ body.modal-open {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  scroll-margin-top: 90px;
   transition: border-color var(--transition), transform var(--transition);
 
   &:hover {
