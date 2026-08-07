@@ -86,6 +86,17 @@ jobs:
               return;
             }
 
+            // The issue title box is free text, disconnected from the form
+            // fields above it — contributors sometimes leave it blank or type
+            // something unhelpful (e.g. just a salutation). Overwrite it with
+            // something derived from the parsed data so the Issues list stays
+            // scannable regardless of what was typed there.
+            await github.rest.issues.update({
+              ...context.repo,
+              issue_number: issue.number,
+              title: `[Add Researcher] ${name}`,
+            });
+
             // Build tags
             const tags = [];
             if (sector === 'Academia')  tags.push('ACADEMIA');
@@ -225,6 +236,13 @@ jobs:
               });
               return;
             }
+
+            // See the add-researcher job for why this is rewritten.
+            await github.rest.issues.update({
+              ...context.repo,
+              issue_number: issue.number,
+              title: `[Edit Profile] ${name}`,
+            });
 
             const topicCodes = checkedOptions('Topics \\(optional\\)').map(label => TOPIC_CODE_BY_LABEL[label]).filter(Boolean);
             const photoUrl = field('Photo URL \\(optional\\)');
@@ -450,6 +468,13 @@ jobs:
               return;
             }
 
+            // See the add-researcher job for why this is rewritten.
+            await github.rest.issues.update({
+              ...context.repo,
+              issue_number: issue.number,
+              title: `[Position] ${title} at ${org}`,
+            });
+
             const date = new Date().toISOString().split('T')[0];
             const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
             const filename = `_positions/${date}-${slug}.md`;
@@ -534,6 +559,13 @@ jobs:
               return;
             }
 
+            // See the add-researcher job for why this is rewritten.
+            await github.rest.issues.update({
+              ...context.repo,
+              issue_number: issue.number,
+              title: `[Blog Post] ${title}`,
+            });
+
             const date = new Date().toISOString().split('T')[0];
             const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
             const filename = `_posts/${date}-${slug}.md`;
@@ -617,6 +649,13 @@ jobs:
               });
               return;
             }
+
+            // See the add-researcher job for why this is rewritten.
+            await github.rest.issues.update({
+              ...context.repo,
+              issue_number: issue.number,
+              title: `[Collaboration] ${topic} (${name})`,
+            });
 
             // Parse checked research areas from the checkboxes section
             const areasSection = body.match(/### Research Areas\s*\n+([\s\S]*?)(?=\n###|$)/i);
@@ -712,6 +751,13 @@ jobs:
               });
               return;
             }
+
+            // See the add-researcher job for why this is rewritten.
+            await github.rest.issues.update({
+              ...context.repo,
+              issue_number: issue.number,
+              title: `[Resource] ${title}`,
+            });
 
             // Map dropdown choice -> file + anchor comment. Sections not listed
             // here (placeholder topic pages, "Not sure / other") have no

@@ -1,5 +1,6 @@
 name: Post a Collaboration Request
 description: Share what you're working on and invite the community to collaborate
+title: "[Collaboration]: "
 labels: ["collaboration-request"]
 body:
   - type: markdown

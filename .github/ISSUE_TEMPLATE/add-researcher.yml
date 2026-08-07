@@ -1,5 +1,6 @@
 name: Add Researcher
 description: Add yourself or a colleague to the CRIYPT researchers directory
+title: "[Add Researcher]: "
 labels: ["add-researcher"]
 body:
   - type: markdown

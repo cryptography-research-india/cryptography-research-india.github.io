@@ -1,5 +1,6 @@
 name: Post a Position
 description: Advertise an open cryptography research position
+title: "[Position]: "
 labels: ["add-position"]
 body:
   - type: markdown
