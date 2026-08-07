@@ -1544,6 +1544,31 @@ body.modal-open {
   flex-wrap: wrap;
 }
 
+.share-cta {
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.share-cta-content h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.share-cta-content p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.share-cta-buttons .share-label {
+  display: none;
+}
+
 /* ============================================================
    RESOURCES PAGE
    ============================================================ */
@@ -2037,8 +2062,17 @@ body.modal-open {
    ============================================================ */
 @media (max-width: 768px) {
   /* Nav */
+  .navbar-brand {
+    order: 1;
+  }
+
+  .nav-actions {
+    order: 2;
+  }
+
   .nav-toggle {
     display: flex;
+    order: 3;
   }
 
   .star-btn-label {
