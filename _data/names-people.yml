@@ -359,3 +359,16 @@
   topics: [MPC, ZKP]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/yashvanth-kondi.jpg
+
+- name: Abhishek Kesarwani
+  designation: Assistant Professor
+  affiliation: Indian Institute of Information Technology Vadodara
+  webpage: https://sites.google.com/view/kesarwaniabhishek/
+  research: Symmetric Cryptography, MDS Codes, Differential Privacy
+  email: abhishek_kesarwani@iiitvadodara.ac.in
+  orcid: 0000-0001-8488-6811
+  scholar: https://scholar.google.com/citations?user=yz-MSIEAAAAJ&hl=en
+  dblp: https://dblp.org/pid/249/3315-2.html
+  linkedin: https://www.linkedin.com/in/abhishek-kesarwani-a8a810121/
+  topics: [SYMMETRIC, THEORETICAL, CODING]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
