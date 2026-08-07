@@ -1,4 +1,11 @@
 ---
+- name: Abhishek Kesarwani
+  designation: Assistant Professor
+  affiliation: Indian Institute of Information Technology Vadodara
+  webpage: https://sites.google.com/view/kesarwaniabhishek/home?authuser=1
+  research: Symmetric Cryptography, MDS Codes, Differential Privacy
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+
 - name: Ajith Suresh
   designation: Senior MPC Researcher
   affiliation: Technology Innovation Institute (TII), UAE
