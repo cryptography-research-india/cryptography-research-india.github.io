@@ -124,6 +124,37 @@ layout: default
 </section>
 {% endif %}
 
+<!-- Recent Papers -->
+{% if site.data.recent_papers and site.data.recent_papers.size > 0 %}
+<section class="section section-papers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Research</div>
+      <h2 class="section-title">Recent Papers</h2>
+      <p class="section-subtitle">Newly posted work from CRIYPT-listed researchers, via the <a href="https://eprint.iacr.org/" target="_blank" rel="noopener">IACR ePrint Archive</a>.</p>
+    </div>
+
+    <div class="papers-list">
+      {% for paper in site.data.recent_papers limit:6 %}
+      <div class="paper-card glass">
+        <h3 class="paper-card-title">
+          <a href="{{ paper.url }}" target="_blank" rel="noopener">{{ paper.title }}</a>
+        </h3>
+        <p class="paper-card-authors">
+          {% for author in paper.authors %}
+            {% if author.slug %}<a href="{{ '/people/' | relative_url }}#{{ author.slug }}" class="paper-author-link">{{ author.name }}</a>{% else %}<span>{{ author.name }}</span>{% endif %}{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </p>
+        {% if paper.date %}
+        <time class="paper-card-date" datetime="{{ paper.date }}">{{ paper.date | date: "%b %d, %Y" }}</time>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <!-- About Teaser -->
 <section class="section section-about">
   <div class="container">

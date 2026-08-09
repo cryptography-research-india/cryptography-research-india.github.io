@@ -1121,6 +1121,65 @@ body.modal-open {
 }
 
 /* ============================================================
+   RECENT PAPERS
+   ============================================================ */
+.papers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.paper-card {
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  transition: all var(--transition);
+}
+
+.paper-card:hover {
+  border-color: rgba(6,182,212,0.25);
+  box-shadow: 0 0 0 1px rgba(6,182,212,0.1), 0 8px 32px rgba(0,0,0,0.4);
+}
+
+.paper-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+}
+
+.paper-card-title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.paper-card-title a:hover {
+  color: var(--cyan);
+}
+
+.paper-card-authors {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.paper-author-link {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.paper-author-link:hover {
+  text-decoration: underline;
+}
+
+.paper-card-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+/* ============================================================
    PAGE HERO
    ============================================================ */
 .page-hero {
