@@ -1,3 +1,18 @@
 # Collaboration posts from the community.
 # Each entry is submitted via a GitHub issue and merged via PR.
 # Fields: name, affiliation, topic, areas (list), seeking, description, contact, webpage (optional), date
+
+- name: Mukarram Ali
+  affiliation: Universiti Malaya
+  topic: "Chaos Based-Cryptography"
+  areas:
+    - "Public Key Cryptography"
+    - "Symmetric Cryptography"
+    - "Post-Quantum Cryptography (PQC)"
+    - "Applied Cryptography"
+    - "Theoretical Cryptography"
+    - "Security Protocols"
+  seeking: "Co-author(s)"
+  description: "I am working on this paper and need someone who can help write it, review the expected results, and offer suggestions."
+  contact: muk.ali725@gmail.com
+  date: 2026-08-10
