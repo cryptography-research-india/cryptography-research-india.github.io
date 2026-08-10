@@ -26,6 +26,19 @@ module Jekyll
       Base64.strict_encode64(input.to_s.strip)
     end
 
+    # Rewrites a hash's `photo` value (if present) to be baseurl-aware, so
+    # it's still correct once embedded in the `data-person` JSON blob and
+    # read by assets/js/main.js — which sets `img.src` directly from that
+    # JSON without ever passing it back through Jekyll's `relative_url`
+    # filter. Necessary for non-root deployments like PR previews (see
+    # preview.yml's `--baseurl` flag); a harmless no-op when baseurl is
+    # empty, as it is on the live site.
+    def with_relative_photo(hash, baseurl)
+      return hash unless hash.is_a?(Hash) && hash["photo"]
+
+      hash.merge("photo" => "#{baseurl}#{hash['photo']}")
+    end
+
     # Returns up to the first 2 initials from a name, e.g. "Arpita Patra" ->
     # "AP". `split(' ') | map: 'first' | join` doesn't work in Liquid — `map`
     # pulls a hash/object property named "first" off each item, it doesn't

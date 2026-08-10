@@ -6,7 +6,7 @@
   data-name="{{ person.name | downcase }}"
   data-research="{{ person.research | downcase }}"
   data-slug="{{ slug }}"
-  data-person="{{ person | without_key: 'email' | jsonify | escape }}"
+  data-person="{{ person | without_key: 'email' | with_relative_photo: site.baseurl | jsonify | escape }}"
   {% if person.email %}data-email-enc="{{ person.email | obfuscate_email }}"{% endif %}
   id="person-{{ slug }}">
   <div class="person-card-inner">
