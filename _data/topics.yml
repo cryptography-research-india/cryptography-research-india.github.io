@@ -30,3 +30,5 @@
   label: "Security Protocols"
 - code: CODING
   label: "Coding Theory / Information Theory"
+- code: QUANTUM
+  label: "Quantum Cryptography"

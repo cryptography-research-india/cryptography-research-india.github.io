@@ -67,6 +67,7 @@ jobs:
               'Theoretical Cryptography': 'THEORETICAL',
               'Security Protocols': 'PROTOCOLS',
               'Coding Theory / Information Theory': 'CODING',
+              'Quantum Cryptography': 'QUANTUM',
             };
 
             const name        = field('Full Name');
@@ -281,6 +282,7 @@ jobs:
               'Theoretical Cryptography': 'THEORETICAL',
               'Security Protocols': 'PROTOCOLS',
               'Coding Theory / Information Theory': 'CODING',
+              'Quantum Cryptography': 'QUANTUM',
             };
 
             const name = field('Full Name \\(exactly as listed on the People page\\)');

@@ -52,6 +52,7 @@ body:
         - label: Theoretical Cryptography
         - label: Security Protocols
         - label: Coding Theory / Information Theory
+        - label: Quantum Cryptography
 
   - type: dropdown
     id: seeking

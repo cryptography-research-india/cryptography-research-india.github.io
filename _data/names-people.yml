@@ -170,7 +170,7 @@
   dblp: https://dblp.org/pid/160/3825.html
   linkedin: https://www.linkedin.com/in/nishat-koti-825263128/
   topics: [MPC, PPML]
-  tags: [INDUSTRY, WORKING_ABROAD]
+  tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/nishat-koti.jpg
 
 - name: Nitin Singh
@@ -372,3 +372,238 @@
   linkedin: https://www.linkedin.com/in/abhishek-kesarwani-a8a810121/
   topics: [SYMMETRIC, THEORETICAL, CODING]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/abhishek-kesarwani.jpg
+
+- name: Adithya Vadapalli
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Kanpur (IIT Kanpur)
+  webpage: https://avadapal.github.io/
+  research: Secure Multiparty Computation, Oblivious RAM, Private Information Retrieval, Metadata Protection, Secure Machine Learning
+  email: avadapalli@cse.iitk.ac.in
+  orcid: 0009-0007-2417-9059
+  scholar: https://scholar.google.com/citations?user=jeOME6wAAAAJ&hl=en
+  dblp: https://dblp.org/pid/207/8076.html
+  linkedin: https://www.linkedin.com/in/adithya-vadapalli-57ab5544/
+  topics: [MPC, PPML, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/adithya-vadapalli.jpg
+
+- name: Angshuman Karmakar
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Kanpur (IIT Kanpur)
+  webpage: https://www.cse.iitk.ac.in/users/angshuman/
+  research: Post-Quantum Cryptography, Lattice-Based Cryptography, Side-Channel Attacks, Homomorphic Encryption, Hardware Implementations
+  email: angshuman@cse.iitk.ac.in
+  orcid: 0000-0003-2594-588X
+  scholar: https://scholar.google.com/citations?user=Ddlv5TwAAAAJ
+  dblp: https://dblp.org/pid/189/1488.html
+  linkedin: https://www.linkedin.com/in/angshuman-karmakar-b5ba8b58
+  topics: [PQC, FHE, HARDWARE]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/angshuman-karmakar.jpg
+
+- name: Ankit Gangwal
+  designation: Assistant Professor
+  affiliation: International Institute of Information Technology Hyderabad (IIIT Hyderabad)
+  webpage: https://ciaoankit.github.io/
+  webpagelab: https://sypy.iiit.ac.in/
+  research: Blockchain Security, Mobile Security, Password Manager Security, Privacy, Cryptocurrency
+  email: gangwal@iiit.ac.in
+  orcid: 0000-0002-8065-3700
+  scholar: https://scholar.google.com/citations?user=-6qvBRkAAAAJ
+  dblp: https://dblp.org/pid/185/7073.html
+  linkedin: https://in.linkedin.com/in/ankit-gangwal-a12795103
+  topics: [BLOCKCHAIN, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/ankit-gangwal.jpg
+
+- name: Anshu Yadav
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Kanpur (IIT Kanpur)
+  webpage: https://yadav-anshu.github.io/
+  research: Theoretical Cryptography, Post-Quantum Cryptography, Advanced Cryptographic Primitives, Proof Systems, Foundations
+  email: anshuy@cse.iitk.ac.in
+  scholar: https://scholar.google.com/citations?user=4THUzTQAAAAJ&hl=en
+  dblp: https://dblp.org/pid/120/1152.html
+  linkedin: https://www.linkedin.com/in/anshu-yadav-26693b30/
+  topics: [THEORETICAL, PQC]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/anshu-yadav.jpg
+
+- name: Ashok Kumar Das
+  designation: Professor
+  affiliation: International Institute of Information Technology Hyderabad (IIIT Hyderabad)
+  webpage: https://sites.google.com/view/iitkgpakdas/
+  webpagelab: https://cstar.iiit.ac.in/
+  research: Cryptography, Network Security, IoT Security, Blockchain, Post-Quantum Cryptography
+  email: ashok.das@iiit.ac.in
+  orcid: 0000-0002-5196-9589
+  scholar: https://scholar.google.com/citations?user=bToAUHMAAAAJ&hl=en
+  dblp: https://dblp.org/pid/39/871.html
+  linkedin: https://www.linkedin.com/in/ashok-kumar-das-7b3136251/
+  topics: [BLOCKCHAIN, PQC, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/ashok-kumar-das.jpg
+
+- name: Atul Singh Arora
+  designation: Assistant Professor
+  affiliation: International Institute of Information Technology Hyderabad (IIIT Hyderabad)
+  webpage: https://atulsingharora.github.io
+  research: Quantum Cryptography, Quantum Complexity, Foundations of Cryptography, Device-Independent Cryptography, Quantum Information
+  email: atul.arora@iiit.ac.in
+  orcid: 0000-0003-4696-1125
+  dblp: https://dblp.org/pid/230/4360.html
+  linkedin: https://www.linkedin.com/in/atul-singh-arora-b04b6655/
+  topics: [THEORETICAL, QUANTUM]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/atul-singh-arora.jpg
+
+- name: Debapriya Basu Roy
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Kanpur (IIT Kanpur)
+  webpage: https://dbroy24.wixsite.com/research/
+  research: Hardware Security, VLSI for Cryptography, Post-Quantum Cryptography, Side-Channel Attacks, Fault Attacks
+  email: dbroy@cse.iitk.ac.in
+  orcid: 0000-0003-4664-5237
+  scholar: https://scholar.google.co.in/citations?user=bVX8VCoAAAAJ&hl=en
+  dblp: https://dblp.org/pid/116/4686.html
+  linkedin: https://www.linkedin.com/in/dr-debapriya-basu-roy-666b0017
+  topics: [HARDWARE, PQC]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/debapriya-basu-roy.jpg
+
+- name: Dipanwita Roy Chowdhury
+  designation: Professor
+  affiliation: Indian Institute of Technology Kharagpur (IIT Kharagpur)
+  webpage: https://facweb.iitkgp.ac.in/~drc/
+  research: Boolean Functions, Stream Ciphers, Cellular Automata Cryptography, Symmetric-Key Cryptography, Cryptanalysis
+  email: drc@cse.iitkgp.ac.in
+  scholar: https://scholar.google.com/citations?user=F_MRaWYAAAAJ&hl=en
+  dblp: https://dblp.org/pid/09/6690.html
+  linkedin: https://in.linkedin.com/in/dipanwita-roy-chowdhury-768a4a7
+  topics: [SYMMETRIC]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/dipanwita-roy-chowdhury.jpg
+
+- name: Kannan Srinathan
+  designation: Assistant Professor
+  affiliation: International Institute of Information Technology Hyderabad (IIIT Hyderabad)
+  webpage: https://www.iiit.ac.in/faculty/kannan-srinathan/
+  webpagelab: https://cstar.iiit.ac.in/
+  research: Secure Multiparty Computation, Cryptography, Security Protocols, Distributed Computing, Byzantine Fault Tolerance
+  email: srinathan@iiit.ac.in
+  orcid: 0009-0002-4306-6707
+  scholar: https://scholar.google.com/citations?user=-iyXX44AAAAJ&hl=en
+  dblp: https://dblp.org/pid/s/KSrinathan.html
+  topics: [MPC, PROTOCOLS]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/kannan-srinathan.jpg
+
+- name: Manindra Agrawal
+  designation: Professor & Director
+  affiliation: Indian Institute of Technology Kanpur (IIT Kanpur)
+  webpage: https://sites.google.com/view/manindra/home
+  research: Complexity Theory, Computational Number Theory, Algebraic Algorithms, Derandomization, Crypto Foundations
+  email: manindra@iitk.ac.in
+  scholar: https://scholar.google.com/citations?user=UBXqggoAAAAJ&hl=en
+  dblp: https://dblp.org/pid/a/ManindraAgrawal.html
+  linkedin: https://in.linkedin.com/in/agrawalmanindra
+  topics: [THEORETICAL]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/manindra-agrawal.jpg
+
+- name: Maria Francis
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Hyderabad (IIT Hyderabad)
+  webpage: https://sites.google.com/view/maria-francis/home
+  research: Computer Algebra, Lattice Cryptography, Pairing-Based Cryptography, Symbolic Computation, Post-Quantum Cryptography
+  email: mariaf@cse.iith.ac.in
+  orcid: 0000-0002-2537-5840
+  scholar: https://scholar.google.com/citations?user=r5EduDsAAAAJ&hl=en
+  dblp: https://dblp.org/pid/129/1447
+  topics: [PKC, PQC, BLOCKCHAIN]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/maria-francis.jpg
+
+- name: Sanjit Chatterjee
+  designation: Associate Professor
+  affiliation: Indian Institute of Science Bangalore (IISc)
+  webpage: https://www.csa.iisc.ac.in/~sanjit/
+  research: Pairing-Based Cryptography, Identity-Based Encryption, Post-Quantum Cryptography, Provable Security, Public Key Cryptography
+  email: sanjit@iisc.ac.in
+  orcid: 0009-0004-6360-9152
+  scholar: https://scholar.google.com/citations?user=bbLLOyIAAAAJ&hl=en
+  dblp: https://dblp.org/pid/82/921.html
+  topics: [PKC, PQC, THEORETICAL]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/sanjit-chatterjee.jpg
+
+- name: Shibam Ghosh
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Hyderabad (IIT Hyderabad)
+  webpage: https://shibamcrs.github.io/
+  research: Symmetric-Key Cryptanalysis, Boolean Functions, Cryptographic Primitives, Lightweight Cryptography, Stream Ciphers
+  email: shibam@cse.iith.ac.in
+  orcid: 0000-0002-4966-1681
+  scholar: https://scholar.google.com/citations?user=T8mYHjQAAAAJ&hl=en
+  dblp: https://dblp.org/pid/298/9178.html
+  linkedin: https://www.linkedin.com/in/shibamcrs/
+  topics: [SYMMETRIC]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/shibam-ghosh.jpg
+
+- name: Urbi Chatterjee
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Kanpur (IIT Kanpur)
+  webpage: https://www.cse.iitk.ac.in/users/urbic/
+  webpagelab: https://cse.iitk.ac.in/users/urbic/research/
+  research: Hardware Security, Physical Unclonable Functions, Side-Channel Attacks, IoT Security, Embedded Systems Security
+  email: urbic@cse.iitk.ac.in
+  orcid: 0000-0002-4631-2208
+  scholar: https://scholar.google.co.in/citations?user=tb-hEXAAAAAJ&hl=en
+  dblp: https://dblp.org/pid/176/7583.html
+  linkedin: https://www.linkedin.com/in/urbi-chatterjee-a4286931/
+  topics: [HARDWARE, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/urbi-chatterjee.jpg
+
+- name: Varsha Bhat Kukkala
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Tirupati (IIT Tirupati)
+  webpage: https://sites.google.com/view/varsha-bhat-kukkala/home
+  research: Secure Multiparty Computation, Privacy-Preserving Graph Computation, Cryptographic Protocols, Oblivious Algorithms, Applied Cryptography
+  email: varshabhat@iittp.ac.in
+  orcid: 0000-0001-9579-4963
+  scholar: https://scholar.google.com/citations?user=dPr0xSAAAAAJ&hl=en
+  dblp: https://dblp.org/pid/177/7910.html
+  topics: [MPC, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/varsha-bhat-kukkala.jpg
+
+- name: Vinod Ganapathy
+  designation: Professor & Chair, CSA
+  affiliation: Indian Institute of Science Bangalore (IISc)
+  webpage: https://www.csa.iisc.ac.in/~vg/
+  research: Computer Security, Systems Security, Applied Cryptography, Hardware Security, Program Analysis
+  email: vg@iisc.ac.in
+  orcid: 0000-0003-3001-0800
+  scholar: https://scholar.google.com/citations?user=wrzZzwYAAAAJ&hl=en
+  dblp: https://dblp.org/pid/46/1879.html
+  linkedin: https://www.linkedin.com/in/vinodganapathy/
+  topics: [HARDWARE, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/vinod-ganapathy.jpg
+
+- name: Mukul Ramesh Kulkarni
+  designation: Director, PQC
+  affiliation: Technology Innovation Institute (TII), UAE
+  webpage: https://www.tii.ae/team/dr-mukul-ramesh-kulkarni
+  research: Post-Quantum Cryptography, Code-Based Cryptography, Lattice-Based Cryptography, Digital Signature Schemes, Oblivious RAM
+  email: mukul.kulkarni@tii.ae
+  orcid: 0000-0001-8253-4177
+  scholar: https://scholar.google.com/citations?user=VkdNgvMAAAAJ&hl=en
+  dblp: https://dblp.org/pid/178/5278.html
+  linkedin: https://www.linkedin.com/in/mukulrkulkarni/
+  topics: [PQC, PKC]
+  tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/mukul-ramesh-kulkarni.jpg
