@@ -653,7 +653,11 @@ p { color: var(--text-muted); }
 }
 
 .section-cta {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-top: 2.5rem;
 }
 

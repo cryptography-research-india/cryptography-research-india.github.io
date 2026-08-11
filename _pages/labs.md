@@ -39,7 +39,6 @@ permalink: /labs/
               {% endif %}
               <p class="lab-card-inst">{{ first.affiliation }}</p>
             </div>
-            <span class="badge badge-green">{{ members.size }} researcher{% if members.size != 1 %}s{% endif %}</span>
           </div>
 
           {% if unique_topics.size > 0 %}
