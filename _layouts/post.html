@@ -39,6 +39,12 @@ layout: default
   <div class="post-body-section">
     <div class="container">
       <div class="post-body-inner">
+        {% if page.author %}
+        <p class="post-disclaimer">
+          The views expressed in this post are the author's own and do not necessarily reflect the position of CRIYPT (Cryptography Researchers of India).
+        </p>
+        {% endif %}
+
         <div class="post-content prose">
           {{ content }}
         </div>
