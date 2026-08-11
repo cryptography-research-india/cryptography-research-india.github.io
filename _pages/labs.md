@@ -8,7 +8,7 @@ permalink: /labs/
   <div class="page-hero-overlay"></div>
   <div class="container">
     <h1 class="page-hero-title">Research Labs</h1>
-    <p class="page-hero-subtitle">Labs and groups our listed researchers are part of, grouped straight from their own profiles &mdash; no separate directory to keep in sync.</p>
+    <p class="page-hero-subtitle">Labs and groups our listed researchers are part of, grouped straight from their own profiles.</p>
   </div>
 </div>
 
