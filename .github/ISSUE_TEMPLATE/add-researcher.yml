@@ -79,6 +79,12 @@ body:
       placeholder: https://
 
   - type: input
+    id: lab_name
+    attributes:
+      label: Lab / Group Name (optional)
+      placeholder: e.g. CSTAR
+
+  - type: input
     id: lab
     attributes:
       label: Lab / Group URL (optional)
