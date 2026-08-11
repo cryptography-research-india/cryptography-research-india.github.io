@@ -720,7 +720,11 @@ p {
 }
 
 .section-cta {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-top: 2.5rem;
 }
 
@@ -2459,6 +2463,122 @@ body.modal-open {
   margin-top: 0.9rem;
   padding-top: 0.9rem;
   border-top: 1px solid var(--border);
+}
+
+/* ============================================================
+   LABS PAGE
+   ============================================================ */
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.lab-card {
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: all var(--transition-slow);
+  scroll-margin-top: 90px;
+}
+
+.lab-card:hover {
+  border-color: rgba(0, 255, 136, 0.25);
+  box-shadow: 0 0 0 1px rgba(0, 255, 136, 0.1), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.lab-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.lab-card-name {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.lab-card-name a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.lab-card-name a:hover {
+  color: var(--green);
+}
+
+.lab-card-inst {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.lab-card-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+
+.lab-card-members {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+.lab-member-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.4rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+}
+
+.lab-member-row:hover {
+  background: var(--glass);
+}
+
+.lab-member-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.lab-member-avatar .avatar-photo {
+  width: 40px;
+  height: 40px;
+}
+
+.lab-member-avatar .avatar-initials {
+  font-size: 0.72rem;
+}
+
+.lab-member-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.lab-member-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.lab-member-role {
+  font-size: 0.76rem;
+  color: var(--text-muted);
 }
 
 .theme-toggle {
