@@ -629,3 +629,29 @@
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/mukul-ramesh-kulkarni.jpg
   lab: Cryptography Research Center
+
+- name: Shalabh Jain
+  designation: Head - Security and Privacy
+  affiliation: Centre of Data for Public Good (CDPG), IISc Bangalore
+  webpage: https://dblp.org/pid/115/6392.html
+  webpagelab: https://dataforpublicgood.org.in
+  research: Secure Multi-Party Computation, Trusted Execution Environments, Differential Privacy
+  scholar: https://scholar.google.com/citations?user=rFNkJOkAAAAJ&hl=en
+  dblp: https://dblp.org/pid/115/6392.html
+  linkedin: https://www.linkedin.com/in/shalabh-jain/
+  topics: [MPC, HARDWARE, APPLIED]
+  tags: [INDUSTRY, WORKING_IN_INDIA]
+  photo: /assets/images/people/shalabh-jain.jpg
+  lab: CDPG
+
+- name: Shyam Murthy
+  designation: Technical Lead
+  affiliation: Centre of Data for Public Good (CDPG), IISc Bangalore
+  webpagelab: https://dataforpublicgood.org.in
+  research: Cryptanalysis of Privacy-Preserving Protocols, Secure Multi-Party Computation
+  email: shyam.sm@datakaveri.org
+  orcid: 0000-0002-0222-322X
+  topics: [MPC, APPLIED, PROTOCOLS]
+  tags: [INDUSTRY, WORKING_IN_INDIA]
+  photo: /assets/images/people/shyam-murthy.jpg
+  lab: CDPG
