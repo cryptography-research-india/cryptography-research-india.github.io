@@ -1460,6 +1460,15 @@ body.modal-open {
   max-width: 740px;
 }
 
+.post-disclaimer {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-muted);
+  border-left: 2px solid var(--border);
+  padding-left: 0.9rem;
+  margin-bottom: 2rem;
+}
+
 .post-footer-nav {
   display: flex;
   gap: 1rem;
