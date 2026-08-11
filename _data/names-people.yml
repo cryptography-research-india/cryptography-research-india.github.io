@@ -655,3 +655,33 @@
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/shyam-murthy.jpg
   lab: CDPG
+
+- name: Panchami V
+  designation: Assistant Professor
+  affiliation: Indian Institute of Information Technology Kottayam (IIIT Kottayam)
+  webpage: https://www.iiitkottayam.ac.in/#!/faculty/panchami
+  webpagelab: https://cyberlabs.iiitkottayam.ac.in
+  research: Lightweight Cryptography, Post-Quantum Cryptography, Quantum Cryptanalysis, PUF-based and Blockchain-based Authentication, IoT Security
+  email: panchamam036@iiitkottayam.ac.in
+  orcid: 0000-0002-9297-6929
+  scholar: https://scholar.google.com/citations?user=mUyNzwgAAAAJ&hl=en
+  dblp: https://dblp.org/pid/209/2359
+  linkedin: https://www.linkedin.com/in/panchami-v-529a724b/
+  topics: [PQC, QUANTUM, HARDWARE, SYMMETRIC]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/panchami-v.jpg
+  lab: CyberLabs
+
+- name: Amit Praseed
+  designation: Assistant Professor
+  affiliation: National Institute of Technology Calicut (NIT Calicut)
+  webpage: https://sites.google.com/view/amitpraseed/home
+  research: Application-Layer DDoS Detection, Web Application Security, IoT/MQTT Protocol Security
+  email: amitpraseed@nitc.ac.in
+  orcid: 0000-0003-3965-0118
+  scholar: https://scholar.google.com/citations?user=Ev1dvKYAAAAJ
+  dblp: https://dblp.org/pid/213/1951.html
+  linkedin: https://www.linkedin.com/in/amitpraseed/
+  topics: [PROTOCOLS]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/amit-praseed.jpg
