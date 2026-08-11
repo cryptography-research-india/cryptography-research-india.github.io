@@ -13,6 +13,7 @@
   topics: [MPC, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/ajith-suresh.jpg
+  lab: Cryptography Research Center
 
 - name: Arpita Patra
   designation: Associate Professor
@@ -28,6 +29,7 @@
   topics: [MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/arpita-patra.jpg
+  lab: CrIS Lab
 
 - name: Ashish Choudhury
   designation: Associate Professor
@@ -57,6 +59,7 @@
   topics: [THEORETICAL, CODING, MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/bhavana-kanukurthi.jpg
+  lab: CrySP
 
 - name: Chaya Ganesh
   designation: Assistant Professor
@@ -87,6 +90,7 @@
   topics: [HARDWARE]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/debdeep-mukhopadhyay.jpg
+  lab: SEAL
 
 - name: Divya Gupta
   designation: Principal Researcher
@@ -115,6 +119,7 @@
   topics: [MPC, THEORETICAL]
   tags: [ACADEMIA, WORKING_ABROAD]
   photo: /assets/images/people/divya-ravi.jpg
+  lab: Theory of Computer Science (TCS) Group
 
 - name: Manoj M. Prabhakaran
   designation: Professor
@@ -129,6 +134,7 @@
   topics: [THEORETICAL, APPLIED]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/manoj-m-prabhakaran.jpg
+  lab: TrustLab
 
 - name: Mridul Nandi
   designation: Professor
@@ -143,6 +149,7 @@
   topics: [SYMMETRIC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/mridul-nandi.jpg
+  lab: Applied Statistics Unit
 
 - name: Nishanth Chandran
   designation: Principal Researcher
@@ -172,6 +179,7 @@
   topics: [MPC, PPML]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/nishat-koti.jpg
+  lab: Aztec Labs
 
 - name: Nitin Singh
   designation: Researcher
@@ -213,12 +221,13 @@
   topics: [FHE]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/pradeep-mishra.jpg
+  lab: Cryptography Research Center
 
 - name: Pratik Sarkar
   designation: Research Scientist
   affiliation: Obsidus Labs
   webpage: https://sites.google.com/view/pratiksarkar/welcome
-  webpagelab: https://supra.com
+  webpagelab: https://obsiduslabs.com/
   research: Secure Multi-party Computation, Zero-Knowledge Proofs, Blockchain
   email: iampratiksarkar@gmail.com
   orcid: 0000-0001-6370-0977
@@ -228,12 +237,13 @@
   topics: [MPC, ZKP, BLOCKCHAIN]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/pratik-sarkar.jpg
+  lab: Obsidus Labs
 
 - name: Pratyay Mukherjee
   designation: Senior Director of Research
   affiliation: Hashgraph
   webpage: https://pratyay.net
-  webpagelab: https://supra.com
+  webpagelab: https://hashgraph.com
   research: Cryptography in Payment and Blockchain
   email: pratyay85@gmail.com
   orcid: 0000-0002-0995-9555
@@ -243,6 +253,7 @@
   topics: [BLOCKCHAIN, APPLIED]
   tags: [INDUSTRY, WORKING_IN_INDIA]
   photo: /assets/images/people/pratyay-mukherjee.jpg
+  lab: Hashgraph
 
 - name: Rahul Rachuri
   designation: Staff Research Scientist
@@ -258,6 +269,7 @@
   topics: [MPC, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/rahul-rachuri.jpg
+  lab: Visa Research
 
 - name: Sameer Wagh
   designation: Senior Research Engineer
@@ -273,6 +285,7 @@
   topics: [MPC, FHE, PPML]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/sameer-wagh.jpg
+  lab: OpenMined
 
 - name: Shweta Agrawal
   designation: Professor
@@ -286,6 +299,7 @@
   topics: [THEORETICAL, PQC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/shweta-agrawal.jpg
+  lab: Centre for Cybersecurity, Trust and Reliability (CySTAR)
 
 - name: Sikhar Patranabis
   designation: Research Scientist
@@ -330,6 +344,7 @@
   topics: [THEORETICAL, MPC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/sruthi-sekar.jpg
+  lab: TrustLab
 
 - name: Suvradip Chakraborty
   designation: Research Scientist
@@ -345,6 +360,7 @@
   topics: [PKC]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/suvradip-chakraborty.jpg
+  lab: Visa Research
 
 - name: Yashvanth Kondi
   designation: Principal Scientist
@@ -359,6 +375,7 @@
   topics: [MPC, ZKP]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/yashvanth-kondi.jpg
+  lab: Silence Laboratories
 
 - name: Abhishek Kesarwani
   designation: Assistant Professor
@@ -416,6 +433,7 @@
   topics: [BLOCKCHAIN, APPLIED]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/ankit-gangwal.jpg
+  lab: SyPy
 
 - name: Anshu Yadav
   designation: Assistant Professor
@@ -444,6 +462,7 @@
   topics: [BLOCKCHAIN, PQC, APPLIED]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/ashok-kumar-das.jpg
+  lab: CSTAR
 
 - name: Atul Singh Arora
   designation: Assistant Professor
@@ -498,6 +517,7 @@
   topics: [MPC, PROTOCOLS]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/kannan-srinathan.jpg
+  lab: CSTAR
 
 - name: Manindra Agrawal
   designation: Professor & Director
@@ -566,6 +586,7 @@
   topics: [HARDWARE, APPLIED]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/urbi-chatterjee.jpg
+  lab: SETTLOR Lab
 
 - name: Varsha Bhat Kukkala
   designation: Assistant Professor
@@ -607,3 +628,4 @@
   topics: [PQC, PKC]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/mukul-ramesh-kulkarni.jpg
+  lab: Cryptography Research Center

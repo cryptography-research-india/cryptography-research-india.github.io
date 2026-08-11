@@ -77,6 +77,7 @@ jobs:
             const topicCodes  = checkedOptions('Topics \\(optional\\)').map(label => TOPIC_CODE_BY_LABEL[label]).filter(Boolean);
             const photoUrl    = field('Photo URL \\(optional\\)');
             const webpage     = field('Personal Webpage URL');
+            const labName     = field('Lab / Group Name \\(optional\\)');
             const lab         = field('Lab / Group URL \\(optional\\)');
             const email       = field('Email ID \\(optional\\)');
             const orcid       = field('ORCID iD \\(optional\\)');
@@ -144,6 +145,8 @@ jobs:
             // Build YAML entry. Note: the site schema (person-card.html, main.js,
             // home.html) expects `research` as a single comma-joined string and
             // `webpagelab` (not `lab`) for the lab/group URL — must match exactly.
+            // `lab` in the data schema is the lab's *name* (for grouping on the
+            // Labs page), separate from `webpagelab`, its URL.
             let yaml = `- name: ${name}\n  designation: ${designation}\n  affiliation: ${affiliation}\n`;
             if (webpage && webpage !== '_No response_') yaml += `  webpage: ${webpage}\n`;
             if (lab && lab !== '_No response_')         yaml += `  webpagelab: ${lab}\n`;
@@ -164,6 +167,7 @@ jobs:
             }
             yaml += `  tags: [${tags.join(', ')}]\n`;
             if (resizedPhotoBuffer) yaml += `  photo: /${photoRepoPath}\n`;
+            if (labName && labName !== '_No response_') yaml += `  lab: ${labName}\n`;
 
             // Read existing file and append
             const { data: fileData } = await github.rest.repos.getContent({
@@ -313,11 +317,13 @@ jobs:
             const photoRepoPath = `assets/images/people/${slugify(name)}.jpg`;
 
             const updates = {
-              email:    field('Email ID \\(optional\\)'),
-              orcid:    field('ORCID iD \\(optional\\)'),
-              scholar:  field('Google Scholar Profile URL \\(optional\\)'),
-              dblp:     field('DBLP Profile URL \\(optional\\)'),
-              linkedin: field('LinkedIn Profile URL \\(optional\\)'),
+              email:      field('Email ID \\(optional\\)'),
+              orcid:      field('ORCID iD \\(optional\\)'),
+              scholar:    field('Google Scholar Profile URL \\(optional\\)'),
+              dblp:       field('DBLP Profile URL \\(optional\\)'),
+              linkedin:   field('LinkedIn Profile URL \\(optional\\)'),
+              lab:        field('Lab / Group Name \\(optional\\)'),
+              webpagelab: field('Lab / Group URL \\(optional\\)'),
             };
             for (const key of Object.keys(updates)) {
               if (!updates[key] || updates[key] === '_No response_') delete updates[key];

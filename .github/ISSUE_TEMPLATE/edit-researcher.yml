@@ -53,6 +53,20 @@ body:
         - label: Quantum Cryptography
 
   - type: input
+    id: lab_name
+    attributes:
+      label: Lab / Group Name (optional)
+      description: Leave blank to leave unchanged.
+      placeholder: e.g. CSTAR
+
+  - type: input
+    id: lab
+    attributes:
+      label: Lab / Group URL (optional)
+      description: Leave blank to leave unchanged.
+      placeholder: https://
+
+  - type: input
     id: email
     attributes:
       label: Email ID (optional)
