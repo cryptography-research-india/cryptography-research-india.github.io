@@ -4,11 +4,14 @@
 
 The site includes:
 
-- **[People](https://cryptography-research-india.github.io/people/)** — a searchable, filterable directory of researchers
+- **[People](https://cryptography-research-india.github.io/people/)** — a searchable, filterable directory of researchers, filterable by topic and sector
+- **[Labs](https://cryptography-research-india.github.io/labs/)** — researchers grouped by lab/group, derived automatically from the People data (no separate content to maintain)
 - **[Positions](https://cryptography-research-india.github.io/positions/)** — open PhD, postdoc, and industry openings
 - **[Collaborations](https://cryptography-research-india.github.io/collaborations/)** — community requests for co-authors, implementation partners, students
 - **[Posts](https://cryptography-research-india.github.io/posts/)** — community blog
 - **[Resources](https://cryptography-research-india.github.io/resources/)** — curated learning material
+
+The homepage also surfaces a **Recent Papers** feed, pulled weekly from the [IACR ePrint Archive](https://eprint.iacr.org/) for anyone listed in the People directory.
 
 For the project's mission and background, see the [About](https://cryptography-research-india.github.io/about/) page.
 
@@ -46,12 +49,15 @@ Then open `http://localhost:4000`.
 
 ### Repo structure
 
-- `_pages/`, `_layouts/`, `_includes/` — site pages and templates
-- `_data/*.yml` — structured data backing the People and Collaborations pages
+- `_pages/`, `_layouts/`, `_includes/` — site pages and templates (People, Labs, Positions, Collaborations, Posts, Resources, etc.)
+- `_data/*.yml` — structured data backing the People, Labs, and Collaborations pages, plus the controlled vocabularies (`topics.yml`) and the auto-fetched `recent_papers.yml`
+- `_plugins/person_filters.rb` — custom Liquid filters used by the People/Labs templates
 - `_positions/`, `_resources/` — Jekyll collections
 - `assets/css/main.scss`, `assets/js/main.js` — all styling and client-side behavior (custom-built, no external theme)
 - `.github/ISSUE_TEMPLATE/` — the submission forms described above
 - `.github/workflows/process-submissions.yml` — turns issue submissions into PRs
+- `.github/workflows/fetch-recent-papers.yml` — weekly job that opens a PR with new papers from IACR ePrint for the homepage feed
+- `.github/workflows/fetch-researcher-photos.yml`, `.github/scripts/fetch_photos.py`, `.github/scripts/resize_photo.py` — download and resize researcher photos submitted via issue forms
 - `.github/scripts/validate_submissions.rb` — CI validation run on submission PRs
 
 ## Troubleshooting
