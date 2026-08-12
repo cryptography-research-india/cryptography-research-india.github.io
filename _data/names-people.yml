@@ -724,3 +724,12 @@
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/dhiman-saha.jpg
   lab: de.ci.phe.red LAB
+
+- name: Girisha Shankar
+  designation: Post Doctoral Researcher
+  affiliation: Indian Institute of Science, Bengaluru
+  research: Rational Cryptography, Agentic AI security, Post-quantum cryptography, Foundational aspects of cryptography
+  orcid: 0000-0002-2818-7749
+  linkedin: https://in.linkedin.com/in/girisha-b-s-939303
+  topics: [PQC, APPLIED, THEORETICAL, PROTOCOLS]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
