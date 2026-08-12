@@ -686,6 +686,15 @@
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/amit-praseed.jpg
 
+- name: Kamakhya Paul
+  designation: Assistant Professor
+  affiliation: Vignan's Foundation for Science, Technology and Research
+  research: Public Key Cryptography
+  email: kp_maths@vignan.ac.in
+  scholar: https://scholar.google.com/citations?user=JjbESv8AAAAJ&hl=en
+  topics: [PKC]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  
 - name: Srinivas Vivek
   designation: Associate Professor
   affiliation: International Institute of Information Technology Bangalore (IIIT Bangalore)
