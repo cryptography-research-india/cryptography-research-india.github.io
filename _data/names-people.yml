@@ -685,3 +685,9 @@
   topics: [PROTOCOLS]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/amit-praseed.jpg
+
+- name: Vivek Srinivas
+  designation: Associate Professor
+  affiliation: International Institute of Information Technology
+  research: Side-channel countermeasures, Homomorphic encryption schemes and applications
+  tags: [ACADEMIA, WORKING_IN_INDIA]
