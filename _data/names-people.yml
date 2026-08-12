@@ -690,4 +690,21 @@
   designation: Assistant Professor
   affiliation: Vignan's Foundation for Science, Technology and Research
   research: Public Key Cryptography
+  email: kp_maths@vignan.ac.in
+  scholar: https://scholar.google.com/citations?user=JjbESv8AAAAJ&hl=en
+  topics: [PKC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  
+- name: Srinivas Vivek
+  designation: Associate Professor
+  affiliation: International Institute of Information Technology Bangalore (IIIT Bangalore)
+  webpage: https://srinivasvivek.me/
+  research: Side-Channel Countermeasures, Homomorphic Encryption Schemes and Applications
+  email: srinivas.vivek@iiitb.ac.in
+  orcid: 0000-0002-8426-0859
+  scholar: https://scholar.google.co.in/citations?user=ngTl86cAAAAJ
+  dblp: https://dblp.org/pid/125/3001.html
+  linkedin: https://www.linkedin.com/in/srinivas-vivek-55428781/
+  topics: [HARDWARE, FHE]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/srinivas-vivek.jpg
