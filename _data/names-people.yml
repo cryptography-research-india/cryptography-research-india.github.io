@@ -708,3 +708,19 @@
   topics: [HARDWARE, FHE]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/srinivas-vivek.jpg
+
+- name: Dhiman Saha
+  designation: Associate Professor
+  affiliation: Indian Institute of Technology Bhilai (IIT Bhilai)
+  webpage: https://dhimans.in
+  webpagelab: http://de.ci.phe.red
+  research: Symmetric-Key Cryptanalysis, Lightweight Cryptography, Fault Analysis, Quantum Cryptanalysis
+  email: crypto@dhimans.in
+  orcid: 0000-0002-4668-073X
+  scholar: https://scholar.google.co.in/citations?user=D_vYGzQAAAAJ&hl=en
+  dblp: https://dblp.org/pid/32/6561.html
+  linkedin: https://www.linkedin.com/in/dhimansaha
+  topics: [SYMMETRIC, HARDWARE, QUANTUM, PQC]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/dhiman-saha.jpg
+  lab: de.ci.phe.red LAB
