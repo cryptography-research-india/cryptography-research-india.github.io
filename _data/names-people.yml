@@ -724,3 +724,13 @@
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/dhiman-saha.jpg
   lab: de.ci.phe.red LAB
+
+- name: Daksh Pandey
+  designation: Undergrad
+  affiliation: IIT Roorkee | COSIC (KU Leuven)
+  webpage: https://da-k-sh.github.io/
+  research: Fully Homomorphic Encryption, Information Theory, Cryptanalysis, Hardware Security/Acceleration
+  email: daksh_p@ph.iitr.ac.in
+  topics: [MPC, FHE, PKC, SYMMETRIC, HARDWARE, THEORETICAL, PROTOCOLS, CODING]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  lab: COSIC
