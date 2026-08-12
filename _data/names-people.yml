@@ -685,3 +685,9 @@
   topics: [PROTOCOLS]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/amit-praseed.jpg
+
+- name: Kamakhya Paul
+  designation: Assistant Professor
+  affiliation: Vignan's Foundation for Science, Technology and Research
+  research: Public Key Cryptography
+  tags: [ACADEMIA, WORKING_IN_INDIA]
