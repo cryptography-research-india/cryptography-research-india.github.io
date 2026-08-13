@@ -725,6 +725,15 @@
   photo: /assets/images/people/dhiman-saha.jpg
   lab: de.ci.phe.red LAB
 
+- name: Ravi Kishore
+  designation: Associate Professor
+  affiliation: Mahindra University
+  research: Secure Distributed Computing.
+  dblp: https://dblp.org/pid/160/7651.html
+  linkedin: https://www.linkedin.com/in/ravikishore85/
+  topics: [MPC, ZKP, PKC, PROTOCOLS, CODING]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  
 - name: Amit Sahai
   designation: Symantec Chair Professor of Computer Science
   affiliation: University of California, Los Angeles (UCLA)
