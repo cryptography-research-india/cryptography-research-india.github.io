@@ -56,7 +56,8 @@ permalink: /labs/
               <a href="{{ '/people/' | relative_url }}#{{ pslug }}"
                 class="lab-member-row person-card"
                 data-slug="{{ pslug }}"
-                data-person="{{ person | without_key: 'email' | with_relative_photo: site.baseurl | jsonify | escape }}">
+                data-person="{{ person | without_key: 'email' | with_relative_photo: site.baseurl | jsonify | escape }}"
+                {% if person.email %}data-email-enc="{{ person.email | obfuscate_email }}"{% endif %}>
                 <div class="lab-member-avatar">
                   {% if person.photo %}
                     <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" class="avatar-photo">

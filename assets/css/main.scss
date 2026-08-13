@@ -979,6 +979,14 @@ body.modal-open {
   background: var(--glass-strong);
 }
 
+.modal-edit {
+  right: 3.2rem;
+}
+
+.modal-edit:hover {
+  color: var(--cyan);
+}
+
 .person-modal {
   position: relative;
   width: 100%;
