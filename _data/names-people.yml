@@ -725,6 +725,17 @@
   photo: /assets/images/people/dhiman-saha.jpg
   lab: de.ci.phe.red LAB
 
+- name: Rohitkumar R. Upadhyay
+  designation: Applied Cryptographer
+  affiliation: QNu Labs Pvt Ltd
+  webpage: https://math4rohit.github.io/
+  research: Secure Multi-Party Computation, Fully Homomorphic Encryption, Zero-Knowledge Proofs, Cryptographic Protocols, Applied Cryptography, Privacy-Preserving Computation, Threshold Cryptography, Verifiable Computation
+  email: math4rohit@gmail.com
+  scholar: https://scholar.google.com/citations?user=f6Hv8IwAAAAJ&hl=en
+  linkedin: https://www.linkedin.com/in/math4rohit/
+  topics: [MPC, ZKP, FHE, PKC, PQC, PPML, APPLIED, THEORETICAL]
+  tags: [INDUSTRY, WORKING_IN_INDIA]
+  
 - name: Ravi Kishore
   designation: Associate Professor
   affiliation: Mahindra University
