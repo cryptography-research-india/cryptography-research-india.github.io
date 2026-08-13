@@ -729,5 +729,251 @@
   designation: Associate Professor
   affiliation: Mahindra University
   research: Secure Distributed Computing.
-  topics: [MPC, PKC, PROTOCOLS, CODING]
+  dblp: https://dblp.org/pid/160/7651.html
+  linkedin: https://www.linkedin.com/in/ravikishore85/
+  topics: [MPC, ZKP, PKC, PROTOCOLS, CODING]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+  
+- name: Amit Sahai
+  designation: Symantec Chair Professor of Computer Science
+  affiliation: University of California, Los Angeles (UCLA)
+  webpage: https://web.cs.ucla.edu/~sahai/
+  research: Program Obfuscation, Functional Encryption, Zero-Knowledge Proofs, Secure Multiparty Computation
+  email: sahai@cs.ucla.edu
+  orcid: 0000-0003-2216-9600
+  scholar: https://scholar.google.com/citations?user=gqB23VMAAAAJ&hl=en
+  dblp: https://dblp.org/pid/s/AmitSahai.html
+  linkedin: https://www.linkedin.com/in/sahai
+  topics: [THEORETICAL, ZKP, MPC]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/amit-sahai.jpg
+  lab: Center for Encrypted Functionalities
+
+- name: Sanjam Garg
+  designation: Associate Professor
+  affiliation: University of California, Berkeley (UC Berkeley)
+  webpage: https://people.eecs.berkeley.edu/~sanjamg/
+  research: Cryptographic Obfuscation, Multilinear Maps, Lattice-Based Cryptography, Witness Encryption, Secure Multiparty Computation
+  email: sanjamg@berkeley.edu
+  orcid: 0000-0003-1330-0419
+  scholar: https://scholar.google.com/citations?user=mb8mQH8AAAAJ&hl=en
+  dblp: https://dblp.org/pid/33/5817.html
+  linkedin: https://www.linkedin.com/in/sanjam-garg-89022411/
+  topics: [THEORETICAL, PQC, MPC]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/sanjam-garg.jpg
+
+- name: Vipul Goyal
+  designation: Senior Scientist
+  affiliation: NTT Research
+  webpage: https://vipulgoyal.org/
+  research: Secure Multiparty Computation, Non-Malleable Cryptography, Attribute-Based Encryption, Secret Sharing
+  email: vipul@vipulgoyal.org
+  scholar: https://scholar.google.com/citations?user=BYLsgysAAAAJ&hl=en
+  dblp: https://dblp.org/pid/38/303.html
+  linkedin: https://www.linkedin.com/in/vipul-goyal-600610/
+  topics: [MPC, THEORETICAL]
+  tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/vipul-goyal.jpg
+
+- name: Abhishek Jain
+  designation: Associate Professor
+  affiliation: Johns Hopkins University (JHU)
+  webpage: https://www.cs.jhu.edu/~abhishek/
+  webpagelab: https://arc.isi.jhu.edu/
+  research: Secure Multiparty Computation, Zero-Knowledge Proofs, Program Obfuscation, Functional Encryption
+  email: abhishek@cs.jhu.edu
+  orcid: 0000-0002-3572-7643
+  scholar: https://scholar.google.com/citations?user=xjkmJsgAAAAJ&hl=en
+  dblp: https://dblp.org/pid/34/3.html
+  linkedin: https://www.linkedin.com/in/abhishek-jain-a823a8204/
+  topics: [MPC, ZKP, THEORETICAL]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/abhishek-jain.jpg
+  lab: ARC Lab
+
+- name: Dakshita Khurana
+  designation: Associate Professor
+  affiliation: University of Illinois Urbana-Champaign (UIUC)
+  webpage: https://www.dakshitakhurana.com/
+  research: Zero-Knowledge Proofs, Secure Multiparty Computation, Quantum Cryptography
+  email: dakshita@illinois.edu
+  orcid: 0000-0001-5315-4503
+  scholar: https://scholar.google.com/citations?user=bqsD4aEAAAAJ&hl=en
+  dblp: https://dblp.org/pid/40/10125.html
+  linkedin: https://www.linkedin.com/in/dakshita-khurana-24a79b26/
+  topics: [ZKP, MPC, QUANTUM]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/dakshita-khurana.jpg
+
+- name: Vinod Vaikuntanathan
+  designation: Ford Foundation Professor of Engineering
+  affiliation: Massachusetts Institute of Technology (MIT)
+  webpage: https://people.csail.mit.edu/vinodv/
+  webpagelab: https://cis.csail.mit.edu
+  research: Fully Homomorphic Encryption, Lattice-Based Cryptography, Post-Quantum Cryptography
+  email: vinodv@csail.mit.edu
+  orcid: 0000-0002-2666-0045
+  scholar: https://scholar.google.com/citations?user=a8jIPIkAAAAJ&hl=en
+  dblp: https://dblp.org/pid/v/VinodVaikuntanathan.html
+  linkedin: https://www.linkedin.com/in/vinod-vaikuntanathan-2489a910/
+  topics: [FHE, PQC, THEORETICAL]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/vinod-vaikuntanathan.jpg
+  lab: Cryptography and Information Security Group
+
+- name: Akshayaram Srinivasan
+  designation: Assistant Professor
+  affiliation: University of Toronto
+  webpage: https://www.cs.toronto.edu/~akshayaram/
+  research: Secure Multiparty Computation, Zero-Knowledge Proofs, Post-Quantum Cryptography
+  email: akshayaram@cs.toronto.edu
+  orcid: 0000-0003-2434-9912
+  scholar: https://scholar.google.com/citations?user=4t2RKBUAAAAJ&hl=en
+  dblp: https://dblp.org/pid/153/9906.html
+  linkedin: https://ca.linkedin.com/in/akshayaram-srininvasan-3a652464
+  topics: [MPC, ZKP, PQC]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/akshayaram-srinivasan.jpg
+
+- name: Eshan Chattopadhyay
+  designation: Associate Professor
+  affiliation: Cornell University
+  webpage: https://www.cs.cornell.edu/~eshan/
+  research: Pseudorandomness, Computational Complexity Theory, Cryptography
+  email: eshan@cs.cornell.edu
+  orcid: 0000-0001-9140-3160
+  scholar: https://scholar.google.com/citations?user=5ReVSa8AAAAJ&hl=en
+  dblp: https://dblp.org/pid/117/3135.html
+  linkedin: https://www.linkedin.com/in/eshan-chattopadhyay-0838b79a/
+  topics: [THEORETICAL, CODING]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/eshan-chattopadhyay.jpg
+
+- name: Kartik Nayak
+  designation: Associate Professor
+  affiliation: Duke University
+  webpage: https://users.cs.duke.edu/~kartik/
+  research: Secure Multiparty Computation, Blockchain Consensus Protocols, Applied Cryptography
+  email: kartik@cs.duke.edu
+  orcid: 0000-0001-5675-263X
+  scholar: https://scholar.google.com/citations?user=JEyz8wEAAAAJ&hl=en
+  dblp: https://dblp.org/pid/143/4459.html
+  linkedin: https://www.linkedin.com/in/kartikrnayak/
+  topics: [MPC, BLOCKCHAIN, APPLIED]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/kartik-nayak.jpg
+
+- name: Abhradeep Guha Thakurta
+  designation: Staff Research Scientist
+  affiliation: Google DeepMind
+  webpage: https://athakurta.squarespace.com/
+  research: Differential Privacy, Privacy-Preserving Machine Learning, Statistical Learning Theory
+  email: athakurta@google.com
+  scholar: https://scholar.google.com/citations?user=1rV69hMAAAAJ&hl=en
+  dblp: https://dblp.org/pid/31/8315.html
+  linkedin: https://www.linkedin.com/in/abhradeep-guha-thakurta-052330190/
+  topics: [PPML, APPLIED]
+  tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/abhradeep-guha-thakurta.jpg
+
+- name: Hemanta K. Maji
+  designation: Associate Professor
+  affiliation: Purdue University
+  webpage: https://www.cs.purdue.edu/homes/hmaji/
+  research: Secure Multiparty Computation, Information-Theoretic Cryptography, Secret Sharing
+  email: hmaji@purdue.edu
+  orcid: 0000-0003-4244-8658
+  scholar: https://scholar.google.com/citations?user=sCL2jBcAAAAJ&hl=en
+  dblp: https://dblp.org/pid/52/6027.html
+  topics: [MPC, THEORETICAL]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/hemanta-k-maji.jpg
+
+- name: Sushmita Ruj
+  designation: Associate Professor
+  affiliation: University of New South Wales Sydney (UNSW Sydney), Australia
+  webpage: https://research.unsw.edu.au/people/associate-professor-sushmita-ruj
+  research: Applied Cryptography, Post-Quantum Cryptography, Blockchain Security, Data Privacy
+  email: sushmita.ruj@unsw.edu.au
+  orcid: 0000-0002-8698-6709
+  scholar: https://scholar.google.com/citations?user=_u0snzYAAAAJ&hl=en
+  dblp: https://dblp.org/pid/30/5711.html
+  linkedin: https://www.linkedin.com/in/sushmitaruj/
+  topics: [BLOCKCHAIN, PQC, APPLIED]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/sushmita-ruj.jpg
+
+- name: Srinivasan Raghuraman
+  designation: Staff Research Scientist
+  affiliation: Visa Research
+  webpage: http://people.csail.mit.edu/srirag/
+  research: Secure Multiparty Computation, Blockchain Privacy, Functional Cryptography
+  email: srirag@mit.edu
+  orcid: 0000-0001-6737-6991
+  scholar: https://scholar.google.com/citations?user=LSHZ_voAAAAJ&hl=en
+  dblp: https://dblp.org/pid/148/1535.html
+  linkedin: https://www.linkedin.com/in/srinivasan-raghuraman-648a2045/
+  topics: [MPC, BLOCKCHAIN, APPLIED]
+  tags: [INDUSTRY, WORKING_ABROAD]
+  photo: /assets/images/people/srinivasan-raghuraman.jpg
+  
+- name: Mahavir Jhawar
+  designation: Associate Professor
+  affiliation: Ashoka University
+  webpage: https://sites.google.com/site/homeofmahavir/Home
+  research: Post-Quantum Cryptography, Lattice-Based Cryptography, Network Security, Public-Key Systems
+  email: mahavir.jhawar@ashoka.edu.in
+  orcid: 0000-0002-9753-2999
+  scholar: https://scholar.google.com/citations?user=imkeUdYAAAAJ&hl=en
+  dblp: https://dblp.org/pid/22/4404.html
+  linkedin: https://www.linkedin.com/in/mahavir-jhawar-95404659/
+  topics: [PQC, PKC, PROTOCOLS]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/mahavir-jhawar.jpg
+
+- name: Debayan Gupta
+  designation: Associate Professor
+  affiliation: Ashoka University
+  webpage: https://debayangupta.com/
+  research: Secure Multi-Party Computation, Privacy-Preserving Machine Learning, Cybersecurity Design
+  email: debayan.gupta@ashoka.edu.in
+  orcid: 0000-0002-4457-1556
+  scholar: https://scholar.google.com/citations?user=Z16kmr8AAAAJ&hl=en
+  dblp: https://dblp.org/pid/121/4322.html
+  linkedin: https://in.linkedin.com/in/debayang
+  topics: [MPC, PPML, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/debayan-gupta.jpg
+
+- name: Sourav Mukhopadhyay
+  designation: Professor
+  affiliation: Indian Institute of Technology Kharagpur (IIT Kharagpur)
+  webpage: https://facweb.iitkgp.ac.in/~sourav/
+  webpagelab: https://sil.iitkgp.ac.in
+  research: Algebraic Cryptanalysis of Symmetric Ciphers, Post-Quantum Cryptography, Blockchain Security
+  email: sourav@maths.iitkgp.ac.in
+  orcid: 0000-0002-4015-1386
+  scholar: https://scholar.google.com/citations?user=ErhmrCwAAAAJ&hl=en
+  dblp: https://dblp.org/pid/31/3850.html
+  linkedin: https://in.linkedin.com/in/sourav-mukhopadhyay-3a1727342
+  topics: [SYMMETRIC, PQC, BLOCKCHAIN]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/sourav-mukhopadhyay.jpg
+  lab: Security and Information Lab (SIL)
+
+- name: Subhamoy Maitra
+  designation: Professor
+  affiliation: Indian Statistical Institute Kolkata
+  webpage: https://www.isical.ac.in/~subho/
+  webpagelab: https://www.isical.ac.in/~rcbose/
+  research: Boolean Functions, Stream Ciphers, RSA and Integer Factorization, Quantum Cryptography
+  email: subho@isical.ac.in
+  orcid: 0000-0002-8348-7971
+  scholar: https://scholar.google.com/citations?user=PEDk2XQAAAAJ&hl=en
+  dblp: https://dblp.org/pid/35/4372.html
+  linkedin: https://www.linkedin.com/in/subhamoy-maitra-10806223a/
+  topics: [SYMMETRIC, PKC, QUANTUM]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/subhamoy-maitra.jpg
+  lab: R. C. Bose Centre for Cryptology and Security
