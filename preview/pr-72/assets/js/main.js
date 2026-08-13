@@ -291,6 +291,7 @@
       function add(id, value) {
         if (value) params.push(id + '=' + encodeURIComponent(value));
       }
+      add('title', person.name ? '[Edit Profile]: ' + person.name : null);
       add('name', person.name);
       add('webpage', person.webpage);
       add('email', email);
