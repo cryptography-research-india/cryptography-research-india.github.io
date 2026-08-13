@@ -908,3 +908,62 @@
   topics: [MPC, BLOCKCHAIN, APPLIED]
   tags: [INDUSTRY, WORKING_ABROAD]
   photo: /assets/images/people/srinivasan-raghuraman.jpg
+- name: Mahavir Jhawar
+  designation: Associate Professor
+  affiliation: Ashoka University
+  webpage: https://sites.google.com/site/homeofmahavir/Home
+  research: Post-Quantum Cryptography, Lattice-Based Cryptography, Network Security, Public-Key Systems
+  email: mahavir.jhawar@ashoka.edu.in
+  orcid: 0000-0002-9753-2999
+  scholar: https://scholar.google.com/citations?user=imkeUdYAAAAJ&hl=en
+  dblp: https://dblp.org/pid/22/4404.html
+  linkedin: https://www.linkedin.com/in/mahavir-jhawar-95404659/
+  topics: [PQC, PKC, PROTOCOLS]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/mahavir-jhawar.jpg
+
+- name: Debayan Gupta
+  designation: Associate Professor
+  affiliation: Ashoka University
+  webpage: https://debayangupta.com/
+  research: Secure Multi-Party Computation, Privacy-Preserving Machine Learning, Cybersecurity Design
+  email: debayan.gupta@ashoka.edu.in
+  orcid: 0000-0002-4457-1556
+  scholar: https://scholar.google.com/citations?user=Z16kmr8AAAAJ&hl=en
+  dblp: https://dblp.org/pid/121/4322.html
+  linkedin: https://in.linkedin.com/in/debayang
+  topics: [MPC, PPML, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/debayan-gupta.jpg
+
+- name: Sourav Mukhopadhyay
+  designation: Professor
+  affiliation: Indian Institute of Technology Kharagpur (IIT Kharagpur)
+  webpage: https://facweb.iitkgp.ac.in/~sourav/
+  webpagelab: https://sil.iitkgp.ac.in
+  research: Algebraic Cryptanalysis of Symmetric Ciphers, Post-Quantum Cryptography, Blockchain Security
+  email: sourav@maths.iitkgp.ac.in
+  orcid: 0000-0002-4015-1386
+  scholar: https://scholar.google.com/citations?user=ErhmrCwAAAAJ&hl=en
+  dblp: https://dblp.org/pid/31/3850.html
+  linkedin: https://in.linkedin.com/in/sourav-mukhopadhyay-3a1727342
+  topics: [SYMMETRIC, PQC, BLOCKCHAIN]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/sourav-mukhopadhyay.jpg
+  lab: Security and Information Lab (SIL)
+
+- name: Subhamoy Maitra
+  designation: Professor
+  affiliation: Indian Statistical Institute Kolkata
+  webpage: https://www.isical.ac.in/~subho/
+  webpagelab: https://www.isical.ac.in/~rcbose/
+  research: Boolean Functions, Stream Ciphers, RSA and Integer Factorization, Quantum Cryptography
+  email: subho@isical.ac.in
+  orcid: 0000-0002-8348-7971
+  scholar: https://scholar.google.com/citations?user=PEDk2XQAAAAJ&hl=en
+  dblp: https://dblp.org/pid/35/4372.html
+  linkedin: https://www.linkedin.com/in/subhamoy-maitra-10806223a/
+  topics: [SYMMETRIC, PKC, QUANTUM]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/subhamoy-maitra.jpg
+  lab: R. C. Bose Centre for Cryptology and Security
