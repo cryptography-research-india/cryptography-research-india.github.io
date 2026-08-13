@@ -292,6 +292,7 @@
         if (value) params.push(id + '=' + encodeURIComponent(value));
       }
       add('name', person.name);
+      add('webpage', person.webpage);
       add('email', email);
       add('orcid', person.orcid);
       add('scholar', person.scholar);
