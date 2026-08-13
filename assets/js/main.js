@@ -275,7 +275,34 @@
     var modalResearch = document.getElementById('person-modal-research');
     var modalFooter = document.getElementById('person-modal-footer');
     var modalCloseBtn = document.getElementById('person-modal-close');
+    var modalEditBtn = document.getElementById('person-modal-edit');
     var lastFocused = null;
+
+    var EDIT_ISSUE_BASE = 'https://github.com/cryptography-research-india/cryptography-research-india.github.io/issues/new';
+
+    // Builds a link to the "Edit My Profile" issue form with as many fields
+    // pre-filled as GitHub's issue-form query-param prefill supports. GitHub
+    // only prefills input/textarea/dropdown fields this way — the Topics and
+    // Remove Photo checkboxes in edit-researcher.yml can't be pre-filled, and
+    // Photo URL is deliberately left blank so people don't get invited to
+    // resubmit an unchanged photo and trigger a pointless refetch.
+    function buildEditProfileUrl(person, email) {
+      var params = ['template=edit-researcher.yml'];
+      function add(id, value) {
+        if (value) params.push(id + '=' + encodeURIComponent(value));
+      }
+      add('title', person.name ? '[Edit Profile]: ' + person.name : null);
+      add('name', person.name);
+      add('webpage', person.webpage);
+      add('email', email);
+      add('orcid', person.orcid);
+      add('scholar', person.scholar);
+      add('dblp', person.dblp);
+      add('linkedin', person.linkedin);
+      add('lab_name', person.lab);
+      add('lab', person.webpagelab);
+      return EDIT_ISSUE_BASE + '?' + params.join('&');
+    }
 
     var TAG_LABELS = {
       ACADEMIA: ['Academia', 'badge-purple'],
@@ -373,8 +400,8 @@
       // card's own base64 attribute, and rendered as copy-to-clipboard rather
       // than a mailto: link or visible text.
       var emailEnc = card ? card.dataset.emailEnc : '';
+      var email = '';
       if (emailEnc) {
-        var email = '';
         try { email = atob(emailEnc); } catch (e) { email = ''; }
         if (email) {
           var copyBtn = document.createElement('button');
@@ -394,6 +421,10 @@
           });
           modalFooter.appendChild(copyBtn);
         }
+      }
+
+      if (modalEditBtn) {
+        modalEditBtn.href = buildEditProfileUrl(person, email);
       }
 
       if (card && card.dataset.slug) {
