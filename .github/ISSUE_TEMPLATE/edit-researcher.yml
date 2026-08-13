@@ -17,6 +17,20 @@ body:
       required: true
 
   - type: input
+    id: designation
+    attributes:
+      label: Designation (optional)
+      description: Leave blank to leave unchanged.
+      placeholder: e.g. Associate Professor
+
+  - type: input
+    id: affiliation
+    attributes:
+      label: Affiliation (optional)
+      description: Leave blank to leave unchanged.
+      placeholder: e.g. Indian Institute of Science, Bangalore
+
+  - type: input
     id: webpage
     attributes:
       label: Personal Webpage URL (optional)
@@ -38,11 +52,21 @@ body:
       options:
         - label: Remove my current photo (falls back to initials)
 
+  - type: textarea
+    id: research_areas
+    attributes:
+      label: Research Areas (optional)
+      description: A short, personal description of what you work on — shown on your profile. One per line. Leave blank to leave unchanged. (Doesn't need to match the Topics below word-for-word — those power site-wide filtering, this is your own description.)
+      placeholder: |
+        Secure Multi-Party Computation
+        Cryptographic Protocols
+        Applied Cryptography
+
   - type: checkboxes
     id: topics
     attributes:
       label: Topics (optional)
-      description: Select any topics to set/replace your topics list. Leave all unchecked to leave your topics unchanged.
+      description: Select all that apply — used to power topic filtering on the People page. Select any topics to set/replace your topics list; leave all unchecked to leave your topics unchanged.
       options:
         - label: Multi-Party Computation (MPC)
         - label: Zero-Knowledge Proofs (ZKP)
@@ -102,3 +126,21 @@ body:
     attributes:
       label: LinkedIn Profile URL (optional)
       placeholder: https://www.linkedin.com/in/...
+
+  - type: dropdown
+    id: sector
+    attributes:
+      label: Sector (optional)
+      description: Leave unselected to leave unchanged.
+      options:
+        - Academia
+        - Industry
+
+  - type: dropdown
+    id: location
+    attributes:
+      label: Currently based in (optional)
+      description: Leave unselected to leave unchanged.
+      options:
+        - India
+        - Abroad

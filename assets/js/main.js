@@ -293,7 +293,14 @@
       }
       add('title', person.name ? '[Edit Profile]: ' + person.name : null);
       add('name', person.name);
+      add('designation', person.designation);
+      add('affiliation', person.affiliation);
       add('webpage', person.webpage);
+      // Stored as a single comma-joined string, but the Research Areas
+      // textarea (and this automation's parsing of it) expects one line per
+      // area — convert back so an unedited resubmit round-trips cleanly
+      // instead of collapsing into a single combined line.
+      add('research_areas', person.research ? person.research.split(', ').join('\n') : null);
       add('email', email);
       add('orcid', person.orcid);
       add('scholar', person.scholar);
@@ -301,6 +308,11 @@
       add('linkedin', person.linkedin);
       add('lab_name', person.lab);
       add('lab', person.webpagelab);
+      var tags = person.tags || [];
+      if (tags.indexOf('ACADEMIA') !== -1) add('sector', 'Academia');
+      else if (tags.indexOf('INDUSTRY') !== -1) add('sector', 'Industry');
+      if (tags.indexOf('WORKING_IN_INDIA') !== -1) add('location', 'India');
+      else if (tags.indexOf('WORKING_ABROAD') !== -1) add('location', 'Abroad');
       return EDIT_ISSUE_BASE + '?' + params.join('&');
     }
 
