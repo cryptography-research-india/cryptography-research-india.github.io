@@ -17,6 +17,13 @@ body:
       required: true
 
   - type: input
+    id: webpage
+    attributes:
+      label: Personal Webpage URL (optional)
+      description: Leave blank to leave unchanged.
+      placeholder: https://
+
+  - type: input
     id: photo
     attributes:
       label: Photo URL (optional)
