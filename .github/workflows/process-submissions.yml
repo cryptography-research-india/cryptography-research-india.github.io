@@ -310,6 +310,9 @@ jobs:
             const topicCodes = checkedOptions('Topics \\(optional\\)').map(label => TOPIC_CODE_BY_LABEL[label]).filter(Boolean);
             const photoUrl = field('Photo URL \\(optional\\)');
             const removePhotoChecked = checkedOptions('Remove photo').length > 0;
+            const rawAreas = field('Research Areas \\(optional\\)');
+            const sector = field('Sector \\(optional\\)');
+            const location = field('Currently based in \\(optional\\)');
 
             function slugify(str) {
               return str.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -317,6 +320,8 @@ jobs:
             const photoRepoPath = `assets/images/people/${slugify(name)}.jpg`;
 
             const updates = {
+              designation: field('Designation \\(optional\\)'),
+              affiliation: field('Affiliation \\(optional\\)'),
               webpage:    field('Personal Webpage URL \\(optional\\)'),
               email:      field('Email ID \\(optional\\)'),
               orcid:      field('ORCID iD \\(optional\\)'),
@@ -336,17 +341,27 @@ jobs:
             if (topicCodes.length) {
               updates.topics = `[${topicCodes.join(', ')}]`;
             }
+            // Same blank-means-unchanged convention for the free-text
+            // Research Areas textarea — only touch `research` if at least
+            // one non-empty line was given.
+            const researchAreas = (rawAreas && rawAreas !== '_No response_' ? rawAreas : '')
+              .split('\n').map(l => l.replace(/^[-*]\s*/, '').trim()).filter(Boolean);
+            if (researchAreas.length) {
+              updates.research = researchAreas.join(', ');
+            }
 
             const hasPhotoUrl = !!(photoUrl && photoUrl !== '_No response_');
             // "Remove photo" only takes effect if no new photo URL was given
             // (a URL always wins — it's the more explicit signal).
             const removePhoto = removePhotoChecked && !hasPhotoUrl;
+            const hasSector = !!(sector && sector !== '_No response_');
+            const hasLocation = !!(location && location !== '_No response_');
 
-            if (Object.keys(updates).length === 0 && !hasPhotoUrl && !removePhoto) {
+            if (Object.keys(updates).length === 0 && !hasPhotoUrl && !removePhoto && !hasSector && !hasLocation) {
               await github.rest.issues.createComment({
                 ...context.repo,
                 issue_number: issue.number,
-                body: '❌ No fields to update — please fill in at least one of Website, Photo, Topics, Email, ORCID, Google Scholar, DBLP, or LinkedIn, or check "Remove my current photo".',
+                body: '❌ No fields to update — please fill in at least one of Designation, Affiliation, Website, Photo, Research Areas, Topics, Email, ORCID, Google Scholar, DBLP, LinkedIn, Sector, or Currently based in, or check "Remove my current photo".',
               });
               return;
             }
@@ -400,6 +415,26 @@ jobs:
             const [, header, entryBody] = match;
             const lines = entryBody.split('\n');
             const changed = [];
+
+            // Sector/Location live together inside the single `tags:` array
+            // (e.g. `[ACADEMIA, WORKING_IN_INDIA]`), so — unlike every other
+            // field here — they can't be a simple key:value overwrite. Parse
+            // the existing array, swap out only the half the submitter
+            // actually answered, and leave the other half untouched.
+            if (hasSector || hasLocation) {
+              const tagsLineIdx = lines.findIndex(l => l.trim().startsWith('tags:'));
+              const existingTags = tagsLineIdx !== -1
+                ? lines[tagsLineIdx].split('[')[1].split(']')[0].split(',').map(t => t.trim()).filter(Boolean)
+                : [];
+              let newTags = existingTags.filter(t => {
+                if (hasSector && (t === 'ACADEMIA' || t === 'INDUSTRY')) return false;
+                if (hasLocation && (t === 'WORKING_IN_INDIA' || t === 'WORKING_ABROAD')) return false;
+                return true;
+              });
+              if (hasSector) newTags.push(sector === 'Academia' ? 'ACADEMIA' : 'INDUSTRY');
+              if (hasLocation) newTags.push(location === 'India' ? 'WORKING_IN_INDIA' : 'WORKING_ABROAD');
+              updates.tags = `[${newTags.join(', ')}]`;
+            }
 
             for (const [key, value] of Object.entries(updates)) {
               const lineIdx = lines.findIndex(l => l.trim().startsWith(`${key}:`));

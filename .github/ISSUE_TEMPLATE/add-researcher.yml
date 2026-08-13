@@ -36,7 +36,7 @@ body:
     id: research_areas
     attributes:
       label: Research Areas
-      description: One per line
+      description: A short, personal description of what you work on — shown on your profile. One per line. (Doesn't need to match the Topics below word-for-word — those power site-wide filtering, this is your own description.)
       placeholder: |
         Secure Multi-Party Computation
         Cryptographic Protocols
