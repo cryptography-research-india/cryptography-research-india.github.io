@@ -1054,6 +1054,7 @@ body.modal-open {
   overflow-y: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-hover);
+  background: var(--surface);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -1822,6 +1823,7 @@ body.modal-open {
   overflow-y: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-hover);
+  background: var(--surface);
   padding: 2rem;
   display: flex;
   flex-direction: column;
