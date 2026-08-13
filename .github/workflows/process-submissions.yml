@@ -317,6 +317,7 @@ jobs:
             const photoRepoPath = `assets/images/people/${slugify(name)}.jpg`;
 
             const updates = {
+              webpage:    field('Personal Webpage URL \\(optional\\)'),
               email:      field('Email ID \\(optional\\)'),
               orcid:      field('ORCID iD \\(optional\\)'),
               scholar:    field('Google Scholar Profile URL \\(optional\\)'),
@@ -345,7 +346,7 @@ jobs:
               await github.rest.issues.createComment({
                 ...context.repo,
                 issue_number: issue.number,
-                body: '❌ No fields to update — please fill in at least one of Photo, Topics, Email, ORCID, Google Scholar, DBLP, or LinkedIn, or check "Remove my current photo".',
+                body: '❌ No fields to update — please fill in at least one of Website, Photo, Topics, Email, ORCID, Google Scholar, DBLP, or LinkedIn, or check "Remove my current photo".',
               });
               return;
             }

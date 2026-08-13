@@ -979,6 +979,14 @@ body.modal-open {
   background: var(--glass-strong);
 }
 
+.modal-edit {
+  right: 4rem;
+}
+
+.modal-edit:hover {
+  color: var(--cyan);
+}
+
 .person-modal {
   position: relative;
   width: 100%;
@@ -987,6 +995,7 @@ body.modal-open {
   overflow-y: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-hover);
+  background: var(--surface);
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -1748,6 +1757,7 @@ body.modal-open {
   overflow-y: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-hover);
+  background: var(--surface);
   padding: 2rem;
   display: flex;
   flex-direction: column;
