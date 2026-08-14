@@ -988,3 +988,10 @@
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/subhamoy-maitra.jpg
   lab: R. C. Bose Centre for Cryptology and Security
+
+- name: Poorna Krishna
+  designation: Research
+  affiliation: Self Learn
+  research: Research in post-quantum and applied cryptography, with a particular interest in fully homomorphic encryption and privacy-preserving computation, emphasizing collaborative protocol development, practical implementation, open communication, interoperability, and the transition of cryptographic research into deployable secure systems.
+  topics: [FHE, PQC, APPLIED]
+  tags: [INDUSTRY, WORKING_IN_INDIA]
