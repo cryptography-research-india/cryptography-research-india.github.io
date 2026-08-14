@@ -280,39 +280,26 @@
 
     var EDIT_ISSUE_BASE = 'https://github.com/cryptography-research-india/cryptography-research-india.github.io/issues/new';
 
-    // Builds a link to the "Edit My Profile" issue form with as many fields
-    // pre-filled as GitHub's issue-form query-param prefill supports. GitHub
-    // only prefills input/textarea/dropdown fields this way — the Topics and
-    // Remove Photo checkboxes in edit-researcher.yml can't be pre-filled, and
-    // Photo URL is deliberately left blank so people don't get invited to
-    // resubmit an unchanged photo and trigger a pointless refetch.
-    function buildEditProfileUrl(person, email) {
+    // Builds a link to the "Edit My Profile" issue form. Deliberately
+    // pre-fills ONLY the title and name — just enough for the automation to
+    // identify the right researcher — rather than every known field.
+    //
+    // An earlier version pre-filled every field GitHub's issue-form
+    // query-param mechanism supports (email, ORCID, links, etc.), but
+    // GitHub's issue-forms client has a bug where a pre-filled field fights
+    // edits: typing a replacement value gets silently reverted back to the
+    // pre-filled one, even well after the page has settled (confirmed by
+    // hand, not just a load-time race). That makes pre-filling actively
+    // harmful for the most common edit case — changing a value that's
+    // already wrong — so anything beyond name/title is intentionally left
+    // for the person to type themselves.
+    function buildEditProfileUrl(person) {
       var params = ['template=edit-researcher.yml'];
       function add(id, value) {
         if (value) params.push(id + '=' + encodeURIComponent(value));
       }
       add('title', person.name ? '[Edit Profile]: ' + person.name : null);
       add('name', person.name);
-      add('designation', person.designation);
-      add('affiliation', person.affiliation);
-      add('webpage', person.webpage);
-      // Stored as a single comma-joined string, but the Research Areas
-      // textarea (and this automation's parsing of it) expects one line per
-      // area — convert back so an unedited resubmit round-trips cleanly
-      // instead of collapsing into a single combined line.
-      add('research_areas', person.research ? person.research.split(', ').join('\n') : null);
-      add('email', email);
-      add('orcid', person.orcid);
-      add('scholar', person.scholar);
-      add('dblp', person.dblp);
-      add('linkedin', person.linkedin);
-      add('lab_name', person.lab);
-      add('lab', person.webpagelab);
-      var tags = person.tags || [];
-      if (tags.indexOf('ACADEMIA') !== -1) add('sector', 'Academia');
-      else if (tags.indexOf('INDUSTRY') !== -1) add('sector', 'Industry');
-      if (tags.indexOf('WORKING_IN_INDIA') !== -1) add('location', 'India');
-      else if (tags.indexOf('WORKING_ABROAD') !== -1) add('location', 'Abroad');
       return EDIT_ISSUE_BASE + '?' + params.join('&');
     }
 
@@ -436,7 +423,7 @@
       }
 
       if (modalEditBtn) {
-        modalEditBtn.href = buildEditProfileUrl(person, email);
+        modalEditBtn.href = buildEditProfileUrl(person);
       }
 
       if (card && card.dataset.slug) {
