@@ -989,3 +989,11 @@
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/subhamoy-maitra.jpg
   lab: R. C. Bose Centre for Cryptology and Security
+
+- name: Saraswathy RV
+  designation: Privacy Engineer
+  affiliation: HP Inc.
+  research: Privacy and Applied Cryptography
+  scholar: https://scholar.google.com/citations?user=i9CLjPUAAAAJ&hl=en
+  linkedin: https://www.linkedin.com/in/saraswathyrv
+  tags: [INDUSTRY, WORKING_ABROAD]
