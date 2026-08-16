@@ -997,3 +997,15 @@
   scholar: https://scholar.google.com/citations?user=i9CLjPUAAAAJ&hl=en
   linkedin: https://www.linkedin.com/in/saraswathyrv
   tags: [INDUSTRY, WORKING_ABROAD]
+
+- name: Raghvendra Singh Rohit
+  designation: Assistant Professor
+  affiliation: Indian Institute of Technology Roorkee
+  webpage: https://iitr.ac.in/Departments/Computer%20Science%20and%20Engineering%20Department/People/Faculty/101083.html
+  research: Cryptography, Theoretical and automated cryptanalysis, Secure cryptographic implementations, Cryptography laws and policies
+  email: raghvendra.rohit@cs.iitr.ac.in
+  orcid: 0000-0002-5272-1016
+  scholar: https://scholar.google.com/citations?hl=en&user=_yfwxdEAAAAJ
+  dblp: https://dblp.org/pid/205/0220.html
+  topics: [PKC, SYMMETRIC, PQC]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
