@@ -23,7 +23,7 @@ permalink: /positions/
       <h2>Post an Opening</h2>
       <p>Are you hiring cryptography researchers? Share your position with the community by submitting it via a GitHub issue. We will add it to this page promptly.</p>
       <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
-        <a href="https://github.com/cryptography-research-india/cryptography-research-india.github.io/issues/new?template=position-opening.md&title=[POSITION]+Your+Position+Title"
+        <a href="https://github.com/cryptography-research-india/cryptography-research-india.github.io/issues/new?template=add-position.yml"
            target="_blank" rel="noopener" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
           Submit a Position
@@ -101,10 +101,12 @@ permalink: /positions/
       <ul>
         <li><strong>Position title</strong> (e.g., Postdoc in MPC, PhD in ZK Proofs)</li>
         <li><strong>Institution / Company</strong></li>
+        <li><strong>Position type</strong> (PhD, Postdoc, Faculty, Research Scientist, Internship, or Other)</li>
         <li><strong>Location</strong></li>
         <li><strong>Application deadline</strong></li>
-        <li><strong>Brief description</strong> and a link to the official posting</li>
-        <li><strong>Contact email or form link</strong></li>
+        <li><strong>Application / details URL</strong></li>
+        <li><strong>Brief description</strong> of the position and requirements</li>
+        <li><strong>Contact email</strong> (optional)</li>
       </ul>
     </div>
 
