@@ -1009,3 +1009,17 @@
   dblp: https://dblp.org/pid/205/0220.html
   topics: [PKC, SYMMETRIC, PQC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+
+- name: Shaurya Pratap Singh
+  designation: Pre-Doc Fellow
+  affiliation: Indian Institute of Science, Bengaluru
+  webpage: https://shaurya010.github.io/ShauryaPratap.dev/
+  research: > Post-Quantum Cryptography (Hash-Based Cryptography), > Hash Algorithms, > Zero Knowledge Proof
+  email: shaurya.pratap@fsid-iisc.in
+  orcid: 0009-0009-0778-6038
+  scholar: https://scholar.google.com/citations?user=HDNW1HsAAAAJ&hl=en
+  linkedin: https://www.linkedin.com/in/shaurya-pratap-singh010/
+  topics: [ZKP, PKC, SYMMETRIC, PQC, APPLIED, THEORETICAL, PROTOCOLS, CODING]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/shaurya-pratap-singh.jpg
+  lab: Information and Security Lab
