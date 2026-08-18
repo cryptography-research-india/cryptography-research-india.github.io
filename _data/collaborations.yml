@@ -1,3 +1,17 @@
 # Collaboration posts from the community.
 # Each entry is submitted via a GitHub issue and merged via PR.
 # Fields: name, affiliation, topic, areas (list), seeking, description, contact, webpage (optional), date
+
+- name: Mukarram Ali
+  affiliation: Universiti Malaya
+  topic: "A Provably Secure Multi-Assumption Public-Key Cryptosystem Integrating (RSA, ECC and Chaotic Maps)"
+  areas:
+    - "Public Key Cryptography"
+    - "Symmetric Cryptography"
+    - "Applied Cryptography"
+    - "Theoretical Cryptography"
+    - "Security Protocols"
+  seeking: "Implementation partner"
+  description: "I am working on this paper and need someone who can help write it, review the expected results, and offer suggestions."
+  contact: muk.ali725@gmail.com
+  date: 2026-08-10
