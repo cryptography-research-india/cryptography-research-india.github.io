@@ -1009,3 +1009,12 @@
   dblp: https://dblp.org/pid/205/0220.html
   topics: [PKC, SYMMETRIC, PQC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+
+- name: Junaid Alam
+  designation: Assistant Professor
+  affiliation: SEAS, SRM Univeraity-AP
+  webpage: https://sites.google.com/view/junaidalam-iiita
+  research: Applied Cryptography, Blockchain Security, Cybersecurity, Zero-Knowledge Engineering
+  topics: [ZKP, FHE, PKC, PQC, PPML, BLOCKCHAIN, APPLIED, PROTOCOLS]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  photo: /assets/images/people/junaid-alam.jpg
