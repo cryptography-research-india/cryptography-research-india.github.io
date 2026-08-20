@@ -1009,3 +1009,12 @@
   dblp: https://dblp.org/pid/205/0220.html
   topics: [PKC, SYMMETRIC, PQC]
   tags: [ACADEMIA, WORKING_IN_INDIA]
+
+- name: Ajay Joshi
+  designation: Professor
+  affiliation: Boston University
+  webpage: https://www.bu.edu/icas/
+  research: Fully Homomorphic Encryption, Hardware Security
+  topics: [FHE, HARDWARE]
+  tags: [ACADEMIA, WORKING_ABROAD]
+  photo: /assets/images/people/ajay-joshi.jpg
