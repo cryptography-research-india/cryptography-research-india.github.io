@@ -1,3 +1,10 @@
 # Graduate students, pre-docs, and postdocs — the "Emerging Researchers" page.
 # Each entry is submitted via a GitHub issue and merged via PR.
 # Fields: name, institution, position (PhD Student / PreDoc / Postdoc), advisor (optional), research, link (optional)
+
+- name: Shaurya Pratap Singh
+  institution: Indian Institute of Science, Bengaluru
+  position: PreDoc
+  advisor: Sanjit Chatterjee
+  research: Post-Quantum Cryptography, Hash Algorithms, Zero Knowledge Proof
+  link: https://shaurya010.github.io/ShauryaPratap.dev/
