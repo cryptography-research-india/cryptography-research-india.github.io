@@ -911,6 +911,92 @@ p { color: var(--text-muted); }
   color: var(--text-dim);
 }
 
+/* ============================================================
+   EMERGING RESEARCHERS TABLE
+   ============================================================ */
+.emerging-filter-btn {
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--glass);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.emerging-filter-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+
+.emerging-filter-btn.active {
+  background: var(--green-dim);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.emerging-table-wrap {
+  border-radius: var(--radius-lg);
+  overflow-x: auto;
+}
+
+.emerging-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.emerging-table th {
+  text-align: left;
+  padding: 0.9rem 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border-hover);
+  white-space: nowrap;
+}
+
+.emerging-table td {
+  padding: 0.8rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  white-space: normal;
+}
+
+.emerging-table tr:last-child td {
+  border-bottom: none;
+}
+
+.emerging-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.emerging-row.hidden {
+  display: none;
+}
+
+.emerging-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: all var(--transition);
+}
+
+.emerging-link:hover {
+  color: var(--cyan);
+  background: var(--glass);
+}
+
 #search-people {
   padding: 0.5rem 1rem;
   background: var(--glass);

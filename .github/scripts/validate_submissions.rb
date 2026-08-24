@@ -152,6 +152,43 @@ else
   puts "SKIP  #{collab_path} not found"
 end
 
+# ── _data/grad-postdocs.yml ───────────────────────────────────────────────
+VALID_POSITIONS = ["PhD Student", "PreDoc", "Postdoc"].freeze
+grad_path = File.join(ROOT, "_data/grad-postdocs.yml")
+if File.exist?(grad_path)
+  grad_postdocs = YAML.safe_load_file(grad_path, permitted_classes: [Date], aliases: true) || []
+  seen_grad = {}
+
+  grad_postdocs.each_with_index do |entry, i|
+    src = "_data/grad-postdocs.yml entry ##{i + 1} (#{entry['name'] || 'unnamed'})"
+
+    %w[name institution position research].each do |key|
+      error(errors, src, "missing required field `#{key}`") if entry[key].to_s.strip.empty?
+    end
+
+    position = entry["position"]
+    if position && !VALID_POSITIONS.include?(position.to_s.strip)
+      error(errors, src, "`position` must be one of #{VALID_POSITIONS.join(' / ')}: #{position}")
+    end
+
+    link = entry["link"]
+    if link && !link.to_s.strip.empty? && link.to_s.strip !~ URL_RE
+      error(errors, src, "`link` is not a valid http(s) URL: #{link}")
+    end
+
+    next if entry["name"].to_s.strip.empty?
+
+    key = normalize(entry["name"])
+    if seen_grad[key]
+      error(errors, src, "duplicate entry (also entry ##{seen_grad[key]})")
+    else
+      seen_grad[key] = i + 1
+    end
+  end
+else
+  puts "SKIP  #{grad_path} not found"
+end
+
 # ── _positions/*.md ────────────────────────────────────────────────────────
 positions_dir = File.join(ROOT, "_positions")
 if Dir.exist?(positions_dir)

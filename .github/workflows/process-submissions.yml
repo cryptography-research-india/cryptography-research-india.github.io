@@ -942,3 +942,87 @@ jobs:
               issue_number: issue.number,
               body: `✅ Thanks! A PR has been created for review: ${pr.data.html_url}`,
             });
+
+  # ── Add Yourself (Grad Student / PreDoc / Postdoc) ──────────────────────────
+  add-grad-postdoc:
+    if: contains(github.event.issue.labels.*.name, 'add-grad-postdoc')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Parse issue and create emerging-researcher PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const body  = issue.body || '';
+
+            function field(label) {
+              const re = new RegExp(`### ${label}\\s*\\n+([\\s\\S]*?)(?=\\n### |$)`, 'i');
+              const m  = body.match(re);
+              return m ? m[1].trim() : '';
+            }
+
+            const name        = field('Full Name');
+            const institution = field('Institution');
+            const position    = field('Position');
+            const advisor     = field('Advisor \\(optional\\)');
+            const research    = field('Research Area');
+            const link        = field('Link \\(optional\\)');
+
+            if (!name || !institution || !position || !research) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issue.number,
+                body: '❌ Could not parse required fields. Please ensure Full Name, Institution, Position, and Research Area are filled in.',
+              });
+              return;
+            }
+
+            await github.rest.issues.update({
+              ...context.repo,
+              issue_number: issue.number,
+              title: `[Emerging Researcher] ${name}`,
+            });
+
+            // Kept deliberately compact — no photo, no topics, no multi-link
+            // footer — this list is meant to stay lightweight even at large
+            // scale, unlike the full names-people.yml schema.
+            let yaml = `- name: ${name}\n  institution: ${institution}\n  position: ${position}\n`;
+            if (advisor && advisor !== '_No response_') yaml += `  advisor: ${advisor}\n`;
+            yaml += `  research: ${research}\n`;
+            if (link && link !== '_No response_') yaml += `  link: ${link}\n`;
+
+            const { data: fileData } = await github.rest.repos.getContent({
+              ...context.repo,
+              path: '_data/grad-postdocs.yml',
+              ref: 'master',
+            });
+            const existing = Buffer.from(fileData.content, 'base64').toString('utf8');
+            const newContent = existing.trimEnd() + '\n\n' + yaml;
+
+            const branch = `submission/emerging-researcher-${issue.number}`;
+            const { data: ref } = await github.rest.git.getRef({ ...context.repo, ref: 'heads/master' });
+            await github.rest.git.createRef({ ...context.repo, ref: `refs/heads/${branch}`, sha: ref.object.sha });
+            await github.rest.repos.createOrUpdateFileContents({
+              ...context.repo,
+              path: '_data/grad-postdocs.yml',
+              message: `Add emerging researcher: ${name}`,
+              content: Buffer.from(newContent).toString('base64'),
+              sha: fileData.sha,
+              branch,
+            });
+
+            const pr = await github.rest.pulls.create({
+              ...context.repo,
+              title: `Add emerging researcher: ${name}`,
+              body: `Submitted via [Issue #${issue.number}](${issue.html_url}) by @${issue.user.login}.\n\n**Entry preview:**\n\`\`\`yaml\n${yaml}\`\`\`\n\n### Checklist\n- [ ] Name and institution are correct\n- [ ] Position is accurate`,
+              head: branch,
+              base: 'master',
+            });
+
+            await github.rest.issues.createComment({
+              ...context.repo,
+              issue_number: issue.number,
+              body: `✅ Thanks! A PR has been created for review: ${pr.data.html_url}`,
+            });

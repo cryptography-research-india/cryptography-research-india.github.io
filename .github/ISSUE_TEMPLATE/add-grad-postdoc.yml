@@ -1,0 +1,58 @@
+name: Add Yourself (Grad Student / PreDoc / Postdoc)
+description: Add yourself to the Emerging Researchers list
+title: "[Emerging Researcher]: "
+labels: ["add-grad-postdoc"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a lightweight, separate list for graduate students, pre-docs, and postdocs — kept intentionally compact since it can grow large. A PR will be created automatically for review.
+
+  - type: input
+    id: name
+    attributes:
+      label: Full Name
+      placeholder: e.g. Priya Sharma
+    validations:
+      required: true
+
+  - type: input
+    id: institution
+    attributes:
+      label: Institution
+      placeholder: e.g. Indian Institute of Science, Bangalore
+    validations:
+      required: true
+
+  - type: dropdown
+    id: position
+    attributes:
+      label: Position
+      options:
+        - PhD Student
+        - PreDoc
+        - Postdoc
+    validations:
+      required: true
+
+  - type: input
+    id: advisor
+    attributes:
+      label: Advisor (optional)
+      placeholder: e.g. Prof. Arpita Patra
+
+  - type: input
+    id: research
+    attributes:
+      label: Research Area
+      description: A short phrase — this list stays compact, so keep it brief.
+      placeholder: e.g. Zero-Knowledge Proofs
+    validations:
+      required: true
+
+  - type: input
+    id: link
+    attributes:
+      label: Link (optional)
+      description: Personal page, Google Scholar, or similar.
+      placeholder: https://
