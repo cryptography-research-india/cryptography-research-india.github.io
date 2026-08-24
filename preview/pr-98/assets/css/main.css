@@ -1064,7 +1064,8 @@ p {
   background: var(--glass);
 }
 
-#search-people {
+#search-people,
+#emerging-search {
   padding: 0.5rem 1rem;
   background: var(--glass);
   border: 1px solid var(--border);
@@ -1077,11 +1078,13 @@ p {
   transition: border-color var(--transition);
 }
 
-#search-people::placeholder {
+#search-people::placeholder,
+#emerging-search::placeholder {
   color: var(--text-dim);
 }
 
-#search-people:focus {
+#search-people:focus,
+#emerging-search:focus {
   border-color: rgba(0, 255, 136, 0.35);
 }
 
@@ -2400,7 +2403,8 @@ body.modal-open {
     min-width: 0;
   }
   /* People filters */
-  #search-people {
+  #search-people,
+  #emerging-search {
     width: 100%;
   }
 }
