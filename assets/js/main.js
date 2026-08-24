@@ -634,4 +634,56 @@
     });
   });
 
+  /* ============================================================
+     EMERGING RESEARCHERS — filter + search
+     A separate, self-contained block rather than reusing the People
+     page's filter/search (which is keyed to `.person-card`/`.filter-btn`
+     and gates its own setup on both existing — reusing those classes
+     here would either misfire that logic or silently no-op since this
+     page has no `.person-card` elements).
+     ============================================================ */
+  var emergingFilterBtns = document.querySelectorAll('.emerging-filter-btn');
+  var emergingRows = document.querySelectorAll('.emerging-row');
+
+  if (emergingRows.length) {
+    var emergingSearch = document.getElementById('emerging-search');
+    var emergingCount = document.getElementById('emerging-count');
+    var activeEmergingFilter = 'ALL';
+
+    function updateEmergingRows() {
+      var query = emergingSearch ? emergingSearch.value.toLowerCase().trim() : '';
+      var visible = 0;
+
+      emergingRows.forEach(function (row) {
+        var passesFilter = activeEmergingFilter === 'ALL' || row.dataset.position === activeEmergingFilter;
+        var passesSearch = !query
+          || (row.dataset.name || '').indexOf(query) !== -1
+          || (row.dataset.institution || '').indexOf(query) !== -1
+          || (row.dataset.research || '').indexOf(query) !== -1;
+
+        if (passesFilter && passesSearch) {
+          row.classList.remove('hidden');
+          visible++;
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+
+      if (emergingCount) emergingCount.textContent = visible + ' researcher' + (visible !== 1 ? 's' : '');
+    }
+
+    emergingFilterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        emergingFilterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeEmergingFilter = btn.dataset.filter;
+        updateEmergingRows();
+      });
+    });
+
+    if (emergingSearch) emergingSearch.addEventListener('input', updateEmergingRows);
+
+    updateEmergingRows();
+  }
+
 })();
