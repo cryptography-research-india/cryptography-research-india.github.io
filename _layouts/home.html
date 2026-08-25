@@ -141,11 +141,11 @@ layout: default
       {% for paper in site.data.recent_papers limit:6 %}
       <div class="paper-card glass">
         <h3 class="paper-card-title">
-          <a href="{{ paper.url }}" target="_blank" rel="noopener">{{ paper.title }}</a>
+          <a href="{{ paper.url | escape }}" target="_blank" rel="noopener">{{ paper.title | escape }}</a>
         </h3>
         <p class="paper-card-authors">
           {% for author in paper.authors %}
-            {% if author.slug %}<a href="{{ '/people/' | relative_url }}#{{ author.slug }}" class="paper-author-link">{{ author.name }}</a>{% else %}<span>{{ author.name }}</span>{% endif %}{% unless forloop.last %}, {% endunless %}
+            {% if author.slug %}<a href="{{ '/people/' | relative_url }}#{{ author.slug }}" class="paper-author-link">{{ author.name | escape }}</a>{% else %}<span>{{ author.name | escape }}</span>{% endif %}{% unless forloop.last %}, {% endunless %}
           {% endfor %}
         </p>
         {% if paper.date %}
