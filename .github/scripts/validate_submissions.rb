@@ -9,7 +9,11 @@
 # Checks, per source:
 #   _data/names-people.yml   - required keys, tag/topic vocabulary, URL shape, dup names
 #   _data/collaborations.yml - required keys, email shape, URL shape, dup (name+topic)
+#   _data/grad-postdocs.yml  - required keys, position vocabulary, URL shape, dup names
 #   _positions/*.md          - required front matter keys, URL shape, dup (title+org)
+#   _posts/*.md               - required front matter keys, dup (title+date), suspicious content
+#   _data/recent_papers.yml  - required keys, URL shape, suspicious content (third-party feed content)
+#   resource lists            - URL shape, unescaped angle brackets, suspicious content
 #
 # Exits non-zero (and prints "::error::" annotations) if any check fails.
 
@@ -24,6 +28,11 @@ EMAIL_RE = /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/
 ORCID_RE = /\A\d{4}-\d{4}-\d{4}-\d{3}[\dX]\z/
 VALID_SECTOR_TAGS = %w[ACADEMIA INDUSTRY].freeze
 VALID_LOCATION_TAGS = %w[WORKING_IN_INDIA WORKING_ABROAD].freeze
+# Best-effort regex check (not a full HTML parser) for content that ends up
+# rendered as raw HTML somewhere on the site — catches the common cases
+# (script tag, javascript: URI, inline event handler) rather than
+# guaranteeing every possible injection is caught.
+SUSPICIOUS_RE = /<script|javascript:|data:text\/html|on\w+\s*=/i
 
 topics_path = File.join(ROOT, "_data/topics.yml")
 VALID_TOPIC_CODES = if File.exist?(topics_path)
@@ -238,15 +247,103 @@ else
   puts "SKIP  #{positions_dir}/ not found"
 end
 
+# ── _posts/*.md ─────────────────────────────────────────────────────────────
+posts_dir = File.join(ROOT, "_posts")
+if Dir.exist?(posts_dir)
+  seen_posts = {}
+
+  Dir.glob(File.join(posts_dir, "*.md")).sort.each do |path|
+    rel = path.sub("#{ROOT}/", "")
+    raw = File.read(path)
+
+    unless raw.start_with?("---")
+      error(errors, rel, "missing YAML front matter")
+      next
+    end
+
+    parts = raw.split(/^---\s*$/, 3)
+    if parts.length < 3
+      error(errors, rel, "malformed front matter (no closing `---`)")
+      next
+    end
+
+    # Post `date:` values are typically full timestamps (e.g.
+    # `2025-01-01T00:00:00-04:00`), which YAML parses as `Time`, not
+    # `Date` — unlike every other date field in this file.
+    front = YAML.safe_load(parts[1], permitted_classes: [Date, Time], aliases: true) || {}
+    body = parts[2]
+
+    # `author` is deliberately optional here — post.html only shows a
+    # byline `{% if page.author %}`, and the site's own maintainer-written
+    # posts (predating the Submit Blog Post automation) have none.
+    %w[title date].each do |key|
+      error(errors, rel, "missing required field `#{key}`") if front[key].to_s.strip.empty?
+    end
+
+    if front["title"].to_s =~ SUSPICIOUS_RE || front["author"].to_s =~ SUSPICIOUS_RE
+      error(errors, rel, "front matter contains a suspicious pattern (script tag, javascript: URI, or inline event handler) — review carefully before merging")
+    end
+
+    if body =~ SUSPICIOUS_RE
+      error(errors, rel, "post body contains a suspicious pattern (script tag, javascript: URI, or inline event handler) — review carefully before merging")
+    end
+
+    date = front["date"]
+    next if front["title"].to_s.strip.empty? || date.to_s.strip.empty?
+
+    key = "#{normalize(front['title'])}::#{date}"
+    if seen_posts[key]
+      error(errors, rel, "duplicate post (same title + date as #{seen_posts[key]})")
+    else
+      seen_posts[key] = rel
+    end
+  end
+else
+  puts "SKIP  #{posts_dir}/ not found"
+end
+
+# ── _data/recent_papers.yml ─────────────────────────────────────────────────
+# Written entirely by an unattended weekly fetch from the public IACR
+# ePrint RSS feed (fetch_recent_papers.py) and rendered on the homepage —
+# title/url/author names are third-party content nobody at CRIYPT chose,
+# so this gets the same suspicious-content scan as the resource lists
+# rather than being trusted just because it's machine-generated.
+papers_path = File.join(ROOT, "_data/recent_papers.yml")
+if File.exist?(papers_path)
+  papers = YAML.safe_load_file(papers_path, permitted_classes: [Date], aliases: true) || []
+
+  papers.each_with_index do |paper, i|
+    src = "_data/recent_papers.yml entry ##{i + 1} (#{paper['title'] || 'untitled'})"
+
+    %w[title url].each do |key|
+      error(errors, src, "missing required field `#{key}`") if paper[key].to_s.strip.empty?
+    end
+
+    url = paper["url"]
+    if url && !url.to_s.strip.empty? && url.to_s.strip !~ URL_RE
+      error(errors, src, "`url` is not a valid http(s) URL: #{url}")
+    end
+
+    if paper["title"].to_s =~ SUSPICIOUS_RE
+      error(errors, src, "title contains a suspicious pattern (script tag, javascript: URI, or inline event handler): #{paper['title'].inspect}")
+    end
+
+    (paper["authors"] || []).each do |author|
+      name = author.is_a?(Hash) ? author["name"] : nil
+      if name.to_s =~ SUSPICIOUS_RE
+        error(errors, src, "author name contains a suspicious pattern: #{name.inspect}")
+      end
+    end
+  end
+else
+  puts "SKIP  #{papers_path} not found"
+end
+
 # ── Resource lists (_pages/resources.md, _resources/topics/*.md) ──────────
 # These files are rendered as raw HTML by Jekyll (the Add Resource
 # automation writes plain <li><a href="...">...</a></li> markup directly),
 # so a malformed/malicious entry here is a stored-XSS risk, not just bad
-# data. This is a best-effort regex check, not a full HTML parser — it
-# catches the common cases (bad URL scheme, unescaped angle brackets,
-# obviously suspicious content) rather than guaranteeing every possible
-# injection is caught.
-SUSPICIOUS_RE = /<script|javascript:|data:text\/html|on\w+\s*=/i
+# data.
 resource_files = ([File.join(ROOT, "_pages/resources.md")] + Dir.glob(File.join(ROOT, "_resources/topics/*.md"))).select { |p| File.exist?(p) }
 
 resource_files.each do |path|

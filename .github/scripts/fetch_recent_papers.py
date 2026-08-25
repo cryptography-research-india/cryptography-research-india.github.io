@@ -81,7 +81,10 @@ def parse_items(xml_bytes):
         title = (item.findtext("title") or "").strip()
         link = (item.findtext("link") or "").strip()
         pub_raw = (item.findtext("pubDate") or "").strip()
-        if not title or not link:
+        # The feed's <link> ends up as a bare href on the homepage — reject
+        # anything that isn't a plain http(s) URL (e.g. a javascript: URI)
+        # rather than trusting IACR's feed content unconditionally.
+        if not title or not link or not re.match(r"^https?://", link, re.IGNORECASE):
             continue
         creators = []
         for child in item:
