@@ -14,3 +14,9 @@
   position: PreDoc
   research: Information-theoretic cryptography and AI safety/alignment
   link: https://da-k-sh.github.io/
+
+- name: "Girisha Shankar"
+  institution: "Indian Institute of Science"
+  position: "Postdoc"
+  advisor: "Prof. Chaya Ganesh and Prof. Bhavana Kanukurthi"
+  research: "Rational Cryptography"
