@@ -839,6 +839,19 @@ jobs:
               return m ? m[1].trim() : '';
             }
 
+            // Escapes text before it's written into _pages/resources.md or a
+            // _resources/topics/*.md file as raw HTML — those files are
+            // rendered as-is by Jekyll, so an unescaped `title`/`url` here
+            // would be a stored-XSS vector for every visitor of that page.
+            function escapeHtml(str) {
+              return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+            }
+
             const title   = field('Resource Title');
             const url     = field('Resource URL');
             const section = field('Where should this go\\?');
@@ -849,6 +862,15 @@ jobs:
                 ...context.repo,
                 issue_number: issue.number,
                 body: '❌ Could not parse required fields. Please ensure Title, URL, and Section are filled in.',
+              });
+              return;
+            }
+
+            if (!/^https?:\/\//i.test(url)) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: issue.number,
+                body: '❌ Resource URL must start with `http://` or `https://`. Please open a new issue with a valid URL.',
               });
               return;
             }
@@ -914,7 +936,7 @@ jobs:
             // Insert at the start of the `</ul>` line so its own indentation
             // stays put and the new <li> gets a clean line of its own.
             const lineStart = existing.lastIndexOf('\n', closeTagIdx) + 1;
-            const newLi = `          <li><a href="${url}" target="_blank" rel="noopener">${title}</a></li>\n`;
+            const newLi = `          <li><a href="${escapeHtml(url)}" target="_blank" rel="noopener">${escapeHtml(title)}</a></li>\n`;
             const newContent = existing.slice(0, lineStart) + newLi + existing.slice(lineStart);
 
             const branch = `submission/resource-${issue.number}`;

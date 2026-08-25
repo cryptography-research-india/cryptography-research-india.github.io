@@ -238,6 +238,35 @@ else
   puts "SKIP  #{positions_dir}/ not found"
 end
 
+# ── Resource lists (_pages/resources.md, _resources/topics/*.md) ──────────
+# These files are rendered as raw HTML by Jekyll (the Add Resource
+# automation writes plain <li><a href="...">...</a></li> markup directly),
+# so a malformed/malicious entry here is a stored-XSS risk, not just bad
+# data. This is a best-effort regex check, not a full HTML parser — it
+# catches the common cases (bad URL scheme, unescaped angle brackets,
+# obviously suspicious content) rather than guaranteeing every possible
+# injection is caught.
+SUSPICIOUS_RE = /<script|javascript:|data:text\/html|on\w+\s*=/i
+resource_files = ([File.join(ROOT, "_pages/resources.md")] + Dir.glob(File.join(ROOT, "_resources/topics/*.md"))).select { |p| File.exist?(p) }
+
+resource_files.each do |path|
+  rel = path.sub("#{ROOT}/", "")
+  content = File.read(path)
+
+  content.scan(/<li><a href="([^"]*)"[^>]*>(.*?)<\/a><\/li>/) do |href, title|
+    if href.to_s.strip !~ URL_RE
+      error(errors, rel, "resource link is not a valid http(s) URL: #{href.inspect}")
+    end
+    if title =~ /[<>]/
+      error(errors, rel, "resource title contains unescaped `<`/`>` — possible injection: #{title.inspect}")
+    end
+  end
+
+  if content =~ SUSPICIOUS_RE
+    error(errors, rel, "file contains a suspicious pattern (script tag, javascript: URI, or inline event handler) — review carefully before merging")
+  end
+end
+
 # ── Summary ────────────────────────────────────────────────────────────────
 if errors.empty?
   puts "✅ All submission data passed validation."
