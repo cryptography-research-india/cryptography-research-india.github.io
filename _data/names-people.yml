@@ -1027,3 +1027,11 @@
   topics: [ZKP, FHE, PKC, PQC, PPML, BLOCKCHAIN, APPLIED, PROTOCOLS]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/junaid-alam.jpg
+
+- name: Nilanjan Datta
+  designation: Associate Professor
+  affiliation: TCG CREST, Kolkata, India
+  research: Lightweight Cryptography, (Quantum) Provable Security, Searchable Symmetric Encryption
+  email: nilanjan.datta@tcgcrest.org
+  topics: [SYMMETRIC, QUANTUM]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
