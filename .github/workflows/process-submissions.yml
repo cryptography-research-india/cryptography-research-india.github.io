@@ -70,6 +70,14 @@ jobs:
               'Quantum Cryptography': 'QUANTUM',
             };
 
+            // Renders a free-text value as a quoted YAML scalar so a
+            // submitted value can never break out of its field (e.g. a name
+            // containing `: ` or a stray `#` reopening the line as a YAML
+            // comment) or inject a sibling key into the entry.
+            function yamlStr(value) {
+              return JSON.stringify(String(value).replace(/[\r\n]+/g, ' ').trim());
+            }
+
             const name        = field('Full Name');
             const designation = field('Designation');
             const affiliation = field('Affiliation');
@@ -147,27 +155,27 @@ jobs:
             // `webpagelab` (not `lab`) for the lab/group URL — must match exactly.
             // `lab` in the data schema is the lab's *name* (for grouping on the
             // Labs page), separate from `webpagelab`, its URL.
-            let yaml = `- name: ${name}\n  designation: ${designation}\n  affiliation: ${affiliation}\n`;
-            if (webpage && webpage !== '_No response_') yaml += `  webpage: ${webpage}\n`;
-            if (lab && lab !== '_No response_')         yaml += `  webpagelab: ${lab}\n`;
+            let yaml = `- name: ${yamlStr(name)}\n  designation: ${yamlStr(designation)}\n  affiliation: ${yamlStr(affiliation)}\n`;
+            if (webpage && webpage !== '_No response_') yaml += `  webpage: ${yamlStr(webpage)}\n`;
+            if (lab && lab !== '_No response_')         yaml += `  webpagelab: ${yamlStr(lab)}\n`;
             if (researchAreas.length) {
-              yaml += `  research: ${researchAreas.join(', ')}\n`;
+              yaml += `  research: ${yamlStr(researchAreas.join(', '))}\n`;
             }
             // Optional profile links. `email` is deliberately never rendered as
             // plaintext in the site's HTML (see _plugins/person_filters.rb) —
             // that's a rendering-time concern, not a data-storage one, so it's
             // stored plainly here like everything else.
-            if (email    && email    !== '_No response_') yaml += `  email: ${email}\n`;
-            if (orcid    && orcid    !== '_No response_') yaml += `  orcid: ${orcid}\n`;
-            if (scholar  && scholar  !== '_No response_') yaml += `  scholar: ${scholar}\n`;
-            if (dblp     && dblp     !== '_No response_') yaml += `  dblp: ${dblp}\n`;
-            if (linkedin && linkedin !== '_No response_') yaml += `  linkedin: ${linkedin}\n`;
+            if (email    && email    !== '_No response_') yaml += `  email: ${yamlStr(email)}\n`;
+            if (orcid    && orcid    !== '_No response_') yaml += `  orcid: ${yamlStr(orcid)}\n`;
+            if (scholar  && scholar  !== '_No response_') yaml += `  scholar: ${yamlStr(scholar)}\n`;
+            if (dblp     && dblp     !== '_No response_') yaml += `  dblp: ${yamlStr(dblp)}\n`;
+            if (linkedin && linkedin !== '_No response_') yaml += `  linkedin: ${yamlStr(linkedin)}\n`;
             if (topicCodes.length) {
               yaml += `  topics: [${topicCodes.join(', ')}]\n`;
             }
             yaml += `  tags: [${tags.join(', ')}]\n`;
             if (resizedPhotoBuffer) yaml += `  photo: /${photoRepoPath}\n`;
-            if (labName && labName !== '_No response_') yaml += `  lab: ${labName}\n`;
+            if (labName && labName !== '_No response_') yaml += `  lab: ${yamlStr(labName)}\n`;
 
             // Read existing file and append
             const { data: fileData } = await github.rest.repos.getContent({
@@ -289,6 +297,13 @@ jobs:
               'Quantum Cryptography': 'QUANTUM',
             };
 
+            // Renders a free-text value as a quoted YAML scalar so a
+            // submitted value can never break out of its field or inject a
+            // sibling key into the entry.
+            function yamlStr(value) {
+              return JSON.stringify(String(value).replace(/[\r\n]+/g, ' ').trim());
+            }
+
             const name = field('Full Name \\(exactly as listed on the People page\\)');
 
             if (!name) {
@@ -334,6 +349,9 @@ jobs:
             for (const key of Object.keys(updates)) {
               if (!updates[key] || updates[key] === '_No response_') delete updates[key];
             }
+            for (const key of Object.keys(updates)) {
+              updates[key] = yamlStr(updates[key]);
+            }
             // Only set/replace topics if at least one box was checked — an
             // entirely unchecked section means "leave topics unchanged",
             // matching the blank-means-unchanged convention every other
@@ -347,7 +365,7 @@ jobs:
             const researchAreas = (rawAreas && rawAreas !== '_No response_' ? rawAreas : '')
               .split('\n').map(l => l.replace(/^[-*]\s*/, '').trim()).filter(Boolean);
             if (researchAreas.length) {
-              updates.research = researchAreas.join(', ');
+              updates.research = yamlStr(researchAreas.join(', '));
             }
 
             const hasPhotoUrl = !!(photoUrl && photoUrl !== '_No response_');
@@ -551,6 +569,26 @@ jobs:
               return m ? m[1].trim() : '';
             }
 
+            // Renders a free-text value as a quoted YAML scalar so a
+            // submitted value can never break out of its field or inject a
+            // sibling key into the front matter.
+            function yamlStr(value) {
+              return JSON.stringify(String(value).replace(/[\r\n]+/g, ' ').trim());
+            }
+
+            // Escapes text before it's spliced into the position's Markdown
+            // body — that body is passed through kramdown with raw HTML
+            // passthrough enabled, so an unescaped description would be a
+            // stored-XSS vector for every visitor of the Positions page.
+            function escapeHtml(str) {
+              return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+            }
+
             const title       = field('Position Title');
             const org         = field('Organization / Institution');
             const type        = field('Position Type');
@@ -587,13 +625,13 @@ jobs:
             const rawDeadline = deadline && deadline !== '_No response_' ? deadline.trim() : '';
             const isIsoDeadline = /^\d{4}-\d{2}-\d{2}$/.test(rawDeadline);
 
-            let frontmatter = `---\ntitle: "${title}"\norganization: "${org}"\ntype: "${type}"\nlocation: "${location}"\n`;
+            let frontmatter = `---\ntitle: ${yamlStr(title)}\norganization: ${yamlStr(org)}\ntype: ${yamlStr(type)}\nlocation: ${yamlStr(location)}\n`;
             if (isIsoDeadline) {
               frontmatter += `deadline: ${rawDeadline}\n`;
             } else if (rawDeadline) {
-              frontmatter += `deadline_display: "${rawDeadline.replace(/"/g, '\\"')}"\n`;
+              frontmatter += `deadline_display: ${yamlStr(rawDeadline)}\n`;
             }
-            frontmatter += `link: "${link}"\n${contact && contact !== '_No response_' ? `contact: "${contact}"\n` : ''}date: ${date}\n---\n\n${description}\n`;
+            frontmatter += `link: ${yamlStr(link)}\n${contact && contact !== '_No response_' ? `contact: ${yamlStr(contact)}\n` : ''}date: ${date}\n---\n\n${escapeHtml(description)}\n`;
             const content = frontmatter;
 
             // Create branch and commit
@@ -734,6 +772,13 @@ jobs:
               return m ? m[1].trim() : '';
             }
 
+            // Renders a free-text value as a quoted YAML scalar so a
+            // submitted value can never break out of its field or inject a
+            // sibling key into the entry.
+            function yamlStr(value) {
+              return JSON.stringify(String(value).replace(/[\r\n]+/g, ' ').trim());
+            }
+
             const name        = field('Your Name');
             const affiliation = field('Affiliation');
             const topic       = field('Collaboration Topic \\(short title\\)');
@@ -772,15 +817,15 @@ jobs:
             const date = new Date().toISOString().split('T')[0];
 
             // Build YAML entry
-            let yaml = `- name: ${name}\n  affiliation: ${affiliation}\n  topic: "${topic.replace(/"/g, '\\"')}"\n`;
+            let yaml = `- name: ${yamlStr(name)}\n  affiliation: ${yamlStr(affiliation)}\n  topic: ${yamlStr(topic)}\n`;
             if (areas.length) {
               yaml += `  areas:\n`;
-              areas.forEach(a => { yaml += `    - "${a}"\n`; });
+              areas.forEach(a => { yaml += `    - ${yamlStr(a)}\n`; });
             }
-            yaml += `  seeking: "${seeking}"\n`;
-            yaml += `  description: "${description.replace(/\n/g, ' ').replace(/"/g, '\\"')}"\n`;
-            yaml += `  contact: ${contact}\n`;
-            if (webpage && webpage !== '_No response_') yaml += `  webpage: ${webpage}\n`;
+            yaml += `  seeking: ${yamlStr(seeking)}\n`;
+            yaml += `  description: ${yamlStr(description)}\n`;
+            yaml += `  contact: ${yamlStr(contact)}\n`;
+            if (webpage && webpage !== '_No response_') yaml += `  webpage: ${yamlStr(webpage)}\n`;
             yaml += `  date: ${date}\n`;
 
             // Read and append to collaborations.yml
@@ -985,6 +1030,13 @@ jobs:
               return m ? m[1].trim() : '';
             }
 
+            // Renders a free-text value as a quoted YAML scalar so a
+            // submitted value can never break out of its field or inject a
+            // sibling key into the entry.
+            function yamlStr(value) {
+              return JSON.stringify(String(value).replace(/[\r\n]+/g, ' ').trim());
+            }
+
             const name        = field('Full Name');
             const institution = field('Institution');
             const position    = field('Position');
@@ -1010,10 +1062,10 @@ jobs:
             // Kept deliberately compact — no photo, no topics, no multi-link
             // footer — this list is meant to stay lightweight even at large
             // scale, unlike the full names-people.yml schema.
-            let yaml = `- name: ${name}\n  institution: ${institution}\n  position: ${position}\n`;
-            if (advisor && advisor !== '_No response_') yaml += `  advisor: ${advisor}\n`;
-            yaml += `  research: ${research}\n`;
-            if (link && link !== '_No response_') yaml += `  link: ${link}\n`;
+            let yaml = `- name: ${yamlStr(name)}\n  institution: ${yamlStr(institution)}\n  position: ${yamlStr(position)}\n`;
+            if (advisor && advisor !== '_No response_') yaml += `  advisor: ${yamlStr(advisor)}\n`;
+            yaml += `  research: ${yamlStr(research)}\n`;
+            if (link && link !== '_No response_') yaml += `  link: ${yamlStr(link)}\n`;
 
             const { data: fileData } = await github.rest.repos.getContent({
               ...context.repo,
