@@ -1037,4 +1037,11 @@
   orcid: https://orcid.org/0000-0001-5241-801X
   scholar: https://scholar.google.com/citations?user=3VQArpYAAAAJ
   topics: [MPC, ZKP, FHE, PKC, SYMMETRIC, PQC, PPML, BLOCKCHAIN, HARDWARE, APPLIED, THEORETICAL, PROTOCOLS, CODING, QUANTUM]
+  
+- name: Nilanjan Datta
+  designation: Associate Professor
+  affiliation: TCG CREST, Kolkata, India
+  research: Lightweight Cryptography, (Quantum) Provable Security, Searchable Symmetric Encryption
+  email: nilanjan.datta@tcgcrest.org
+  topics: [SYMMETRIC, QUANTUM]
   tags: [ACADEMIA, WORKING_IN_INDIA]

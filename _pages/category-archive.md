@@ -19,7 +19,7 @@ permalink: /categories/
     <div class="topic-pills">
       <span class="filter-label">Jump to:</span>
       {% for category in site.categories %}
-        <a href="#{{ category[0] | slugify }}" class="filter-btn topic-pill">{{ category[0] }} <span class="tag tag-sm">{{ category[1].size }}</span></a>
+        <a href="#{{ category[0] | slugify }}" class="filter-btn topic-pill">{{ category[0] | escape }} <span class="tag tag-sm">{{ category[1].size }}</span></a>
       {% endfor %}
     </div>
 
@@ -27,7 +27,7 @@ permalink: /categories/
       {% assign posts_sorted = category[1] | sort: "date" | reverse %}
       <div class="archive-group" id="{{ category[0] | slugify }}">
         <div class="section-header archive-group-header">
-          <h2 class="section-title archive-group-title">{{ category[0] }}</h2>
+          <h2 class="section-title archive-group-title">{{ category[0] | escape }}</h2>
         </div>
         <div class="posts-grid posts-grid-full">
           {% for post in posts_sorted %}

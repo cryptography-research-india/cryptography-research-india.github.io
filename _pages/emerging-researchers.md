@@ -57,18 +57,18 @@ permalink: /emerging-researchers/
         <tbody>
           {% for entry in entries %}
           <tr class="emerging-row"
-              data-position="{{ entry.position }}"
-              data-name="{{ entry.name | downcase }}"
-              data-institution="{{ entry.institution | downcase }}"
-              data-research="{{ entry.research | downcase }}">
-            <td>{{ entry.name }}</td>
-            <td>{{ entry.institution }}</td>
-            <td><span class="tag tag-sm">{{ entry.position }}</span></td>
-            <td>{{ entry.advisor | default: "—" }}</td>
-            <td>{{ entry.research }}</td>
+              data-position="{{ entry.position | escape }}"
+              data-name="{{ entry.name | downcase | escape }}"
+              data-institution="{{ entry.institution | downcase | escape }}"
+              data-research="{{ entry.research | downcase | escape }}">
+            <td>{{ entry.name | escape }}</td>
+            <td>{{ entry.institution | escape }}</td>
+            <td><span class="tag tag-sm">{{ entry.position | escape }}</span></td>
+            <td>{{ entry.advisor | default: "—" | escape }}</td>
+            <td>{{ entry.research | escape }}</td>
             <td>
               {% if entry.link %}
-              <a href="{{ entry.link }}" target="_blank" rel="noopener" class="emerging-link" aria-label="Link for {{ entry.name }}">
+              <a href="{{ entry.link | escape }}" target="_blank" rel="noopener" class="emerging-link" aria-label="Link for {{ entry.name | escape }}">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               </a>
               {% endif %}

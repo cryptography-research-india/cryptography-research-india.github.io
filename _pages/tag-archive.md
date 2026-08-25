@@ -19,7 +19,7 @@ permalink: /tags/
     <div class="topic-pills">
       <span class="filter-label">Jump to:</span>
       {% for tag in site.tags %}
-        <a href="#{{ tag[0] | slugify }}" class="filter-btn topic-pill">{{ tag[0] }} <span class="tag tag-sm">{{ tag[1].size }}</span></a>
+        <a href="#{{ tag[0] | slugify }}" class="filter-btn topic-pill">{{ tag[0] | escape }} <span class="tag tag-sm">{{ tag[1].size }}</span></a>
       {% endfor %}
     </div>
 
@@ -27,7 +27,7 @@ permalink: /tags/
       {% assign posts_sorted = tag[1] | sort: "date" | reverse %}
       <div class="archive-group" id="{{ tag[0] | slugify }}">
         <div class="section-header archive-group-header">
-          <h2 class="section-title archive-group-title">{{ tag[0] }}</h2>
+          <h2 class="section-title archive-group-title">{{ tag[0] | escape }}</h2>
         </div>
         <div class="posts-grid posts-grid-full">
           {% for post in posts_sorted %}
