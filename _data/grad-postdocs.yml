@@ -14,3 +14,8 @@
   position: PreDoc
   research: Information-theoretic cryptography and AI safety/alignment
   link: https://da-k-sh.github.io/
+
+- name: Poorna Krishna
+  institution: Selfmade
+  position: PreDoc
+  research: Research in post-quantum and applied cryptography, with a particular interest in fully homomorphic encryption and privacy-preserving computation, emphasizing collaborative protocol development, practical implementation, open communication, interoperability, and the transition of cryptographic research into deployable secure systems.
