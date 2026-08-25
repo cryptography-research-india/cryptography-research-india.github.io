@@ -16,20 +16,20 @@ layout: default
         </time>
         {% if page.categories %}
           {% for cat in page.categories limit:2 %}
-            <a href="{{ '/categories/' | relative_url }}#{{ cat | slugify }}" class="tag tag-category">{{ cat }}</a>
+            <a href="{{ '/categories/' | relative_url }}#{{ cat | slugify }}" class="tag tag-category">{{ cat | escape }}</a>
           {% endfor %}
         {% endif %}
       </div>
-      <h1 class="post-title-hero">{{ page.title }}</h1>
+      <h1 class="post-title-hero">{{ page.title | escape }}</h1>
       {% if page.author %}
       <div class="post-author-row">
-        <span class="post-author">By {{ page.author }}</span>
+        <span class="post-author">By {{ page.author | escape }}</span>
       </div>
       {% endif %}
       {% if page.tags and page.tags.size > 0 %}
       <div class="post-tags-hero">
         {% for tag in page.tags %}
-          <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag tag-sm">{{ tag }}</a>
+          <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag tag-sm">{{ tag | escape }}</a>
         {% endfor %}
       </div>
       {% endif %}
@@ -55,7 +55,7 @@ layout: default
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
             <div>
               <span class="post-nav-label">Previous</span>
-              <span class="post-nav-title">{{ page.previous.title }}</span>
+              <span class="post-nav-title">{{ page.previous.title | escape }}</span>
             </div>
           </a>
           {% endif %}
@@ -63,7 +63,7 @@ layout: default
           <a href="{{ page.next.url | relative_url }}" class="post-nav-link post-nav-next">
             <div>
               <span class="post-nav-label">Next</span>
-              <span class="post-nav-title">{{ page.next.title }}</span>
+              <span class="post-nav-title">{{ page.next.title | escape }}</span>
             </div>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>

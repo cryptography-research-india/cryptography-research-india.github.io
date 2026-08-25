@@ -3,8 +3,8 @@
 <a href="{{ '/people/' | relative_url }}#{{ slug }}"
   class="person-card glass"
   data-tags="{{ person.tags | join: ' ' }}{% if person.topics %} {{ person.topics | join: ' ' }}{% endif %}"
-  data-name="{{ person.name | downcase }}"
-  data-research="{{ person.research | downcase }}"
+  data-name="{{ person.name | downcase | escape }}"
+  data-research="{{ person.research | downcase | escape }}"
   data-slug="{{ slug }}"
   data-person="{{ person | without_key: 'email' | with_relative_photo: site.baseurl | jsonify | escape }}"
   {% if person.email %}data-email-enc="{{ person.email | obfuscate_email }}"{% endif %}
@@ -13,15 +13,15 @@
     <div class="person-card-header">
       <div class="person-avatar">
         {% if person.photo %}
-          <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" class="avatar-photo" loading="lazy">
+          <img src="{{ person.photo | relative_url }}" alt="{{ person.name | escape }}" class="avatar-photo" loading="lazy">
         {% else %}
-          <span class="avatar-initials">{{ person.name | initials }}</span>
+          <span class="avatar-initials">{{ person.name | initials | escape }}</span>
         {% endif %}
       </div>
       <div class="person-meta">
-        <h3 class="person-name">{{ person.name }}</h3>
-        <p class="person-designation">{{ person.designation }}</p>
-        <p class="person-affiliation">{{ person.affiliation }}</p>
+        <h3 class="person-name">{{ person.name | escape }}</h3>
+        <p class="person-designation">{{ person.designation | escape }}</p>
+        <p class="person-affiliation">{{ person.affiliation | escape }}</p>
       </div>
     </div>
 

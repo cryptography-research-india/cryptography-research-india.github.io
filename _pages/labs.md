@@ -33,11 +33,11 @@ permalink: /labs/
           <div class="lab-card-header">
             <div class="lab-card-heading">
               {% if first.webpagelab %}
-                <h3 class="lab-card-name"><a href="{{ first.webpagelab }}" target="_blank" rel="noopener">{{ group.name }}</a></h3>
+                <h3 class="lab-card-name"><a href="{{ first.webpagelab | escape }}" target="_blank" rel="noopener">{{ group.name | escape }}</a></h3>
               {% else %}
-                <h3 class="lab-card-name">{{ group.name }}</h3>
+                <h3 class="lab-card-name">{{ group.name | escape }}</h3>
               {% endif %}
-              <p class="lab-card-inst">{{ first.affiliation }}</p>
+              <p class="lab-card-inst">{{ first.affiliation | escape }}</p>
             </div>
           </div>
 
@@ -60,14 +60,14 @@ permalink: /labs/
                 {% if person.email %}data-email-enc="{{ person.email | obfuscate_email }}"{% endif %}>
                 <div class="lab-member-avatar">
                   {% if person.photo %}
-                    <img src="{{ person.photo | relative_url }}" alt="{{ person.name }}" class="avatar-photo">
+                    <img src="{{ person.photo | relative_url }}" alt="{{ person.name | escape }}" class="avatar-photo">
                   {% else %}
-                    <span class="avatar-initials">{{ person.name | initials }}</span>
+                    <span class="avatar-initials">{{ person.name | initials | escape }}</span>
                   {% endif %}
                 </div>
                 <span class="lab-member-info">
-                  <span class="lab-member-name">{{ person.name }}</span>
-                  <span class="lab-member-role">{{ person.designation }}</span>
+                  <span class="lab-member-name">{{ person.name | escape }}</span>
+                  <span class="lab-member-role">{{ person.designation | escape }}</span>
                 </span>
               </a>
             {% endfor %}
