@@ -1034,9 +1034,10 @@
   webpage: https://sites.google.com/view/anusha-vangala/
   research: Applied Cryptography, Authentication, Key Agreement, Elliptic Curve Cryptography, Post Quantum Cryptography
   email: anusha_vangala@nitw.ac.in
-  orcid: https://orcid.org/0000-0001-5241-801X
+  orcid: 0000-0001-5241-801X
   scholar: https://scholar.google.com/citations?user=3VQArpYAAAAJ
-  topics: [MPC, ZKP, FHE, PKC, SYMMETRIC, PQC, PPML, BLOCKCHAIN, HARDWARE, APPLIED, THEORETICAL, PROTOCOLS, CODING, QUANTUM]
+  topics: [PKC, SYMMETRIC, BLOCKCHAIN, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
   
 - name: Nilanjan Datta
   designation: Associate Professor
