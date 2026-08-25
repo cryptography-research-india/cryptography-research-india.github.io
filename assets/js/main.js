@@ -415,7 +415,7 @@
                 copyBtn.innerHTML = copyIcon() + ' Copy Email';
               }, 1800);
             }, function () {
-              copyBtn.innerHTML = 'Copy failed — ' + email;
+              copyBtn.textContent = 'Copy failed — ' + email;
             });
           });
           modalFooter.appendChild(copyBtn);
