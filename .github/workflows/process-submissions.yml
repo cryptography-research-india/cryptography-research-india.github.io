@@ -682,6 +682,26 @@ jobs:
               return m ? m[1].trim() : '';
             }
 
+            // Renders a free-text value as a quoted YAML scalar so a
+            // submitted value can never break out of its field or inject a
+            // sibling key into the front matter.
+            function yamlStr(value) {
+              return JSON.stringify(String(value).replace(/[\r\n]+/g, ' ').trim());
+            }
+
+            // Escapes text before it's spliced into the post's Markdown
+            // body — that body is passed through kramdown with raw HTML
+            // passthrough enabled, so unescaped content would be a
+            // stored-XSS vector for every visitor of the blog.
+            function escapeHtml(str) {
+              return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+            }
+
             const title    = field('Post Title');
             const author   = field('Your Name');
             const category = field('Category');
@@ -715,16 +735,16 @@ jobs:
 
             const frontmatter = [
               '---',
-              `title: "${title}"`,
-              `author: "${author}"`,
+              `title: ${yamlStr(title)}`,
+              `author: ${yamlStr(author)}`,
               `date: ${date}`,
-              `categories: ["${category}"]`,
-              tags.length ? `tags: [${tags.map(t => `"${t}"`).join(', ')}]` : '',
-              excerpt ? `excerpt: "${excerpt.replace(/"/g, '\\"')}"` : '',
+              `categories: [${yamlStr(category)}]`,
+              tags.length ? `tags: [${tags.map(t => yamlStr(t)).join(', ')}]` : '',
+              excerpt ? `excerpt: ${yamlStr(excerpt)}` : '',
               '---',
             ].filter(Boolean).join('\n');
 
-            const postContent = `${frontmatter}\n\n${content}\n`;
+            const postContent = `${frontmatter}\n\n${escapeHtml(content)}\n`;
 
             const branch = `submission/blogpost-${issue.number}`;
             const { data: ref } = await github.rest.git.getRef({ ...context.repo, ref: 'heads/master' });
