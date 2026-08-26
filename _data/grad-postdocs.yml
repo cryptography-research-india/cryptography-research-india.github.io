@@ -2,18 +2,18 @@
 # Each entry is submitted via a GitHub issue and merged via PR.
 # Fields: name, institution, position (PhD Student / PreDoc / Postdoc), advisor (optional), research, link (optional)
 
-- name: Shaurya Pratap Singh
-  institution: Indian Institute of Science, Bengaluru
-  position: PreDoc
-  advisor: Sanjit Chatterjee
-  research: Post-Quantum Cryptography, Hash Algorithms, Zero Knowledge Proof
-  link: https://shaurya010.github.io/ShauryaPratap.dev/
+- name: "Shaurya Pratap Singh"
+  institution: "Indian Institute of Science, Bengaluru"
+  position: "PreDoc"
+  advisor: "Sanjit Chatterjee"
+  research: "Post-Quantum Cryptography, Hash Algorithms, Zero Knowledge Proof"
+  link: "https://shaurya010.github.io/ShauryaPratap.dev/"
 
-- name: Daksh Pandey
-  institution: IIT Roorkee | COSIC (KU Leuven)
-  position: PreDoc
-  research: Information-theoretic cryptography and AI safety/alignment
-  link: https://da-k-sh.github.io/
+- name: "Daksh Pandey"
+  institution: "IIT Roorkee | COSIC (KU Leuven)"
+  position: "PreDoc"
+  research: "Information-theoretic cryptography and AI safety/alignment"
+  link: "https://da-k-sh.github.io/"
 
 - name: "Siva Kumar Maradana"
   institution: "Indian Statistical Institute"
@@ -21,3 +21,14 @@
   advisor: "Prof. Mridul Nandi, Dr. Pratyay Mukherjee"
   research: "FHE, Verifiable Computation, PIR"
   link: "https://dblp.org/pid/357/9947"
+  
+- name: "Dr. Ankush Soni"
+  institution: "BITS Pilani"
+  position: "Postdoc"
+  research: "Applied Cryptography"
+  
+- name: "Girisha Shankar"
+  institution: "Indian Institute of Science"
+  position: "Postdoc"
+  advisor: "Prof. Chaya Ganesh and Prof. Bhavana Kanukurthi"
+  research: "Rational Cryptography"
