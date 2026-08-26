@@ -14,3 +14,10 @@
   position: PreDoc
   research: Information-theoretic cryptography and AI safety/alignment
   link: https://da-k-sh.github.io/
+
+- name: "Siva Kumar Maradana"
+  institution: "Indian Statistical Institute"
+  position: "PhD Student"
+  advisor: "Prof. Mridul Nandi, Dr. Pratyay Mukherjee"
+  research: "FHE, Verifiable Computation, PIR"
+  link: "https://dblp.org/pid/357/9947"
