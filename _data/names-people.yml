@@ -1027,3 +1027,22 @@
   topics: [ZKP, FHE, PKC, PQC, PPML, BLOCKCHAIN, APPLIED, PROTOCOLS]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   photo: /assets/images/people/junaid-alam.jpg
+
+- name: Anusha Vangala
+  designation: Assistant Professor
+  affiliation: National Institute of Technology Warangal
+  webpage: https://sites.google.com/view/anusha-vangala/
+  research: Applied Cryptography, Authentication, Key Agreement, Elliptic Curve Cryptography, Post Quantum Cryptography
+  email: anusha_vangala@nitw.ac.in
+  orcid: 0000-0001-5241-801X
+  scholar: https://scholar.google.com/citations?user=3VQArpYAAAAJ
+  topics: [PKC, SYMMETRIC, BLOCKCHAIN, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  
+- name: Nilanjan Datta
+  designation: Associate Professor
+  affiliation: TCG CREST, Kolkata, India
+  research: Lightweight Cryptography, (Quantum) Provable Security, Searchable Symmetric Encryption
+  email: nilanjan.datta@tcgcrest.org
+  topics: [SYMMETRIC, QUANTUM]
+  tags: [ACADEMIA, WORKING_IN_INDIA]

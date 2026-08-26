@@ -6,7 +6,12 @@ on:
       - "_data/names-people.yml"
       - "_data/collaborations.yml"
       - "_data/topics.yml"
+      - "_data/grad-postdocs.yml"
+      - "_data/recent_papers.yml"
       - "_positions/**"
+      - "_posts/**"
+      - "_pages/resources.md"
+      - "_resources/topics/**"
 
 jobs:
   validate:

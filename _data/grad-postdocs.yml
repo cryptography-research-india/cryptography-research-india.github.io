@@ -19,3 +19,9 @@
   institution: BITS Pilani
   position: Postdoc
   research: Applied Cryptography
+  
+- name: "Girisha Shankar"
+  institution: "Indian Institute of Science"
+  position: "Postdoc"
+  advisor: "Prof. Chaya Ganesh and Prof. Bhavana Kanukurthi"
+  research: "Rational Cryptography"

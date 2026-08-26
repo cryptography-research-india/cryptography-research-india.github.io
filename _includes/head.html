@@ -5,24 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+<title>{% if page.title %}{{ page.title | escape }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 | escape }}{% else %}{{ site.description }}{% endif %}">
 
 {% assign share_title = page.title | default: site.title %}
 {% assign share_description = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
 {% unless share_description %}{% assign share_description = site.description %}{% endunless %}
 {% assign share_image = page.image | default: '/assets/images/bio-photo-new.png' | absolute_url %}
 
-<meta property="og:title" content="{{ share_title }}">
-<meta property="og:description" content="{{ share_description }}">
+<meta property="og:title" content="{{ share_title | escape }}">
+<meta property="og:description" content="{{ share_description | escape }}">
 <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
 <meta property="og:url" content="{{ page.url | absolute_url }}">
 <meta property="og:image" content="{{ share_image }}">
 <meta property="og:site_name" content="{{ site.title }}">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ share_title }}">
-<meta name="twitter:description" content="{{ share_description }}">
+<meta name="twitter:title" content="{{ share_title | escape }}">
+<meta name="twitter:description" content="{{ share_description | escape }}">
 <meta name="twitter:image" content="{{ share_image }}">
 
 <link rel="canonical" href="{{ page.url | absolute_url }}">

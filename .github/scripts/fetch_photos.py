@@ -20,7 +20,9 @@ Updates:   _data/names-people.yml  (adds 'photo' field, preserves formatting)
 """
 
 import io
+import ipaddress
 import re
+import socket
 import sys
 import httpx
 from dataclasses import dataclass, field
@@ -56,6 +58,7 @@ MAX_PX     = 300
 JPEG_Q     = 85
 MIN_SCORE  = 0          # minimum score to accept an image
 MAX_CANDIDATES = 12     # max images to evaluate per person
+MAX_REDIRECTS = 5
 
 HEADERS = {
     "User-Agent": (
@@ -122,6 +125,58 @@ def slugify(name: str) -> str:
 
 def _keywords(text: str) -> set[str]:
     return {w.lower() for w in re.split(r"[/_\-. ]", text) if w}
+
+
+# ── SSRF guard ────────────────────────────────────────────────────────────────
+# `webpage` (and every image URL scraped off of it) ultimately comes from a
+# submitted researcher profile — nothing stops it from pointing at internal
+# infrastructure (the cloud metadata endpoint, localhost, a private-network
+# service) instead of a real public page/image. Reject anything whose scheme
+# isn't http(s) or whose hostname resolves to a private/loopback/link-local/
+# reserved address, and re-check on every redirect hop too (a same-origin-
+# looking URL can still 302 to an internal address once fetched).
+
+def _is_public_ip(ip_str: str) -> bool:
+    try:
+        ip = ipaddress.ip_address(ip_str)
+    except ValueError:
+        return False
+    # Treat an IPv4-mapped IPv6 address (::ffff:127.0.0.1) as its mapped
+    # IPv4 form — `is_loopback`/`is_private` on the IPv6 wrapper itself
+    # wouldn't otherwise catch it.
+    if isinstance(ip, ipaddress.IPv6Address) and ip.ipv4_mapped is not None:
+        ip = ip.ipv4_mapped
+    return not (
+        ip.is_private or ip.is_loopback or ip.is_link_local
+        or ip.is_multicast or ip.is_reserved or ip.is_unspecified
+    )
+
+
+def is_safe_url(url: str) -> bool:
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
+        return False
+    try:
+        infos = socket.getaddrinfo(parsed.hostname, None)
+    except socket.gaierror:
+        return False
+    resolved = {info[4][0] for info in infos}
+    return bool(resolved) and all(_is_public_ip(ip) for ip in resolved)
+
+
+def safe_get(client: httpx.Client, url: str, **kwargs) -> httpx.Response:
+    """`client.get(url, follow_redirects=True)`, but re-validates `is_safe_url`
+    on the original URL and on every redirect hop, instead of trusting
+    httpx's own redirect-following not to land on an internal address."""
+    for _ in range(MAX_REDIRECTS + 1):
+        if not is_safe_url(url):
+            raise httpx.RequestError(f"refusing to fetch unsafe URL: {url}")
+        r = client.get(url, follow_redirects=False, **kwargs)
+        if r.is_redirect:
+            url = urljoin(str(r.url), r.headers.get("location", ""))
+            continue
+        return r
+    raise httpx.RequestError(f"too many redirects: {url}")
 
 
 # ── Candidate collection ──────────────────────────────────────────────────────
@@ -221,7 +276,7 @@ def _score(c: Candidate) -> int:
 
 def _download(url: str, client: httpx.Client) -> bytes | None:
     try:
-        r = client.get(url, timeout=20, follow_redirects=True)
+        r = safe_get(client, url, timeout=20)
         r.raise_for_status()
         ct = r.headers.get("content-type", "")
         if not ct.startswith("image/"):
@@ -262,7 +317,7 @@ def _save(raw: bytes, dest: Path) -> bool:
 def best_photo(page_url: str, client: httpx.Client) -> bytes | None:
     """Return raw bytes of the best profile photo found on *page_url*, or None."""
     try:
-        r = client.get(page_url, timeout=20, follow_redirects=True)
+        r = safe_get(client, page_url, timeout=20)
         r.raise_for_status()
     except Exception as e:
         print(f"    page fetch failed: {e}")
