@@ -1050,7 +1050,7 @@
 - name: "Varun Madathil"
   designation: "Assistant Professor"
   affiliation: "New Jersey Institute of Technology"
-  webpage: "varunmadathil.com"
+  webpage: "https://varunmadathil.com"
   research: "Applied Cryptography, Secure Multiparty Computation, Anonymity/Privacy"
   scholar: "https://scholar.google.com/citations?user=qFZRTKUAAAAJ&hl=en"
   dblp: "https://dblp.org/pid/265/8774.html"
