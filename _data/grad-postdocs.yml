@@ -32,3 +32,9 @@
   position: "Postdoc"
   advisor: "Prof. Chaya Ganesh and Prof. Bhavana Kanukurthi"
   research: "Rational Cryptography"
+
+- name: "Poorna Krishna"
+  institution: "Independent Researcher"
+  position: "PreDoc"
+  research: "Cloud Security, Security Protocols, Access Control"
+  link: "https://www.linkedin.com/in/poorna-vamsi-krishna-mannavaram-02863219b/"
