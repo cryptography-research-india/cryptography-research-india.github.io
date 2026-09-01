@@ -1056,3 +1056,15 @@
   dblp: "https://dblp.org/pid/265/8774.html"
   topics: [MPC, PPML, BLOCKCHAIN, APPLIED]
   tags: [ACADEMIA, WORKING_ABROAD]
+
+- name: "Parth Nagar"
+  designation: "PhD Student"
+  affiliation: "Sri Sathya Sai Institute of Higher Learning"
+  research: "Fully Homomorphic Encryption, Federated Learning"
+  email: "nparth@sssihl.edu.in"
+  orcid: "0009-0002-4027-3911"
+  scholar: "https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AKCpqFzwXXxoz5x0dF7QytdrCB5w1YPVn2B15DpS2h0Z0P_7-uYF8JCvmPMqbVb0jrOVyuSSFYUx8ev_SHzxNg&user=LkeUMZAAAAAJ"
+  linkedin: "www.linkedin.com/in/parth-nagar-ppml"
+  topics: [FHE, PPML, APPLIED]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
+  lab: "PPML Lab"
