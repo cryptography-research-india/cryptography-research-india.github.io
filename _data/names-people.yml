@@ -1068,3 +1068,15 @@
   topics: [FHE, PQC, PPML]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   lab: "PPML Lab"
+
+- name: "Kartikeya Sharma"
+  designation: "Independent Researcher"
+  affiliation: "Independent"
+  webpage: "https://sha512rma.eth.limo/"
+  research: "Threshold cryptography and proxy re-encryption for delegated access to sensitive data., Zero-knowledge proofs for verifiable inference, including proving cost and sampled verification of pre-committed activations., Differentially private learning, with a focus on how uniform gradient clipping and synthetic oversampling interact with class imbalance., Protocol review: Reading and critiquing MPC and threshold-signature specifications."
+  email: "kartikeya@bhaglabs.com"
+  orcid: "0009-0007-2273-3570"
+  scholar: "https://scholar.google.com/citations?hl=en&user=Lei9wgwAAAAJ"
+  linkedin: "https://www.linkedin.com/in/kartikeya-sharma04/"
+  topics: [MPC, ZKP, PPML, BLOCKCHAIN, APPLIED]
+  tags: [INDUSTRY, WORKING_IN_INDIA]
