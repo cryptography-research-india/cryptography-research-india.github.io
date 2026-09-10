@@ -50,9 +50,9 @@ Then open `http://localhost:4000`.
 ### Repo structure
 
 - `_pages/`, `_layouts/`, `_includes/` — site pages and templates (People, Labs, Positions, Collaborations, Posts, Resources, etc.)
-- `_data/*.yml` — structured data backing the People, Labs, and Collaborations pages, plus the controlled vocabularies (`topics.yml`) and the auto-fetched `recent_papers.yml`
+- `_data/*.yml` — structured data backing the People and Labs pages, plus the controlled vocabularies (`topics.yml`) and the auto-fetched `recent_papers.yml`
 - `_plugins/person_filters.rb` — custom Liquid filters used by the People/Labs templates
-- `_positions/`, `_resources/` — Jekyll collections
+- `_positions/`, `_collaborations/`, `_resources/` — Jekyll collections; each entry gets its own page (e.g. `/positions/<slug>/`, `/collaborations/<slug>/`) in addition to appearing on its listing page
 - `assets/css/main.scss`, `assets/js/main.js` — all styling and client-side behavior (custom-built, no external theme)
 - `.github/ISSUE_TEMPLATE/` — the submission forms described above
 - `.github/workflows/process-submissions.yml` — turns issue submissions into PRs

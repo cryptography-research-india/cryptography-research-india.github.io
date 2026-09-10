@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://cryptography-research-india.github.io/collaborations/private-ml-inference-with-hybrid-fhe-mpc/</loc>
+<lastmod>2026-09-10T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>https://cryptography-research-india.github.io/2025/01/01/welcome-to-cryptography-researchers-of-india/</loc>
 <lastmod>2025-01-01T04:00:00+00:00</lastmod>
 </url>
@@ -10,15 +14,15 @@
 </url>
 <url>
 <loc>https://cryptography-research-india.github.io/resources/topics/fully-homomorphic-encryption/</loc>
-<lastmod>2026-09-10T06:51:58+00:00</lastmod>
+<lastmod>2026-09-10T07:08:18+00:00</lastmod>
 </url>
 <url>
 <loc>https://cryptography-research-india.github.io/resources/topics/secure-computation/</loc>
-<lastmod>2026-09-10T06:51:58+00:00</lastmod>
+<lastmod>2026-09-10T07:08:18+00:00</lastmod>
 </url>
 <url>
 <loc>https://cryptography-research-india.github.io/resources/topics/zero-knowledge-proofs/</loc>
-<lastmod>2026-09-10T06:51:58+00:00</lastmod>
+<lastmod>2026-09-10T07:08:18+00:00</lastmod>
 </url>
 <url>
 <loc>https://cryptography-research-india.github.io/about/</loc>

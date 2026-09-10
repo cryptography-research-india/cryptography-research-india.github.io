@@ -686,31 +686,4 @@
     updateEmergingRows();
   }
 
-  // ── Collaboration card "Read more" ──────────────────────────────────────
-  // The description is CSS-clamped to 4 lines (see .collab-card-desc) so
-  // cards stay a consistent height — only show the toggle on cards where
-  // the clamp is actually cutting text off. Body text uses the 'Inter'
-  // web font, loaded async — measuring scrollHeight/clientHeight before it
-  // swaps in (still on the fallback font's metrics) can under- or
-  // over-count how many lines the text actually needs, so wait for
-  // document.fonts.ready before measuring rather than checking immediately.
-  var collabFontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
-  collabFontsReady.then(function () {
-    document.querySelectorAll('.collab-card').forEach(function (card) {
-      var desc = card.querySelector('.collab-card-desc');
-      var btn = card.querySelector('.collab-read-more');
-      if (!desc || !btn) return;
-
-      if (desc.scrollHeight <= desc.clientHeight + 1) {
-        btn.classList.add('hidden');
-        return;
-      }
-
-      btn.addEventListener('click', function () {
-        var expanded = desc.classList.toggle('expanded');
-        btn.textContent = expanded ? 'Show less' : 'Read more';
-      });
-    });
-  });
-
 })();
