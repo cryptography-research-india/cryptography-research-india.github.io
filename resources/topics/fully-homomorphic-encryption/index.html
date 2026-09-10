@@ -13,6 +13,15 @@
 
 
 
+<!--
+  page.excerpt is nil for regular pages under _pages/ (plain Jekyll::Page
+  objects, not Documents); the strip_html/strip_newlines/truncate chain
+  always turns that into a real (possibly empty) String, and "" is truthy
+  in Liquid, so a plain unless-check here would never fall back to
+  site.description. `== empty` catches the empty-string case (this repo
+  has no ActiveSupport loaded, so `== blank` silently evaluates false —
+  String doesn't define `.blank?` on its own, only `.empty?`).
+-->
 
 
 
@@ -21,6 +30,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cryptography-research-india.github.io/resources/topics/fully-homomorphic-encryption/">
 <meta property="og:image" content="https://cryptography-research-india.github.io/assets/images/bio-photo-new.png">
+
+<meta property="og:image:width" content="1254">
+<meta property="og:image:height" content="1254">
+<meta property="og:image:type" content="image/png">
+
 <meta property="og:site_name" content="Cryptography Researchers of India">
 
 <meta name="twitter:card" content="summary_large_image">

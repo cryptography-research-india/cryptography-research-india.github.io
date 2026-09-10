@@ -13,19 +13,33 @@
 
 
 
+<!--
+  page.excerpt is nil for regular pages under _pages/ (plain Jekyll::Page
+  objects, not Documents); the strip_html/strip_newlines/truncate chain
+  always turns that into a real (possibly empty) String, and "" is truthy
+  in Liquid, so a plain unless-check here would never fall back to
+  site.description. `== empty` catches the empty-string case (this repo
+  has no ActiveSupport loaded, so `== blank` silently evaluates false —
+  String doesn't define `.blank?` on its own, only `.empty?`).
+-->
 
 
 
 <meta property="og:title" content="Posts by Tag">
-<meta property="og:description" content="">
+<meta property="og:description" content="Connecting cryptography researchers across India">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cryptography-research-india.github.io/tags/">
 <meta property="og:image" content="https://cryptography-research-india.github.io/assets/images/bio-photo-new.png">
+
+<meta property="og:image:width" content="1254">
+<meta property="og:image:height" content="1254">
+<meta property="og:image:type" content="image/png">
+
 <meta property="og:site_name" content="Cryptography Researchers of India">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Posts by Tag">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Connecting cryptography researchers across India">
 <meta name="twitter:image" content="https://cryptography-research-india.github.io/assets/images/bio-photo-new.png">
 
 <link rel="canonical" href="https://cryptography-research-india.github.io/tags/">
