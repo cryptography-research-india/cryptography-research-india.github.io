@@ -8,7 +8,7 @@
 #
 # Checks, per source:
 #   _data/names-people.yml   - required keys, tag/topic vocabulary, URL shape, dup names
-#   _data/collaborations.yml - required keys, email shape, URL shape, dup (name+topic)
+#   _collaborations/*.md     - required front matter keys, email shape, URL shape, dup (name+topic)
 #   _data/grad-postdocs.yml  - required keys, position vocabulary, URL shape, dup names
 #   _positions/*.md          - required front matter keys, URL shape, dup (title+org)
 #   _posts/*.md               - required front matter keys, dup (title+date), suspicious content
@@ -125,40 +125,53 @@ else
   puts "SKIP  #{people_path} not found"
 end
 
-# ── _data/collaborations.yml ──────────────────────────────────────────────
-collab_path = File.join(ROOT, "_data/collaborations.yml")
-if File.exist?(collab_path)
-  collaborations = YAML.safe_load_file(collab_path, permitted_classes: [Date], aliases: true) || []
+# ── _collaborations/*.md ───────────────────────────────────────────────────
+collab_dir = File.join(ROOT, "_collaborations")
+if Dir.exist?(collab_dir)
   seen_collabs = {}
 
-  collaborations.each_with_index do |collab, i|
-    src = "_data/collaborations.yml entry ##{i + 1} (#{collab['name'] || 'unnamed'})"
+  Dir.glob(File.join(collab_dir, "*.md")).sort.each do |path|
+    rel = path.sub("#{ROOT}/", "")
+    raw = File.read(path)
 
-    %w[name topic seeking description contact].each do |key|
-      error(errors, src, "missing required field `#{key}`") if collab[key].to_s.strip.empty?
+    unless raw.start_with?("---")
+      error(errors, rel, "missing YAML front matter")
+      next
     end
 
-    contact = collab["contact"]
+    parts = raw.split(/^---\s*$/, 3)
+    if parts.length < 3
+      error(errors, rel, "malformed front matter (no closing `---`)")
+      next
+    end
+
+    front = YAML.safe_load(parts[1], permitted_classes: [Date], aliases: true) || {}
+
+    %w[title name affiliation seeking contact].each do |key|
+      error(errors, rel, "missing required field `#{key}`") if front[key].to_s.strip.empty?
+    end
+
+    contact = front["contact"]
     if contact && !contact.to_s.strip.empty? && contact.to_s.strip !~ EMAIL_RE
-      error(errors, src, "`contact` is not a valid email address: #{contact}")
+      error(errors, rel, "`contact` is not a valid email address: #{contact}")
     end
 
-    webpage = collab["webpage"]
+    webpage = front["webpage"]
     if webpage && !webpage.to_s.strip.empty? && webpage.to_s.strip !~ URL_RE
-      error(errors, src, "`webpage` is not a valid http(s) URL: #{webpage}")
+      error(errors, rel, "`webpage` is not a valid http(s) URL: #{webpage}")
     end
 
-    next if collab["name"].to_s.strip.empty? || collab["topic"].to_s.strip.empty?
+    next if front["name"].to_s.strip.empty? || front["title"].to_s.strip.empty?
 
-    key = "#{normalize(collab['name'])}::#{normalize(collab['topic'])}"
+    key = "#{normalize(front['name'])}::#{normalize(front['title'])}"
     if seen_collabs[key]
-      error(errors, src, "duplicate collaboration post (same name + topic as entry ##{seen_collabs[key]})")
+      error(errors, rel, "duplicate collaboration post (same name + topic as #{seen_collabs[key]})")
     else
-      seen_collabs[key] = i + 1
+      seen_collabs[key] = rel
     end
   end
 else
-  puts "SKIP  #{collab_path} not found"
+  puts "SKIP  #{collab_dir}/ not found"
 end
 
 # ── _data/grad-postdocs.yml ───────────────────────────────────────────────

@@ -50,7 +50,7 @@ permalink: /collaborations/
           Just researchers helping each other do better science.
         </p>
         <div class="collab-welcome-stats">
-          {% assign collab_count = site.data.collaborations | size %}
+          {% assign collab_count = site.collaborations | size %}
           <div class="collab-stat">
             <span class="collab-stat-num">{{ collab_count }}</span>
             <span class="collab-stat-label">Active posts</span>
@@ -65,50 +65,11 @@ permalink: /collaborations/
     </div>
 
     <!-- Collaboration cards -->
-    {% if site.data.collaborations.size > 0 %}
+    {% assign sorted_collabs = site.collaborations | sort: "date" | reverse %}
+    {% if sorted_collabs.size > 0 %}
     <div class="collab-grid" id="collab-grid">
-      {% for collab in site.data.collaborations %}
-      {% assign collab_anchor = collab.name | append: "-" | append: collab.topic | slugify %}
-      {% assign collab_anchor = "collab-" | append: collab_anchor %}
-      {% assign collab_share_url = "/collaborations/#" | append: collab_anchor %}
-      <div class="collab-card glass" id="{{ collab_anchor }}">
-        <div class="collab-card-header">
-          <div class="collab-card-meta">
-            <span class="collab-card-name">{{ collab.name | escape }}</span>
-            {% if collab.affiliation %}
-            <span class="collab-card-affil">{{ collab.affiliation | escape }}</span>
-            {% endif %}
-          </div>
-          <span class="collab-card-date">{{ collab.date | date: "%b %Y" }}</span>
-        </div>
-
-        <h3 class="collab-card-topic">{{ collab.topic | escape }}</h3>
-        <p class="collab-card-desc">{{ collab.description | escape }}</p>
-        <button type="button" class="collab-read-more">Read more</button>
-
-        <div class="collab-card-areas">
-          {% for area in collab.areas %}
-          <span class="collab-area-tag">{{ area | escape }}</span>
-          {% endfor %}
-        </div>
-
-        <div class="collab-card-footer">
-          <div class="collab-seeking">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <span>Seeking: <strong>{{ collab.seeking | escape }}</strong></span>
-          </div>
-          <div class="collab-card-actions">
-            {% if collab.webpage %}
-            <a href="{{ collab.webpage | escape }}" class="btn btn-sm btn-ghost" target="_blank" rel="noopener">Profile</a>
-            {% endif %}
-            <a href="mailto:{{ collab.contact | escape }}" class="btn btn-sm btn-primary">Get in touch</a>
-          </div>
-        </div>
-
-        <div class="share-row">
-          {% include share-buttons.html url=collab_share_url title=collab.topic %}
-        </div>
-      </div>
+      {% for collab in sorted_collabs %}
+        {% include collaboration-card.html collaboration=collab %}
       {% endfor %}
     </div>
     {% else %}

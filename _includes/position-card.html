@@ -1,11 +1,10 @@
 {% assign pos = include.position %}
 {% assign closed = include.closed %}
 {% assign pos_anchor = "position-" | append: pos.slug %}
-{% assign pos_share_url = "/positions/#" | append: pos_anchor %}
 <article class="position-card glass{% if closed %} position-card-closed{% endif %}" id="{{ pos_anchor }}">
   <div class="position-card-header">
     <div class="position-card-heading">
-      <h3 class="position-card-title">{{ pos.title | escape }}</h3>
+      <h3 class="position-card-title"><a href="{{ pos.url | relative_url }}">{{ pos.title | escape }}</a></h3>
       <p class="position-card-org">{{ pos.organization | escape }}{% if pos.location %} &middot; {{ pos.location | escape }}{% endif %}</p>
     </div>
     {% if closed %}
@@ -26,21 +25,18 @@
     {% endif %}
   </div>
 
-  {% if pos.content and pos.content != "" %}
-  <div class="position-card-desc prose">{{ pos.content }}</div>
+  {% if pos.excerpt %}
+  <p class="position-card-desc">{{ pos.excerpt | strip_html | truncate: 200 | escape }}</p>
   {% endif %}
 
   <div class="position-card-footer">
+    <a href="{{ pos.url | relative_url }}" class="btn btn-ghost btn-sm">Read more</a>
     <a href="{{ pos.link | escape }}" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      Details
+      Apply
     </a>
     {% if pos.contact %}
     <a href="mailto:{{ pos.contact | escape }}" class="btn btn-ghost btn-sm">Contact</a>
     {% endif %}
-  </div>
-
-  <div class="share-row">
-    {% include share-buttons.html url=pos_share_url title=pos.title %}
   </div>
 </article>

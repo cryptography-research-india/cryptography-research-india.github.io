@@ -4,10 +4,10 @@ on:
   pull_request:
     paths:
       - "_data/names-people.yml"
-      - "_data/collaborations.yml"
       - "_data/topics.yml"
       - "_data/grad-postdocs.yml"
       - "_data/recent_papers.yml"
+      - "_collaborations/**"
       - "_positions/**"
       - "_posts/**"
       - "_pages/resources.md"

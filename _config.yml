@@ -32,7 +32,11 @@ collections:
   resources:
     output: true
   positions:
-    output: false
+    output: true
+    permalink: /positions/:slug/
+  collaborations:
+    output: true
+    permalink: /collaborations/:slug/
 
 # Defaults
 defaults:
@@ -41,6 +45,16 @@ defaults:
       type: posts
     values:
       layout: post
+  - scope:
+      path: ""
+      type: positions
+    values:
+      layout: position
+  - scope:
+      path: ""
+      type: collaborations
+    values:
+      layout: collaboration
   - scope:
       path: "_pages"
     values:
