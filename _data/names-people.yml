@@ -1068,3 +1068,11 @@
   topics: [FHE, PQC, PPML]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   lab: "PPML Lab"
+
+- name: "Narayan Ji Mishra"
+  designation: "Research Scholar"
+  affiliation: "IIT Delhi"
+  research: "Lattice based Cryptography, Homomorphic Encryption, Privacy preserving Biometric Security, Number Theory."
+  email: "anz218638@iitd.acin"
+  topics: [ZKP, FHE, PKC, PQC, THEORETICAL]
+  tags: [ACADEMIA, WORKING_IN_INDIA]
