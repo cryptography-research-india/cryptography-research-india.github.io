@@ -84,6 +84,7 @@ permalink: /collaborations/
 
         <h3 class="collab-card-topic">{{ collab.topic | escape }}</h3>
         <p class="collab-card-desc">{{ collab.description | escape }}</p>
+        <button type="button" class="collab-read-more">Read more</button>
 
         <div class="collab-card-areas">
           {% for area in collab.areas %}

@@ -686,4 +686,24 @@
     updateEmergingRows();
   }
 
+  // ── Collaboration card "Read more" ──────────────────────────────────────
+  // The description is CSS-clamped to 4 lines (see .collab-card-desc) so
+  // cards stay a consistent height — only show the toggle on cards where
+  // the clamp is actually cutting text off.
+  document.querySelectorAll('.collab-card').forEach(function (card) {
+    var desc = card.querySelector('.collab-card-desc');
+    var btn = card.querySelector('.collab-read-more');
+    if (!desc || !btn) return;
+
+    if (desc.scrollHeight <= desc.clientHeight + 1) {
+      btn.classList.add('hidden');
+      return;
+    }
+
+    btn.addEventListener('click', function () {
+      var expanded = desc.classList.toggle('expanded');
+      btn.textContent = expanded ? 'Show less' : 'Read more';
+    });
+  });
+
 })();
