@@ -1,0 +1,54 @@
+---
+layout: default
+---
+
+<article class="post-article">
+  <div class="post-hero">
+    <div class="post-hero-overlay"></div>
+    <div class="container post-hero-content">
+      <a href="{{ '/collaborations/' | relative_url }}" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to Collaborations
+      </a>
+      <div class="post-meta-row">
+        <span class="post-date-hero">{{ page.date | date: "%b %Y" }}</span>
+      </div>
+      <h1 class="post-title-hero">{{ page.title | escape }}</h1>
+      <div class="post-author-row">
+        <span class="post-author">{{ page.name | escape }}{% if page.affiliation %} &middot; {{ page.affiliation | escape }}{% endif %}</span>
+      </div>
+      {% if page.areas and page.areas.size > 0 %}
+      <div class="post-tags-hero">
+        {% for area in page.areas %}<span class="tag tag-sm">{{ area | escape }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="post-body-section">
+    <div class="container">
+      <div class="post-body-inner">
+        <div class="post-content prose">
+          {{ content }}
+        </div>
+
+        <div class="collab-card-footer" style="margin-top:2rem;border-top:none;padding-top:0;">
+          <div class="collab-seeking">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Seeking: <strong>{{ page.seeking | escape }}</strong></span>
+          </div>
+          <div class="collab-card-actions">
+            {% if page.webpage %}
+            <a href="{{ page.webpage | escape }}" class="btn btn-sm btn-ghost" target="_blank" rel="noopener">Profile</a>
+            {% endif %}
+            <a href="mailto:{{ page.contact | escape }}" class="btn btn-sm btn-primary">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="share-row">
+          {% include share-buttons.html url=page.url title=page.title %}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

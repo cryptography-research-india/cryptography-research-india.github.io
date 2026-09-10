@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<article class="post-article">
+  <div class="post-hero">
+    <div class="post-hero-overlay"></div>
+    <div class="container post-hero-content">
+      <a href="{{ '/positions/' | relative_url }}" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to Positions
+      </a>
+      <div class="post-meta-row">
+        {% if page.deadline %}
+          <span class="tag tag-amber">Deadline: {{ page.deadline | date: "%b %d, %Y" }}</span>
+        {% elsif page.deadline_display %}
+          <span class="tag tag-amber">Deadline: {{ page.deadline_display | escape }}</span>
+        {% else %}
+          <span class="badge badge-cyan">Rolling</span>
+        {% endif %}
+        {% if page.type %}<span class="tag">{{ page.type | escape }}</span>{% endif %}
+      </div>
+      <h1 class="post-title-hero">{{ page.title | escape }}</h1>
+      <div class="post-author-row">
+        <span class="post-author">{{ page.organization | escape }}{% if page.location %} &middot; {{ page.location | escape }}{% endif %}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-body-section">
+    <div class="container">
+      <div class="post-body-inner">
+        <div class="post-content prose">
+          {{ content }}
+        </div>
+
+        <div class="position-card-footer" style="margin-top:2rem;">
+          <a href="{{ page.link | escape }}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Apply / Details
+          </a>
+          {% if page.contact %}
+          <a href="mailto:{{ page.contact | escape }}" class="btn btn-ghost btn-sm">Contact</a>
+          {% endif %}
+        </div>
+
+        <div class="share-row">
+          {% include share-buttons.html url=page.url title=page.title %}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
