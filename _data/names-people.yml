@@ -1068,3 +1068,10 @@
   topics: [FHE, PQC, PPML]
   tags: [ACADEMIA, WORKING_IN_INDIA]
   lab: "PPML Lab"
+
+- name: "Rajaram Ganjikunta"
+  designation: "Research Scholoar"
+  affiliation: "Alliance University, Bangalore"
+  research: "Post-Quantum Cryptography, Quantum Cryptography, Applied Cryptography"
+  topics: [PQC, APPLIED, QUANTUM]
+  tags: [INDUSTRY, WORKING_IN_INDIA]
