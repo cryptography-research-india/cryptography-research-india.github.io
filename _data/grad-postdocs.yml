@@ -50,3 +50,10 @@
   institution: "IIT Delhi"
   position: "PhD Student"
   research: "Lattice based Cryptography"
+
+- name: "Rohitkumar R. Upadhyay"
+  institution: "Inria Rennes, France"
+  position: "Postdoc"
+  advisor: "Prof. Pierre-Alain Fouque and Dr. Yixin Shen"
+  research: "Fully Homomorphic Encryption (FHE), Secure Multi-Party Computation (MPC), and Zero-Knowledge Proofs (ZKPs)"
+  link: "https://math4rohit.github.io/"
